@@ -1,7 +1,0 @@
-public class abstractTest {
-	private int nom;
-	
-	public void crier () {
-		System.out.println("Je crie !");
-	}
-}
