@@ -1,12 +1,12 @@
 package JavaBeans;
 
 public class Produit {
-	int idProduit;
-	String nomProduit;
-	double prixProduit;
-	Categorie categorieProduit;
-	String descriptionProduit;
-	String marqueProduit;
+	private int idProduit;
+	private String nomProduit;
+	private double prixProduit;
+	private Categorie categorieProduit;
+	private String descriptionProduit;
+	private String marqueProduit;
 	
 	public Produit() {}
 	

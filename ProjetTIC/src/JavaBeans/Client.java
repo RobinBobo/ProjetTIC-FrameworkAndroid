@@ -1,12 +1,12 @@
 package JavaBeans;
 
 public class Client {
-	int idClient;
-	String nomClient;
-	String prenomClient;
-	String adresseClient;
-	boolean sexeClient;
-	Panier panierClient;
+	private int idClient;
+	private String nomClient;
+	private String prenomClient;
+	private String adresseClient;
+	private boolean sexeClient;
+	private Panier panierClient;
 	
 	public Client() {}
 
