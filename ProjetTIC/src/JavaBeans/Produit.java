@@ -8,7 +8,13 @@ public class Produit {
 	private String descriptionProduit;
 	private String marqueProduit;
 	
-	public Produit() {}
+	public Produit(int id, String nom, double px, Categorie catego) {
+		this.idProduit = id;
+		this.nomProduit = nom;
+		this.categorieProduit = catego;
+		this.descriptionProduit = "";
+		this.marqueProduit = "";
+	}
 	
 	public void setCategorieProduit(Categorie categorieProduit) {
 		this.categorieProduit = categorieProduit;
