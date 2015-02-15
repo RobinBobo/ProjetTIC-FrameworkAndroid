@@ -1,5 +1,6 @@
-package fr.tic;
+package metier;
 
+import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
