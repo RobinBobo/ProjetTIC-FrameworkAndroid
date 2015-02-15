@@ -1,4 +1,4 @@
-package metier;
+package fr.tic;
 
 import fr.tic.R;
 import plurals.Catalogue;
