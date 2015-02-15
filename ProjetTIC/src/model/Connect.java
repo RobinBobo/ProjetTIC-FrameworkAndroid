@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//CTRL + SHIFT + O pour générer les imports
 public class Connect {
-    
 	
-	private static String url = "jdbc:mysql://localhost/MABDD";
 	
-	private static String user = "root";
+	
+	private static String url = "jdbc:mysql://127.0.0.1:3333/ecomback";
+	
+	private static String user = "canglade";
 	
 	private static String passwd = "root";
 	
@@ -22,6 +22,14 @@ public class Connect {
 	 * 
 	 */
 	public static Connection getInstance(){
+		
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+		}catch(ClassNotFoundException e){
+			System.out.println("Where is your MySQL JDBC Driver?");
+			e.printStackTrace();
+		}
+		
 		if(connect == null){
 			try {
 				connect = DriverManager.getConnection(url, user, passwd);
@@ -32,7 +40,6 @@ public class Connect {
 		return connect;	
 	}	
 	
-	
-	
-	
 }
+	
+	

@@ -1,6 +1,5 @@
 package fr.tic;
 
-import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
@@ -8,10 +7,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import beans.Categorie;
-import beans.Client;
-import beans.Panier;
-import beans.Produit;
 
 public class MainActivity extends Activity{
 	@Override
@@ -35,7 +30,7 @@ public class MainActivity extends Activity{
 		
 		// Test Catégorie et Produit
 		
-		Categorie C1 = new Categorie(0, "Salle de bain");
+		/*Categorie C1 = new Categorie(0, "Salle de bain");
 		Categorie C2 = new Categorie(0, "Salon");
 		
 		Produit P1 = new Produit(0, "Tapis", 38, "Tapis de salle de bain", "Michelin", 100);
@@ -96,7 +91,7 @@ public class MainActivity extends Activity{
 		
 		for(Categorie ca : mesCategories.getListeCategories()){
 			System.out.println("Nom : " + ca.getNomCategorie() + " & " + " Nombre de produits : " + ca.getMesProduits().size());
-		}
+		}*/
 	
 }
 	
