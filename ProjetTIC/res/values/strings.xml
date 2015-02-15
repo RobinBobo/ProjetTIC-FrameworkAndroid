@@ -2,7 +2,13 @@
 <resources>
 
     <string name="app_name">ProjetTIC</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Bienvenue dans votre application de vente en ligne !</string>
     <string name="action_settings">Settings</string>
+    <string name="ajouterProduit">Ajouter un produit</string>
+    <string name="modifierProduit">Modifier un produit</string>
+    <string name="supprimerProduit">Supprimer un produit</string>
+    <string name="consulterCatalogue">Consulter le catalogue</string>
+    <string name="ajouterCategorie">Ajouter une catégorie</string>
+    <string name="modifierCategorie">Modifier une catégorie</string>
 
 </resources>
