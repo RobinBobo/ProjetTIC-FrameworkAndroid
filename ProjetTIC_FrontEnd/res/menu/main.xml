@@ -1,0 +1,43 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.projettic.MainActivity" >
+
+    <item 
+        android:id="@+id/connexion"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Connexion"/>
+
+    <item 
+        android:id="@+id/enregister"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="S'enregister"/>
+    
+    
+    <item
+        android:id="@+id/mon_compte"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/textButtonCompte"/>
+    
+    <item
+        android:id="@+id/mon_panier"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/textButtonPanier"/>
+    
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    
+    <item
+        android:id="@+id/a_propos"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/textAPropos"/>
+    
+
+</menu>

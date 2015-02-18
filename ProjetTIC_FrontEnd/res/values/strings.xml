@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">App e-commerce</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Options</string>
+
+    <!-- MainActivity : Ecran principal -->
+
+    <string name="textButtonCompte">Mon compte</string>
+    <string name="textButtonPanier">Mon panier</string>
+    <string name="textButtonConnexion">Se connecter</string>
+    <string name="textButtonEnregistrer">S\'enregister</string>
+    <string name="textTextEditRecherche">Tapez votre recherche</string>
+    <string name="textButtonValiderRecherche">OK</string>
+    <string name="textAPropos">A propos</string>
+    <string name="title_activity_account">Mon compte</string>
+    <string name="title_activity_cart">Mon Panier</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_login">Connexion</string>
+    <string name="title_activity_register">S\'enregistrer</string>
+
+</resources>

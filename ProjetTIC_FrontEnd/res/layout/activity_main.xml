@@ -1,0 +1,505 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ticfrontend.activity.MainActivity" >
+<!--     android:paddingBottom="@dimen/activity_vertical_margin" -->
+
+   
+    <LinearLayout 
+        android:id="@+id/layoutBoutonMain"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+		android:layout_marginLeft="5dp" 
+      	android:layout_marginRight="5dp"
+      	android:visibility="gone"
+        >
+        
+        <Button 
+            android:id="@+id/boutonCompte"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="left"            
+            android:text="@string/textButtonCompte"
+            android:textSize="18dp"
+            />
+
+        <Button
+            android:id="@+id/boutonPanier"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:text="@string/textButtonPanier"
+            android:textSize="18dp" 
+            />
+        
+	</LinearLayout>
+	
+      <LinearLayout 
+        android:id="@+id/layoutBoutonConnexion"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+		android:layout_marginLeft="5dp" 
+      	android:layout_marginRight="5dp"
+      	android:visibility="visible"
+        >
+        
+        <Button 
+            android:id="@+id/boutonConnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="left"            
+            android:text="@string/textButtonConnexion"
+            android:textSize="18dp"
+            />
+
+        <Button
+            android:id="@+id/boutonEnregistrer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:text="@string/textButtonEnregistrer"
+            android:textSize="18dp" 
+            />
+        
+	</LinearLayout>
+	
+    <LinearLayout 
+        android:id="@+id/layoutEditTextMain"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp" 
+      	android:layout_marginRight="5dp"
+        >
+    
+	    <EditText 
+			android:id="@+id/editTextRecherche"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content" 
+			android:hint="@string/textTextEditRecherche"
+			android:textSize="14dp"
+			android:inputType="textAutoComplete"
+			android:layout_weight="1"/>
+	
+	    <Button
+	        android:id="@+id/boutonValiderRecherche"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/textButtonValiderRecherche"
+	        android:textSize="14dp" 
+	        />
+    
+    </LinearLayout>
+    
+<!--     <ProgressBar -->
+<!-- 		android:id="@+id/progressBar1" -->
+<!--         style="?android:attr/progressBarStyleHorizontal" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content"  -->
+<!--         android:layout_marginTop="10dp"         -->
+<!-- 		/> -->
+    
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Liste des catégories"
+        />
+<!--         android:layout_marginTop="10dp"         -->
+    
+    <ProgressBar
+		android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+<!--     <ScrollView  -->
+<!--         android:layout_width="match_parent" -->
+<!--     	android:layout_height="wrap_content"  -->
+<!--     	android:scrollbars="horizontal" -->
+<!--     	> -->
+	    
+        <ListView 
+            android:layout_width="match_parent"
+  		    android:layout_height="wrap_content"
+            >
+
+<!--   		    android:orientation="vertical" -->
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		   <ImageView  -->
+<!-- 	  		       android:id="@+id/icon"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+	  		    
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 1" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	        
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon2"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 2" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon3"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 3" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon4"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 4" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		   <ImageView  -->
+<!-- 	  		       android:id="@+id/icon5"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+	  		    
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 5" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	        
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon6"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 6" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon7"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 7" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon8"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 8" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		   <ImageView  -->
+<!-- 	  		       android:id="@+id/icon9"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+	  		    
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 9" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	        
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon10"  -->
+<!-- 	  		      	android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 10" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon11"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 11" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+<!-- 	  		<View -->
+<!-- 				android:layout_width="match_parent" -->
+<!-- 		        android:layout_height="1dp" -->
+<!-- 		        android:layout_marginLeft="50dp" -->
+<!-- 		        android:background="#FF909090" /> -->
+	  		
+<!-- 	  		<LinearLayout  -->
+<!-- 	  		    android:layout_width="match_parent" -->
+<!-- 	  		    android:layout_height="wrap_content" -->
+<!-- 	  		    android:orientation="horizontal" -->
+<!-- 	  		    > -->
+	  		    
+<!-- 	  		    <ImageView  -->
+<!-- 	  		       android:id="@+id/icon12"  -->
+<!-- 	  		       android:layout_width="30dp"  -->
+<!-- 	  		       android:layout_height="30dp" -->
+<!-- 	  		       android:layout_gravity="center_vertical" -->
+<!-- 	  		       android:src="@drawable/ic_launcher" -->
+<!-- 	  		       /> -->
+<!-- 	  		    <TextView  -->
+<!-- 	  		        android:layout_width="wrap_content" -->
+<!-- 	  		    	android:layout_height="wrap_content" -->
+<!-- 	  		    	android:layout_marginLeft="25dp" -->
+<!-- 	  		    	android:layout_marginTop="20dp" -->
+<!-- 	  		    	android:layout_marginBottom="20dp" -->
+<!-- 	  		        android:text="Catégorie 12" -->
+<!-- 	  		        android:textSize="18dp" -->
+<!-- 	  		        /> -->
+<!-- 	  		</LinearLayout> -->
+	  		
+	  		
+	  		
+		</ListView> 
+		       
+<!--     </ScrollView> -->
+</LinearLayout>
