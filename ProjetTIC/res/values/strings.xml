@@ -4,11 +4,25 @@
     <string name="app_name">ProjetTIC</string>
     <string name="hello_world">Bienvenue dans votre application de vente en ligne !</string>
     <string name="action_settings">Settings</string>
+    
+    <!-- Menu -->
     <string name="ajouterProduit">Ajouter un produit</string>
     <string name="modifierProduit">Modifier un produit</string>
     <string name="supprimerProduit">Supprimer un produit</string>
     <string name="consulterCatalogue">Consulter le catalogue</string>
     <string name="ajouterCategorie">Ajouter une catégorie</string>
     <string name="modifierCategorie">Modifier une catégorie</string>
+    <string name="menuLink">*Future page d\'accueil* : Cliquer ici pour accéder au menu</string>
+    
+	<!-- Produit -->
+    <string name="textIdProduit">Identifiant du produit : </string>
+    <string name="idProduit">Identifiant</string>
+    <string name="textNomProduit">Nom du produit : </string>
+    <string name="nomProduit">Produit</string>
+    <string name="textPrixProduit">Prix du produit : </string>
+    <string name="prixProduit">Prix</string>
+    <string name="textDescProduit">Description du produit : </string>
+    <string name="descProduit">Description du produit</string>
+	
 
 </resources>

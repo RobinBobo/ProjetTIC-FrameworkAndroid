@@ -7,61 +7,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fr.tic.MainActivity" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="17dp"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/afficherCatalogue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/consulterCatalogue" />
-
-        <Button
-            android:id="@+id/ajouterProduit"
-            style="@style/AppTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ajouterProduit" />
-
-        <Button
-            android:id="@+id/modifierProduit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/modifierProduit" />
-
-        <Button
-            android:id="@+id/supprimerProduit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/supprimerProduit" />
-
-        <Button
-            android:id="@+id/ajouterCategorie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ajouterCategorie" />
-
-        <Button
-            android:id="@+id/modifierCategorie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/modifierCategorie" />
-
-    </LinearLayout>
-
+	
+	<TextView
+		android:id="@+id/menuLink"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="@string/menuLink" />
+		
 </RelativeLayout>

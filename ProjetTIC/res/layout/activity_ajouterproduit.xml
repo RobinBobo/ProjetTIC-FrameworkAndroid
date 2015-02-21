@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical">
+	
+	<TextView 
+		android:id="@+id/textIdProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/textIdProduit" />
+	
+	<EditText 
+		android:id="@+id/idProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:hint="@string/idProduit"
+		android:layout_toRightOf="@id/textIdProduit"
+		android:layout_alignParentRight="true" />
+	
+	<TextView 
+		android:id="@+id/textNomProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/textNomProduit"
+		android:gravity="left"
+		android:layout_below="@id/idProduit" />
+		
+	<EditText
+		android:id="@+id/nomProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:hint="@string/nomProduit"
+		android:layout_below="@id/idProduit"
+		android:layout_toRightOf="@id/textNomProduit"
+		android:layout_alignParentRight="true" />
+	
+	<TextView 
+		android:id="@+id/textPrixProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/textPrixProduit"
+		android:gravity="left"
+		android:layout_below="@id/nomProduit" />
+		
+	<EditText
+		android:id="@+id/prixProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:hint="@string/prixProduit"
+		android:inputType="numberDecimal"
+		android:layout_below="@id/nomProduit"
+		android:layout_toRightOf="@id/textPrixProduit"
+		android:layout_alignParentRight="true" />
+	
+	<TextView 
+		android:id="@+id/textDescProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/textDescProduit"
+		android:gravity="left"
+		android:layout_below="@id/prixProduit" />
+		
+	<EditText
+		android:id="@+id/descProduit"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:hint="@string/descProduit"
+		android:layout_below="@id/textDescProduit" />
+    
+</RelativeLayout>
