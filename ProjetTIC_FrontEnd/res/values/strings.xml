@@ -19,5 +19,6 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_login">Connexion</string>
     <string name="title_activity_register">S\'enregistrer</string>
+    <string name="title_activity_product">ProductActivity</string>
 
 </resources>
