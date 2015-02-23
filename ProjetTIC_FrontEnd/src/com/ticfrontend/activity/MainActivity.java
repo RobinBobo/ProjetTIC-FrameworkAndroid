@@ -1,5 +1,7 @@
 package com.ticfrontend.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.projettic.R;
 import com.example.projettic.RegisterActivity;
+import com.ticfront.adapter.CategorieListAdapter;
+import com.ticfrontend.magasin.Categorie;
 
 
 public class MainActivity extends Activity {
@@ -23,6 +30,10 @@ public class MainActivity extends Activity {
     }
 
     public void init(){
+    	
+    	// On enlève le focus à l'ouverture de l'app sur le editText de recherche
+    	findViewById(R.id.editTextRecherche).setSelected(false);
+    	
     	// Bouton Mon Compte
     	Button account = (Button) findViewById(R.id.boutonCompte);
     	account.setOnClickListener(new OnClickListener() {
@@ -55,6 +66,24 @@ public class MainActivity extends Activity {
     			startAnActivity(RegisterActivity.class);
  			}
  		});
+    	
+    	Button search = (Button) findViewById(R.id.boutonValiderRecherche);
+    	search.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) { 
+				// On affiche le TextView "Trier par"
+				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
+				
+				// On change le textview "Liste des catégories" par "Résultat de votre recherche
+				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
+				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				
+				// Requete de recherche dans la BDD
+				
+			}
+		});
+    	
+    	testAjoutItemsListCategorie();
     }
 
     public <T> void startAnActivity(Class<T> activity){
@@ -95,5 +124,27 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    private void testAjoutItemsListCategorie(){
+    	List<Categorie> listP = Categorie.getAListOfPersonne();
+
+    	//Création et initialisation de l'Adapter pour les personnes
+    	CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this, listP);
+    	
+    	//Récupération du composant ListView
+    	ListView categorieList = (ListView) findViewById(R.id.listviewCat);
+
+    	//Initialisation de la liste avec les données
+    	categorieList.setAdapter(categorieListAdapter);
+    	
+    	categorieList.setAdapter(categorieListAdapter);
+    	    	
+    	categorieList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				startAnActivity(ProductActivity.class);
+			}
+		});
     }
 }

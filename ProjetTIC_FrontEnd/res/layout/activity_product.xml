@@ -48,6 +48,7 @@
         android:orientation="horizontal"
 		android:layout_marginLeft="5dp" 
       	android:layout_marginRight="5dp"
+      	android:layout_marginBottom="20dp"
       	android:visibility="visible"
         >
         
@@ -74,12 +75,14 @@
 	</LinearLayout>
 
 	<TextView
- 		android:id="@+id/sortText"
+ 		android:id="@+id/textProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:textSize="16dp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:text="Nom du produit"
+        
         />    
         
 	<RelativeLayout 
@@ -90,10 +93,70 @@
 	    
 	    >
 	
+	    <ImageView
+	        android:id="@+id/imgProduct"
+	        android:layout_width="150dp"
+	        android:layout_height="150dp"
+	        android:src="@drawable/img_poduct" 
+	        />
+	    
+	    
+	    <TextView
+	 		android:id="@+id/textReviewGenProduct"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="30dp"
+	        android:layout_alignParentRight="true"
+	        android:textSize="16dp"
+	        android:textStyle="bold"
+	        android:text="Avis général"
+	       	/>
+
+	    <RatingBar
+	        android:id="@+id/ratingBarReview"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@+id/textReviewGenProduct"
+	        android:contentDescription="2,5"
+	        android:isIndicator="true"
+	        android:stepSize="0.5" />
 	        
-		
-        
 	</RelativeLayout>
 	
 
+	<TextView
+ 		android:id="@+id/textTitleInfoProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" 
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Informations sur le produit"
+       	/>    
+<!--       	android:layout_marginRight="5dp" -->
+       	
+	<TextView 
+	    android:id="@+id/textInfoProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" 
+        android:maxLines="5"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi nulla, congue vitae ligula id, malesuada varius odio. Nullam hendrerit lacus sit amet dolor finibus, vel viverra risus pretium. Duis luctus porttitor eleifend. Quisque nec tellus sit amet nibh ornare cursus. Nulla mattis id elit suscipit tristique."
+	    />
+<!--       	android:layout_marginRight="5dp" -->
+       
+	<TextView
+ 		android:id="@+id/textReviewProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" 
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Avis sur le produit"
+       	/>
+<!--       	android:layout_marginRight="5dp" -->
+	
 </LinearLayout>
