@@ -32,7 +32,7 @@ public class Categorie {
 		this.nomCategorie = nomCategorie;
 	}
 
-	public static List<Categorie> getAListOfPersonne() {
+	public static List<Categorie> getAListOfCategorie() {
 
 		List<Categorie> listCategorie = new ArrayList<Categorie>();
 		

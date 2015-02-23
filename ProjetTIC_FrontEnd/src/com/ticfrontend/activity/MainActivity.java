@@ -5,18 +5,23 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.projettic.R;
 import com.example.projettic.RegisterActivity;
 import com.ticfront.adapter.CategorieListAdapter;
+import com.ticfront.ui.CategorieView;
 import com.ticfrontend.magasin.Categorie;
 
 
@@ -83,10 +88,16 @@ public class MainActivity extends Activity {
 			}
 		});
     	
-    	testAjoutItemsListCategorie();
+    	//testAjoutItemsListCategorie();
+    	
+    	testAjoutItemsListCategorieWithLinear();
+    	
+    	
+    	
     }
 
-    public <T> void startAnActivity(Class<T> activity){
+
+	public <T> void startAnActivity(Class<T> activity){
     	Intent intent = new Intent(MainActivity.this, activity);
     	startActivity(intent);
     }
@@ -127,10 +138,10 @@ public class MainActivity extends Activity {
     }
     
     private void testAjoutItemsListCategorie(){
-    	List<Categorie> listP = Categorie.getAListOfPersonne();
+    	List<Categorie> listCategorie = Categorie.getAListOfCategorie();
 
     	//Création et initialisation de l'Adapter pour les personnes
-    	CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this, listP);
+    	CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this, listCategorie);
     	
     	//Récupération du composant ListView
     	ListView categorieList = (ListView) findViewById(R.id.listviewCat);
@@ -146,5 +157,21 @@ public class MainActivity extends Activity {
 				startAnActivity(ProductActivity.class);
 			}
 		});
+    }
+
+    private void testAjoutItemsListCategorieWithLinear() {
+    	List<Categorie> listCategorie = Categorie.getAListOfCategorie();
+    	
+    	LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
+    	
+    	LinearLayout categorieList = (LinearLayout) findViewById(R.id.layoutListCategorie);
+    	
+        CategorieView viewItem = null;
+        
+	    
+	    for(int i = 0; i < listCategorie.size(); i++){
+	    	viewItem = new CategorieView(this, listCategorie.get(i));	    	
+	    	categorieList.addView(viewItem);
+	    }
     }
 }

@@ -1,5 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -173,11 +178,23 @@
 <!--     	android:scrollbars="horizontal" -->
 <!--     	> -->
 	    
-        <ListView 
-            android:id="@+id/listviewCat"
-            android:layout_width="match_parent"
-  		    android:layout_height="wrap_content"
-            >
+	<ListView 
+		android:id="@+id/listviewCat"
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+	    >  
+	</ListView> 
+
+
+	<LinearLayout 
+    	android:id="@+id/layoutListCategorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp" 
+    	>
+	</LinearLayout>
+
 
 <!--   		    android:orientation="vertical" -->
 <!-- 	  		<LinearLayout  -->
@@ -538,8 +555,8 @@
 <!-- 	  		</LinearLayout> -->
 	  		
 	  		
+<!-- 		</ListView>  -->
 	  		
-		</ListView> 
 		       
-<!--     </ScrollView> -->
 </LinearLayout>
+    </ScrollView>
