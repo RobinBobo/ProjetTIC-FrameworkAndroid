@@ -6,26 +6,37 @@
         android:id="@+id/connexion"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="Connexion"/>
+        android:title="Connexion"
+        android:visible="true"/>
 
     <item 
         android:id="@+id/enregister"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="S'enregister"/>
+        android:title="S'enregister"
+        android:visible="true"/>
     
     
     <item
         android:id="@+id/mon_compte"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/textButtonCompte"/>
+        android:title="@string/textButtonCompte"
+        android:visible="false"/>
     
     <item
         android:id="@+id/mon_panier"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/textButtonPanier"/>
+        android:title="@string/textButtonPanier"
+        android:visible="false"/>
+    
+     <item
+        android:id="@+id/se_deconnecter"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/textSeDeconnecter"
+        android:visible="false"/>
     
     <item
         android:id="@+id/action_settings"
