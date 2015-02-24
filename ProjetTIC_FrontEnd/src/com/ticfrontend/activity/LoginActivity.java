@@ -1,10 +1,5 @@
 package com.ticfrontend.activity;
 
-import com.example.projettic.R;
-import com.example.projettic.R.id;
-import com.example.projettic.R.layout;
-import com.example.projettic.R.menu;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+
+import com.example.projettic.R;
 
 public class LoginActivity extends Activity {
 
