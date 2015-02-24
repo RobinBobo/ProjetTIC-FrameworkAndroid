@@ -10,7 +10,7 @@ public class Client {
 	private String s_nomClient;
 	private String s_prenomClient;
 	private String s_adresseClient;
-	private boolean b_sexeClient;
+	private boolean b_sexeClient; // true : homme / false : femme
 	private ArrayList<Panier> o_mesPaniers = new ArrayList<Panier>();
 	
 	//_____________________________________

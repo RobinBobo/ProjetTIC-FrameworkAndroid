@@ -5,4 +5,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+
+	
+    <string name="textIdClient">Identifiants du client : </string>
+    <string name="IdClient">Identifiant</string>
+    <string name="radioHomme">Homme</string>
+    <string name="radioFemme">Femme</string>
+    <string name="textNomClient">Nom : </string>
+    <string name="nomClient">Dupont</string>
+    <string name="textPrenomClient">Prénom : </string>
+    <string name="prenomClient">Martin </string>
+    <string name="textAdresseClient">Adresse : </string>    
+    <string name="adresseClient">5bis, étage 2, rue de la paix, 75000 Paris</string>
+    <string name="btnAjoutClient">Valider</string>
 </resources>
