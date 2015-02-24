@@ -1,16 +1,28 @@
 package com.ticfrontend.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.projettic.R;
 import com.example.projettic.RegisterActivity;
+import com.ticfront.adapter.CategorieListAdapter;
+import com.ticfront.ui.CategorieView;
+import com.ticfrontend.magasin.Categorie;
 
 
 public class MainActivity extends Activity {
@@ -23,6 +35,10 @@ public class MainActivity extends Activity {
     }
 
     public void init(){
+    	
+    	// On enlève le focus à l'ouverture de l'app sur le editText de recherche
+    	findViewById(R.id.editTextRecherche).setSelected(false);
+    	
     	// Bouton Mon Compte
     	Button account = (Button) findViewById(R.id.boutonCompte);
     	account.setOnClickListener(new OnClickListener() {
@@ -55,9 +71,33 @@ public class MainActivity extends Activity {
     			startAnActivity(RegisterActivity.class);
  			}
  		});
+    	
+    	Button search = (Button) findViewById(R.id.boutonValiderRecherche);
+    	search.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) { 
+				// On affiche le TextView "Trier par"
+				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
+				
+				// On change le textview "Liste des catégories" par "Résultat de votre recherche
+				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
+				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				
+				// Requete de recherche dans la BDD
+				
+			}
+		});
+    	
+    	//testAjoutItemsListCategorie();
+    	
+    	testAjoutItemsListCategorieWithLinear();
+    	
+    	
+    	
     }
 
-    public <T> void startAnActivity(Class<T> activity){
+
+	public <T> void startAnActivity(Class<T> activity){
     	Intent intent = new Intent(MainActivity.this, activity);
     	startActivity(intent);
     }
@@ -95,5 +135,43 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    private void testAjoutItemsListCategorie(){
+    	List<Categorie> listCategorie = Categorie.getAListOfCategorie();
+
+    	//Création et initialisation de l'Adapter pour les personnes
+    	CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this, listCategorie);
+    	
+    	//Récupération du composant ListView
+    	ListView categorieList = (ListView) findViewById(R.id.listviewCat);
+
+    	//Initialisation de la liste avec les données
+    	categorieList.setAdapter(categorieListAdapter);
+    	
+    	categorieList.setAdapter(categorieListAdapter);
+    	    	
+    	categorieList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				startAnActivity(ProductActivity.class);
+			}
+		});
+    }
+
+    private void testAjoutItemsListCategorieWithLinear() {
+    	List<Categorie> listCategorie = Categorie.getAListOfCategorie();
+    	
+    	LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
+    	
+    	LinearLayout categorieList = (LinearLayout) findViewById(R.id.layoutListCategorie);
+    	
+        CategorieView viewItem = null;
+        
+	    
+	    for(int i = 0; i < listCategorie.size(); i++){
+	    	viewItem = new CategorieView(this, listCategorie.get(i));	    	
+	    	categorieList.addView(viewItem);
+	    }
     }
 }

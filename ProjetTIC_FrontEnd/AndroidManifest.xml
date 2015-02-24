@@ -62,6 +62,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ticfrontend.activity.MainActivity" />
         </activity>
+        <activity
+            android:name="com.ticfrontend.activity.ProductActivity"
+            android:label="@string/title_activity_product" >
+        </activity>
     </application>
 
 </manifest>
