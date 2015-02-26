@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,11 +6,64 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ticfrontend.activity.LoginActivity" >
+    tools:context="com.ticfrontend.activity.LoginActivity" 
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connexion" />
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:text="Se connecter" 
+        android:textSize="25dp"
+        />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/textEditLoginUser" 
+        android:textSize="18dp"
+        />
+
+    <EditText 
+		android:id="@+id/editTextLoginUser"
+		android:layout_width="150dp"
+		android:layout_height="35dp" 
+		android:layout_marginBottom="40dp"
+		android:layout_gravity="center_horizontal"
+		android:textSize="14dp"
+		android:inputType="textAutoComplete"
+		/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/textEditPassUser" 
+        android:textSize="18dp"
+        />
+    
+    <EditText 
+		android:id="@+id/editTextPassUser"
+		android:layout_width="150dp"
+		android:layout_height="35dp" 
+		android:layout_marginBottom="40dp"
+		android:layout_gravity="center_horizontal"
+		android:textSize="14dp"
+		android:inputType="textAutoComplete"
+		></EditText>
+    
+	<Button 
+	    android:id="@+id/boutonValiderLogin"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"     
+	    android:layout_gravity="center_horizontal"
+	    android:gravity="center"
+	    android:text="@string/textButtonValiderLogin"
+	    android:textSize="18dp"
+	    />
+    
+</LinearLayout>

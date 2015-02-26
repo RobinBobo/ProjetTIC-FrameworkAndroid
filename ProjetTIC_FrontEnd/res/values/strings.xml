@@ -11,9 +11,14 @@
     <string name="textButtonPanier">Mon panier</string>
     <string name="textButtonConnexion">Se connecter</string>
     <string name="textButtonEnregistrer">S\'enregister</string>
+    <string name="textSeDeconnecter">Se déconnecter</string>
     <string name="textTextEditRecherche">Tapez votre recherche</string>
     <string name="textButtonValiderRecherche">OK</string>
     <string name="textAPropos">A propos</string>
+    <string name="textEditLoginUser">Nom d\'utilisateur</string>
+    <string name="textEditPassUser">Mot de passe</string>
+    <string name="textButtonValiderLogin">Connexion</string>
+    
     <string name="title_activity_account">Mon compte</string>
     <string name="title_activity_cart">Mon Panier</string>
     <string name="title_activity_about">AboutActivity</string>
