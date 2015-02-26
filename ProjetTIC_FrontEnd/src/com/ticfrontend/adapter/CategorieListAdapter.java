@@ -1,4 +1,4 @@
-package com.ticfront.adapter;
+package com.ticfrontend.adapter;
 
 import java.util.Collections;
 import java.util.List;

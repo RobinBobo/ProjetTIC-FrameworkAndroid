@@ -1,5 +1,7 @@
 package com.ticfrontend.activity;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
@@ -19,8 +21,11 @@ import android.widget.Toast;
 
 import com.example.projettic.R;
 import com.example.projettic.RegisterActivity;
-import com.ticfront.adapter.CategorieListAdapter;
+import com.ticfrontend.adapter.CategorieListAdapter;
+import com.ticfrontend.adapter.ProductListAdapter;
 import com.ticfrontend.magasin.Categorie;
+import com.ticfrontend.magasin.Produit;
+import com.ticfrontent.comparator.ProductPriceComparator;
 
 
 public class MainActivity extends Activity {
@@ -147,11 +152,58 @@ public class MainActivity extends Activity {
 				
 				// Requete de recherche dans la BDD
 				
+				
+				// Affichage de la liste
+				testAjoutItemsListProduct();
+				
+				
+				
 			}
 		});
     	
+    	
+    	Button sortPrice = (Button) findViewById(R.id.buttonSortPrice);
+    	sortPrice.setOnClickListener(new OnClickListener() {
+    		@Override
+ 			public void onClick(View arg0) {
+    			// Trier par prix
+    			ListView list = (ListView) findViewById(R.id.listviewCat);
+    			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
+    			
+    			List<Produit> products = adapter.getProducts();
+    			
+    			Collections.sort(products, new ProductPriceComparator());
+    			
+    			adapter.updateProduct(products);
+    		}
+ 		});
+    	
+    	Button sortName = (Button) findViewById(R.id.buttonSortName);
+    	sortName.setOnClickListener(new OnClickListener() {
+    		@Override
+ 			public void onClick(View arg0) {
+    			// Trier par nom
+    			
+    			ListView list = (ListView) findViewById(R.id.listviewCat);
+    			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
+    			
+    			List<Produit> products = adapter.getProducts();
+    			
+    			Collections.sort(products, new Comparator<Produit>() {
+    		        @Override
+    		        public int compare(Produit product1, Produit product2) {
+    		        	
+    		        	return product1.getNomProduit().compareTo(product2.getNomProduit());
+    		        }
+    		    });
+    			
+    			adapter.updateProduct(products);
+    			
+ 			}
+ 		});
+    	
+    	// Permet le test de l'appli (widgets, activité, list, etc...)
     	testAjoutItemsListCategorie();	
-    	//testAjoutItemsListCategorieWithLinear();  	
     }
 
 	public <T> void startAnActivity(Class<T> activity){
@@ -174,6 +226,32 @@ public class MainActivity extends Activity {
 		categorieList.setAdapter(categorieListAdapter);
 		
 		categorieList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
+				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
+				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				
+				testAjoutItemsListProduct();
+			}
+		});
+	}
+	
+	private void testAjoutItemsListProduct(){
+		List<Produit> listProduct = Produit.getAListOfProducts();
+		
+		//Création et initialisation de l'Adapter pour les catégories
+		ProductListAdapter productsListAdapter = new ProductListAdapter(this, listProduct);
+		
+		//Récupération du composant ListView
+		ListView productsList = (ListView) findViewById(R.id.listviewCat);
+		
+		//Initialisation de la liste avec les données
+		productsList.setAdapter(productsListAdapter);
+		
+		productsList.setAdapter(productsListAdapter);
+		
+		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				startAnActivity(ProductActivity.class);
