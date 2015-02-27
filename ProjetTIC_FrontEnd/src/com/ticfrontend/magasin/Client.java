@@ -60,7 +60,6 @@ public class Client {
 		return sexeClient;
 	}
 
-
 	public void setSexeClient(boolean sexeClient) {
 		this.sexeClient = sexeClient;
 	}
@@ -68,7 +67,6 @@ public class Client {
 	public List<Commande> getListeCommandesClient() {
 		return listeCommandesClient;
 	}
-
 
 	public void setListeCommandesClient(List<Commande> listeCommandesClient) {
 		this.listeCommandesClient = listeCommandesClient;

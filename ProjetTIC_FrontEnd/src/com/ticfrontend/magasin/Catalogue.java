@@ -1,5 +1,6 @@
 package com.ticfrontend.magasin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Catalogue {
@@ -8,7 +9,7 @@ public class Catalogue {
 	private List<Produit> listeProduitsCatalogue;
 	
 	public Catalogue(){
-		
+		this.listeProduitsCatalogue = new ArrayList<Produit>();
 	}
 	
 	public String consulterCatalogue(){
