@@ -25,5 +25,9 @@ public class Panier {
 	public void setListeProduitsPanier(List<Produit> listeProduitsPanier) {
 		this.listeProduitsPanier = listeProduitsPanier;
 	}
+	
+	public void viderPanier(){
+		this.listeProduitsPanier.clear();
+	}
 
 }
