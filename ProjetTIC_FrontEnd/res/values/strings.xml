@@ -11,6 +11,7 @@
     <string name="textButtonPanier">Mon panier</string>
     <string name="textButtonConnexion">Se connecter</string>
     <string name="textButtonEnregistrer">S\'enregister</string>
+    <string name="textButtonAjouterAuPanier">Ajouter</string>
     <string name="textSeDeconnecter">Se déconnecter</string>
     <string name="textTextEditRecherche">Tapez votre recherche</string>
     <string name="textButtonValiderRecherche">OK</string>

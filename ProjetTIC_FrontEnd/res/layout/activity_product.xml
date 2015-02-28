@@ -7,156 +7,162 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ticfrontend.activity.MainActivity" >
-   
-    <LinearLayout 
+
+    <LinearLayout
         android:id="@+id/layoutBoutonMain"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal"
-		android:layout_marginLeft="5dp" 
-      	android:layout_marginRight="5dp"
-      	android:visibility="gone"
-        >
-        
-        <Button 
+        android:visibility="gone" >
+
+        <Button
             android:id="@+id/boutonCompte"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:layout_weight="1"
-            android:layout_gravity="left"            
             android:text="@string/textButtonCompte"
-            android:textSize="18dp"
-            />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/boutonPanier"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="right"
+            android:layout_weight="1"
             android:text="@string/textButtonPanier"
-            android:textSize="18dp" 
-            />
-        
-	</LinearLayout>
+            android:textSize="18sp" />
+    </LinearLayout>
 
-    
-	<LinearLayout 
+    <LinearLayout
         android:id="@+id/layoutBoutonConnexion"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal"
-		android:layout_marginLeft="5dp" 
-      	android:layout_marginRight="5dp"
-      	android:layout_marginBottom="20dp"
-      	android:visibility="visible"
-        >
-        
-        <Button 
+        android:visibility="visible" >
+
+        <Button
             android:id="@+id/boutonConnexion"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:layout_weight="1"
-            android:layout_gravity="left"            
             android:text="@string/textButtonConnexion"
-            android:textSize="18dp"
-            />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/boutonEnregistrer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="right"
+            android:layout_weight="1"
             android:text="@string/textButtonEnregistrer"
-            android:textSize="18dp" 
-            />
-        
-	</LinearLayout>
+            android:textSize="18sp" />
+    </LinearLayout>
 
-	<TextView
- 		android:id="@+id/textProductName"
+    <TextView
+        android:id="@+id/textProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Nom du produit"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/layoutProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" >
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="left"
+            android:src="@drawable/img_poduct" />
+
+        <TextView
+            android:id="@+id/textPriceProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="35dp"
+            android:text="19.99 €"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/availableQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textPriceProduct"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
+            android:text="Qte dispo: 10" />
+
+        <RatingBar
+            android:id="@+id/ratingBarReview"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/availableQuantity"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
+            android:isIndicator="true"
+            android:rating="2.5"
+            android:stepSize="0.2" />
+
+        <Button
+            android:id="@+id/boutonAjouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgProduct"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="35dp"
+            android:text="@string/textButtonAjouterAuPanier"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textTitleInfoProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:text="Nom du produit"
-        
-        />    
-        
-	<RelativeLayout 
-	    android:id="@+id/layoutProduct"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_margin="5dp"
-	    
-	    >
-	
-	    <ImageView
-	        android:id="@+id/imgProduct"
-	        android:layout_width="150dp"
-	        android:layout_height="150dp"
-	        android:src="@drawable/img_poduct" 
-	        />
-	    
-	    
-	    <TextView
-	 		android:id="@+id/textReviewGenProduct"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="30dp"
-	        android:layout_alignParentRight="true"
-	        android:textSize="16dp"
-	        android:textStyle="bold"
-	        android:text="Avis général"
-	       	/>
-
-	    <RatingBar
-	        android:id="@+id/ratingBarReview"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentRight="true"
-	        android:layout_below="@+id/textReviewGenProduct"
-	        android:contentDescription="2,5"
-	        android:isIndicator="true"
-	        android:stepSize="0.5" />
-	        
-	</RelativeLayout>
-	
-
-	<TextView
- 		android:id="@+id/textTitleInfoProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" 
-        android:textSize="16dp"
-        android:textStyle="bold"
         android:text="Informations sur le produit"
-       	/>    
-<!--       	android:layout_marginRight="5dp" -->
-       	
-	<TextView 
-	    android:id="@+id/textInfoProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" 
-        android:maxLines="5"
-        android:textSize="14dp"
-        android:textStyle="normal"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi nulla, congue vitae ligula id, malesuada varius odio. Nullam hendrerit lacus sit amet dolor finibus, vel viverra risus pretium. Duis luctus porttitor eleifend. Quisque nec tellus sit amet nibh ornare cursus. Nulla mattis id elit suscipit tristique."
-	    />
-<!--       	android:layout_marginRight="5dp" -->
-       
-	<TextView
- 		android:id="@+id/textReviewProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" 
         android:textSize="16dp"
-        android:textStyle="bold"
+        android:textStyle="bold" />
+    <!-- android:layout_marginRight="5dp" -->
+
+    <TextView
+        android:id="@+id/textInfoProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="5"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi nulla, congue vitae ligula id, malesuada varius odio. Nullam hendrerit lacus sit amet dolor finibus, vel viverra risus pretium. Duis luctus porttitor eleifend. Quisque nec tellus sit amet nibh ornare cursus. Nulla mattis id elit suscipit tristique."
+        android:textSize="14dp"
+        android:textStyle="normal" />
+    <!-- android:layout_marginRight="5dp" -->
+
+    <TextView
+        android:id="@+id/textReviewProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="Avis sur le produit"
-       	/>
-<!--       	android:layout_marginRight="5dp" -->
-	
+        android:textSize="16dp"
+        android:textStyle="bold" />
+    <!-- android:layout_marginRight="5dp" -->
+
 </LinearLayout>
