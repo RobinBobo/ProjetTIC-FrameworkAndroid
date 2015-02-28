@@ -55,7 +55,7 @@
                 android:value="com.ticfrontend.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.ticfrontend.activity.RegisterActivity"
             android:label="@string/title_activity_register"
             android:parentActivityName="com.ticfrontend.activity.MainActivity" >
             <meta-data

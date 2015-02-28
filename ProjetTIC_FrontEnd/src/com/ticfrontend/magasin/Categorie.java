@@ -1,9 +1,10 @@
 package com.ticfrontend.magasin;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categorie {
+public class Categorie implements Serializable {
 	private int idCategorie;
 	private String nomCategorie;
 	

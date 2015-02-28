@@ -1,4 +1,6 @@
-package com.example.projettic;
+package com.ticfrontend.activity;
+
+import com.example.projettic.R;
 
 import android.app.Activity;
 import android.os.Bundle;

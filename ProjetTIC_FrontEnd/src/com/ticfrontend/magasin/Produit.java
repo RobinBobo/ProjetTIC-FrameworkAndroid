@@ -1,10 +1,16 @@
 package com.ticfrontend.magasin;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Produit {
+public class Produit implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int idProduit;
 	private String nomProduit;
 	private double prixProduit;
@@ -19,6 +25,15 @@ public class Produit {
 		this.categorieProduit = categorie;
 		this.descriptionProduit = desc;
 		this.marqueProduit = marque;
+	}
+	
+	public Produit (Produit p){
+		this.idProduit = p.getIdProduit();
+		this.nomProduit = p.getNomProduit();
+		this.prixProduit = p.getPrixProduit();
+		this.categorieProduit = p.getCategorieProduit();
+		this.descriptionProduit = p.getDescriptionProduit();
+		this.marqueProduit = p.getMarqueProduit();
 	}
 	
 	public void setCategorieProduit(Categorie categorieProduit) {

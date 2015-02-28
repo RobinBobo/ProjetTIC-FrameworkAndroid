@@ -21,7 +21,6 @@ public class ProductListAdapter extends BaseAdapter{
 	
 	private List<Produit> products = Collections.emptyList();
 	
-
 	private LayoutInflater inflater;
 	
 	public ProductListAdapter(Context context, List<Produit> products) {

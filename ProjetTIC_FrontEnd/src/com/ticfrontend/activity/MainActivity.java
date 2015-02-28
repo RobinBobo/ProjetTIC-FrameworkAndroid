@@ -17,16 +17,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.projettic.R;
-import com.example.projettic.RegisterActivity;
 import com.ticfrontend.adapter.CategorieListAdapter;
 import com.ticfrontend.adapter.ProductListAdapter;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
 import com.ticfrontent.comparator.ProductPriceComparator;
-
 
 public class MainActivity extends Activity {
 
@@ -35,6 +32,8 @@ public class MainActivity extends Activity {
 	private static final int idMenuItemAccount = R.id.mon_compte;
 	private static final int idMenuItemCard = R.id.mon_panier;
 	private static final int idMenuItemLogout = R.id.se_deconnecter;
+	
+	public static final String EXTRA_KEY_PRODUCT = "EXTRA_KEY_PRODUCT";
 	
 	private boolean isInitialised = false;
 	
@@ -143,24 +142,20 @@ public class MainActivity extends Activity {
     	search.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) { 
-				// On affiche le TextView "Trier par"
+				// On change les textview
 				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
-				
-				// On change le textview "Liste des catégories" par "Résultat de votre recherche
 				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
 				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
 				
 				// Requete de recherche dans la BDD
 				
 				
 				// Affichage de la liste
 				testAjoutItemsListProduct();
-				
-				
-				
+					
 			}
 		});
-    	
     	
     	Button sortPrice = (Button) findViewById(R.id.buttonSortPrice);
     	sortPrice.setOnClickListener(new OnClickListener() {
@@ -169,11 +164,8 @@ public class MainActivity extends Activity {
     			// Trier par prix
     			ListView list = (ListView) findViewById(R.id.listviewCat);
     			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-    			
     			List<Produit> products = adapter.getProducts();
-    			
     			Collections.sort(products, new ProductPriceComparator());
-    			
     			adapter.updateProduct(products);
     		}
  		});
@@ -183,22 +175,17 @@ public class MainActivity extends Activity {
     		@Override
  			public void onClick(View arg0) {
     			// Trier par nom
-    			
     			ListView list = (ListView) findViewById(R.id.listviewCat);
     			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-    			
     			List<Produit> products = adapter.getProducts();
-    			
     			Collections.sort(products, new Comparator<Produit>() {
     		        @Override
     		        public int compare(Produit product1, Produit product2) {
-    		        	
     		        	return product1.getNomProduit().compareTo(product2.getNomProduit());
     		        }
     		    });
     			
     			adapter.updateProduct(products);
-    			
  			}
  		});
     	
@@ -231,6 +218,7 @@ public class MainActivity extends Activity {
 				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
 				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
 				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
 				
 				testAjoutItemsListProduct();
 			}
@@ -254,7 +242,12 @@ public class MainActivity extends Activity {
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				startAnActivity(ProductActivity.class);
+				Intent intent = new Intent(MainActivity.this, ProductActivity.class);
+				Bundle extras = new Bundle(); 
+				Produit product = (Produit) arg0.getItemAtPosition(arg2);
+			    extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
+			    intent.putExtras(extras); 
+			    startActivity(intent);
 			}
 		});
 	}
