@@ -3,7 +3,6 @@ package com.ticfrontend.adapter;
 import java.util.Collections;
 import java.util.List;
 
-import thread.ThreadPreconditions;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Produit;
+import com.ticfrontend.thread.ThreadPreconditions;
 
 public class ProductListAdapter extends BaseAdapter{
 

@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.zip.Inflater;
 
-import thread.ThreadPreconditions;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Categorie;
+import com.ticfrontend.thread.ThreadPreconditions;
 
 public class CategorieListAdapter extends BaseAdapter{
 

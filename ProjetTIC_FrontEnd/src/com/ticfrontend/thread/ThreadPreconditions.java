@@ -1,4 +1,4 @@
-package thread;
+package com.ticfrontend.thread;
 
 import android.os.Looper;
 
