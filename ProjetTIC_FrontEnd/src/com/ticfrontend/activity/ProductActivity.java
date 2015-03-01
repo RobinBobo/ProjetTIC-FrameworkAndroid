@@ -18,10 +18,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
-public class ProductActivity extends Activity implements NumberPicker.OnValueChangeListener {
+public class ProductActivity extends Activity  {
 
 	private static TextView tv;
 	static Dialog d ;
@@ -119,12 +120,9 @@ public class ProductActivity extends Activity implements NumberPicker.OnValueCha
 		// Catégorie produit
 		TextView cat = (TextView) findViewById(R.id.textProductCategorie);
 		cat.setText("Catégorie : " + product.getCategorieProduit().getNomCategorie());
+		
 	}
 	
-	public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-		Log.i("value is",""+newVal);
-	}
-
 	public void show() {
 		final Dialog d = new Dialog(ProductActivity.this);
 		d.setTitle("Choisir la quantité");
@@ -149,7 +147,7 @@ public class ProductActivity extends Activity implements NumberPicker.OnValueCha
 			@Override
 			public void onClick(View v) {
 				d.dismiss();
-			}    
+		}    
 		});
 		d.show();
 	}
