@@ -1,6 +1,8 @@
 package com.ticfrontend.magasin;
 
-public class Commande {
+import java.io.Serializable;
+
+public class Commande implements Serializable {
 	private int idCommande;
 	private float prixTotalCommande;
 	private String typeReglementCommande;

@@ -4,6 +4,7 @@ import com.example.projettic.R;
 import com.example.projettic.R.id;
 import com.example.projettic.R.layout;
 import com.example.projettic.R.menu;
+import com.ticfrontend.magasin.Avis;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
@@ -29,7 +30,7 @@ public class ProductActivity extends Activity  {
 	private static Button b;
 	
 	private Produit product;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -120,6 +121,16 @@ public class ProductActivity extends Activity  {
 		// Catégorie produit
 		TextView cat = (TextView) findViewById(R.id.textProductCategorie);
 		cat.setText("Catégorie : " + product.getCategorieProduit().getNomCategorie());
+		
+		//Note produit
+		double noteGen = 0;
+		for(Avis a : product.getListeAvisProduit()){
+			noteGen += a.getNote();
+		}
+		noteGen = noteGen/product.getListeAvisProduit().size();
+		
+		((RatingBar) findViewById(R.id.ratingBarReview)).setRating((float)noteGen);
+		
 		
 	}
 	

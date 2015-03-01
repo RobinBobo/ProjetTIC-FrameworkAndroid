@@ -1,8 +1,9 @@
 package com.ticfrontend.magasin;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Client {
+public class Client implements Serializable {
 	private int idClient;
 	private String nomClient;
 	private String prenomClient;

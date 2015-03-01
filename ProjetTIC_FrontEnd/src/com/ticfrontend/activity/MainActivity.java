@@ -1,5 +1,6 @@
 package com.ticfrontend.activity;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -237,16 +238,15 @@ public class MainActivity extends Activity {
 		//Initialisation de la liste avec les données
 		productsList.setAdapter(productsListAdapter);
 		
-		productsList.setAdapter(productsListAdapter);
-		
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent(MainActivity.this, ProductActivity.class);
-				Bundle extras = new Bundle(); 
+				Bundle extras = new Bundle();								
 				Produit product = (Produit) arg0.getItemAtPosition(arg2);
 			    extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
 			    intent.putExtras(extras); 
+			    
 			    startActivity(intent);
 			}
 		});
