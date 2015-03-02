@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".AjouterProduitActivity" />
+        <activity android:name=".AjouterClientActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/textIdClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textIdClient" />
+    
+	<EditText 
+		android:id="@+id/idClient"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:inputType="numberDecimal"
+		android:layout_toRightOf="@id/textIdClient"
+		android:layout_alignParentRight="true"
+	/>
+	
+	<RadioGroup
+		android:id="@+id/radioSexe"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:checkedButton="@+id/radioHomme"
+		android:orientation="horizontal"
+		android:layout_below="@id/idClient"
+	>
+		<RadioButton 
+			android:id="@+id/radioHomme"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/radioHomme"
+		/>
+		<RadioButton 
+			android:id="@+id/radioFemme"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/radioFemme"
+		/>	
+	</RadioGroup>
+	
+	<TextView
+        android:id="@+id/textNomClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/radioSexe"
+        android:text="@string/textNomClient" />
+    
+	<EditText 
+		android:id="@+id/nomClient"
+		android:hint="@string/nomClient"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textNomClient"
+		android:layout_below="@id/radioSexe"
+		android:layout_alignParentRight="true"
+	/>
+	<TextView
+        android:id="@+id/textPrenomClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/nomClient"
+        android:text="@string/textPrenomClient" />
+    
+	<EditText 
+		android:id="@+id/prenomClient"
+		android:hint="@string/prenomClient"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textPrenomClient"
+		android:layout_below="@id/nomClient"
+		android:layout_alignParentRight="true"
+	/>
+	
+	<TextView
+        android:id="@+id/textAdresseClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/prenomClient"
+        android:text="@string/textAdresseClient" />
+    
+	<EditText 
+		android:id="@+id/adresseClient"
+		android:hint="@string/adresseClient"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textAdresseClient"
+		android:layout_below="@id/prenomClient"
+		android:layout_alignParentRight="true"
+	/>
+
+	<Button
+	    android:id="@+id/btnAjoutClient"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/adresseClient"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="91dp"
+	    android:text="@string/btnAjoutClient" />
+
+</RelativeLayout>
