@@ -1,14 +1,21 @@
 package fr.tic;
 
 
-import org.jdom2.DataConversionException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-import configuratormangement.Configurator;
-import configuratormangement.XmlCreator;
+import org.jdom2.DataConversionException;
+import org.xmlpull.v1.XmlPullParserException;
+
+import configuratormanagement.Configurator;
+
+import configuratormanagement.XmlManagor;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,24 +55,35 @@ public class MainActivity extends Activity {
 
 		monCatalogue.ajoutObserver(mesClients);
 
-
 		// Test Parser XML
-		/*
-		XmlCreator x = new XmlCreator();
+/*
 		Configurator c = new Configurator();
+		Configurator c2 = new Configurator();
 		c.setShoppingCart(true);
 		c.setCustomerNotice(true);
 		c.setOrder(false);
 		c.setWebsiteName("SiteDeLaMort");
+
+		File newxmlfile = new File(((Context)this).getFilesDir(),"configuration.xml");
+
 		try {
-			x.create(c);
-			x.display();
-			x.save("test.xml");
-		} catch (DataConversionException e) {
+			XmlManagor x = new XmlManagor ();
+			x.create(c,newxmlfile);
+			x.load(new FileInputStream(newxmlfile), c2);
+			System.out.println("Suspens : " + c2.getWebsiteName() + c2.getOrder() + c2.getCustomerNotice());
+		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		 */
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 
 		// Test Catégorie et Produit
 

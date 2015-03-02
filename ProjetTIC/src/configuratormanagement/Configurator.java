@@ -1,4 +1,4 @@
-package configuratormangement;
+package configuratormanagement;
 
 public class Configurator {
 	
@@ -10,7 +10,7 @@ public class Configurator {
 	private boolean order;
 	
 	private String websiteName;	
-	
+		
 	//Getter & Setter
 	public String getWebsiteName() {
 		return websiteName;
@@ -20,7 +20,7 @@ public class Configurator {
 		this.websiteName = websiteName;
 	}
 
-	public boolean getIsCustomerNotice() {
+	public boolean getCustomerNotice() {
 		return customerNotice;
 	}
 
@@ -28,7 +28,7 @@ public class Configurator {
 		this.customerNotice = customerNotice;
 	}	
 
-	public boolean getIsOrder() {
+	public boolean getOrder() {
 		return order;
 	}
 
@@ -36,7 +36,7 @@ public class Configurator {
 		this.order = order;
 	}
 
-	public boolean getIsShoppingCart() {
+	public boolean getShoppingCart() {
 		return shoppingCart;
 	}
 
