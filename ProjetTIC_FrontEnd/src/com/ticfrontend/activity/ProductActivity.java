@@ -131,14 +131,18 @@ public class ProductActivity extends Activity  {
 		cat.setText("Catégorie : " + product.getCategorieProduit().getNomCategorie());
 		
 		//Note produit
-		double noteGen = 0;
-		for(Avis a : product.getListeAvisProduit()){
-			noteGen += a.getNote();
-		}
-		noteGen = noteGen/product.getListeAvisProduit().size();
+		double noteGenerale = 0;
+		int tailleListe = product.getListeAvisProduit().size();
 		
-		((RatingBar) findViewById(R.id.ratingBarReview)).setRating((float)noteGen);
+		for(Avis a : product.getListeAvisProduit())
+			noteGenerale += a.getNote();
 		
+		noteGenerale = noteGenerale/tailleListe;
+		
+		((RatingBar) findViewById(R.id.ratingBarReview)).setRating((float)noteGenerale);
+		((TextView) findViewById(R.id.NombreVotes)).setText(String.valueOf(tailleListe) + ((tailleListe==1) ? " vote": " votes"));
+		
+		// Test liste d'avis
 		testAjoutAvis();
 		
 	}

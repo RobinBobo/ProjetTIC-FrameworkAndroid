@@ -146,6 +146,18 @@
             android:isIndicator="true"
             android:rating="2.5"
             android:stepSize="0.2" />
+        
+        <TextView
+            android:id="@+id/NombreVotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ratingBarReview"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="1dp"
+            android:textSize="12sp"
+            android:text="10 votes" />
+        
 
         <Button
             android:id="@+id/boutonAjouter"

@@ -36,27 +36,13 @@ public class AvisListAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public List<Avis> getAvis() {
-		return avis;
-	}
-
+	public List<Avis> getAvis() {return avis;}
 	@Override
-	public int getCount() {
-
-		return avis.size();
-	}
-
+	public int getCount() {	return avis.size();	}
 	@Override
-	public Object getItem(int arg0) {
-
-		return avis.get(arg0);
-	}
-
+	public Object getItem(int arg0) {return avis.get(arg0);	}
 	@Override
-	public long getItemId(int arg0) {
-
-		return arg0;
-	}
+	public long getItemId(int arg0) {return arg0;}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
