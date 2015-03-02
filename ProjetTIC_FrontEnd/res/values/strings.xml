@@ -19,12 +19,37 @@
     <string name="textEditLoginUser">Nom d\'utilisateur</string>
     <string name="textEditPassUser">Mot de passe</string>
     <string name="textButtonValiderLogin">Connexion</string>
-    
     <string name="title_activity_account">Mon compte</string>
     <string name="title_activity_cart">Mon Panier</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_login">Connexion</string>
     <string name="title_activity_register">S\'enregistrer</string>
     <string name="title_activity_product">ProductActivity</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+<!--     <string-array name="nav_drawer_items"> -->
+<!--         <item>Accueil</item> -->
+<!--         <item>Catégories</item> -->
+<!--         <item>Créer un compte</item> -->
+<!--         <item>Connexion</item> -->
+<!--         <item>Mon Panier</item> -->
+<!--         <item>Déconnexion</item> -->
+<!--     </string-array> -->
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+<!--     <array name="nav_drawer_icons"> -->
+<!--         <item>@drawable/ic_home</item> -->
+<!--         <item>@drawable/ic_people</item> -->
+<!--         <item>@drawable/ic_photos</item> -->
+<!--         <item>@drawable/ic_communities</item> -->
+<!--         <item>@drawable/ic_pages</item> -->
+<!--         <item>@drawable/ic_whats_hot</item> -->
+<!--     </array> -->
+
+    <!-- Content Description -->
+<!--     <string name="desc_list_item_icon">Item Icon</string> -->
 
 </resources>
