@@ -79,7 +79,6 @@ public class ProductListAdapter extends BaseAdapter{
 	@Override
 	public void notifyDataSetChanged() {
 	    //do your sorting here
-
 	    super.notifyDataSetChanged();
 	}
 }
