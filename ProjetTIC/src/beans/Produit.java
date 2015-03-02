@@ -2,9 +2,12 @@ package beans;
 
 import java.util.Observable;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import model.DAOFactory;
 
-public class Produit extends Observable{
+public class Produit extends Observable implements Parcelable{
 
 	private int i_idProduit = 0;
 	private String s_nomProduit;
@@ -130,6 +133,59 @@ public class Produit extends Observable{
 	public void setMarqueProduit(String theMarque) {
 		this.s_marqueProduit = theMarque;
 		DAOFactory.getProduitDAO().update(this);	
+	}
+
+	//
+	// Création d'objets pour le passage entre activités
+	//
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override	
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(i_idProduit);
+		dest.writeString(s_nomProduit);
+		dest.writeDouble(d_prixProduit);
+		dest.writeString(s_descriptionProduit);
+		dest.writeValue(o_categorieProduit);
+		dest.writeString(s_marqueProduit);
+		dest.writeInt(i_stockProduit);
+		
+	}
+
+	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+		@Override
+		public Produit createFromParcel(Parcel source) {
+			return new Produit(source);
+		}
+
+		@Override
+		public Object[] newArray(int size) {
+			return null;
+		}
+	};
+
+	public Produit(Parcel in) {
+		this.i_idProduit = (int) in.readLong();
+		this.s_nomProduit = in.readString();
+		this.d_prixProduit = in.readDouble();
+		this.s_descriptionProduit = in.readString();
+		this.o_categorieProduit = (Categorie) in.readValue(null);
+		this.s_marqueProduit = in.readString();
+		this.i_stockProduit = in.readInt();
+	}
+
+	public void getFromParcel(Parcel in) {
+		this.setIdProduit(in.readInt());
+		this.setNomProduit(in.readString());
+		this.setPrixProduit(in.readDouble());
+		this.setDescriptionProduit(in.readString());
+		this.setCategorieProduit((Categorie) in.readValue(null));
+		this.setMarqueProduit(in.readString());
+		this.setStockProduit(in.readInt());
 	}
 	
 }

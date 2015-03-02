@@ -19,8 +19,8 @@ public class AjouterClientActivity extends Activity{
 		setContentView(R.layout.activity_ajouterclient);
 		
 		Bundle b    = getIntent().getExtras();
-		final ListeClients maliste    = b.getParcelable("listeClients");
-	    System.out.println(maliste);
+		final ListeClients mesClients    = b.getParcelable("mesClients");
+	    System.out.println(mesClients);
 		
 		final Button ajoutClient = (Button) findViewById(R.id.btnAjoutClient);
 		ajoutClient.setOnClickListener(new OnClickListener() {
@@ -40,7 +40,7 @@ public class AjouterClientActivity extends Activity{
 				if (valide) {
 					Client c = new Client(Integer.parseInt(id.toString()) , nom.toString(),prenom.toString(),
 							adresse.toString(), sexe);
-					maliste.ajouterClient(c);
+					mesClients.ajouterClient(c);
 				}
 			}
 		});

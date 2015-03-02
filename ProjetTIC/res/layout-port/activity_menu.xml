@@ -41,5 +41,11 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/modifierCategorie" />
+	
+	<Button
+		android:id="@+id/ajouterClient"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/ajouterClient" />
 
 </LinearLayout>
