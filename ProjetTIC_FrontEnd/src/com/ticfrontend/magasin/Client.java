@@ -6,10 +6,12 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Client implements Serializable {
 	private int idClient;
+	private String loginClient;
 	private String nomClient;
 	private String prenomClient;
 	private String adresseClient;
 	private boolean sexeClient;
+	private String adresseMail;
 	private List<Commande> listeCommandesClient;
 	
 	public Client() {}
@@ -18,6 +20,16 @@ public class Client implements Serializable {
 		this.nomClient = nom;
 		this.prenomClient = prenom;
 		this.sexeClient = sexe;
+	}
+	
+	public Client(String login, String nom, String prenom, String adresse, String mail, boolean sexe){
+		this.loginClient = login;
+		this.nomClient = nom;
+		this.prenomClient = prenom;
+		this.adresseClient = adresse;
+		this.adresseMail = mail;
+		this.sexeClient = sexe;
+		
 	}
 
 	// GETTERS

@@ -23,6 +23,7 @@ import com.example.projettic.R;
 import com.ticfrontend.adapter.CategorieListAdapter;
 import com.ticfrontend.adapter.ProductListAdapter;
 import com.ticfrontend.magasin.Categorie;
+import com.ticfrontend.magasin.Client;
 import com.ticfrontend.magasin.Produit;
 import com.ticfrontent.comparator.ProductPriceComparator;
 
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
 	
 	private Menu menu = null;
 	
+	public static Client CLIENT_ACTUEL = null;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
