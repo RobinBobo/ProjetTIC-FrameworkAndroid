@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.jdom2.DataConversionException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import configuratormanagement.Configurator;
@@ -76,8 +75,8 @@ public class MainActivity extends Activity {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-
+		}
+*/
 		// Test Catégorie et Produit
 
 
