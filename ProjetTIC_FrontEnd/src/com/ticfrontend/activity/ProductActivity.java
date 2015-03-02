@@ -115,7 +115,7 @@ public class ProductActivity extends Activity  {
 		name.setText(product.getNomProduit());
 		
 		// Prix produit
-		TextView price = (TextView) findViewById(R.id.textPriceProduct);
+		TextView price = ((TextView) findViewById(R.id.textPriceProduct));
 		price.setText(String.valueOf(product.getPrixProduit()) + " €");
 		
 		// Description produit

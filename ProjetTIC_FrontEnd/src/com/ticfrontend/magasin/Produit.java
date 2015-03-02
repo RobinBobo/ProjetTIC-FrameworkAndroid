@@ -14,7 +14,6 @@ public class Produit implements Serializable{
 	private Categorie categorieProduit;
 	private String descriptionProduit;
 	private String marqueProduit;
-	private double noteProduit;
 	private List<Avis> listeAvisProduit;
 	
 	public Produit(int id, String nom, double prix, Categorie categorie, String desc, String marque, List<Avis> listeAvis) {
@@ -24,8 +23,7 @@ public class Produit implements Serializable{
 		this.categorieProduit = categorie;
 		this.descriptionProduit = desc;
 		this.marqueProduit = marque;
-		this.setListeAvisProduit(listeAvis);
-		
+		this.listeAvisProduit = listeAvis;
 	}
 	
 	public Produit (Produit p){
@@ -35,7 +33,6 @@ public class Produit implements Serializable{
 		this.categorieProduit = p.getCategorieProduit();
 		this.descriptionProduit = p.getDescriptionProduit();
 		this.marqueProduit = p.getMarqueProduit();
-		//this.noteProduit = p.getNoteProduit();
 		this.listeAvisProduit = p.getListeAvisProduit();
 	}
 	
@@ -45,7 +42,7 @@ public class Produit implements Serializable{
 	public void setPrixProduit(double prixProduit) {this.prixProduit = prixProduit;	}
 	public void setDescriptionProduit(String descriptionProduit) {	this.descriptionProduit = descriptionProduit;}
 	public void setMarqueProduit(String marqueProduit) {this.marqueProduit = marqueProduit;	}
-	public void setNoteProduit(double noteProduit) {this.noteProduit = noteProduit;	}
+	public void setListeAvisProduit(List<Avis> listeAvisProduit) {this.listeAvisProduit = listeAvisProduit;}
 	
 	public int getIdProduit() {	return idProduit; }
 	public String getNomProduit() {	return nomProduit; }
@@ -53,8 +50,7 @@ public class Produit implements Serializable{
 	public Categorie getCategorieProduit() {return categorieProduit;}
 	public String getDescriptionProduit() {	return descriptionProduit;}
 	public String getMarqueProduit() {return marqueProduit;	}
-	public double getNoteProduit() {return noteProduit; } 
-	
+	public List<Avis> getListeAvisProduit() {return listeAvisProduit;}
 	
 	public static List<Produit> getAListOfProducts() {
 
@@ -82,13 +78,5 @@ public class Produit implements Serializable{
 		listProduct.add(new Produit(14, "H Produit 14", 2.00, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
 		
 		return listProduct;
-	}
-
-	public List<Avis> getListeAvisProduit() {
-		return listeAvisProduit;
-	}
-
-	public void setListeAvisProduit(List<Avis> listeAvisProduit) {
-		this.listeAvisProduit = listeAvisProduit;
 	}	
 }
