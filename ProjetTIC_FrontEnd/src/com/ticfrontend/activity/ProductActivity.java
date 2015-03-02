@@ -1,10 +1,15 @@
 package com.ticfrontend.activity;
 
+import java.util.List;
+
 import com.example.projettic.R;
 import com.example.projettic.R.id;
 import com.example.projettic.R.layout;
 import com.example.projettic.R.menu;
+import com.ticfrontend.adapter.AvisListAdapter;
+import com.ticfrontend.adapter.CategorieListAdapter;
 import com.ticfrontend.magasin.Avis;
+import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
@@ -16,8 +21,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -131,7 +139,28 @@ public class ProductActivity extends Activity  {
 		
 		((RatingBar) findViewById(R.id.ratingBarReview)).setRating((float)noteGen);
 		
+		testAjoutAvis();
 		
+	}
+	
+	private void testAjoutAvis(){
+		List<Avis> listeAvis = product.getListeAvisProduit();
+		
+		//Création et initialisation de l'Adapter pour les catégories
+		AvisListAdapter ala = new AvisListAdapter(this, listeAvis);
+		
+		//Récupération du composant ListView
+		ListView listviewAvis = (ListView) findViewById(R.id.listviewAvis);
+		
+		//Initialisation de la liste avec les données
+		listviewAvis.setAdapter(ala);
+		
+//		listviewAvis.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {				
+//				
+//			}
+//		});
 	}
 	
 	public void show() {

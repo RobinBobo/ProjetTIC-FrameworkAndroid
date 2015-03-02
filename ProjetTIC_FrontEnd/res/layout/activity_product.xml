@@ -12,7 +12,7 @@
         android:id="@+id/layoutBoutonMain"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-		android:layout_marginBottom="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:orientation="horizontal"
@@ -76,8 +76,8 @@
         android:text="Nom du produit"
         android:textSize="20sp"
         android:textStyle="bold" />
-    
-	<TextView
+
+    <TextView
         android:id="@+id/textProductMarque"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
         android:textSize="14sp"
         android:textStyle="italic" />
 
-	<TextView
+    <TextView
         android:id="@+id/textProductCategorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
         android:gravity="left"
         android:text="Catégorie : "
         android:textSize="14sp"
-        android:textStyle="italic" /> 
+        android:textStyle="italic" />
 
     <RelativeLayout
         android:id="@+id/layoutProduct"
@@ -139,8 +139,8 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/availableQuantity"
             android:layout_alignParentRight="true"
+            android:layout_below="@+id/availableQuantity"
             android:layout_marginRight="35dp"
             android:layout_marginTop="5dp"
             android:isIndicator="true"
@@ -188,5 +188,11 @@
         android:textSize="16dp"
         android:textStyle="bold" />
     <!-- android:layout_marginRight="5dp" -->
+
+    <ListView
+        android:id="@+id/listviewAvis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>
