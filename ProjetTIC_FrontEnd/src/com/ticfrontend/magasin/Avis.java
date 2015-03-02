@@ -68,7 +68,7 @@ public class Avis implements Serializable {
 		List<Avis> listeAvis = new ArrayList<Avis>();
 		
 		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 1,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("BENOIS-PINEAU", "Jenny",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+		listeAvis.add(new Avis(new Client("BENOIS-PINEAU", "Jenny",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique")); // LOLOLOLOLOLOL
 		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,2,new Date(), "passable, efficace"));
 		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",1,new Date(), "haute gamme, super achat"));
 		

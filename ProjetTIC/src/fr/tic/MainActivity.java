@@ -25,29 +25,22 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	
+	private ListeClients mesClients;
+	private Catalogue monCatalogue;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		final TextView menuLink = (TextView) findViewById(R.id.menuLink);
-		menuLink.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this,
-						MenuActivity.class);
-				startActivity(intent);
-			}
-		});
 
 		// _________________________________________________________
 		// Jeux de test :
 		// __________________________________________________________
 
 		ListeCategories mesCategories = new ListeCategories();
-		ListeClients mesClients = new ListeClients();
-		Catalogue monCatalogue = new Catalogue();
+		mesClients = new ListeClients();
+		monCatalogue = new Catalogue();
 
 		mesCategories.findCategories();
 		mesClients.findClients();
@@ -150,6 +143,20 @@ public class MainActivity extends Activity {
 		for(Categorie ca : mesCategories.getListeCategories()){
 			System.out.println("Nom : " + ca.getNomCategorie() + " & " + " Nombre de produits : " + ca.getMesProduits().size());
 		}*/
+		
+		
+		  //
+		 // TODO: Page d'accueil
+		//
+		final TextView menuLink = (TextView) findViewById(R.id.menuLink);
+		menuLink.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+		        intent.putExtra("mesClients", mesClients);
+		        startActivity(intent);
+			}
+		});
 
 	}
 

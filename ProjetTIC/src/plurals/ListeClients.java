@@ -138,9 +138,5 @@ public class ListeClients implements Observer, Parcelable{
         }
  
     }
-
-	
-	
-	
 	
 }

@@ -13,6 +13,7 @@
     <string name="ajouterCategorie">Ajouter une catégorie</string>
     <string name="modifierCategorie">Modifier une catégorie</string>
     <string name="menuLink">*Future page d\'accueil* : Cliquer ici pour accéder au menu</string>
+    <string name="ajouterClient">Ajouter un client</string>
     
 	<!-- Produit -->
     <string name="textIdProduit">Identifiant du produit : </string>
@@ -23,6 +24,7 @@
     <string name="prixProduit">Prix</string>
     <string name="textDescProduit">Description du produit : </string>
     <string name="descProduit">Description du produit</string>
+    <string name="btnAjoutProduit">Valider</string>
 	
     <!-- Client -->
 	<string name="textIdClient">Identifiants du client : </string>

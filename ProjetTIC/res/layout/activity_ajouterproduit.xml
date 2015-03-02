@@ -67,5 +67,14 @@
 		android:layout_height="wrap_content" 
 		android:hint="@string/descProduit"
 		android:layout_below="@id/textDescProduit" />
+
+	<Button
+	    android:id="@+id/btnAjoutProduit"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/descProduit"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="91dp"
+	    android:text="@string/btnAjoutProduit" />
     
 </RelativeLayout>
