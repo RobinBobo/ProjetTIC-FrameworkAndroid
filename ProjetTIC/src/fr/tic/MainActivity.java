@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import beans.Categorie;
+import beans.Client;
 import beans.Marque;
 import beans.Produit;
 import configuratormanagement.Configurator;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -156,7 +158,49 @@ public class MainActivity extends Activity {
 		  //
 		 // TODO: Page d'accueil
 		//
-		final TextView menuLink = (TextView) findViewById(R.id.menuLink);
+		
+		// Affichage du nombre de produits
+		final TextView nbProduits = (TextView) findViewById(R.id.nbProduits);
+		if (monCatalogue.getMesProduits().size() != 0) {
+			nbProduits.setText("Il y a " + monCatalogue.getMesProduits().size() + " produits référencés dans le catalogue");
+		} else {
+			nbProduits.setText("Il n'y a aucun produit de référencé dans le catalogue...");
+		}
+		
+		// Affichage du nombre de clients
+		final TextView nbClients = (TextView) findViewById(R.id.nbClients);
+		if (mesClients.getListeClients().size() != 0) {
+			nbClients.setText("Il y a " + mesClients.getListeClients().size() + " clients référencés dans la base");
+		} else {
+			nbClients.setText("Il n'y a aucun client de référencé dans le catalogue...");
+		}
+		
+		// TODO: Affichage du nombre de commande effectuée (basé sur les paniers pour l'instant)
+		final TextView nbCde = (TextView) findViewById(R.id.nbCde);
+		int i_nbCde = 0;
+		if (mesClients.getListeClients().size() != 0) {
+			for(int i=0; i< mesClients.getListeClients().size(); i++) {
+				Client leClient = mesClients.getListeClients().get(i);
+				i_nbCde += leClient.getMesPanier().size();
+			}
+			if (i_nbCde != 0) nbCde.setText(i_nbCde + " commandes ont été effectuées");
+			else nbClients.setText("Il n'y pas encore de commande effectuée...");
+		}
+		
+		//Affichage des alerte stock (moins de 5 articles en stock)
+		final TextView alerteStock = (TextView) findViewById(R.id.alerteStock);
+		String listePdtAlerteStock = "";
+		for(int i = 0; i < (monCatalogue.getMesProduits().size()); i++) {
+			Produit p = monCatalogue.getMesProduits().get(i);
+			if (p.getStockProduit() < 5) {
+				listePdtAlerteStock += p.getNomProduit() + " : plus que " + p.getStockProduit() + " produits en stock !\n";
+			}
+		}
+		if (listePdtAlerteStock != "") alerteStock.setText(listePdtAlerteStock);
+		else alerteStock.setText("Vous n'avez aucune alerte au niveau des stocks");
+			
+		
+		final Button menuLink = (Button) findViewById(R.id.menuLink);
 		menuLink.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
