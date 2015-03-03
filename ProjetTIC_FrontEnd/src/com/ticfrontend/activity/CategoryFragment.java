@@ -26,7 +26,7 @@ public class CategoryFragment extends Fragment {
 
 	public static final String EXTRA_KEY_CATEGROY = "EXTRA_KEY_CATEGORY";
 	private View rootView;
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_category, container, false);

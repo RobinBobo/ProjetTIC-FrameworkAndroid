@@ -1,18 +1,17 @@
 package com.ticfrontend.magasin;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class Commande implements Serializable {
+public class Commande {
 	private int idCommande;
-	private float prixTotalCommande;
+	private double prixTotalCommande;
 	private String typeReglementCommande;
 
-	public Commande(){
-		
-	}
+	private List<Produit> produits;
 	
-	public float calculPrixTotal(){
-		return 0;
+	public Commande(double prix, List<Produit> produits){
+		this.prixTotalCommande = prix;
+		this.produits = produits;
 	}
 
 	public int getIdCommande() {
@@ -30,6 +29,12 @@ public class Commande implements Serializable {
 	public void setTypeReglementCommande(String typeReglementCommande) {
 		this.typeReglementCommande = typeReglementCommande;
 	}
-	
-	
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
 }

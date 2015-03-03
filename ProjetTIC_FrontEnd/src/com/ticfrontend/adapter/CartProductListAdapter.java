@@ -1,9 +1,9 @@
 package com.ticfrontend.adapter;
 
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +16,15 @@ import com.example.projettic.R;
 import com.ticfrontend.magasin.Produit;
 import com.ticfrontend.thread.ThreadPreconditions;
 
-public class ProductListAdapter extends BaseAdapter{
-
-	private final Activity activity;
+public class CartProductListAdapter extends BaseAdapter {
 	
 	private List<Produit> products = Collections.emptyList();
 	
 	private LayoutInflater inflater;
 	
-	public ProductListAdapter(Activity activity, List<Produit> products) {
-        this.activity = activity;
+	public CartProductListAdapter(Context context, List<Produit> products) {
         this.products = products;
-        this.inflater = LayoutInflater.from(activity);
+        this.inflater = LayoutInflater.from(context);
     }
 	
 	public void updateProduct(List<Produit> products) {
@@ -61,7 +58,7 @@ public class ProductListAdapter extends BaseAdapter{
 		LinearLayout layoutItem;
 		
 	    if (convertView == null) {
-	    	layoutItem = (LinearLayout) inflater.inflate(R.layout.single_item_product, parent, false);
+	    	layoutItem = (LinearLayout) inflater.inflate(R.layout.single_item_cart_product, parent, false);
 	    } else {
 	    	layoutItem = (LinearLayout) convertView;
 	    }
@@ -69,10 +66,14 @@ public class ProductListAdapter extends BaseAdapter{
 	    TextView title = (TextView) layoutItem.findViewById(R.id.titleProduct);
 	    TextView desc = (TextView) layoutItem.findViewById(R.id.descProduct);
 	    TextView price = (TextView) layoutItem.findViewById(R.id.priceProduct);
+	    TextView qte = (TextView) layoutItem.findViewById(R.id.qteProduct);
 	    
 	    title.setText(products.get(position).getNomProduit());
 	    desc.setText(products.get(position).getDescriptionProduit());
 	    price.setText(String.valueOf(products.get(position).getPrixProduit()) + " €");
+	    qte.setText("Quantité : " + String.valueOf(products.get(position).getQuantite()));
+	    
+	    //prixTotal += products.get(position).getPrixProduit();
 	    
 	    return layoutItem;
 	}
@@ -81,5 +82,14 @@ public class ProductListAdapter extends BaseAdapter{
 	public void notifyDataSetChanged() {
 	    //do your sorting here
 	    super.notifyDataSetChanged();
+	}
+	
+	public double getPrixTotal() {
+		double total = 0;
+		
+		for(int i = 0; i < products.size(); i++) 
+           total += products.get(i).getPrixProduit();
+		
+		return total;
 	}
 }

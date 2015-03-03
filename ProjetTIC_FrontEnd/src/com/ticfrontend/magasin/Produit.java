@@ -16,6 +16,8 @@ public class Produit implements Serializable{
 	private String marqueProduit;
 	private List<Avis> listeAvisProduit;
 	
+	private int quantite = 1;
+	
 	public Produit(int id, String nom, double prix, Categorie categorie, String desc, String marque, List<Avis> listeAvis) {
 		this.idProduit = id;
 		this.nomProduit = nom;
@@ -24,6 +26,17 @@ public class Produit implements Serializable{
 		this.descriptionProduit = desc;
 		this.marqueProduit = marque;
 		this.listeAvisProduit = listeAvis;
+	}
+	
+	public Produit(int id, String nom, double prix, Categorie categorie, String desc, String marque, List<Avis> listeAvis, int qte) {
+		this.idProduit = id;
+		this.nomProduit = nom;
+		this.prixProduit = prix;
+		this.categorieProduit = categorie;
+		this.descriptionProduit = desc;
+		this.marqueProduit = marque;
+		this.listeAvisProduit = listeAvis;
+		this.setQuantite(qte);
 	}
 	
 	public Produit (Produit p){
@@ -78,5 +91,13 @@ public class Produit implements Serializable{
 		listProduct.add(new Produit(14, "H Produit 14", 2.00, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
 		
 		return listProduct;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
 	}	
 }
