@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical" >
     
     <TextView
         android:id="@+id/titleModifPdt"
@@ -49,6 +50,7 @@
 	    android:text="@string/textNomProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_alignBottom="@id/checkNomProduit"
         android:layout_toRightOf="@+id/checkNomProduit"
 		android:layout_below="@id/erreurRecherche" />    
     <TextView
@@ -64,6 +66,68 @@
 		android:layout_height="wrap_content"
 		android:hint="@string/newNomProduit"
 		android:layout_below="@id/textNomProduit"
-		android:enabled="true" />
+		android:enabled="false" />
+    
+    <!-- Modification du prix --> 
+    <CheckBox
+        android:id="@+id/checkPrixProduit"
+        android:text="@string/checkPrixProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/newNomProduit" />
+    <TextView
+		android:id="@+id/textPrixProduit"
+	    android:text="@string/textPrixProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@id/checkPrixProduit"
+        android:layout_toRightOf="@+id/checkPrixProduit"
+		android:layout_below="@id/newNomProduit" />    
+    <TextView
+		android:id="@+id/resPrixProduit"
+	    android:text="@string/resPrixProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textPrixProduit"
+		android:layout_below="@id/newNomProduit" />
+    <EditText 
+		android:id="@+id/newPrixProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/newNomProduit"
+		android:layout_below="@id/textPrixProduit"
+		android:enabled="false" />
+    
+    <!-- Modification de la description --> 
+    <CheckBox
+        android:id="@+id/checkDescProduit"
+        android:text="@string/checkDescProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/newPrixProduit" />
+
+    <TextView
+        android:id="@+id/textDescProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@id/checkDescProduit"
+        android:layout_below="@id/newPrixProduit"
+        android:layout_toRightOf="@+id/checkDescProduit"
+        android:text="@string/textDescProduit" />
+    
+    <TextView
+		android:id="@+id/resDescProduit"
+	    android:text="@string/resDescProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textDescProduit"
+		android:layout_below="@id/newPrixProduit" />
+    <EditText 
+		android:id="@+id/newDescProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/newNomProduit"
+		android:layout_below="@id/textDescProduit"
+		android:enabled="false" />
 
 </RelativeLayout>

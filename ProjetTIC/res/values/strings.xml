@@ -38,9 +38,15 @@
 	<string name="rechNomPdt">Nom du produit</string>
 	<string name="btnRechercher">Rechercher</string>
 	<string name="erreurRecherche"></string>
-	<string name="resNomProduit"></string>
 	<string name="checkNomProduit"></string>
+	<string name="resNomProduit"></string>
 	<string name="newNomProduit">Nouvelle valeur</string>
+	<string name="checkPrixProduit"></string>
+	<string name="resPrixProduit"></string>
+	<string name="newPrixProduit">Nouvelle valeur</string>
+	<string name="checkDescProduit"></string>
+	<string name="resDescProduit"></string>
+	<string name="newDescProduit">Nouvelle valeur</string>
 	
     <!-- Client -->
 	<string name="textIdClient">Identifiants du client : </string>
