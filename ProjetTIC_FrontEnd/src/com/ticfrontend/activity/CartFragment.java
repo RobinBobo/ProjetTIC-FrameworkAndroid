@@ -99,6 +99,18 @@ public class CartFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {	
 				// TODO modifier quantité ou supprimer de la liste
 				
+				Fragment fragment = new ProductFragment();
+				Bundle extras = new Bundle();								
+				Produit product = (Produit) arg0.getItemAtPosition(arg2);
+				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
+				fragment.setArguments(extras);
+				
+				FragmentManager fragmentManager = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.replace(R.id.frame_container, fragment);
+				fragmentTransaction.addToBackStack("tag");
+				fragmentTransaction.commit();
+
 			}
 		});
 		
