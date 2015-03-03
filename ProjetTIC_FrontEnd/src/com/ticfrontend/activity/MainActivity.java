@@ -1,322 +1,265 @@
 package com.ticfrontend.activity;
 
-import java.io.Serializable;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import com.example.projettic.R;
+import com.ticfrontend.model.*;
+import com.ticfrontend.adapter.*;
+
+import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.projettic.R;
-import com.ticfrontend.adapter.CategorieListAdapter;
-import com.ticfrontend.adapter.ProductListAdapter;
-import com.ticfrontend.magasin.Categorie;
-import com.ticfrontend.magasin.Client;
-import com.ticfrontend.magasin.Produit;
-import com.ticfrontent.comparator.ProductPriceComparator;
-
+@SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
+	public static boolean ISCONNECTED = false;
 
-	private static final int idMenuItemConnexion = R.id.connexion;
-	private static final int idMenuItemRegister = R.id.enregister;
-	private static final int idMenuItemAccount = R.id.mon_compte;
-	private static final int idMenuItemCard = R.id.mon_panier;
-	private static final int idMenuItemLogout = R.id.se_deconnecter;
-	
-	public static final String EXTRA_KEY_PRODUCT = "EXTRA_KEY_PRODUCT";
-	
-	private boolean isInitialised = false;
-	
-	private Menu menu = null;
-	
-	public static Client CLIENT_ACTUEL = null;
-	
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+
+	// nav drawer title
+	private CharSequence mDrawerTitle;
+	// used to store app title
+	private CharSequence mTitle;
+	// slide menu items
+	private String[] navMenuTitles;
+	private TypedArray navMenuIcons;
+
+	private ArrayList<NavDrawerItem> navDrawerItems;
+	private NavDrawerListAdapter adapter;
+
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        init();
-    }
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main1);
+		initSlideMenu();
+
+		if (savedInstanceState == null) {
+			// on first time display view for first nav item
+			displayView(0);
+		}
+	}
+	
+	public void updateSlideMenu(){
+		if(ISCONNECTED){
+			navDrawerItems.remove(3);
+			navDrawerItems.remove(2);
+			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+		}else if(!ISCONNECTED){
+			navDrawerItems.remove(3);
+			navDrawerItems.remove(2);
+			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+		}
+		navMenuIcons.recycle();		
+	}
+	
+	public void initSlideMenu(){
+		mTitle = mDrawerTitle = getTitle();
+		// load slide menu items
+		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+		// nav drawer icons from resources
+		navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+		navDrawerItems = new ArrayList<NavDrawerItem>();
+
+		// adding nav drawer items to array
+		// Home
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+		// Categories
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+
+		if(!ISCONNECTED){
+			// Creer un Compte
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+			// Connexion
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+		}else if(ISCONNECTED){
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+			// What's hot, We  will add a counter here
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+		}
+
+
+		// Recycle the typed array
+		navMenuIcons.recycle();
+		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+
+		// setting the nav drawer list adapter
+		adapter = new NavDrawerListAdapter(getApplicationContext(),navDrawerItems);
+		mDrawerList.setAdapter(adapter);
+
+		// enabling action bar app icon and behaving it as toggle button
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+				R.drawable.ic_drawer, //nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for accessibility
+				R.string.app_name // nav drawer close - description for accessibility
+				) {
+			public void onDrawerClosed(View view) {
+				getActionBar().setTitle(mTitle);
+				// calling onPrepareOptionsMenu() to show action bar icons
+				invalidateOptionsMenu();
+			}
+
+			public void onDrawerOpened(View drawerView) {
+				getActionBar().setTitle(mDrawerTitle);
+				// calling onPrepareOptionsMenu() to hide action bar icons
+				invalidateOptionsMenu();
+			}
+		};
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+	}
+	/**
+	 * Slide menu item click listener
+	 * */
+	private class SlideMenuClickListener implements
+	ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
+			// display view for selected nav drawer item
+			displayView(position);
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		this.menu = menu;
 		getMenuInflater().inflate(R.menu.main, menu);
-		
-		isInitialised = true;
 		return true;
 	}
-	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// toggle nav drawer on selecting action bar app icon/title
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle action bar actions click
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/* *
+	 * Called when invalidateOptionsMenu() is triggered
+	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		updateMenu();
+		// if nav drawer is opened, hide the action items
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if(menu != null)
-			updateMenu();
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		
-		if (id == R.id.connexion) {
-			startAnActivity(LoginActivity.class);
-			return true;
-		} else if (id == R.id.enregister) {
-			startAnActivity(RegisterActivity.class);
-			return true;
-		} else if (id == R.id.mon_compte) {
-			startAnActivity(AccountActivity.class);
-			return true;
-		} else if (id == R.id.mon_panier) {
-			startAnActivity(CartActivity.class);
-			return true; 
-		} else if (id == R.id.action_settings) {	
-			return true;
-		} else if (id == R.id.a_propos) {
-			startAnActivity(AboutActivity.class);
-			return true;
-		} else if (id == R.id.se_deconnecter){
-			logout();
+	/**
+	 * Diplaying fragment view for selected nav drawer list item
+	 * */
+	private void displayView(int position) {
+		// update the main content by replacing fragments
+		Fragment fragment = null;
+		switch (position) {
+		case 0:
+			fragment = new HomeFragment();
+			break;
+		case 1:
+			fragment = new CategoryFragment();
+			break;
+		case 2:
+		{
+			if(!ISCONNECTED)
+				fragment = new RegisterFragment();
+			else if (ISCONNECTED)
+				fragment = new CartFragment();	
+			break;
 		}
-		return super.onOptionsItemSelected(item);
-	}
-	
-	public void init(){
-    	
-    	// On enlève le focus à l'ouverture de l'app sur le editText de recherche
-    	findViewById(R.id.editTextRecherche).setSelected(false);
-    	
-    	// Bouton Mon Compte
-    	Button account = (Button) findViewById(R.id.boutonCompte);
-    	account.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			startAnActivity(AccountActivity.class);
- 			}
- 		});
-    	
-    	Button cart = (Button) findViewById(R.id.boutonPanier);
-    	cart.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			startAnActivity(CartActivity.class);
- 			}
- 		});
-    	
-    	Button login = (Button) findViewById(R.id.boutonConnexion);
-    	login.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			startAnActivity(LoginActivity.class);
- 			}
- 		});
-    	
-    	Button register = (Button) findViewById(R.id.boutonEnregistrer);
-    	register.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			startAnActivity(RegisterActivity.class);
- 			}
- 		});
-    	
-    	Button search = (Button) findViewById(R.id.boutonValiderRecherche);
-    	search.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) { 
-				// On change les textview
-				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
-				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
-				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
-				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
-				
-				// Requete de recherche dans la BDD
-				
-				
-				// Affichage de la liste
-				testAjoutItemsListProduct();
-					
+		case 3:
+		{
+			if(!ISCONNECTED)
+				fragment = new LoginFragment();
+			else if (ISCONNECTED){
+				ISCONNECTED = false;
+				fragment = new HomeFragment();
 			}
-		});
-    	
-    	Button sortPrice = (Button) findViewById(R.id.buttonSortPrice);
-    	sortPrice.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			// Trier par prix
-    			ListView list = (ListView) findViewById(R.id.listviewCat);
-    			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-    			List<Produit> products = adapter.getProducts();
-    			Collections.sort(products, new ProductPriceComparator());
-    			adapter.updateProduct(products);
-    		}
- 		});
-    	
-    	Button sortName = (Button) findViewById(R.id.buttonSortName);
-    	sortName.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			// Trier par nom
-    			ListView list = (ListView) findViewById(R.id.listviewCat);
-    			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-    			List<Produit> products = adapter.getProducts();
-    			Collections.sort(products, new Comparator<Produit>() {
-    		        @Override
-    		        public int compare(Produit product1, Produit product2) {
-    		        	return product1.getNomProduit().compareTo(product2.getNomProduit());
-    		        }
-    		    });
-    			
-    			adapter.updateProduct(products);
- 			}
- 		});
-    	
-    	// Permet le test de l'appli (widgets, activité, list, etc...)
-    	testAjoutItemsListCategorie();	
-    }
+			break;
+		}
+		case 4:
+			
+			break;
+		case 5:
+			fragment = new ProductListFragment();
+			break;
 
-	public <T> void startAnActivity(Class<T> activity){
-    	Intent intent = new Intent(MainActivity.this, activity);
-    	startActivity(intent);
-    }
-    
-	private void testAjoutItemsListCategorie(){
-		List<Categorie> listCategorie = Categorie.getAListOfCategorie();
-		
-		//Création et initialisation de l'Adapter pour les catégories
-		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this, listCategorie);
-		
-		//Récupération du composant ListView
-		ListView categorieList = (ListView) findViewById(R.id.listviewCat);
-		
-		//Initialisation de la liste avec les données
-		categorieList.setAdapter(categorieListAdapter);
-		
-		categorieList.setAdapter(categorieListAdapter);
-		
-		categorieList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
-				findViewById(R.id.textListCategorie).setVisibility(View.GONE);
-				findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
-				findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
-				
-				testAjoutItemsListProduct();
-			}
-		});
-	}
-	
-	private void testAjoutItemsListProduct(){
-		List<Produit> listProduct = Produit.getAListOfProducts();
-		
-		//Création et initialisation de l'Adapter pour les catégories
-		ProductListAdapter productsListAdapter = new ProductListAdapter(this, listProduct);
-		
-		//Récupération du composant ListView
-		ListView productsList = (ListView) findViewById(R.id.listviewCat);
-		
-		//Initialisation de la liste avec les données
-		productsList.setAdapter(productsListAdapter);
-		
-		productsList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				Intent intent = new Intent(MainActivity.this, ProductActivity.class);
-				Bundle extras = new Bundle();								
-				Produit product = (Produit) arg0.getItemAtPosition(arg2);
-			    extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
-			    intent.putExtras(extras); 
-			    
-			    startActivity(intent);
-			}
-		});
-	}
-	
-    
-    private void logout() {
-    	// On affiche une boite de dialogue pour confirmer
-    	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-    	    @Override
-    	    public void onClick(DialogInterface dialog, int which) {
-    	        if(which == DialogInterface.BUTTON_POSITIVE){
-    	        	LoginActivity.ISCONNECTED = false;  	
-//    	    		Toast.makeText(this, "ISCONNECTED ? : " + LoginActivity.ISCONNECTED, Toast.LENGTH_LONG).show();
-    	        	updateMenu();  
-    	        }
-    	    }
-    	};
+		default:
+			break;
+		}
 
-    	// On construit la boite et on set les textes des boutons oui et non
-    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    	builder.setMessage("En êtes-vous sûr ?").setPositiveButton("Oui", dialogClickListener)
-    		.setNegativeButton("Non", dialogClickListener).show();
-    	
-    	updateMenu();
-	}
-    
-    private void updateMenu() {
-		if(LoginActivity.ISCONNECTED){
-			// Boutons
-			findViewById(R.id.layoutBoutonConnexion).setVisibility(View.GONE);
-			findViewById(R.id.layoutBoutonMain).setVisibility(View.VISIBLE);
-			// MenuItem
-			hideOption(idMenuItemConnexion);
-			hideOption(idMenuItemRegister);
-			showOption(idMenuItemLogout);
-			showOption(idMenuItemAccount);
-			showOption(idMenuItemCard);    			
+		if (fragment != null) {
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
+
+			// update selected item and title, then close the drawer
+			mDrawerList.setItemChecked(position, true);
+			mDrawerList.setSelection(position);
+			setTitle(navMenuTitles[position]);
+			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
-			findViewById(R.id.layoutBoutonConnexion).setVisibility(View.VISIBLE);
-			findViewById(R.id.layoutBoutonMain).setVisibility(View.GONE);
-			showOption(idMenuItemConnexion);
-			showOption(idMenuItemRegister);
-			hideOption(idMenuItemLogout);
-			hideOption(idMenuItemAccount);
-			hideOption(idMenuItemCard);
-		}	
+			// error in creating fragment
+			Log.e("MainActivity", "Error in creating fragment");
+		}
 	}
 
-    private void hideOption(int id) {
-        MenuItem item = menu.findItem(id);
-        item.setVisible(false);
-    }
+	@Override
+	public void onBackPressed() {
+		if (getFragmentManager().getBackStackEntryCount() == 0) {
+			this.finish();
+		} else {
+			getFragmentManager().popBackStack();
+		}
+	}
 
-    private void showOption(int id) {
-        MenuItem item = menu.findItem(id);
-        item.setVisible(true);
-    }
-    
+	@Override
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getActionBar().setTitle(mTitle);
+	}
 
-//    private void testAjoutItemsListCategorieWithLinear() {
-//    	List<Categorie> listCategorie = Categorie.getAListOfCategorie();
-//    	LinearLayout categorieList = (LinearLayout) findViewById(R.id.layoutListCategorie);
-//        CategorieView viewItem = null;
-//	    
-//	    for(int i = 0; i < listCategorie.size(); i++){
-//	    	viewItem = new CategorieView(this, listCategorie.get(i));	    	
-//	    	categorieList.addView(viewItem);
-//	    }
-//    }
+
+	/**
+	 * When using the ActionBarDrawerToggle, you must call it during
+	 * onPostCreate() and onConfigurationChanged()...
+	 */
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// Pass any configuration change to the drawer toggls
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
 }
