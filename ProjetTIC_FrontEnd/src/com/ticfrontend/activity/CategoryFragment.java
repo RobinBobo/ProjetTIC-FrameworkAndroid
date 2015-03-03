@@ -31,8 +31,8 @@ public class CategoryFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
 
-		testAjoutItemsListCategorie();
-
+		init();
+		
 		return rootView;
 	}
 
@@ -42,18 +42,7 @@ public class CategoryFragment extends Fragment {
 	}
 
 	public void init(){
-		rootView.findViewById(R.id.editTextRecherche).setSelected(false);
-
-		Button search = (Button) rootView.findViewById(R.id.boutonValiderRecherche);
-		search.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) { 	
-				// Requete de recherche dans la BDD
-
-				// Affichage de la liste
-				//testAjoutItemsListCategorie();
-			}
-		});	
+		
 
 		testAjoutItemsListCategorie();
 	}

@@ -59,7 +59,9 @@ public class CartFragment extends Fragment {
 				Commande commande = new Commande(prixTotal, listProduit);
 				Client client = MainActivity.CLIENT_ACTUEL;
 				client.addCommande(commande);
-				
+				Fragment fragment = new HomeFragment();
+				FragmentManager fragmentManager = getFragmentManager();
+				fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
 			}
 		});
 	}

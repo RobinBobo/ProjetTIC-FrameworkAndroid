@@ -63,7 +63,8 @@ public class MainActivity extends Activity {
 			navDrawerItems.remove(4);
 			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-			navDrawerItems.add(4, new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+			navDrawerItems.add(4, new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
+			navDrawerItems.add(5, new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}else if(!ISCONNECTED){
 			navDrawerItems.remove(3);
 			navDrawerItems.remove(2);
@@ -101,8 +102,9 @@ public class MainActivity extends Activity {
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 			// What's hot, We  will add a counter here
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+			// Mes commandes
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-			// Mon COmpte
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}
 
@@ -216,6 +218,17 @@ public class MainActivity extends Activity {
 		}
 		case 4:
 			if (ISCONNECTED){
+//				ISCONNECTED = false;
+//				Intent intent = getIntent();
+//				finish();
+//				startActivity(intent);
+				fragment = new CommandFragment();
+			} else {
+				fragment = new AboutFragment();
+			}
+			break;
+		case 5:
+			if (ISCONNECTED){
 				ISCONNECTED = false;
 				Intent intent = getIntent();
 				finish();
@@ -223,9 +236,6 @@ public class MainActivity extends Activity {
 			} else {
 				fragment = new AboutFragment();
 			}
-			break;
-		case 5:
-			fragment = new AboutFragment();
 			break;
 		default:
 			break;
