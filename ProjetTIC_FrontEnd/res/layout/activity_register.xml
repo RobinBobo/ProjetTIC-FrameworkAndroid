@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,10 +7,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ticfrontend.activity.LoginActivity" 
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/registerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -18,222 +17,162 @@
         android:text="S'enregistrer" 
         android:textSize="25dp"
         />
+
+    <LinearLayout 
+        android:id="@+id/layoutRegId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         
         <TextView
-            android:id="@+id/registerLoginUser"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="10dp"
-	        android:layout_below="@+id/registerTitle"
 	        android:gravity="center_vertical"
 	        android:text="Identifiant : " 
 	        android:textSize="14dp"
 	        />
 
+        <EditText
+            android:id="@+id/editTextRegId"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="14dp" >
+
+            <requestFocus />
+        </EditText>
+    
+    </LinearLayout>
+    
+   
+     <LinearLayout 
+        android:id="@+id/layoutRegPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
         <TextView
-            android:id="@+id/registerMDP1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/registerLoginUser"
-	        android:layout_marginBottom="10dp"
 	        android:layout_marginRight="15dp"
 	        android:gravity="center_vertical"
 	        android:text="Mot de passe : " 
 	        android:textSize="14dp"
 	        />
-        
-        
-         <TextView
-            android:id="@+id/registerMDP2"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="10dp"
-	        android:layout_below="@+id/registerMDP1"
-	        android:gravity="center_vertical"
-	        android:text="Vérification MDP :" 
-	        android:textSize="14dp"
-	        />
-        
-        
-        
-         <TextView
-            android:id="@+id/registerLastName"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="10dp"
-	        android:layout_below="@+id/registerMDP2"
-	        android:gravity="center_vertical"
-	        android:text="Nom : " 
-	        android:textSize="14dp"
-	        />
-         
-        <TextView
-            android:id="@+id/registerFirstName"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="10dp"
-	        android:layout_below="@+id/registerLastName"
-	        android:gravity="center_vertical"
-	        android:text="Prénom : " 
-	        android:textSize="14dp"
-	        />
-        
-        <TextView
-            android:id="@+id/registerAdresse"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="10dp"
-	        android:layout_below="@+id/registerFirstName"
-	        android:gravity="center_vertical"
-	        android:text="Adresse : " 
-	        android:textSize="14dp"
-	        />
-        
-         <TextView
-            android:id="@+id/registerMail"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="25dp"
-	        android:layout_below="@+id/registerAdresse"
-	        android:gravity="center_vertical"
-	        android:text="Adresse mail : " 
-	        android:textSize="14dp"
-	        />
-         
-         <TextView
-            android:id="@+id/registerSexe"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="15dp"
-	        android:layout_marginBottom="30dp"
-	        android:layout_below="@+id/registerMail"
-	        android:gravity="center_vertical"
-	        android:text="Sexe : " 
-	        android:textSize="14dp"
-	        />
-         
-
-        <EditText
-            android:id="@+id/editTextRegId"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/registerLoginUser"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/editTextRegPass"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-			android:layout_alignBaseline="@+id/registerMDP1"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
             android:ems="10"
             android:inputType="textAutoComplete"
-            android:textSize="14dp" />
+            android:textSize="14dp" >
+
+            <requestFocus />
+        </EditText>
+    
+    </LinearLayout>
+    
+     
+      <LinearLayout 
+        android:id="@+id/layoutRegPassVerif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:gravity="center_vertical"
+	        android:text="Vérification MDP :" 
+	        android:textSize="14dp"
+	        />
 
         <EditText
             android:id="@+id/editTextRegPassVerif"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/registerMDP2"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
             android:ems="10"
             android:inputType="textAutoComplete"
-            android:textSize="14dp" />
+            android:textSize="14dp" >
+
+            <requestFocus />
+        </EditText>
+    
+    </LinearLayout>
+    
+      
+       <LinearLayout 
+        android:id="@+id/layoutRegLastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:gravity="center_vertical"
+	        android:text="Nom : " 
+	        android:textSize="14dp"
+	        />
 
         <EditText
             android:id="@+id/editTextRegLastname"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/registerLastName"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
             android:ems="10"
             android:inputType="textAutoComplete"
-            android:textSize="14dp" />
+            android:textSize="14dp" >
+
+            <requestFocus />
+        </EditText>
+    
+    </LinearLayout>
+      
+	<LinearLayout 
+        android:id="@+id/layoutRegFirstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        >
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:gravity="center_vertical"
+	        android:text="Prénom : " 
+	        android:textSize="14dp"
+	        />
 
         <EditText
             android:id="@+id/editTextRegFirstname"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-			android:layout_alignBaseline="@+id/registerFirstName"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
             android:ems="10"
             android:inputType="textAutoComplete"
-            android:textSize="14dp" />
+            android:textSize="14dp" >
 
-        <EditText
-            android:id="@+id/editTextRegAdresse"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-			android:layout_alignBaseline="@+id/registerAdresse"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="14dp" />
-                
-                
-        <EditText
-            android:id="@+id/editTextRegMail"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-			android:layout_alignBaseline="@+id/registerMail"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="14dp" />
-
-	<Button
+            <requestFocus />
+        </EditText>
+    
+    </LinearLayout>
+    
+	<Button 
 	    android:id="@+id/boutonValiderLogin"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/registerSexe"
-	    android:layout_centerHorizontal="true"
+	    android:layout_height="wrap_content"     
+	    android:layout_gravity="center_horizontal"
 	    android:gravity="center"
-	    android:text="Valider l&apos;enregistrement"
-	    android:textSize="14dp" />
-
-	<RadioGroup
-	    android:id="@+id/radioRegSexe"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/registerSexe"
-        android:layout_alignBottom="@+id/registerSexe"
-        android:layout_alignRight="@+id/radioRegSexe"
-	    android:checkedButton="@+id/radioHomme"
-	    android:orientation="horizontal" >
-
-	    <RadioButton
-	        android:id="@+id/radioFemme"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Femme"
-	        android:textSize="14dp" />
-
-	    <RadioButton
-	        android:id="@+id/radioHomme"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Homme"
-	        android:textSize="14dp" />
-	    
-	</RadioGroup>
+	    android:text="Valider l'enregistrement"
+	    android:textSize="14dp"
+	    />
     
-</RelativeLayout>
+</LinearLayout>
 
 
 <!-- 	identifiant -->

@@ -45,7 +45,7 @@ public class ProductActivity extends Activity  {
 		setContentView(R.layout.activity_product);
 		
 		// On récupère l'objet
-		product = new Produit((Produit) getIntent().getSerializableExtra(MainActivity.EXTRA_KEY_PRODUCT)); 
+		//product = new Produit((Produit) getIntent().getSerializableExtra(MainActivity.EXTRA_KEY_PRODUCT)); 
 		
 		init();
 
