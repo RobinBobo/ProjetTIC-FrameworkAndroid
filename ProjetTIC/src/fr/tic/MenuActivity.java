@@ -48,7 +48,20 @@ public class MenuActivity extends Activity {
 			}
 		});
 		
-		// Lien vers l'activité d'ajout de produit
+		// Lien vers l'activité de modification de produit
+		final Button modifierProduit = (Button) findViewById(R.id.modifierProduit);
+		modifierProduit.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						ModifierProduitActivity.class);
+		        intent.putExtra("monCatalogue", monCatalogue);
+				startActivity(intent);
+			}
+		});
+		
+		// Lien vers l'activité d'ajout de client
 		final Button ajouterClient = (Button) findViewById(R.id.ajouterClient);
 		ajouterClient.setOnClickListener(new OnClickListener() {
 

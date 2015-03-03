@@ -26,6 +26,7 @@
        	<activity android:name=".AjouterProduitActivity" />
        	<activity android:name=".AjouterClientActivity" />
        	<activity android:name=".AfficherCatalogueActivity" />
+       	<activity android:name=".ModifierProduitActivity" />
     </application>
 
 </manifest>

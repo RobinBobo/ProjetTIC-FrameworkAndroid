@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/titleModifPdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titleModifPdt" />
+    
+    <EditText 
+		android:id="@+id/rechIdPdt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/rechIdPdt"
+		android:layout_below="@id/titleModifPdt" />
+    
+    <EditText 
+		android:id="@+id/rechNomPdt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/rechNomPdt"
+		android:layout_below="@id/rechIdPdt" />
+    
+    <Button
+	    android:id="@+id/btnRechercher"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/rechNomPdt"
+	    android:text="@string/btnRechercher" />
+    
+    <TextView
+		android:id="@+id/erreurRecherche"
+	    android:text="@string/erreurRecherche"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/btnRechercher" />
+    
+    <!-- Modification du nom --> 
+    <CheckBox
+        android:id="@+id/checkNomProduit"
+        android:text="@string/checkNomProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/erreurRecherche" />
+    <TextView
+		android:id="@+id/textNomProduit"
+	    android:text="@string/textNomProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkNomProduit"
+		android:layout_below="@id/erreurRecherche" />    
+    <TextView
+		android:id="@+id/resNomProduit"
+	    android:text="@string/resNomProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textNomProduit"
+		android:layout_below="@id/erreurRecherche" />
+    <EditText 
+		android:id="@+id/newNomProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/newNomProduit"
+		android:layout_below="@id/textNomProduit"
+		android:enabled="true" />
+
+</RelativeLayout>
