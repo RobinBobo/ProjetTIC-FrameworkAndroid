@@ -1,6 +1,7 @@
 package com.ticfrontend.magasin;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
@@ -12,7 +13,7 @@ public class Client implements Serializable {
 	private String adresseClient;
 	private String adresseMail;
 	private boolean sexeClient;
-	private List<Commande> listeCommandesClient;
+	private List<Commande> listeCommandesClient = null;
 	
 	public Client() {}
 	
@@ -37,6 +38,12 @@ public class Client implements Serializable {
 		this.sexeClient = sexe;
 	}
 
+	public void addCommande(Commande c){
+		if(listeCommandesClient == null)
+			listeCommandesClient = new ArrayList<Commande>();
+		listeCommandesClient.add(c);
+	}
+	
 	// GETTERS
 	public int getIdClient() {return idClient;}
 	public String getNomClient() {return nomClient;}
