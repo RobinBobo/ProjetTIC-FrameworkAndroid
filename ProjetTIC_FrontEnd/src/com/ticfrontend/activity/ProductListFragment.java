@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.example.projettic.R;
 import com.ticfrontend.adapter.ProductListAdapter;
+import com.ticfrontend.comparator.ProductPriceComparator;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
-import com.ticfrontent.comparator.ProductPriceComparator;
 
 import android.app.Activity;
 import android.app.Fragment;

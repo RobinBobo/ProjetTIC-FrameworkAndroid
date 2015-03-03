@@ -1,6 +1,7 @@
 package com.ticfrontend.activity;
 
 import com.example.projettic.R;
+import com.ticfrontend.magasin.Client;
 import com.ticfrontend.model.*;
 import com.ticfrontend.adapter.*;
 
@@ -25,6 +26,8 @@ import android.widget.ListView;
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
 	public static boolean ISCONNECTED = false;
+
+	public static Client CLIENT_ACTUEL = null;
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -57,8 +60,10 @@ public class MainActivity extends Activity {
 		if(ISCONNECTED){
 			navDrawerItems.remove(3);
 			navDrawerItems.remove(2);
+			navDrawerItems.remove(4);
 			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+			navDrawerItems.add(4, new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}else if(!ISCONNECTED){
 			navDrawerItems.remove(3);
 			navDrawerItems.remove(2);
@@ -83,16 +88,22 @@ public class MainActivity extends Activity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 		// Categories
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		
 
 		if(!ISCONNECTED){
 			// Creer un Compte
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
 			// Connexion
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+			// Qui sommes nous ?
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}else if(ISCONNECTED){
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 			// What's hot, We  will add a counter here
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+			// Mon COmpte
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}
 
 
@@ -142,23 +153,24 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// toggle nav drawer on selecting action bar app icon/title
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		// Handle action bar actions click
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+//		if (mDrawerToggle.onOptionsItemSelected(item)) {
+//			return true;
+//		}
+//		// Handle action bar actions click
+//		switch (item.getItemId()) {
+//		case R.id.action_settings:
+//			return true;
+//		default:
+//			return super.onOptionsItemSelected(item);
+//		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/* *
@@ -167,8 +179,8 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+//		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -198,20 +210,23 @@ public class MainActivity extends Activity {
 			if(!ISCONNECTED)
 				fragment = new LoginFragment();
 			else if (ISCONNECTED){
-				ISCONNECTED = false;
-				Intent intent = getIntent();
-				finish();
-				startActivity(intent);
+				fragment = new AccountFragment();
 			}
 			break;
 		}
 		case 4:
-			
+			if (ISCONNECTED){
+				ISCONNECTED = false;
+				Intent intent = getIntent();
+				finish();
+				startActivity(intent);
+			} else {
+				fragment = new AboutFragment();
+			}
 			break;
 		case 5:
-			fragment = new ProductListFragment();
+			fragment = new AboutFragment();
 			break;
-
 		default:
 			break;
 		}
@@ -257,7 +272,7 @@ public class MainActivity extends Activity {
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 	}
-
+ 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
