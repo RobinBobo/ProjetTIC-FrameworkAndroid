@@ -64,7 +64,7 @@ public class ProductListFragment extends Fragment {
     		@Override
  			public void onClick(View arg0) {
     			// Trier par prix
-    			ListView list = (ListView) rootView.findViewById(R.id.listviewCat);
+    			ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
     			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
     			List<Produit> products = adapter.getProducts();
     			Collections.sort(products, new ProductPriceComparator());
@@ -77,7 +77,7 @@ public class ProductListFragment extends Fragment {
     		@Override
  			public void onClick(View arg0) {
     			// Trier par nom
-    			ListView list = (ListView) rootView.findViewById(R.id.listviewCat);
+    			ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
     			ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
     			List<Produit> products = adapter.getProducts();
     			Collections.sort(products, new Comparator<Produit>() {

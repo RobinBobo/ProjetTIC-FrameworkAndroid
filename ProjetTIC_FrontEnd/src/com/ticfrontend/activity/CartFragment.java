@@ -16,7 +16,7 @@ public class CartFragment extends Fragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
+        this.rootView = inflater.inflate(R.layout.activity_cart, container, false);
         this.activity = this.getActivity();
          
         return rootView;
@@ -24,7 +24,6 @@ public class CartFragment extends Fragment {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
+        super.onCreate(savedInstanceState);    
     }
 }
