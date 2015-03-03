@@ -13,7 +13,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import android.util.Log;
 
-public class XmlManagor {
+public class XmlCreator {
 
 	private final static String NAMESPACE = "";
 	private String text;
@@ -61,48 +61,5 @@ public class XmlManagor {
 		serializer.text(data);
 		serializer.endTag(NAMESPACE, tag);
 		serializer.text("\n");
-	}
-
-	public void load (InputStream is, Configurator config) {
-
-		XmlPullParserFactory factory = null;
-		XmlPullParser parser = null;
-
-		try {
-			factory = XmlPullParserFactory.newInstance();
-			factory.setNamespaceAware(true);
-
-			parser = factory.newPullParser();
-			parser.setInput(is, null);
-
-			int eventType = parser.getEventType();
-			while(eventType != XmlPullParser.END_DOCUMENT) {
-				String tagname = parser.getName();
-				switch (eventType) {
-				case XmlPullParser.START_TAG:					
-					break;
-
-				case XmlPullParser.TEXT:					
-					text = parser.getText();
-					break;
-
-				case XmlPullParser.END_TAG:				
-					if(tagname.equalsIgnoreCase("isSoppingCart"))
-						config.setShoppingCart(Boolean.valueOf(text));
-					else if(tagname.equalsIgnoreCase("customerNotice"))
-						config.setCustomerNotice(Boolean.valueOf(text));
-					else if(tagname.equalsIgnoreCase("order"))
-						config.setOrder(Boolean.valueOf(text));
-					else if(tagname.equalsIgnoreCase("websiteName"))
-						config.setWebsiteName(text);
-					break;
-				default:
-					break;
-				}
-				eventType = parser.next();
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	}	
 }

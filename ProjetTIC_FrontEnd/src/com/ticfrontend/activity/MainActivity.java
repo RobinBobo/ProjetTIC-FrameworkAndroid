@@ -5,6 +5,12 @@ import com.ticfrontend.magasin.Client;
 import com.ticfrontend.model.*;
 import com.ticfrontend.adapter.*;
 
+import configuratormanagement.Configurator;
+import configuratormanagement.XmlLoader;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -14,6 +20,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -50,12 +57,27 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main1);
 		initSlideMenu();
 
+		// TEST Loading XML //
+/*
+		Configurator c = new Configurator ();
+		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+		XmlLoader x = new XmlLoader ();
+
+		try {
+			x.load(new FileInputStream(xmlToLoad), c);
+			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+*/
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			displayView(0);
 		}
 	}
-	
+
 	public void updateSlideMenu(){
 		if(ISCONNECTED){
 			navDrawerItems.remove(3);
@@ -73,7 +95,7 @@ public class MainActivity extends Activity {
 		}
 		navMenuIcons.recycle();		
 	}
-	
+
 	public void initSlideMenu(){
 		mTitle = mDrawerTitle = getTitle();
 		// load slide menu items
@@ -89,7 +111,7 @@ public class MainActivity extends Activity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 		// Categories
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-		
+
 
 		if(!ISCONNECTED){
 			// Creer un Compte
@@ -162,16 +184,16 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// toggle nav drawer on selecting action bar app icon/title
-//		if (mDrawerToggle.onOptionsItemSelected(item)) {
-//			return true;
-//		}
-//		// Handle action bar actions click
-//		switch (item.getItemId()) {
-//		case R.id.action_settings:
-//			return true;
-//		default:
-//			return super.onOptionsItemSelected(item);
-//		}
+		//		if (mDrawerToggle.onOptionsItemSelected(item)) {
+		//			return true;
+		//		}
+		//		// Handle action bar actions click
+		//		switch (item.getItemId()) {
+		//		case R.id.action_settings:
+		//			return true;
+		//		default:
+		//			return super.onOptionsItemSelected(item);
+		//		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -181,8 +203,8 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
-//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-//		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		//		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -218,10 +240,10 @@ public class MainActivity extends Activity {
 		}
 		case 4:
 			if (ISCONNECTED){
-//				ISCONNECTED = false;
-//				Intent intent = getIntent();
-//				finish();
-//				startActivity(intent);
+				//				ISCONNECTED = false;
+				//				Intent intent = getIntent();
+				//				finish();
+				//				startActivity(intent);
 				fragment = new CommandFragment();
 			} else {
 				fragment = new AboutFragment();
@@ -282,7 +304,7 @@ public class MainActivity extends Activity {
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 	}
- 
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);

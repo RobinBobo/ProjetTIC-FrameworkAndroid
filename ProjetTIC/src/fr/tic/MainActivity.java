@@ -12,7 +12,8 @@ import beans.Client;
 import beans.Marque;
 import beans.Produit;
 import configuratormanagement.Configurator;
-import configuratormanagement.XmlManagor;
+import configuratormanagement.XmlCreator;
+
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
@@ -20,6 +21,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,35 +61,33 @@ public class MainActivity extends Activity {
 //				categoTelephone, "Sony", 10));
 
 		// Test Parser XML
-/*
-		Configurator c = new Configurator();
-		Configurator c2 = new Configurator();
-		c.setShoppingCart(true);
-		c.setCustomerNotice(true);
-		c.setOrder(false);
-		c.setWebsiteName("SiteDeLaMort");
+		/*
+				Configurator c = new Configurator();
+				Configurator c2 = new Configurator();
+				c.setShoppingCart(true);
+				c.setCustomerNotice(true);
+				c.setOrder(false);
+				c.setWebsiteName("SiteDeLaMort");	
+				
+				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
 
-		File newxmlfile = new File(((Context)this).getFilesDir(),"configuration.xml");
-
-		try {
-			XmlManagor x = new XmlManagor ();
-			x.create(c,newxmlfile);
-			x.load(new FileInputStream(newxmlfile), c2);
-			System.out.println("Suspens : " + c2.getWebsiteName() + c2.getOrder() + c2.getCustomerNotice());
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-*/
+				try {
+					XmlCreator x = new XmlCreator ();
+					x.create(c,newxmlfile);			
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (XmlPullParserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		*/
 		// Test Catégorie et Produit
 
 
