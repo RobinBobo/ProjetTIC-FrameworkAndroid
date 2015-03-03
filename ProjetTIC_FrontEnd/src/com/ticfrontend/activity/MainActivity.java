@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -198,7 +199,9 @@ public class MainActivity extends Activity {
 				fragment = new LoginFragment();
 			else if (ISCONNECTED){
 				ISCONNECTED = false;
-				fragment = new HomeFragment();
+				Intent intent = getIntent();
+				finish();
+				startActivity(intent);
 			}
 			break;
 		}
