@@ -1,23 +1,98 @@
 package com.ticfrontend.activity;
 
 import com.example.projettic.R;
+import com.ticfrontend.magasin.Client;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class RegisterFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
+	
+	private EditText login;
+	private EditText nomClient;
+	private EditText prenomClient;
+	private EditText adresseClient;
+	private EditText sexeClient;
+	private EditText adresseMail;
+	private EditText mdp1;
+	private EditText mdp2;
+	private Button valider;
+	
+	//static final String EXTRA_KEY_REGISTER = "EXTRA_KEY_REGISTER";
+	static final String EXTRA_KEY_USER = "EXTRA_KEY_USER";
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.activity_register, container, false);
         this.activity = this.getActivity();
               
+		init();
+        
+        
         return rootView;
     }
+
+	private void init() {
+		login = (EditText) rootView.findViewById(R.id.editTextRegId);
+		nomClient = (EditText) rootView.findViewById(R.id.editTextRegLastname);
+		prenomClient = (EditText) rootView.findViewById(R.id.editTextRegFirstname);
+		adresseClient = (EditText) rootView.findViewById(R.id.editTextRegAdresse);
+		adresseMail = (EditText) rootView.findViewById(R.id.editTextRegMail);
+		mdp1 = (EditText) rootView.findViewById(R.id.editTextRegPass);
+		mdp2 = (EditText) rootView.findViewById(R.id.editTextRegPassVerif);
+		
+		valider = (Button) rootView.findViewById(R.id.boutonValiderLogin);
+		
+		valider.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(login.getText().length() > 0 && nomClient.getText().length() > 0 
+						&& prenomClient.getText().length() > 0 && adresseClient.getText().length() > 0 
+						&& adresseMail.getText().length() > 0 && mdp1.getText().length() > 0 
+						&& mdp2.getText().length() > 0){
+					
+					Client c = new Client(login.toString(), nomClient.toString(), prenomClient.toString(), adresseClient.toString(), adresseMail.toString(), true);
+					// Ajout dans la BDD
+					// TODO
+					
+					// On récupère l'instance dans l'activité principale
+					MainActivity.CLIENT_ACTUEL = c;
+					
+					// On dit que le client est connecté
+					MainActivity.ISCONNECTED = true;
+						
+					Intent intent = activity.getIntent();
+					//intent.putExtra(EXTRA_KEY_REGISTER, login.getText().toString());
+					intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
+					activity.finish();
+					startActivity(intent);
+					//onBackPressed();
+					
+				} else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		            builder.setMessage("Il manque des informations !");
+		            builder.setCancelable(true);
+		            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+		                public void onClick(DialogInterface dialog, int id) {
+		                    dialog.cancel();
+		                }
+		            });
+		            AlertDialog alert = builder.create();
+		            alert.show();
+				}
+			}
+		});
+	}
 }

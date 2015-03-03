@@ -16,7 +16,7 @@ public class AboutFragment extends Fragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
+        this.rootView = inflater.inflate(R.layout.activity_about, container, false);
         this.activity = this.getActivity();
          
         return rootView;

@@ -1,6 +1,7 @@
 package com.ticfrontend.activity;
 
 import com.example.projettic.R;
+import com.ticfrontend.magasin.Client;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
@@ -60,7 +61,8 @@ public class LoginFragment extends Fragment {
 				if(login.getText().toString().length() > 0 && password.getText().toString().length() > 0){
 					MainActivity.ISCONNECTED = true;	
 					Intent intent = activity.getIntent();
-				//	Client c = new Client(...)
+					Client c = new Client("John", "Diggle");
+					MainActivity.CLIENT_ACTUEL = c;
 					intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
 					activity.finish();
 					startActivity(intent);

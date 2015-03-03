@@ -36,6 +36,8 @@
         <item>Connexion</item>
         <item>Mon Panier</item>
         <item>Déconnexion</item>
+        <item>Mon compte</item>
+        <item>Qui sommes-nous ?</item>
     </string-array>
 
 <!--     Nav Drawer List Item Icons -->

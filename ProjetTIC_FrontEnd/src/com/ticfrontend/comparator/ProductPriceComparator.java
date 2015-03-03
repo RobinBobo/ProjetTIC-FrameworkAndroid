@@ -1,4 +1,4 @@
-package com.ticfrontent.comparator;
+package com.ticfrontend.comparator;
 import java.util.Comparator;
 
 import com.ticfrontend.magasin.Produit;
