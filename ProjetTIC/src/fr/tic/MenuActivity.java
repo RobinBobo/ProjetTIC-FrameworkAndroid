@@ -21,8 +21,19 @@ public class MenuActivity extends Activity {
 		Bundle b    = getIntent().getExtras();
 		final ListeClients mesClients    = b.getParcelable("mesClients");
 		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
-	    System.out.println(mesClients);
-	    System.out.println(monCatalogue);
+		
+		// Lien vers l'activité d'affichage du catalogue
+		final Button afficherCatalogue = (Button) findViewById(R.id.afficherCatalogue);
+		afficherCatalogue.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						AfficherCatalogueActivity.class);
+		        intent.putExtra("monCatalogue", monCatalogue);
+				startActivity(intent);
+			}
+		});
 		
 		// Lien vers l'activité d'ajout de produit
 		final Button ajouterProduit = (Button) findViewById(R.id.ajouterProduit);
@@ -32,6 +43,7 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						AjouterProduitActivity.class);
+		        intent.putExtra("monCatalogue", monCatalogue);
 				startActivity(intent);
 			}
 		});
@@ -44,7 +56,7 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						AjouterClientActivity.class);
-		        intent.putExtra("monCatalogue", monCatalogue);
+		        intent.putExtra("mesClients", mesClients);
 				startActivity(intent);
 			}
 		});

@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import beans.Categorie;
+import beans.Marque;
+import beans.Produit;
 import configuratormanagement.Configurator;
-
 import configuratormanagement.XmlManagor;
 import plurals.Catalogue;
 import plurals.ListeCategories;
@@ -46,6 +48,13 @@ public class MainActivity extends Activity {
 		monCatalogue.findProduits();
 
 		monCatalogue.ajoutObserver(mesClients);
+//		Categorie categoTelephone = new Categorie(0, "Telephone");
+//		monCatalogue.getMesProduits().add(new Produit(0, 
+//				"Sony", 150.0, "Téléphone Sony Xperia Z3 Compact",
+//				categoTelephone, "Sony", 10));
+//		monCatalogue.getMesProduits().add(new Produit(1, 
+//				"Sony", 150.0, "Téléphone Sony Xperia Z3",
+//				categoTelephone, "Sony", 10));
 
 		// Test Parser XML
 /*
@@ -153,6 +162,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
 		        intent.putExtra("mesClients", mesClients);
+		        intent.putExtra("monCatalogue", monCatalogue);
 		        startActivity(intent);
 			}
 		});

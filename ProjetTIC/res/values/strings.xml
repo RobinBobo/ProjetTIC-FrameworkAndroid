@@ -38,5 +38,7 @@
     <string name="textAdresseClient">Adresse : </string>    
     <string name="adresseClient">5bis, étage 2, rue de la paix, 75000 Paris</string>
     <string name="btnAjoutClient">Valider</string>
+    
+    <!-- Catalogue -->
 
 </resources>
