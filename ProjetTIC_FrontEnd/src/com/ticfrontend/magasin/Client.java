@@ -16,6 +16,11 @@ public class Client implements Serializable {
 	
 	public Client() {}
 	
+	public Client(String nom, String prenom){
+		this.nomClient = nom;
+		this.prenomClient = prenom;
+	}
+	
 	public Client(String nom, String prenom, boolean sexe){
 		this.nomClient = nom;
 		this.prenomClient = prenom;
