@@ -8,64 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ticfrontend.activity.MainActivity" >
 
-    <LinearLayout
-        android:id="@+id/layoutBoutonMain"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="horizontal"
-        android:visibility="gone" >
-
-        <Button
-            android:id="@+id/boutonCompte"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:text="@string/textButtonCompte"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/boutonPanier"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:text="@string/textButtonPanier"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutBoutonConnexion"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="horizontal"
-        android:visibility="visible" >
-
-        <Button
-            android:id="@+id/boutonConnexion"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:text="@string/textButtonConnexion"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/boutonEnregistrer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:text="@string/textButtonEnregistrer"
-            android:textSize="18sp" />
-    </LinearLayout>
-
+  
     <TextView
         android:id="@+id/textProductName"
         android:layout_width="match_parent"
