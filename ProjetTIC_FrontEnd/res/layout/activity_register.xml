@@ -27,7 +27,7 @@
 	        android:layout_marginBottom="10dp"
 	        android:layout_below="@+id/registerTitle"
 	        android:gravity="center_vertical"
-	        android:text="Identifiant : " 
+	        android:text="Login : " 
 	        android:textSize="16dp"
 	        />
 
@@ -90,7 +90,7 @@
 	        android:layout_marginBottom="10dp"
 	        android:layout_below="@+id/registerFirstName"
 	        android:gravity="center_vertical"
-	        android:text="Adresse : " 
+	        android:text="Adresse postale : " 
 	        android:textSize="16dp"
 	        />
         

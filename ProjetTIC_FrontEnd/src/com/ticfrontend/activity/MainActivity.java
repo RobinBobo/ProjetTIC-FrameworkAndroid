@@ -4,9 +4,9 @@ import com.example.projettic.R;
 import com.ticfrontend.magasin.Client;
 import com.ticfrontend.model.*;
 import com.ticfrontend.adapter.*;
+import com.ticfrontend.configuratormanagement.Configurator;
+import com.ticfrontend.configuratormanagement.XmlLoader;
 
-import configuratormanagement.Configurator;
-import configuratormanagement.XmlLoader;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -12,7 +12,9 @@ public class Client implements Serializable {
 	private String prenomClient;
 	private String adresseClient;
 	private String adresseMail;
-	private boolean sexeClient;
+	private boolean sexeClient; // True : Homme, False : Femme
+	private String mdpClient;
+	
 	private List<Commande> listeCommandesClient = null;
 	
 	public Client() {}
@@ -30,14 +32,26 @@ public class Client implements Serializable {
 
 	public Client(String login, String nom, String prenom,
 			String adresse, String mail, boolean sexe) {
-		this.login = login;
+		this.setLogin(login);
 		this.nomClient = nom;
 		this.prenomClient = prenom;
 		this.adresseClient = adresse;
 		this.adresseMail = mail;
 		this.sexeClient = sexe;
+		this.setMdpClient("none");
 	}
 
+	public Client(String login, String nom, String prenom,
+			String adresse, String mail, boolean sexe, String mdp) {
+		this.setLogin(login);
+		this.nomClient = nom;
+		this.prenomClient = prenom;
+		this.adresseClient = adresse;
+		this.adresseMail = mail;
+		this.sexeClient = sexe;
+		this.setMdpClient(mdp);
+	}
+	
 	public void addCommande(Commande c){
 		if(listeCommandesClient == null)
 			listeCommandesClient = new ArrayList<Commande>();
@@ -49,7 +63,14 @@ public class Client implements Serializable {
 	public String getNomClient() {return nomClient;}
 	public String getPrenomClient() {return prenomClient;}
 	public String getAdresseClient() {return adresseClient;}
-	public boolean isSexeClient() {return sexeClient;}
+	public boolean getSexeClient() {return sexeClient;}
+	
+	public String getSexeClientToString(){
+		if(this.sexeClient)
+			return "Homme";
+		else
+			return "Femme";
+	}
 	public List<Commande> getListeCommandesClient() {return listeCommandesClient;}
 	
 	// SETTERS
@@ -59,4 +80,28 @@ public class Client implements Serializable {
 	public void setAdresseClient(String adresseClient) {this.adresseClient = adresseClient;}
 	public void setSexeClient(boolean sexeClient) {this.sexeClient = sexeClient;}
 	public void setListeCommandesClient(List<Commande> listeCommandesClient) {this.listeCommandesClient = listeCommandesClient;}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getAdresseMail() {
+		return adresseMail;
+	}
+
+	public void setAdresseMail(String adresseMail) {
+		this.adresseMail = adresseMail;
+	}
+
+	public String getMdpClient() {
+		return mdpClient;
+	}
+
+	public void setMdpClient(String mdpClient) {
+		this.mdpClient = mdpClient;
+	}
 }
