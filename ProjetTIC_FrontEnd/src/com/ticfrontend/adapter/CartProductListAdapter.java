@@ -92,4 +92,19 @@ public class CartProductListAdapter extends BaseAdapter {
 		
 		return total;
 	}
+	
+	public String getPrixTotalToString() {
+		DecimalFormat df = new DecimalFormat() ; 
+		df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
+		df.setMinimumFractionDigits(2) ; 
+		df.setDecimalSeparatorAlwaysShown(true); 
+		double total = 0;
+		
+		for(int i = 0; i < products.size(); i++) 
+           total += products.get(i).getPrixProduit();
+		
+		String prix = df.format(total);
+		
+		return prix;		
+	}
 }

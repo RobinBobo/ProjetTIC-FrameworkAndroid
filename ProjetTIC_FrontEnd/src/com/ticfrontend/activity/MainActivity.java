@@ -177,24 +177,23 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		//getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// toggle nav drawer on selecting action bar app icon/title
-		//		if (mDrawerToggle.onOptionsItemSelected(item)) {
-		//			return true;
-		//		}
-		//		// Handle action bar actions click
-		//		switch (item.getItemId()) {
-		//		case R.id.action_settings:
-		//			return true;
-		//		default:
-		//			return super.onOptionsItemSelected(item);
-		//		}
-		return super.onOptionsItemSelected(item);
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle action bar actions click
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	/* *
@@ -203,8 +202,8 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
-		//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		//		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		//menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -258,6 +257,10 @@ public class MainActivity extends Activity {
 			} else {
 				fragment = new AboutFragment();
 			}
+			break;
+		case 6:
+			if (ISCONNECTED)
+				fragment = new AboutFragment();
 			break;
 		default:
 			break;

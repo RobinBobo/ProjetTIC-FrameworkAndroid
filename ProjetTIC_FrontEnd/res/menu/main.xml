@@ -2,53 +2,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.projettic.MainActivity" >
 
-    <item 
-        android:id="@+id/connexion"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Connexion"
-        android:visible="true"/>
+<!--     <item  -->
+<!--         android:id="@+id/connexion" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="Connexion" -->
+<!--         android:visible="true"/> -->
 
-    <item 
-        android:id="@+id/enregister"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="S'enregister"
-        android:visible="true"/>
+<!--     <item  -->
+<!--         android:id="@+id/enregister" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="S'enregister" -->
+<!--         android:visible="true"/> -->
     
     
-    <item
-        android:id="@+id/mon_compte"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/textButtonCompte"
-        android:visible="false"/>
+<!--     <item -->
+<!--         android:id="@+id/mon_compte" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/textButtonCompte" -->
+<!--         android:visible="false"/> -->
     
-    <item
-        android:id="@+id/mon_panier"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/textButtonPanier"
-        android:visible="false"/>
+<!--     <item -->
+<!--         android:id="@+id/mon_panier" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/textButtonPanier" -->
+<!--         android:visible="false"/> -->
     
-     <item
-        android:id="@+id/se_deconnecter"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/textSeDeconnecter"
-        android:visible="false"/>
+<!--      <item -->
+<!--         android:id="@+id/se_deconnecter" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/textSeDeconnecter" -->
+<!--         android:visible="false"/> -->
     
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+<!--     <item -->
+<!--         android:id="@+id/action_settings" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/action_settings"/> -->
     
-    <item
-        android:id="@+id/a_propos"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/textAPropos"/>
+<!--     <item -->
+<!--         android:id="@+id/a_propos" -->
+<!--         android:orderInCategory="100" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/textAPropos"/> -->
     
 
 </menu>

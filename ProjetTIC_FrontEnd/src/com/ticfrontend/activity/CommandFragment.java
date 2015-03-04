@@ -69,7 +69,7 @@ public class CommandFragment extends Fragment {
 			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setMessage("Nous n'avez pas de commande enregistrée.");
+            builder.setMessage("Vous n'avez pas de commande enregistrée.");
             builder.setCancelable(false);
             builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
