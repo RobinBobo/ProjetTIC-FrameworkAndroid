@@ -52,6 +52,7 @@
         <item>@drawable/ic_logout</item>
         <item>@drawable/ic_account</item>
         <item>@drawable/ic_about</item>
+        <item>@drawable/ic_order</item>
     </array>
 
 <!--     Content Description -->
