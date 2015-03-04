@@ -22,50 +22,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.ticfrontend.activity.AccountActivity"
-            android:label="@string/title_activity_account"
-            android:parentActivityName="com.ticfrontend.activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.projettic.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.ticfrontend.activity.CartActivity"
-            android:label="@string/title_activity_cart"
-            android:parentActivityName="com.ticfrontend.activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ticfrontend.activity.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.ticfrontend.activity.AboutActivity"
-            android:label="@string/title_activity_about"
-            android:parentActivityName="com.ticfrontend.activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ticfrontend.activity.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.ticfrontend.activity.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:parentActivityName="com.ticfrontend.activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ticfrontend.activity.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.ticfrontend.activity.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:parentActivityName="com.ticfrontend.activity.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ticfrontend.activity.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.ticfrontend.activity.ProductActivity"
-            android:label="@string/title_activity_product" >
-        </activity>
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.AccountActivity" -->
+<!--             android:label="@string/title_activity_account" -->
+<!--             android:parentActivityName="com.ticfrontend.activity.MainActivity" > -->
+<!--             <meta-data -->
+<!--                 android:name="android.support.PARENT_ACTIVITY" -->
+<!--                 android:value="com.example.projettic.MainActivity" /> -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.CartActivity" -->
+<!--             android:label="@string/title_activity_cart" -->
+<!--             android:parentActivityName="com.ticfrontend.activity.MainActivity" > -->
+<!--             <meta-data -->
+<!--                 android:name="android.support.PARENT_ACTIVITY" -->
+<!--                 android:value="com.ticfrontend.activity.MainActivity" /> -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.AboutActivity" -->
+<!--             android:label="@string/title_activity_about" -->
+<!--             android:parentActivityName="com.ticfrontend.activity.MainActivity" > -->
+<!--             <meta-data -->
+<!--                 android:name="android.support.PARENT_ACTIVITY" -->
+<!--                 android:value="com.ticfrontend.activity.MainActivity" /> -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.LoginActivity" -->
+<!--             android:label="@string/title_activity_login" -->
+<!--             android:parentActivityName="com.ticfrontend.activity.MainActivity" > -->
+<!--             <meta-data -->
+<!--                 android:name="android.support.PARENT_ACTIVITY" -->
+<!--                 android:value="com.ticfrontend.activity.MainActivity" /> -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.RegisterActivity" -->
+<!--             android:label="@string/title_activity_register" -->
+<!--             android:parentActivityName="com.ticfrontend.activity.MainActivity" > -->
+<!--             <meta-data -->
+<!--                 android:name="android.support.PARENT_ACTIVITY" -->
+<!--                 android:value="com.ticfrontend.activity.MainActivity" /> -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="com.ticfrontend.activity.ProductActivity" -->
+<!--             android:label="@string/title_activity_product" > -->
+<!--         </activity> -->
     </application>
 
 </manifest>

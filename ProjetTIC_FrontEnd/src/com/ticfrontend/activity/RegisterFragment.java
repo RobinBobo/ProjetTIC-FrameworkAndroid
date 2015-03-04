@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class RegisterFragment extends Fragment {
 	private View rootView;
@@ -30,6 +31,9 @@ public class RegisterFragment extends Fragment {
 	private EditText mdp2;
 	private Button valider;
 	
+	private RadioButton radioButtonF = null;
+	private RadioButton radioButtonH = null;
+	
 	//static final String EXTRA_KEY_REGISTER = "EXTRA_KEY_REGISTER";
 	static final String EXTRA_KEY_USER = "EXTRA_KEY_USER";
 	
@@ -38,6 +42,9 @@ public class RegisterFragment extends Fragment {
         this.rootView = inflater.inflate(R.layout.activity_register, container, false);
         this.activity = this.getActivity();
               
+        this.radioButtonF = (RadioButton) rootView.findViewById(R.id.radioAccountFemme);
+		this.radioButtonH = (RadioButton) rootView.findViewById(R.id.radioAccountHomme);
+        
 		init();
         
         
@@ -63,7 +70,15 @@ public class RegisterFragment extends Fragment {
 						&& adresseMail.getText().length() > 0 && mdp1.getText().length() > 0 
 						&& mdp2.getText().length() > 0){
 					
-					Client c = new Client(login.toString(), nomClient.toString(), prenomClient.toString(), adresseClient.toString(), adresseMail.toString(), true);
+					boolean sexeClient;
+                	
+                	if(radioButtonF.isActivated())
+                		sexeClient = false;
+                	else
+                		sexeClient = true;
+					
+					Client c = new Client(login.getText().toString(), nomClient.getText().toString(), prenomClient.getText().toString(), 
+							adresseClient.getText().toString(), adresseMail.getText().toString(), true);
 					// Ajout dans la BDD
 					// TODO
 					
@@ -82,6 +97,7 @@ public class RegisterFragment extends Fragment {
 					
 				} else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+					builder.setTitle("Crétion d'un compte");
 		            builder.setMessage("Il manque des informations !");
 		            builder.setCancelable(true);
 		            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {

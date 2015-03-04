@@ -1,4 +1,4 @@
-package configuratormanagement;
+package com.ticfrontend.configuratormanagement;
 
 public class Configurator {
 	
