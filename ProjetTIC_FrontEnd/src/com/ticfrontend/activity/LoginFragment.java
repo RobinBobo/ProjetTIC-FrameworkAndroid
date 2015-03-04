@@ -61,9 +61,9 @@ public class LoginFragment extends Fragment {
 				if(login.getText().toString().length() > 0 && password.getText().toString().length() > 0){
 					MainActivity.ISCONNECTED = true;	
 					Intent intent = activity.getIntent();
-					Client c = new Client("John", "Diggle");
+					Client c = new Client(login.getText().toString(), "John");
 					MainActivity.CLIENT_ACTUEL = c;
-					intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
+					intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
 					activity.finish();
 					startActivity(intent);
 				}

@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class HomeFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
-	private String client;
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,12 +31,12 @@ public class HomeFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 
 		Intent intent = activity.getIntent();
-		client = intent.getStringExtra(LoginFragment.EXTRA_KEY_USER);
+		//client = intent.getStringExtra(LoginFragment.EXTRA_KEY_USER);
 		
 		if(MainActivity.ISCONNECTED)
-			((TextView)rootView.findViewById(R.id.textUser)).setText("Bienvenue " + client);
+			((TextView)rootView.findViewById(R.id.textUser)).setText("Bienvenue " + MainActivity.CLIENT_ACTUEL.getNomClient());
 		else 
-			((TextView)rootView.findViewById(R.id.textUser)).setText("Connecte toi man!");
+			((TextView)rootView.findViewById(R.id.textUser)).setText("Connecte toi!");
 	}
 	@Override
     public void onCreate(Bundle savedInstanceState) {
