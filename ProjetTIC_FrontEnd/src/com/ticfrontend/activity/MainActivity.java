@@ -32,8 +32,8 @@ import android.widget.ListView;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
-	public static boolean ISCONNECTED = false;
 
+	public static boolean ISCONNECTED = false;
 	public static Client CLIENT_ACTUEL = null;
 
 	private DrawerLayout mDrawerLayout;
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
 		initSlideMenu();
 
 		// TEST Loading XML //
-/*
+		/*
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
-*/
+		 */
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			displayView(0);
