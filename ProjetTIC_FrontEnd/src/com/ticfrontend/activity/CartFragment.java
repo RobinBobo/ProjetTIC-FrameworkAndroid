@@ -92,7 +92,7 @@ public class CartFragment extends Fragment {
 		df.setMinimumFractionDigits(2) ; 
 		df.setDecimalSeparatorAlwaysShown(true); 
 		
-		prixT.setText("Total : " + df.format(produitsListAdapter.getPrixTotal()) + " €");
+		prixT.setText("Total : " + produitsListAdapter.getPrixTotalToString() + " €");
 		
 		produitList.setOnItemClickListener(new OnItemClickListener() {
 			@Override

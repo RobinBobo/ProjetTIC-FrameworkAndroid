@@ -67,7 +67,7 @@ public class CommandeListAdapter extends BaseAdapter{
 	    TextView price = (TextView) layoutItem.findViewById(R.id.priceCommande);
 	    
 	    title.setText("Commande n°" + String.valueOf(commandes.get(position).getIdCommande()));
-	    price.setText(String.valueOf(commandes.get(position).getPrixTotalCommande()) + " €");
+	    price.setText(commandes.get(position).getPrixTotalCommandeToString() + " €");
 	    
 	    return layoutItem;
 	}

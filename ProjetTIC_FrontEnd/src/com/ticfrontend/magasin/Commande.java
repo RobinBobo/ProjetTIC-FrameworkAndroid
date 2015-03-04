@@ -1,5 +1,6 @@
 package com.ticfrontend.magasin;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Commande {
@@ -43,5 +44,21 @@ public class Commande {
 
 	public double getPrixTotalCommande() {
 		return prixTotalCommande;
+	}
+	
+	public String getPrixTotalCommandeToString() {		
+		DecimalFormat df = new DecimalFormat() ; 
+		df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
+		df.setMinimumFractionDigits(2) ; 
+		df.setDecimalSeparatorAlwaysShown(true); 
+		
+		double total = 0;
+		
+		for(int i = 0; i < produits.size(); i++) 
+	           total += produits.get(i).getPrixProduit();
+		
+		String prix = df.format(total);
+		
+		return prix;
 	}
 }
