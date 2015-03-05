@@ -29,8 +29,7 @@
     <string name="title_fragment_product_list">Liste des produits</string>
     <string name="title_fragment_category">Catégories</string>
     <string name="title_fragment_home">Accueil</string>
-    <string name="title_fragment_order">Commandes</string>
-    
+    <string name="title_fragment_order">Mes commandes</string>
     
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>

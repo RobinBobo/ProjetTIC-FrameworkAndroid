@@ -32,7 +32,6 @@ public class CategoryFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
 		this.activity = getActivity();
-		
 		init();
 		
 		return rootView;

@@ -70,6 +70,9 @@ public class ProductFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Passer commande
+				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+				AlertDialog alert;
+				
 				if(MainActivity.ISCONNECTED){
 //					if(CartFragment.PANIER_CLIENT == null){
 //						Fragment fragment = new HomeFragment();
@@ -78,22 +81,34 @@ public class ProductFragment extends Fragment {
 //						CartFragment.PANIER_CLIENT = new Panier();
 //					}
 
-					CartFragment.PANIER_CLIENT.ajouterDansPanier(product, 1);
+					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+					    @Override
+					    public void onClick(DialogInterface dialog, int which) {
+					        switch (which){
+					        case DialogInterface.BUTTON_POSITIVE:
+					        	CartFragment.PANIER_CLIENT.ajouterDansPanier(product, 1);
+					            break;
 
+					        case DialogInterface.BUTTON_NEGATIVE:
+					            //No button clicked
+					            break;
+					        }
+					    }
+					};
+					builder.setMessage("Confirmez-vous l'ajout ?").setPositiveButton("Oui", dialogClickListener)
+					    .setNegativeButton("Non", dialogClickListener).show();
 				}else
 				{
-					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 					builder.setMessage("Vous devez vous connecter.");
-					builder.setCancelable(false);
+					builder.setCancelable(true);
 					builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.cancel();
 						}
 					});
-					AlertDialog alert = builder.create();
+					alert = builder.create();
 					alert.show();
 				}
-
 			}
 		});
 	}
