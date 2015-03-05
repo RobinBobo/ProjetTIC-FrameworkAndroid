@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import beans.Produit;
 import fr.tic.R;
@@ -27,6 +28,8 @@ public class ModifierProduitActivity extends Activity {
 		// Récupération des données
 		Bundle b     = getIntent().getExtras();
 		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		
+		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);
 		
 		final Button rechPdt = (Button) findViewById(R.id.btnRechercher);
 		final Button btnValider = (Button) findViewById(R.id.btnValider);
@@ -49,6 +52,7 @@ public class ModifierProduitActivity extends Activity {
 		final TextView msgResModif = (TextView) findViewById(R.id.msgResModif);
 		
 		// On masque les zones de saisies
+		formModifPdt.setVisibility(View.INVISIBLE);
 		newNom.setVisibility(View.INVISIBLE);
 		newPrix.setVisibility(View.INVISIBLE);
 		newDesc.setVisibility(View.INVISIBLE);
@@ -70,6 +74,7 @@ public class ModifierProduitActivity extends Activity {
 						resPrix.setText(Double.toString(pdt.getPrixProduit()));
 						resDesc.setText(pdt.getDescriptionProduit());
 						resStock.setText(Integer.toString(pdt.getStockProduit()));
+						formModifPdt.setVisibility(View.VISIBLE);
 					}
 				}
 				else erreurRech.setText("Veuillez saisir un identifiant !");
