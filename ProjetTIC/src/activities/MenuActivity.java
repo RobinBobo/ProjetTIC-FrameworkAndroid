@@ -1,5 +1,6 @@
-package fr.tic;
+package activities;
 
+import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeClients;
 import android.app.Activity;

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:scrollbars="vertical" >
+    android:layout_height="wrap_content" >
     
     <TextView
         android:id="@+id/titleModifPdt"
@@ -17,18 +19,11 @@
 		android:hint="@string/rechIdPdt"
 		android:layout_below="@id/titleModifPdt" />
     
-    <EditText 
-		android:id="@+id/rechNomPdt"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:hint="@string/rechNomPdt"
-		android:layout_below="@id/rechIdPdt" />
-    
     <Button
 	    android:id="@+id/btnRechercher"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/rechNomPdt"
+	    android:layout_below="@+id/rechIdPdt"
 	    android:text="@string/btnRechercher" />
     
     <TextView
@@ -38,13 +33,20 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@id/btnRechercher" />
     
+    <TextView
+		android:id="@+id/instructionModifPdt"
+	    android:text="@string/instructionModifPdt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/erreurRecherche" />
+    
     <!-- Modification du nom --> 
     <CheckBox
         android:id="@+id/checkNomProduit"
         android:text="@string/checkNomProduit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_below="@id/erreurRecherche" />
+		android:layout_below="@id/instructionModifPdt" />
     <TextView
 		android:id="@+id/textNomProduit"
 	    android:text="@string/textNomProduit"
@@ -52,21 +54,20 @@
 		android:layout_height="wrap_content"
 		android:layout_alignBottom="@id/checkNomProduit"
         android:layout_toRightOf="@+id/checkNomProduit"
-		android:layout_below="@id/erreurRecherche" />    
+		android:layout_below="@id/instructionModifPdt" />    
     <TextView
 		android:id="@+id/resNomProduit"
 	    android:text="@string/resNomProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/textNomProduit"
-		android:layout_below="@id/erreurRecherche" />
+		android:layout_below="@id/instructionModifPdt" />
     <EditText 
 		android:id="@+id/newNomProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:hint="@string/newNomProduit"
-		android:layout_below="@id/textNomProduit"
-		android:enabled="false" />
+		android:layout_below="@id/textNomProduit" />
     
     <!-- Modification du prix --> 
     <CheckBox
@@ -94,9 +95,8 @@
 		android:id="@+id/newPrixProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:hint="@string/newNomProduit"
-		android:layout_below="@id/textPrixProduit"
-		android:enabled="false" />
+		android:hint="@string/newPrixProduit"
+		android:layout_below="@id/textPrixProduit" />
     
     <!-- Modification de la description --> 
     <CheckBox
@@ -126,8 +126,55 @@
 		android:id="@+id/newDescProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:hint="@string/newNomProduit"
-		android:layout_below="@id/textDescProduit"
-		android:enabled="false" />
+		android:hint="@string/newDescProduit"
+		android:layout_below="@id/textDescProduit" />
+    
+    <!-- Modification du stock --> 
+    <CheckBox
+        android:id="@+id/checkStockProduit"
+        android:text="@string/checkStockProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/newDescProduit" />
+
+    <TextView
+        android:id="@+id/textStockProduit"
+        android:text="@string/textStockProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@id/checkStockProduit"
+        android:layout_below="@id/newDescProduit"
+        android:layout_toRightOf="@+id/checkStockProduit" />
+    
+    <TextView
+		android:id="@+id/resStockProduit"
+	    android:text="@string/resStockProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@id/textStockProduit"
+		android:layout_below="@id/newDescProduit" />
+    <EditText 
+		android:id="@+id/newStockProduit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/newStockProduit"
+		android:layout_below="@id/textStockProduit" />
+    
+    <TextView
+		android:id="@+id/msgResModif"
+	    android:text="@string/msgResModif"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/newStockProduit" />
+
+    <Button
+        android:id="@+id/btnValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+		android:layout_below="@id/msgResModif"
+	    android:text="@string/btnValider" />
 
 </RelativeLayout>
+</ScrollView>

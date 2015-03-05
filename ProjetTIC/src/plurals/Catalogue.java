@@ -26,8 +26,17 @@ public class Catalogue implements Parcelable{
 			DAOFactory.getProduitDAO().create(theProduit);
 		}else{
 			//TODO : generate error "Already exists"
+		}		
+	}
+	
+	public Produit rechercherProduit(int id) {
+		Produit pdt = null;
+		for(int i=0; i<o_mesProduits.size(); i++) {
+			if (o_mesProduits.get(i).getIdProduit() == id) {
+				pdt = o_mesProduits.get(i);		
+			}
 		}
-		
+		return pdt;		
 	}
 	
 	public void supprimerProduitCatalogue(Produit theProduit){

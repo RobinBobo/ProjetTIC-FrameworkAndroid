@@ -1,9 +1,10 @@
-package fr.tic;
+package activities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import fr.tic.R;
 import beans.Produit;
 import plurals.Catalogue;
 import android.app.Activity;

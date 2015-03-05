@@ -26,17 +26,17 @@
 	<!-- Produit -->
     <string name="textIdProduit">Identifiant du produit : </string>
     <string name="idProduit">Identifiant</string>
-    <string name="textNomProduit">Nom du produit : </string>
+    <string name="textNomProduit">Nom : </string>
     <string name="nomProduit">Produit</string>
-    <string name="textPrixProduit">Prix du produit : </string>
+    <string name="textPrixProduit">Prix : </string>
     <string name="prixProduit">Prix</string>
-    <string name="textDescProduit">Description du produit : </string>
-    <string name="descProduit">Description du produit</string>
+    <string name="textDescProduit">Description : </string>
+    <string name="descProduit">Description</string>
     <string name="btnAjoutProduit">Valider</string>
-    <string name="titleModifPdt">Entrer le nom ou l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier \:</string>
+    <string name="titleModifPdt">Entrer l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier :</string>
     <string name="rechIdPdt">Identifiant du produit</string>
-	<string name="rechNomPdt">Nom du produit</string>
 	<string name="btnRechercher">Rechercher</string>
+	<string name="instructionModifPdt">Pour modifier un champ, cocher la case devant ce champ et saisir la nouvelle valeur dans la zone qui apparaît en dessous.</string>
 	<string name="erreurRecherche"></string>
 	<string name="checkNomProduit"></string>
 	<string name="resNomProduit"></string>
@@ -47,6 +47,12 @@
 	<string name="checkDescProduit"></string>
 	<string name="resDescProduit"></string>
 	<string name="newDescProduit">Nouvelle valeur</string>
+	<string name="textStockProduit">Stock : </string>
+	<string name="checkStockProduit"></string>
+	<string name="resStockProduit"></string>
+	<string name="newStockProduit">Nouvelle valeur</string>
+	<string name="btnValider">Valider</string>
+	<string name="msgResModif"></string>
 	
     <!-- Client -->
 	<string name="textIdClient">Identifiants du client : </string>

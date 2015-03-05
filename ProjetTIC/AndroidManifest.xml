@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       	<activity android:name=".MenuActivity" />
-       	<activity android:name=".AjouterProduitActivity" />
-       	<activity android:name=".AjouterClientActivity" />
-       	<activity android:name=".AfficherCatalogueActivity" />
-       	<activity android:name=".ModifierProduitActivity" />
+       	<activity android:name="activities.MenuActivity" />
+       	<activity android:name="activities.AjouterProduitActivity" />
+       	<activity android:name="activities.AjouterClientActivity" />
+       	<activity android:name="activities.AfficherCatalogueActivity" />
+       	<activity android:name="activities.ModifierProduitActivity" />
     </application>
 
 </manifest>

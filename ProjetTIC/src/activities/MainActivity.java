@@ -1,4 +1,4 @@
-package fr.tic;
+package activities;
 
 
 import java.io.File;
@@ -13,7 +13,7 @@ import beans.Marque;
 import beans.Produit;
 import configuratormanagement.Configurator;
 import configuratormanagement.XmlCreator;
-
+import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
