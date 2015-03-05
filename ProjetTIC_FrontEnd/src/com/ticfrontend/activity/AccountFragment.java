@@ -54,8 +54,7 @@ public class AccountFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_account, container, false);
 		this.clientActuel = MainActivity.CLIENT_ACTUEL;
 		this.activity = getActivity();
@@ -238,5 +237,4 @@ public class AccountFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);    
 	}
-
 }

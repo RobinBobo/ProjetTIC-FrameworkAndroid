@@ -1,6 +1,8 @@
 package com.ticfrontend.activity;
 
+import java.text.DateFormat;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import com.example.projettic.R;
 import com.ticfrontend.adapter.AvisListAdapter;
@@ -10,6 +12,7 @@ import com.ticfrontend.magasin.Commande;
 import com.ticfrontend.magasin.Panier;
 import com.ticfrontend.magasin.Produit;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -24,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -33,7 +37,9 @@ public class ProductFragment extends Fragment {
 	private Activity activity;
 
 	private static Button boutonAjouterPanier;
-	private Produit product;
+	public static Produit product;
+	
+	private final int nbAvis = 5;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,8 +64,7 @@ public class ProductFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		this.activity.setTitle(R.string.title_fragment_product);
 		Bundle bundle = getArguments();
-		if(bundle != null)
-		{
+		if(bundle != null) {
 			product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
 			populateScreen();
 		}
@@ -147,17 +152,71 @@ public class ProductFragment extends Fragment {
 		((TextView) rootView.findViewById(R.id.NombreVotes)).setText(String.valueOf(tailleListe) + ((tailleListe==1) ? " vote": " votes"));
 
 		// Test liste d'avis
-		testAjoutAvis();
-
+		//testAjoutAvis();
+		testAjoutAvisDansLinearLayout();
+		
+		Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
+		voirPlusAvis.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Fragment fragmentAvis = null;
+				fragmentAvis = new ReviewsFragment();
+				FragmentManager fragmentManager = getFragmentManager();
+				
+				fragmentManager.beginTransaction().replace(R.id.frame_container, fragmentAvis).addToBackStack("tag").commit();
+				
+			}
+		});
 	}
 
-	private void testAjoutAvis(){
+	// Permet de simuler une listView d'avis
+	// Car une listView dans un scrollview --> A bannir, utilisation pas terrible sinon
+	private void testAjoutAvisDansLinearLayout() {
 		List<Avis> listeAvis = product.getListeAvisProduit();
-		//Creation et initialisation de l'Adapter pour les catégories
-		AvisListAdapter ala = new AvisListAdapter(activity, listeAvis);
-		//Récupération du composant ListView
-		ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewAvis);	
-		//Initialisation de la liste avec les données
-		listviewAvis.setAdapter(ala);
+		
+		LinearLayout lv = (LinearLayout) rootView.findViewById(R.id.listeAvis);
+		
+		for(int i = 0; i < nbAvis; i++){
+			View v = new View(activity);
+			LayoutInflater inflater = LayoutInflater.from(activity);
+			v = inflater.inflate(R.layout.single_item_review, null, false);
+			
+			TextView nomClient = (TextView) v.findViewById(R.id.nomClient);
+			RatingBar note = (RatingBar) v.findViewById(R.id.ratingBarAvisClient);
+			TextView dateAvis = (TextView) v.findViewById(R.id.dateAvisClient);
+			TextView titreAvis = (TextView) v.findViewById(R.id.titreAvisClient);
+			TextView descAvis = (TextView) v.findViewById(R.id.descriptionAvisClient);
+			
+			Avis a = listeAvis.get(i);
+			
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
+			
+			nomClient.setText(a.getClient().getNomClient()  + " " + a.getClient().getPrenomClient());
+			note.setRating((float) a.getNote());
+			dateAvis.setText(shortDateFormat.format(a.getDate()));
+			titreAvis.setText(a.getTitre());
+			descAvis.setText(a.getDescription());
+			
+			// Pour séparer les avis avec un espace
+			// TODO Changer la couleur pour un gris ou une fine bar noire peut etre... 
+			// Sinon on peut laisser comme ça, ça rend pas mal quand même
+			LinearLayout separator = new LinearLayout(activity);
+			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 30);
+			separator.setLayoutParams(params);
+			
+			lv.addView(v);
+			lv.addView(separator);
+		}
+		
 	}
+
+//	private void testAjoutAvis(){
+//		List<Avis> listeAvis = product.getListeAvisProduit();
+//		//Creation et initialisation de l'Adapter pour les catégories
+//		AvisListAdapter ala = new AvisListAdapter(activity, listeAvis);
+		//Récupération du composant ListView
+//		ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewAvis);	
+//		//Initialisation de la liste avec les données
+//		listviewAvis.setAdapter(ala);
+//	}
 }
