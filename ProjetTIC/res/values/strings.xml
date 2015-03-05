@@ -32,6 +32,7 @@
     <string name="prixProduit">Prix</string>
     <string name="textDescProduit">Description : </string>
     <string name="descProduit">Description</string>
+    <string name="msgErreur"></string>
     <string name="btnAjoutProduit">Valider</string>
     <string name="titleModifPdt">Entrer l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier :</string>
     <string name="rechIdPdt">Identifiant du produit</string>

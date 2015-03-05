@@ -25,25 +25,30 @@ public class AjouterProduitActivity extends Activity {
 		Bundle b    = getIntent().getExtras();
 		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
 	    System.out.println(monCatalogue);
+	    
+	    final TextView txtMsgErreur = (TextView) findViewById(R.id.msgErreur);
 		
 		final Button ajoutProduit = (Button) findViewById(R.id.btnAjoutProduit);
 		ajoutProduit.setOnClickListener(new OnClickListener() {
 					
 			public void onClick(View v) {
 				boolean valide = false;
+				String msgErreur = "";
 				CharSequence id = ((TextView) findViewById(R.id.idProduit)).getText();
 				CharSequence nom = ((TextView) findViewById(R.id.nomProduit)).getText();
 				CharSequence prix = ((TextView) findViewById(R.id.prixProduit)).getText();
 				CharSequence description = ((TextView) findViewById(R.id.descProduit)).getText();
-				if (id != null && nom != null && prix != null && description != null) {
+				if (!id.toString().matches("") && !nom.toString().matches("") && !prix.toString().matches("") && !description.toString().matches("")) {
 					valide = true;
-				}
+				} else msgErreur = "Veuillez saisir tous les champs";
 				
 				if (valide) {
 					Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
 							description.toString(), new Categorie(), "marque", 0);
 					monCatalogue.ajouterProduitCatalogue(p);
+					msgErreur = "Votre produit a bien été ajouté";
 				}
+				txtMsgErreur.setText(msgErreur);
 			}
 		});
 		
