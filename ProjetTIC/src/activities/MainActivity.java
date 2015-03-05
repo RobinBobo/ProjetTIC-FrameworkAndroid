@@ -1,33 +1,21 @@
 package activities;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import org.xmlpull.v1.XmlPullParserException;
-
-import beans.Categorie;
-import beans.Client;
-import beans.Marque;
-import beans.Produit;
-import configuratormanagement.Configurator;
-import configuratormanagement.XmlCreator;
-import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import beans.Client;
+import beans.Produit;
+import fr.tic.R;
 
 public class MainActivity extends Activity {
 	
@@ -47,9 +35,9 @@ public class MainActivity extends Activity {
 		mesClients = new ListeClients();
 		monCatalogue = new Catalogue();
 
-		mesCategories.findCategories();
+		/*mesCategories.findCategories();
 		mesClients.findClients();
-		monCatalogue.findProduits();
+		monCatalogue.findProduits();*/
 
 		monCatalogue.ajoutObserver(mesClients);
 //		Categorie categoTelephone = new Categorie(0, "Telephone");
