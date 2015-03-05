@@ -4,9 +4,9 @@ import com.example.projettic.R;
 import com.ticfrontend.magasin.Client;
 import com.ticfrontend.model.*;
 import com.ticfrontend.adapter.*;
+import com.ticfrontend.configuratormanagement.Configurator;
+import com.ticfrontend.configuratormanagement.XmlLoader;
 
-import configuratormanagement.Configurator;
-import configuratormanagement.XmlLoader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main1);
 		initSlideMenu();
-
+		
 		// TEST Loading XML //
 		/*
 		Configurator c = new Configurator ();
@@ -66,6 +66,7 @@ public class MainActivity extends Activity {
 		try {
 			x.load(new FileInputStream(xmlToLoad), c);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,24 +77,6 @@ public class MainActivity extends Activity {
 			// on first time display view for first nav item
 			displayView(0);
 		}
-	}
-
-	public void updateSlideMenu(){
-		if(ISCONNECTED){
-			navDrawerItems.remove(3);
-			navDrawerItems.remove(2);
-			navDrawerItems.remove(4);
-			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-			navDrawerItems.add(4, new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
-			navDrawerItems.add(5, new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
-		}else if(!ISCONNECTED){
-			navDrawerItems.remove(3);
-			navDrawerItems.remove(2);
-			navDrawerItems.add(2, new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-			navDrawerItems.add(3, new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-		}
-		navMenuIcons.recycle();		
 	}
 
 	public void initSlideMenu(){
@@ -107,12 +90,10 @@ public class MainActivity extends Activity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
 		// adding nav drawer items to array
-		// Home
+		// Accueil
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 		// Categories
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-
-
 		if(!ISCONNECTED){
 			// Creer un Compte
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
@@ -121,15 +102,17 @@ public class MainActivity extends Activity {
 			// A propos
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}else if(ISCONNECTED){
+			// Mon panier
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-			// What's hot, We  will add a counter here
+			// Mon compte
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
 			// Mes commandes
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
+			// Deconnexion
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+			// A propos
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}
-
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -163,14 +146,12 @@ public class MainActivity extends Activity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 	}
-	/**
-	 * Slide menu item click listener
-	 * */
+	
+	// Slide menu item click listener
 	private class SlideMenuClickListener implements
 	ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
-			// display view for selected nav drawer item
 			displayView(position);
 		}
 	}
@@ -213,27 +194,37 @@ public class MainActivity extends Activity {
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
+		int pos_title=0;
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
+			pos_title = 0;
 			break;
 		case 1:
 			fragment = new CategoryFragment();
+			pos_title = 1;
 			break;
 		case 2:
 		{
-			if(!ISCONNECTED)
+			if(!ISCONNECTED){
 				fragment = new RegisterFragment();
-			else if (ISCONNECTED)
+				pos_title = 2;
+			}
+			else if (ISCONNECTED){
 				fragment = new CartFragment();	
+				pos_title = 4;
+			}
 			break;
 		}
 		case 3:
 		{
-			if(!ISCONNECTED)
+			if(!ISCONNECTED){
 				fragment = new LoginFragment();
+				pos_title = 3;
+			}
 			else if (ISCONNECTED){
 				fragment = new AccountFragment();
+				pos_title = 6;
 			}
 			break;
 		}
@@ -244,8 +235,10 @@ public class MainActivity extends Activity {
 				//				finish();
 				//				startActivity(intent);
 				fragment = new CommandFragment();
+				pos_title = 8;
 			} else {
 				fragment = new AboutFragment();
+				pos_title = 7;
 			}
 			break;
 		case 5:
@@ -254,13 +247,17 @@ public class MainActivity extends Activity {
 				Intent intent = getIntent();
 				finish();
 				startActivity(intent);
+				pos_title = 0;
 			} else {
 				fragment = new AboutFragment();
+				pos_title = 7;
 			}
 			break;
 		case 6:
-			if (ISCONNECTED)
+			if (ISCONNECTED){
 				fragment = new AboutFragment();
+				pos_title = 7;
+			}
 			break;
 		default:
 			break;
@@ -273,7 +270,7 @@ public class MainActivity extends Activity {
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
-			setTitle(navMenuTitles[position]);
+			setTitle(navMenuTitles[pos_title]);
 			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			// error in creating fragment

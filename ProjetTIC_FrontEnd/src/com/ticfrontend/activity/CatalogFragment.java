@@ -53,7 +53,7 @@ public class CatalogFragment extends Fragment {
 				// On change les textview
 				rootView.findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
 				rootView.findViewById(R.id.textListCategorie).setVisibility(View.GONE);
-				rootView.findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
+				//rootView.findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
 				rootView.findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);
 				
 				// Requete de recherche dans la BDD

@@ -6,34 +6,250 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ticfrontend.activity.AccountActivity" >
+    tools:context="com.ticfrontend.activity.LoginActivity" 
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/monCompte"
-        android:layout_width="wrap_content"
+        android:id="@+id/accountTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mon compte" />
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:text="Mon compte" 
+        android:textSize="25dp"
+        />
+        
+        <TextView
+            android:id="@+id/accountLoginUser"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_below="@+id/accountTitle"
+	        android:gravity="center_vertical"
+	        android:text="Login : " 
+	        android:textSize="16dp"
+	        />
 
-    <TextView
-        android:id="@+id/nomClient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/monCompte"
-        android:text="Nom client" />
+        <TextView
+            android:id="@+id/accountMDP1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/accountLoginUser"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginRight="15dp"
+	        android:gravity="center_vertical"
+	        android:text="Mot de passe : " 
+	        android:textSize="16dp"
+	        />
+        
+        
+         <TextView
+            android:id="@+id/accountMDP2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_below="@+id/accountMDP1"
+	        android:gravity="center_vertical"
+	        android:text="Vérification MDP :" 
+	        android:textSize="16dp" 
+            android:visibility="gone"
+            />
+	        
+        
+        
+        
+         <TextView
+            android:id="@+id/accountLastName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_below="@+id/accountMDP2"
+	        android:gravity="center_vertical"
+	        android:text="Nom : " 
+	        android:textSize="16dp"
+	        />
+         
+        <TextView
+            android:id="@+id/accountFirstName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_below="@+id/accountLastName"
+	        android:gravity="center_vertical"
+	        android:text="Prénom : " 
+	        android:textSize="16dp"
+	        />
+        
+        <TextView
+            android:id="@+id/accountAdresse"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_below="@+id/accountFirstName"
+	        android:gravity="center_vertical"
+	        android:text="Adresse postale : " 
+	        android:textSize="16dp"
+	        />
+        
+         <TextView
+            android:id="@+id/accountMail"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="25dp"
+	        android:layout_below="@+id/accountAdresse"
+	        android:gravity="center_vertical"
+	        android:text="Adresse mail : " 
+	        android:textSize="16dp"
+	        />
+         
+         <TextView
+            android:id="@+id/accountSexe"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_marginBottom="30dp"
+	        android:layout_below="@+id/accountMail"
+	        android:gravity="center_vertical"
+	        android:text="Sexe : " 
+	        android:textSize="16dp"
+	        />
+         
 
-    <TextView
-        android:id="@+id/prenomClient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/monCompte"
-        android:layout_toRightOf="@+id/nomClient"
-        android:text="Prenom client" />
+        <EditText
+            android:id="@+id/editTextAccountId"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/accountLoginUser"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
 
-    <TextView
-        android:id="@+id/adresseClient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nomClient"
-        android:text="Adresse client" />
+        <EditText
+            android:id="@+id/editTextAccountPass"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+			android:layout_alignBaseline="@+id/accountMDP1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
 
+        <EditText
+            android:id="@+id/editTextAccountPassVerif"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/accountMDP2"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:id="@+id/editTextAccountLastname"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/accountLastName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:id="@+id/editTextAccountFirstname"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+			android:layout_alignBaseline="@+id/accountFirstName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:id="@+id/editTextAccountAdresse"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+			android:layout_alignBaseline="@+id/accountAdresse"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
+                
+                
+        <EditText
+            android:id="@+id/editTextAccountMail"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+			android:layout_alignBaseline="@+id/accountMail"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:textSize="16dp" 
+            android:visibility="gone"
+            />
+
+	<Button
+	    android:id="@+id/boutonValider"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/accountSexe"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:text="Modifier des informations"
+	    android:textSize="16dp" />
+
+	<RadioGroup
+	    android:id="@+id/radioAccountSexe"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/accountSexe"
+	    android:layout_marginLeft="100dp"
+	    android:checkedButton="@+id/radioHomme"
+	    android:orientation="horizontal" 
+        android:visibility="gone"
+		>
+
+	    <RadioButton
+	        android:id="@+id/radioAccountFemme"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Femme"
+	        android:textSize="14dp" />
+
+	    <RadioButton
+	        android:id="@+id/radioAccountHomme"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Homme"
+	        android:textSize="14dp" />
+	</RadioGroup>
+    
 </RelativeLayout>
+
+
+
