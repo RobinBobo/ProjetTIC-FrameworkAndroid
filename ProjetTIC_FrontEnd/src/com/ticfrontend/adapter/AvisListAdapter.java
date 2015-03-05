@@ -30,7 +30,7 @@ public class AvisListAdapter extends BaseAdapter {
 		this.inflater = LayoutInflater.from(context);
 	}
 
-	public void updateProduct(List<Avis> avis) {
+	public void updateAvis(List<Avis> avis) {
 		ThreadPreconditions.checkOnMainThread();
 		this.avis = avis;
 		notifyDataSetChanged();
