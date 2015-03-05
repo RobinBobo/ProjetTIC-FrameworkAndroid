@@ -8,6 +8,9 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,11 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       	<activity android:name="activities.MenuActivity" />
-       	<activity android:name="activities.AjouterProduitActivity" />
-       	<activity android:name="activities.AjouterClientActivity" />
-       	<activity android:name="activities.AfficherCatalogueActivity" />
-       	<activity android:name="activities.ModifierProduitActivity" />
+        <activity android:name="activities.MenuActivity" />
+        <activity android:name="activities.AjouterProduitActivity" />
+        <activity android:name="activities.AjouterClientActivity" />
+        <activity android:name="activities.AfficherCatalogueActivity" />
+        <activity android:name="activities.ModifierProduitActivity" />
     </application>
 
 </manifest>
