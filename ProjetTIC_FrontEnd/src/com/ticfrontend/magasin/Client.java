@@ -81,27 +81,15 @@ public class Client implements Serializable {
 	public void setSexeClient(boolean sexeClient) {this.sexeClient = sexeClient;}
 	public void setListeCommandesClient(List<Commande> listeCommandesClient) {this.listeCommandesClient = listeCommandesClient;}
 
-	public String getLogin() {
-		return login;
-	}
+	public String getLogin() {return login;}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+	public void setLogin(String login) {this.login = login;}
 
-	public String getAdresseMail() {
-		return adresseMail;
-	}
+	public String getAdresseMail() {return adresseMail;}
 
-	public void setAdresseMail(String adresseMail) {
-		this.adresseMail = adresseMail;
-	}
+	public void setAdresseMail(String adresseMail) {this.adresseMail = adresseMail;}
 
-	public String getMdpClient() {
-		return mdpClient;
-	}
+	public String getMdpClient() {return mdpClient;}
 
-	public void setMdpClient(String mdpClient) {
-		this.mdpClient = mdpClient;
-	}
+	public void setMdpClient(String mdpClient) {this.mdpClient = mdpClient;}
 }

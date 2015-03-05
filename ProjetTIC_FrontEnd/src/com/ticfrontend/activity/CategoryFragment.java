@@ -26,11 +26,13 @@ public class CategoryFragment extends Fragment {
 
 	public static final String EXTRA_KEY_CATEGROY = "EXTRA_KEY_CATEGORY";
 	private View rootView;
+	private Activity activity;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
-
+		this.activity = getActivity();
+		
 		init();
 		
 		return rootView;
@@ -39,11 +41,10 @@ public class CategoryFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		this.activity.setTitle(R.string.title_fragment_category);
 	}
 
 	public void init(){
-		
-
 		testAjoutItemsListCategorie();
 	}
 

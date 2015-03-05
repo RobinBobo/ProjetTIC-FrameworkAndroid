@@ -2,6 +2,7 @@ package com.ticfrontend.magasin;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Produit implements Serializable{
@@ -93,6 +94,33 @@ public class Produit implements Serializable{
 		return listProduct;
 	}
 
+	public static HashMap<Produit,Integer> getAHashMapOfProductsNQuantity(){
+		HashMap<Produit,Integer> listProduct = new HashMap<Produit,Integer>();
+		List<Avis> la = new ArrayList<Avis>();
+		List<Avis> la2 = new ArrayList<Avis>();
+		la = Avis.getAListOfReviews1();
+		la2 = Avis.getAListOfReviews2();
+		
+		Categorie multimedia = new Categorie(1, "Multimédia");
+		
+		listProduct.put(new Produit(1, "A Produit 1", 19.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),3);
+		listProduct.put(new Produit(2, "B Produit 2", 12.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),1);;
+		listProduct.put(new Produit(3, "C Produit 3", 15.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),2);
+		listProduct.put(new Produit(4, "E Produit 4", 12.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),9);
+		listProduct.put(new Produit(5, "G Produit 5", 29.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),1);
+		listProduct.put(new Produit(6, "V Produit 6", 69.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),4);
+		listProduct.put(new Produit(7, "Z Produit 7", 119.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),7);
+		listProduct.put(new Produit(8, "T Produit 8", 19.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),1);
+		listProduct.put(new Produit(9, "D Produit 9", 619.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),1);
+		listProduct.put(new Produit(10, "F Produit 10", 2419.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),8);
+		listProduct.put(new Produit(11, "Q Produit 11", 20.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),1);
+		listProduct.put(new Produit(12, "K Produit 12", 9.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2),2);
+		listProduct.put(new Produit(13, "G Produit 13", 1.99, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),3);
+		listProduct.put(new Produit(14, "H Produit 14", 2.00, multimedia, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la),4);
+		
+		return listProduct;
+	}
+	
 	public int getQuantite() {
 		return quantite;
 	}

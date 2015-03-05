@@ -5,13 +5,20 @@ import java.util.List;
 import com.example.projettic.R;
 import com.ticfrontend.adapter.AvisListAdapter;
 import com.ticfrontend.magasin.Avis;
+import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Commande;
+import com.ticfrontend.magasin.Panier;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ListFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +32,7 @@ public class ProductFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 
-	private static TextView tv;
-	private static Button b;
+	private static Button boutonAjouterPanier;
 	private Produit product;
 
 	@Override
@@ -35,6 +41,8 @@ public class ProductFragment extends Fragment {
 		this.rootView = inflater.inflate(R.layout.activity_product, container, false);
 		this.activity = this.getActivity();
 		
+		init();
+
 		return rootView;
 	}
 
@@ -48,7 +56,7 @@ public class ProductFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-
+		this.activity.setTitle(R.string.title_fragment_product);
 		Bundle bundle = getArguments();
 		if(bundle != null)
 		{
@@ -57,8 +65,37 @@ public class ProductFragment extends Fragment {
 		}
 	}
 	public void init(){
-		//		tv = (TextView) rootView.findViewById(R.id.availableQuantity);	
-		//		b = (Button) rootView.findViewById(R.id.boutonAjouter);  
+		boutonAjouterPanier = (Button) rootView.findViewById(R.id.boutonAjouter); 
+		boutonAjouterPanier.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Passer commande
+				if(MainActivity.ISCONNECTED){
+//					if(CartFragment.PANIER_CLIENT == null){
+//						Fragment fragment = new HomeFragment();
+//						FragmentManager fragmentManager = getFragmentManager();
+//						fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
+//						CartFragment.PANIER_CLIENT = new Panier();
+//					}
+
+					CartFragment.PANIER_CLIENT.ajouterDansPanier(product, 1);
+
+				}else
+				{
+					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+					builder.setMessage("Vous devez vous connecter.");
+					builder.setCancelable(false);
+					builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog alert = builder.create();
+					alert.show();
+				}
+
+			}
+		});
 	}
 
 	private void populateScreen() {

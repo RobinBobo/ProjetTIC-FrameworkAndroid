@@ -1,5 +1,7 @@
 package com.ticfrontend.adapter;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +20,8 @@ import com.ticfrontend.thread.ThreadPreconditions;
 public class CommandeListAdapter extends BaseAdapter{
 
 	private List<Commande> commandes = Collections.emptyList();
-	
+	private SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yy"); 
+    
 	private LayoutInflater inflater;
 	
 	public CommandeListAdapter(Activity activity, List<Commande> commandes) {
@@ -61,12 +64,13 @@ public class CommandeListAdapter extends BaseAdapter{
 	    } else {
 	    	layoutItem = (LinearLayout) convertView;
 	    }
-	    
-	    
+	  
 	    TextView title = (TextView) layoutItem.findViewById(R.id.titleCommande);
+	    TextView date = (TextView) layoutItem.findViewById(R.id.dateCommande);
 	    TextView price = (TextView) layoutItem.findViewById(R.id.priceCommande);
-	    
+	   
 	    title.setText("Commande n°" + String.valueOf(commandes.get(position).getIdCommande()));
+	    date.setText(formater.format(commandes.get(position).getDateCommande()));
 	    price.setText(commandes.get(position).getPrixTotalCommandeToString() + " €");
 	    
 	    return layoutItem;

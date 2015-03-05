@@ -19,12 +19,19 @@
     <string name="textEditLoginUser">Nom d\'utilisateur</string>
     <string name="textEditPassUser">Mot de passe</string>
     <string name="textButtonValiderLogin">Connexion</string>
-    <string name="title_activity_account">Mon compte</string>
-    <string name="title_activity_cart">Mon Panier</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="title_activity_login">Connexion</string>
-    <string name="title_activity_register">S\'enregistrer</string>
-    <string name="title_activity_product">ProductActivity</string>
+    
+    <string name="title_fragment_account">Mon compte</string>
+    <string name="title_fragment_cart">Mon Panier</string>
+    <string name="title_fragment_about">À propos</string>
+    <string name="title_fragment_login">Connexion</string>
+    <string name="title_fragment_register">Créer un compte</string>
+    <string name="title_fragment_product">Détails du produit</string>
+    <string name="title_fragment_product_list">Liste des produits</string>
+    <string name="title_fragment_category">Catégories</string>
+    <string name="title_fragment_home">Accueil</string>
+    <string name="title_fragment_order">Commandes</string>
+    
+    
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
 

@@ -2,6 +2,7 @@ package com.ticfrontend.activity;
 
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Panier;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
@@ -63,6 +64,7 @@ public class LoginFragment extends Fragment {
 					Intent intent = activity.getIntent();
 					Client c = new Client(login.getText().toString(), "John");
 					MainActivity.CLIENT_ACTUEL = c;
+					CartFragment.PANIER_CLIENT = new Panier();
 					intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
 					activity.finish();
 					startActivity(intent);

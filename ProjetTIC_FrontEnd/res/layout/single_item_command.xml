@@ -22,9 +22,17 @@
 	    android:layout_marginLeft="20dp"
 	    android:textStyle="bold"
 	    android:textSize="18dp"
-	    android:text="Produit"
+	    android:text="Commande No"
 	    />
-		
+
+	<TextView
+	    android:id="@+id/dateCommande"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="5dp"
+	    android:text="01/01/01"
+	    android:textSize="13dp" />
+
 	<TextView 
 	    android:id="@+id/priceCommande"
 		android:layout_width="match_parent"

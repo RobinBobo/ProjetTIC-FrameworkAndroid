@@ -24,12 +24,13 @@ public class HomeFragment extends Fragment {
                
         return rootView;
     }
-	
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-
+		this.activity.setTitle(R.string.title_fragment_home);
+		
 		Intent intent = activity.getIntent();
 		//client = intent.getStringExtra(LoginFragment.EXTRA_KEY_USER);
 		

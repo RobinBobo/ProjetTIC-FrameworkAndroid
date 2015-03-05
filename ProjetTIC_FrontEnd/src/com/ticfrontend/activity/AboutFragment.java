@@ -27,4 +27,11 @@ public class AboutFragment extends Fragment {
         super.onCreate(savedInstanceState);
         
     }
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
+		super.onActivityCreated(savedInstanceState);
+		this.activity.setTitle(R.string.title_fragment_about);
+	}		
 }

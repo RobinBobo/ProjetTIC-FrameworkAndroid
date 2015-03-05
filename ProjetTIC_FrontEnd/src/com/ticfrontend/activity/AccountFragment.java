@@ -3,6 +3,7 @@ package com.ticfrontend.activity;
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 public class AccountFragment extends Fragment {
 
 	private View rootView;
+	private Activity activity;
 
 	private Client clientActuel = null;
 	
@@ -49,7 +51,6 @@ public class AccountFragment extends Fragment {
 	private RadioButton radioButtonH = null;
 	
 	public AccountFragment() {
-
 	}
 
 	@Override
@@ -57,6 +58,7 @@ public class AccountFragment extends Fragment {
 			Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_account, container, false);
 		this.clientActuel = MainActivity.CLIENT_ACTUEL;
+		this.activity = getActivity();
 		
 		login = (TextView) rootView.findViewById(R.id.accountLoginUser);
 		nomClient = (TextView) rootView.findViewById(R.id.accountLastName);
@@ -71,7 +73,14 @@ public class AccountFragment extends Fragment {
 		
 		return rootView;
 	}
-
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
+		super.onActivityCreated(savedInstanceState);
+		this.activity.setTitle(R.string.title_fragment_account);
+	}
+	
 	private void init() {
 		login.setText("Login : " + clientActuel.getLogin());
 		mdp1.setText("Mot de passe : " + clientActuel.getMdpClient());

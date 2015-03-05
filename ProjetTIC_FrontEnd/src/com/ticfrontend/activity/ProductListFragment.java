@@ -37,6 +37,7 @@ public class ProductListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
         this.activity = this.getActivity();
+        this.activity.setTitle("Liste des Produits");
         init();
         testAjoutItemsListProduct();
         

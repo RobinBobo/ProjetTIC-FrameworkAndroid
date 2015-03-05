@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,6 @@ public class MainActivity extends Activity {
 
 		 */
 		if (savedInstanceState == null) {
-			// on first time display view for first nav item
 			displayView(0);
 		}
 	}
@@ -132,12 +132,15 @@ public class MainActivity extends Activity {
 				R.string.app_name // nav drawer close - description for accessibility
 				) {
 			public void onDrawerClosed(View view) {
+				super.onDrawerClosed(view);
 				getActionBar().setTitle(mTitle);
 				// calling onPrepareOptionsMenu() to show action bar icons
 				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				adapter.updateCounter();
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
@@ -230,11 +233,7 @@ public class MainActivity extends Activity {
 		}
 		case 4:
 			if (ISCONNECTED){
-				//				ISCONNECTED = false;
-				//				Intent intent = getIntent();
-				//				finish();
-				//				startActivity(intent);
-				fragment = new CommandFragment();
+				fragment = new OrderFragment();
 				pos_title = 8;
 			} else {
 				fragment = new AboutFragment();
@@ -265,13 +264,14 @@ public class MainActivity extends Activity {
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
-
+			
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
 			setTitle(navMenuTitles[pos_title]);
 			mDrawerLayout.closeDrawer(mDrawerList);
+			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
+
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
