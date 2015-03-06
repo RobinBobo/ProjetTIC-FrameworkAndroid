@@ -33,20 +33,24 @@ public class ProductListFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 	private List<Produit> listProduit;
+	private int title = R.string.title_fragment_product_list;
 
 	// TODO
 	// private void ajoutListeProduit(Param)
 	// Param : type de liste des produits à afficher 
 	// exemple : liste des produits en promotion, des nouveautés, des offres spéciales,..
-	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales*/){
+	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales,*/ int title){
+		this.listProduit = Produit.getAListOfProducts();
+		this.title = title;
+	}
+	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales,*/){
 		this.listProduit = Produit.getAListOfProducts();
 	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
 		this.activity = this.getActivity();
-		this.activity.setTitle(R.string.title_fragment_product_list);
+		this.activity.setTitle(title);
 		init();
 		testAjoutItemsListProduct();
 
@@ -58,10 +62,7 @@ public class ProductListFragment extends Fragment {
 		search.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) { 
-				// On change les textview
-				//				rootView.findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);				
-				//				rootView.findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
-				//						
+				// TODO: faire la recherche de produit (Filter)				
 			}
 		});	
 
@@ -92,7 +93,6 @@ public class ProductListFragment extends Fragment {
 						return product1.getNomProduit().compareTo(product2.getNomProduit());
 					}
 				});
-
 				adapter.updateProduct(products);
 			}
 		});

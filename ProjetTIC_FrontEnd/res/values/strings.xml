@@ -30,6 +30,11 @@
     <string name="title_fragment_category">Catégories</string>
     <string name="title_fragment_home">Accueil</string>
     <string name="title_fragment_order">Mes commandes</string>
+    <string name="title_productList_sale">Nos promotions</string>
+    <string name="title_productList_specialOffer">Nos offres spéciales</string>
+    <string name="title_productList_news">Nos nouveautés</string>
+    <string name="title_productList_DoNotMiss">À ne pas manquer</string>
+    
     
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
