@@ -5,16 +5,5 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="D:/Logiciels/Android/android-sdk"/>
-	<classpathentry kind="lib" path="D:/Logiciels/Android/sdk"/>
-	<classpathentry kind="lib" path="D:/Logiciels/Android/android-sdk/platforms/android-14/android.jar" sourcepath="D:/Logiciels/Android/sdk/sources/android-14">
-		<attributes>
-			<attribute name="javadoc_location" value="http://developer.android.com/reference/"/>
-		</attributes>
-		<accessrules>
-			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
-		</accessrules>
-	</classpathentry>
-	<classpathentry kind="src" path="/ProjetTIC_BackEnd"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

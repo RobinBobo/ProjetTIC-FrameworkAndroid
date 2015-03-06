@@ -31,11 +31,15 @@ public class ReviewsFragment  extends Fragment {
 	
 	private Produit product = null;
 	
+	
+	public ReviewsFragment(Produit prd){
+		this.product = prd;
+	}
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_reviews, container, false);
         this.activity = this.getActivity();
-        this.product = ProductDetailsFragment.product;
+       // this.product = ProductDetailsFragment.product;
         this.listeAvis = product.getListeAvisProduit();
 		
         init();
