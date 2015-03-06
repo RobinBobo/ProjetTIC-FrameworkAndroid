@@ -40,6 +40,8 @@ public class ProductFragment extends Fragment {
 	public static Produit product;
 	
 	private final int nbAvis = 5;
+	
+	List<Avis> listeAvis = null;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +68,7 @@ public class ProductFragment extends Fragment {
 		Bundle bundle = getArguments();
 		if(bundle != null) {
 			product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
+			listeAvis = product.getListeAvisProduit();
 			populateScreen();
 		}
 	}
@@ -141,9 +144,9 @@ public class ProductFragment extends Fragment {
 
 		//Note produit
 		double noteGenerale = 0;
-		int tailleListe = product.getListeAvisProduit().size();
+		int tailleListe = listeAvis.size();
 
-		for(Avis a : product.getListeAvisProduit())
+		for(Avis a : listeAvis)
 			noteGenerale += a.getNote();
 
 		noteGenerale = noteGenerale/tailleListe;
@@ -152,46 +155,52 @@ public class ProductFragment extends Fragment {
 		((TextView) rootView.findViewById(R.id.NombreVotes)).setText(String.valueOf(tailleListe) + ((tailleListe==1) ? " vote": " votes"));
 
 		// Test liste d'avis
-		//testAjoutAvis();
-		testAjoutAvisDansLinearLayout();
+		testAjoutAvis();
 		
+		// Quand on click sur Voir tous les avis, on lance un nouveau fragment qui comporte une listview avec tous les avis
+		// Permet de trier aussi
 		Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
-		voirPlusAvis.setOnClickListener(new Button.OnClickListener() {
+		voirPlusAvis.setText("Voir tous les avis (" + listeAvis.size() + ")");
+		voirPlusAvis.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Fragment fragmentAvis = null;
 				fragmentAvis = new ReviewsFragment();
 				FragmentManager fragmentManager = getFragmentManager();
-				
 				fragmentManager.beginTransaction().replace(R.id.frame_container, fragmentAvis).addToBackStack("tag").commit();
-				
 			}
 		});
 	}
 
 	// Permet de simuler une listView d'avis
 	// Car une listView dans un scrollview --> A bannir, utilisation pas terrible sinon
-	private void testAjoutAvisDansLinearLayout() {
-		List<Avis> listeAvis = product.getListeAvisProduit();
-		
+	private void testAjoutAvis() {
 		LinearLayout lv = (LinearLayout) rootView.findViewById(R.id.listeAvis);
 		
 		int nbEnd = nbAvis;
+		
+		TextView nomClient = null;
+		RatingBar note = null;
+		TextView dateAvis = null;
+		TextView titreAvis = null;
+		TextView descAvis = null;
 		
 		// Si la liste de comporte pas assez d'avis, on change le nombre à afficher avec la taille de la liste
 		if(nbAvis > listeAvis.size())
 			nbEnd = listeAvis.size();
 		
+		
+		// On ajoute chaque avis séparemment, sans utiliser d'adapter car on peuple un linearlayout et non une listview
 		for(int i = 0; i < nbEnd; i++){
 			View v = new View(activity);
 			LayoutInflater inflater = LayoutInflater.from(activity);
 			v = inflater.inflate(R.layout.single_item_review, null, false);
 			
-			TextView nomClient = (TextView) v.findViewById(R.id.nomClient);
-			RatingBar note = (RatingBar) v.findViewById(R.id.ratingBarAvisClient);
-			TextView dateAvis = (TextView) v.findViewById(R.id.dateAvisClient);
-			TextView titreAvis = (TextView) v.findViewById(R.id.titreAvisClient);
-			TextView descAvis = (TextView) v.findViewById(R.id.descriptionAvisClient);
+			nomClient = (TextView) v.findViewById(R.id.nomClient);
+			note = (RatingBar) v.findViewById(R.id.ratingBarAvisClient);
+			dateAvis = (TextView) v.findViewById(R.id.dateAvisClient);
+			titreAvis = (TextView) v.findViewById(R.id.titreAvisClient);
+			descAvis = (TextView) v.findViewById(R.id.descriptionAvisClient);
 			
 			Avis a = listeAvis.get(i);
 			
@@ -210,19 +219,11 @@ public class ProductFragment extends Fragment {
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 30);
 			separator.setLayoutParams(params);
 			
+			// On ajoute l'avis en cours
 			lv.addView(v);
+			// On ajoute un séparateur pour que tous les avis ne soient pas collés
 			lv.addView(separator);
 		}
 		
 	}
-
-//	private void testAjoutAvis(){
-//		List<Avis> listeAvis = product.getListeAvisProduit();
-//		//Creation et initialisation de l'Adapter pour les catégories
-//		AvisListAdapter ala = new AvisListAdapter(activity, listeAvis);
-		//Récupération du composant ListView
-//		ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewAvis);	
-//		//Initialisation de la liste avec les données
-//		listviewAvis.setAdapter(ala);
-//	}
 }

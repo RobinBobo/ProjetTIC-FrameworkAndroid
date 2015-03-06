@@ -10,6 +10,7 @@
     tools:context="com.ticfrontend.activity.CartActivity" >
 
     <TextView
+        android:id="@+id/titleReviews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
