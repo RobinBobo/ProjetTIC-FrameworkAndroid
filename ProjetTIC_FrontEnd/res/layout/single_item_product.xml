@@ -34,6 +34,7 @@
 		    android:id="@+id/descProduct"
 			android:layout_width="wrap_content"
 		 	android:layout_height="wrap_content"
+		 	android:maxWidth="200dp"
 		    android:textSize="14dp"
 		    android:textStyle="italic"
 		    android:text="Début de description du produit"

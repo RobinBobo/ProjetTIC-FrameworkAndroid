@@ -34,6 +34,7 @@
 		    android:id="@+id/descProduct"
 			android:layout_width="wrap_content"
 		 	android:layout_height="wrap_content"
+		 	android:maxWidth="200dp"
 		 	android:layout_marginBottom="5dp"
 		    android:textSize="14dp"
 		    android:textStyle="italic"
@@ -55,9 +56,9 @@
 
 	<TextView 
 	    android:id="@+id/priceProduct"
-		android:layout_width="wrap_content"
-	 	android:layout_height="wrap_content"
-	 	android:layout_gravity="right|center_vertical"
+		android:layout_width="match_parent"
+	 	android:layout_height="match_parent"
+	 	android:gravity="right|center_vertical"
 	    android:text="1,99 €"
 	    android:textSize="16dp"
 	    />

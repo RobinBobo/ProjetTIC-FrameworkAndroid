@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.example.projettic.R;
 import com.ticfrontend.adapter.ProductListAdapter;
+import com.ticfrontend.comparator.ProductNameComparator;
 import com.ticfrontend.comparator.ProductPriceComparator;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
@@ -87,12 +88,7 @@ public class ProductListFragment extends Fragment {
 				ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
 				ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
 				List<Produit> products = adapter.getProducts();
-				Collections.sort(products, new Comparator<Produit>() {
-					@Override
-					public int compare(Produit product1, Produit product2) {
-						return product1.getNomProduit().compareTo(product2.getNomProduit());
-					}
-				});
+				Collections.sort(products, new ProductNameComparator());
 				adapter.updateProduct(products);
 			}
 		});

@@ -1,5 +1,7 @@
 package com.ticfrontend.activity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -21,6 +23,7 @@ import com.ticfrontend.adapter.AvisListAdapter;
 import com.ticfrontend.adapter.ProductListAdapter;
 import com.ticfrontend.comparator.ProductPriceComparator;
 import com.ticfrontend.comparator.ReviewDateComparator;
+import com.ticfrontend.comparator.ReviewNoteComparator;
 import com.ticfrontend.magasin.Avis;
 import com.ticfrontend.magasin.Produit;
 
@@ -63,6 +66,16 @@ public class ReviewsFragment  extends Fragment {
     		}
  		});
     	
+    	try {
+    		listeAvis.get(0).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2010"));
+    		listeAvis.get(1).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2008"));
+    		listeAvis.get(2).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2006"));
+			listeAvis.get(3).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2000"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     	Button sortNote = (Button) rootView.findViewById(R.id.buttonSortNote);
     	sortNote.setOnClickListener(new OnClickListener() {
     		@Override
@@ -71,14 +84,7 @@ public class ReviewsFragment  extends Fragment {
     			ListView list = (ListView) rootView.findViewById(R.id.listviewReviews);
     			AvisListAdapter adapter = (AvisListAdapter) list.getAdapter();
     			List<Avis> listeAllAvis = adapter.getAvis();
-    			Collections.sort(listeAllAvis, new Comparator<Avis>() {
-    		        @Override
-    		        public int compare(Avis avis1, Avis avis2) {
-    		        	int res = (int) (avis1.getNote() - avis2.getNote());
-    		        	return res;
-    		        }
-    		    });
-    			
+    			Collections.sort(listeAllAvis, new ReviewNoteComparator());
     			adapter.updateAvis(listeAllAvis);
  			}
  		});

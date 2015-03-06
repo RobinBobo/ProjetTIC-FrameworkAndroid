@@ -1,7 +1,9 @@
 package com.ticfrontend.activity;
 
 import com.example.projettic.R;
+import com.ticfrontend.magasin.Avis;
 import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Produit;
 import com.ticfrontend.model.*;
 import com.ticfrontend.adapter.*;
 import com.ticfrontend.configuratormanagement.Configurator;
@@ -12,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -51,7 +54,10 @@ public class MainActivity extends Activity {
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 	
-
+	
+	public static Produit PRODUITBETA = null;
+	public static String WEBSITENAMEBETA = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,21 +65,27 @@ public class MainActivity extends Activity {
 		initSlideMenu();
 		
 		// TEST Loading XML //
-				/*
+				
 				Configurator c = new Configurator ();
 				File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 				XmlLoader x = new XmlLoader ();
-				Produit pXML = new Produit();
-
+				PRODUITBETA = new Produit();
+				
+				
 				try {
-					x.load(new FileInputStream(xmlToLoad), c, pXML);
+					x.load(new FileInputStream(xmlToLoad), c, PRODUITBETA);
 					System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 					Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		*/
+		
+				Avis a = new Avis();
+				List<Avis> avisBeta = a.getAListOfReviews1();
+				PRODUITBETA.setListeAvisProduit(avisBeta);
+				WEBSITENAMEBETA = c.getWebsiteName();
+				
 		if (savedInstanceState == null) {
 			displayView(0);
 		}

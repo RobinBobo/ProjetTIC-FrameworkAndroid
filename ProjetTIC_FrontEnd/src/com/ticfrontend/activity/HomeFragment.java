@@ -26,6 +26,10 @@ public class HomeFragment extends Fragment {
 			Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_home, container, false);
 		this.activity = this.getActivity();
+		TextView title = (TextView) rootView.findViewById(R.id.textWelcome);
+		
+		title.setText("Bienvenue sur " + MainActivity.WEBSITENAMEBETA);
+		
 		init();
 		return rootView;
 	}
@@ -36,6 +40,8 @@ public class HomeFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		this.activity.setTitle(R.string.title_fragment_home);
 
+		
+		
 		//Intent intent = activity.getIntent();
 		//client = intent.getStringExtra(LoginFragment.EXTRA_KEY_USER);
 
