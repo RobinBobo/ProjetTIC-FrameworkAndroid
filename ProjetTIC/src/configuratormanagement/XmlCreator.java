@@ -11,6 +11,11 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
+import beans.Categorie;
+import beans.Client;
+import beans.Marque;
+import beans.Produit;
+
 import android.util.Log;
 
 public class XmlCreator {
@@ -18,7 +23,7 @@ public class XmlCreator {
 	private final static String NAMESPACE = "";
 	private String text;
 
-	public void create (Configurator config, File newxmlfile) throws XmlPullParserException, IllegalArgumentException, IllegalStateException, IOException {
+	public void create (Configurator config, Produit p, File newxmlfile) throws XmlPullParserException, IllegalArgumentException, IllegalStateException, IOException {
 
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance(
 				System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
@@ -44,16 +49,14 @@ public class XmlCreator {
 		serializer.setPrefix("", NAMESPACE);
 
 		// or writing can be delegate to specialized functions
-		writeLine(serializer, "isSoppingCart", Boolean.toString(config.getShoppingCart()));
-		writeLine(serializer, "customerNotice", Boolean.toString(config.getCustomerNotice()));
-		writeLine(serializer, "order", Boolean.toString(config.getOrder()));
-		writeLine(serializer, "websiteName",config.getWebsiteName());
+		addConfiguration(serializer, config);
+		addProduct(serializer, p); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
 
 		// this will ensure that output is flushed and prevent from writing to serializer
 		serializer.endDocument();
 		serializer.flush();
 		fileos.close();
-	}
+	}	
 
 	public void writeLine(XmlSerializer serializer, String tag, String data)
 			throws IOException {
@@ -62,4 +65,55 @@ public class XmlCreator {
 		serializer.endTag(NAMESPACE, tag);
 		serializer.text("\n");
 	}	
+
+	public void addCustomer ( XmlSerializer serializer, Client c) throws IllegalArgumentException, IllegalStateException, IOException {			
+		serializer.startTag(NAMESPACE, "Client");
+		writeLine(serializer, "id", String.valueOf(c.getIdClient()) );
+		writeLine(serializer, "nom", c.getNomClient());
+		writeLine(serializer, "prenom", c.getPrenomClient() );
+		writeLine(serializer, "adresse", c.getAdresseClient());
+		writeLine(serializer, "sexe", Boolean.toString(c.getSexeClient()));
+		serializer.endTag(NAMESPACE, "Client");
+		serializer.text("\n");
+	}
+
+	public void addCategory ( XmlSerializer serializer, Categorie c) throws IllegalArgumentException, IllegalStateException, IOException {			
+		serializer.startTag(NAMESPACE, "Categorie");
+		writeLine(serializer, "id", String.valueOf(c.getIdCategorie()));
+		writeLine(serializer, "nom", c.getNomCategorie());	
+		serializer.endTag(NAMESPACE, "Categorie");
+		serializer.text("\n");
+	}
+
+	public void addBrand( XmlSerializer serializer, Marque m) throws IllegalArgumentException, IllegalStateException, IOException {			
+		serializer.startTag(NAMESPACE, "Marque");
+		writeLine(serializer, "id", String.valueOf(m.getIdMarque()));
+		writeLine(serializer, "nom", m.getNomMarque());	
+		serializer.endTag(NAMESPACE, "Marque");
+		serializer.text("\n");
+	}
+
+	public void addProduct( XmlSerializer serializer, Produit p) throws IllegalArgumentException, IllegalStateException, IOException {		
+		//Quid Categorie ??
+		serializer.startTag(NAMESPACE, "Produit");
+		writeLine(serializer, "id", String.valueOf(p.getIdProduit()));
+		writeLine(serializer, "nom", p.getNomProduit());
+		writeLine(serializer, "prix", String.valueOf(p.getPrixProduit()));
+		writeLine(serializer, "description", p.getDescriptionProduit());
+		writeLine(serializer, "marque", p.getMarqueProduit());
+		writeLine(serializer, "stock", String.valueOf(p.getStockProduit()));
+		writeLine(serializer, "Categorie",p.getCategorieProduit().getNomCategorie());
+		serializer.endTag(NAMESPACE, "Produit");
+		serializer.text("\n");
+	}
+
+	public void addConfiguration (XmlSerializer serializer, Configurator c) throws IOException {
+		serializer.startTag(NAMESPACE, "Configuration");
+		writeLine(serializer, "isSoppingCart", Boolean.toString(c.getShoppingCart()));
+		writeLine(serializer, "customerNotice", Boolean.toString(c.getCustomerNotice()));
+		writeLine(serializer, "order", Boolean.toString(c.getOrder()));
+		writeLine(serializer, "websiteName",c.getWebsiteName());
+		serializer.endTag(NAMESPACE, "Configuration");
+		serializer.text("\n");
+	}
 }

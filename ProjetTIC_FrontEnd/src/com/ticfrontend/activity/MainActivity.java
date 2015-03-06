@@ -59,21 +59,21 @@ public class MainActivity extends Activity {
 		initSlideMenu();
 		
 		// TEST Loading XML //
-		/*
-		Configurator c = new Configurator ();
-		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
-		XmlLoader x = new XmlLoader ();
+				/*
+				Configurator c = new Configurator ();
+				File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+				XmlLoader x = new XmlLoader ();
+				Produit pXML = new Produit();
 
-		try {
-			x.load(new FileInputStream(xmlToLoad), c);
-			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
-			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		 */
+				try {
+					x.load(new FileInputStream(xmlToLoad), c, pXML);
+					System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+					Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		*/
 		if (savedInstanceState == null) {
 			displayView(0);
 		}

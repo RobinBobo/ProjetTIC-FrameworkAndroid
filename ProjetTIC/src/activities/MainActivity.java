@@ -61,33 +61,35 @@ public class MainActivity extends Activity {
 //				categoTelephone, "Sony", 10));
 
 		// Test Parser XML
-		/*
-				Configurator c = new Configurator();
-				Configurator c2 = new Configurator();
-				c.setShoppingCart(true);
-				c.setCustomerNotice(true);
-				c.setOrder(false);
-				c.setWebsiteName("SiteDeLaMort");	
-				
-				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
+				/*
+						Configurator c = new Configurator();			
+						c.setShoppingCart(true);
+						c.setCustomerNotice(true);
+						c.setOrder(false);
+						c.setWebsiteName("SiteDeLaMort");	
+						Categorie cXML = new Categorie(0, "Salle de bain");
+						Produit pXML = new Produit(0, "Tapis", 38, "Tapis de salle de bain", "Michelin", 100);
+						pXML.setCategorieProduit(cXML);
+						
+						File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
 
-				try {
-					XmlCreator x = new XmlCreator ();
-					x.create(c,newxmlfile);			
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (XmlPullParserException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		*/
+						try {
+							XmlCreator x = new XmlCreator ();
+							x.create(c,pXML,newxmlfile);			
+						} catch (IllegalArgumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalStateException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (XmlPullParserException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				*/
 		// Test Catégorie et Produit
 
 
