@@ -40,7 +40,7 @@ public class Categorie implements Parcelable{
 		if (!this.o_produitsCategorie.contains(theProduit)) {
 			this.o_produitsCategorie.add(theProduit);
 			theProduit.setCategorieProduit(this);
-			//DAOFactory.getCategorieDAO().update(this);
+			DAOFactory.getCategorieDAO().update(this);
 		} else {
 			// TODO : generate error "Already exists"
 		}
@@ -50,7 +50,7 @@ public class Categorie implements Parcelable{
 	public void supprimerProduitCategorie(Produit theProduit) {
 		if (this.o_produitsCategorie.contains(theProduit)) {
 			this.o_produitsCategorie.remove(theProduit);
-			//DAOFactory.getCategorieDAO().update(this);
+			DAOFactory.getCategorieDAO().update(this);
 		} else {
 			// TODO : generate error "Not found"
 		}
@@ -66,7 +66,7 @@ public class Categorie implements Parcelable{
 
 	public void setIdCategorie(int theId) {
 		this.i_idCategorie = theId;
-		//DAOFactory.getCategorieDAO().update(this);
+		DAOFactory.getCategorieDAO().update(this);
 	}
 
 	public String getNomCategorie() {
@@ -75,7 +75,7 @@ public class Categorie implements Parcelable{
 
 	public void setNomCategorie(String theNom) {
 		this.s_nomCategorie = theNom;
-		//DAOFactory.getCategorieDAO().update(this);
+		DAOFactory.getCategorieDAO().update(this);
 	}
 
 	public ArrayList<Produit> getMesProduits() {

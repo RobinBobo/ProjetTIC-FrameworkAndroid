@@ -25,7 +25,7 @@ public class ListeClients implements Observer, Parcelable{
 	public void ajouterClient(Client theClient){
 		if(!this.o_mesClients.contains(theClient)){
 			this.o_mesClients.add(theClient);
-			//DAOFactory.getClientDAO().create(theClient);
+			DAOFactory.getClientDAO().create(theClient);
 		}else{
 			//TODO : generate error "Already exists"
 		}
@@ -35,7 +35,7 @@ public class ListeClients implements Observer, Parcelable{
 	public void supprimClient(Client theClient){
 		if(this.o_mesClients.contains(theClient)){
 			this.o_mesClients.remove(theClient);
-			//DAOFactory.getClientDAO().delete(theClient);
+			DAOFactory.getClientDAO().delete(theClient);
 		}else{
 			//TODO : generate error "Not found"
 		}

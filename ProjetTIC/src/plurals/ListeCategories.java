@@ -21,7 +21,7 @@ public class ListeCategories implements Observer{
 	public void ajouterCategorie(Categorie theCategorie){
 		if(!this.o_mesCategories.contains(theCategorie)){
 			this.o_mesCategories.add(theCategorie);
-			//DAOFactory.getCategorieDAO().create(theCategorie);
+			DAOFactory.getCategorieDAO().create(theCategorie);
 		}else{
 			//TODO : generate error "Already exists"
 		}
@@ -30,7 +30,7 @@ public class ListeCategories implements Observer{
 	public void supprimCategorie(Categorie theCategorie){
 		if(this.o_mesCategories.contains(theCategorie)){
 			this.o_mesCategories.remove(theCategorie);
-			//DAOFactory.getCategorieDAO().delete(theCategorie);
+			DAOFactory.getCategorieDAO().delete(theCategorie);
 		}else{
 			//TODO : generate error "Not found"
 		}

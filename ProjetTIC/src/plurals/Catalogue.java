@@ -23,7 +23,7 @@ public class Catalogue implements Parcelable{
 	public void ajouterProduitCatalogue(Produit theProduit){
 		if(!this.getMesProduits().contains(theProduit)){
 			this.o_mesProduits.add(theProduit);
-			//DAOFactory.getProduitDAO().create(theProduit);
+			DAOFactory.getProduitDAO().create(theProduit);
 		}else{
 			//TODO : generate error "Already exists"
 		}		

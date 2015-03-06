@@ -52,17 +52,17 @@ public class Produit extends Observable implements Parcelable{
 	
 	public void retirerCategorie(){
 		this.setCategorieProduit(null);
-		//DAOFactory.getProduitDAO().update(this);
+		DAOFactory.getProduitDAO().update(this);
 	}
 	
 	public void achatProduit(int theQuantite){
 		i_stockProduit = i_stockProduit - theQuantite;
-		//DAOFactory.getProduitDAO().update(this);
+		DAOFactory.getProduitDAO().update(this);
 	}
 	
 	//Notifie la liste des clients
 	public void supprimerProduit(){
-		//DAOFactory.getProduitDAO().delete(this);
+		DAOFactory.getProduitDAO().delete(this);
 		setChanged();
 		notifyObservers();
 	}
@@ -78,7 +78,7 @@ public class Produit extends Observable implements Parcelable{
 	
 	public void setStockProduit(int theStock) {
 		this.i_idProduit = theStock;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 	
 	public int getIdProduit() {
@@ -87,7 +87,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setIdProduit(int theId) {
 		this.i_idProduit = theId;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	public String getNomProduit() {
@@ -96,7 +96,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setNomProduit(String theNom) {
 		this.s_nomProduit = theNom;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	public double getPrixProduit() {
@@ -105,7 +105,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setPrixProduit(double thePrix) {
 		this.d_prixProduit = thePrix;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	public String getDescriptionProduit() {
@@ -114,7 +114,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setDescriptionProduit(String theDescription) {
 		this.s_descriptionProduit = theDescription;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	public Categorie getCategorieProduit() {
@@ -123,7 +123,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setCategorieProduit(Categorie theCategorie) {
 		this.o_categorieProduit = theCategorie;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	public String getMarqueProduit() {
@@ -132,7 +132,7 @@ public class Produit extends Observable implements Parcelable{
 
 	public void setMarqueProduit(String theMarque) {
 		this.s_marqueProduit = theMarque;
-		//DAOFactory.getProduitDAO().update(this);	
+		DAOFactory.getProduitDAO().update(this);	
 	}
 
 	//

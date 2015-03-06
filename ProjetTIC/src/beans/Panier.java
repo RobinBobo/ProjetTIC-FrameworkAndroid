@@ -51,7 +51,7 @@ public class Panier {
 		for(LignePanier ligne : o_mesLignes){
 			ligne.getMonProduit().achatProduit(ligne.getQuantite());
 		}	
-		//DAOFactory.getPanierDAO().update(this);
+		DAOFactory.getPanierDAO().update(this);
 	}
 
 	//On ajoute une ligne : on met à jour la base
@@ -70,7 +70,7 @@ public class Panier {
 			}else{
 				//TODO : generate error "Wrong value"
 			}
-			//DAOFactory.getPanierDAO().update(this);
+			DAOFactory.getPanierDAO().update(this);
 		}else{
 			//TODO : generate error "Already exists"
 		}
@@ -92,7 +92,7 @@ public class Panier {
 		}
 		
 		if(good){
-			//DAOFactory.getPanierDAO().update(this);
+			DAOFactory.getPanierDAO().update(this);
 		}else{
 			//TODO : generate error "Not Found"
 		}
@@ -111,7 +111,7 @@ public class Panier {
 		}
 		
 		if(good){
-			//DAOFactory.getPanierDAO().update(this);
+			DAOFactory.getPanierDAO().update(this);
 		}else{
 			//TODO : generate error "Not found"
 		}
@@ -131,7 +131,7 @@ public class Panier {
 
 	public void setMonClient(Client theClient) {
 		this.o_monClient = theClient;
-		//DAOFactory.getPanierDAO().update(this);
+		DAOFactory.getPanierDAO().update(this);
 	}
 
 	public int getIdPanier() {
@@ -140,7 +140,7 @@ public class Panier {
 	
 	public void setIdPanier(int theId) {
 		this.i_idPanier = theId;
-		//DAOFactory.getPanierDAO().update(this);
+		DAOFactory.getPanierDAO().update(this);
 	}
 	
 	public boolean isCommande() {
@@ -153,7 +153,7 @@ public class Panier {
 
 	public void setTypeReglement(String theType) {
 		this.s_typeReglement = theType;
-		//DAOFactory.getPanierDAO().update(this);
+		DAOFactory.getPanierDAO().update(this);
 	}
 	
 	public ArrayList<LignePanier> getMesLignes() {
