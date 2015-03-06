@@ -33,11 +33,13 @@ public class ProductListFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 	
+	public ProductListFragment(){}
+	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
         this.activity = this.getActivity();
-        this.activity.setTitle("Liste des Produits");
+        this.activity.setTitle(R.string.title_fragment_product_list);
         init();
         testAjoutItemsListProduct();
         
@@ -53,10 +55,6 @@ public class ProductListFragment extends Fragment {
 //				rootView.findViewById(R.id.layoutSort).setVisibility(View.VISIBLE);				
 //				rootView.findViewById(R.id.textSearchResult).setVisibility(View.VISIBLE);
 //						
-				// Requete de recherche dans la BDD
-				
-				
-				// Affichage de la liste
 			}
 		});	
     	
@@ -92,18 +90,15 @@ public class ProductListFragment extends Fragment {
  			}
  		});
 	}
-	
+	// TODO
+	// private void ajoutListeProduit(Param)
+	// Param : type de liste des produits à afficher 
+	// exemple : liste des produits en promotion, des nouveautés, des offres spéciales,..
 	private void testAjoutItemsListProduct(){
 		List<Produit> listProduct = Produit.getAListOfProducts();
-		
-		//Création et initialisation de l'Adapter pour les catégories
-		ProductListAdapter productsListAdapter = new ProductListAdapter(getActivity(), listProduct);
-		
-		//Récupération du composant ListView
+		ProductListAdapter pla = new ProductListAdapter(getActivity(), listProduct);
 		ListView productsList = (ListView) rootView.findViewById(R.id.listviewProduit);
-		
-		//Initialisation de la liste avec les données
-		productsList.setAdapter(productsListAdapter);
+		productsList.setAdapter(pla);
 		
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override

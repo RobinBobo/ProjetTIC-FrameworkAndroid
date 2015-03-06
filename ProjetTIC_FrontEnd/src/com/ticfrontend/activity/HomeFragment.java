@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
@@ -39,9 +41,42 @@ public class HomeFragment extends Fragment {
 		else 
 			((TextView)rootView.findViewById(R.id.textUser)).setText("Connecte toi!");
 	}
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
     }
+	
+	public void init(){
+		Button promos = (Button) rootView.findViewById(R.id.buttonPromo);
+		Button offresSpec = (Button) rootView.findViewById(R.id.buttonOffreSpec);
+		Button aNePasManquer = (Button) rootView.findViewById(R.id.buttonANePasManquer);
+		Button nouveaute = (Button) rootView.findViewById(R.id.buttonNouveautes);
+		
+		promos.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		offresSpec.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		aNePasManquer.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		nouveaute.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+	}
 }
