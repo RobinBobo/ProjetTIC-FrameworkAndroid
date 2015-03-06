@@ -1,11 +1,9 @@
 package com.ticfrontend.configuratormanagement;
 
 import java.io.InputStream;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
-
-
-import android.util.Log;
 
 public class XmlLoader {
 

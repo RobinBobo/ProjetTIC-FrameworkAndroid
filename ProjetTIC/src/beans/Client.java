@@ -51,7 +51,7 @@ public class Client implements Parcelable {
 	public void ajouterPanierClient(Panier thePanier) {
 		if (!this.getMesPanier().contains(thePanier)) {
 			o_mesPaniers.add(thePanier);
-			DAOFactory.getClientDAO().update(this);
+			//DAOFactory.getClientDAO().update(this);
 		} else {
 			// TODO : generate error "Already exists"
 		}
@@ -61,7 +61,7 @@ public class Client implements Parcelable {
 	public void supprimerPanierClient(Panier thePanier) {
 		if (this.getMesPanier().contains(thePanier)) {
 			this.getMesPanier().remove(thePanier);
-			DAOFactory.getPanierDAO().delete(thePanier);
+			//DAOFactory.getPanierDAO().delete(thePanier);
 		} else {
 			// TODO : generate error "Not found"
 		}
@@ -77,7 +77,7 @@ public class Client implements Parcelable {
 
 	public void setIdClient(int theId) {
 		this.i_idClient = theId;
-		DAOFactory.getClientDAO().update(this);
+		//DAOFactory.getClientDAO().update(this);
 	}
 
 	public String getNomClient() {
@@ -86,7 +86,7 @@ public class Client implements Parcelable {
 
 	public void setNomClient(String theNom) {
 		this.s_nomClient = theNom;
-		DAOFactory.getClientDAO().update(this);
+		//DAOFactory.getClientDAO().update(this);
 	}
 
 	public String getPrenomClient() {
@@ -95,7 +95,7 @@ public class Client implements Parcelable {
 
 	public void setPrenomClient(String thePrenom) {
 		this.s_prenomClient = thePrenom;
-		DAOFactory.getClientDAO().update(this);
+		//DAOFactory.getClientDAO().update(this);
 	}
 
 	public String getAdresseClient() {
@@ -104,7 +104,7 @@ public class Client implements Parcelable {
 
 	public void setAdresseClient(String theAdresse) {
 		this.s_adresseClient = theAdresse;
-		DAOFactory.getClientDAO().update(this);
+		//DAOFactory.getClientDAO().update(this);
 	}
 
 	public boolean getSexeClient() {
@@ -113,7 +113,7 @@ public class Client implements Parcelable {
 
 	public void setSexeClient(boolean theSexe) {
 		this.b_sexeClient = theSexe;
-		DAOFactory.getClientDAO().update(this);
+		//DAOFactory.getClientDAO().update(this);
 	}
 
 	public ArrayList<Panier> getMesPanier() {
