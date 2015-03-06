@@ -61,7 +61,7 @@ public class ReviewsFragment  extends Fragment {
     			ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewReviews);	
     			AvisListAdapter adapter = (AvisListAdapter) listviewAvis.getAdapter();
     			List<Avis> listeAllAvis = adapter.getAvis();
-    			Collections.sort(listeAllAvis, new ReviewDateComparator());
+    			Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.ASC));
     			adapter.updateAvis(listeAllAvis);
     		}
  		});
@@ -84,7 +84,7 @@ public class ReviewsFragment  extends Fragment {
     			ListView list = (ListView) rootView.findViewById(R.id.listviewReviews);
     			AvisListAdapter adapter = (AvisListAdapter) list.getAdapter();
     			List<Avis> listeAllAvis = adapter.getAvis();
-    			Collections.sort(listeAllAvis, new ReviewNoteComparator());
+    			Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.ASC));
     			adapter.updateAvis(listeAllAvis);
  			}
  		});

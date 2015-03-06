@@ -75,7 +75,8 @@ public class ProductListFragment extends Fragment {
 				ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
 				ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
 				List<Produit> products = adapter.getProducts();
-				Collections.sort(products, new ProductPriceComparator());
+				
+				Collections.sort(products, new ProductPriceComparator(ProductPriceComparator.ASC));
 				adapter.updateProduct(products);
 			}
 		});
@@ -88,7 +89,7 @@ public class ProductListFragment extends Fragment {
 				ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
 				ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
 				List<Produit> products = adapter.getProducts();
-				Collections.sort(products, new ProductNameComparator());
+				Collections.sort(products, new ProductNameComparator(ProductNameComparator.ASC));
 				adapter.updateProduct(products);
 			}
 		});

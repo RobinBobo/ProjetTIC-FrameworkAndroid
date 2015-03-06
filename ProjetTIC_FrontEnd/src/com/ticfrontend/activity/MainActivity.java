@@ -86,6 +86,8 @@ public class MainActivity extends Activity {
 				PRODUITBETA.setListeAvisProduit(avisBeta);
 				WEBSITENAMEBETA = c.getWebsiteName();
 				
+		//////////////////////////////////////////////////////
+				
 		if (savedInstanceState == null) {
 			displayView(0);
 		}
