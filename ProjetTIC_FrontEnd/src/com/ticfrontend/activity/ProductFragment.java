@@ -156,7 +156,7 @@ public class ProductFragment extends Fragment {
 		testAjoutAvisDansLinearLayout();
 		
 		Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
-		voirPlusAvis.setOnClickListener(new OnClickListener() {
+		voirPlusAvis.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Fragment fragmentAvis = null;
@@ -176,7 +176,13 @@ public class ProductFragment extends Fragment {
 		
 		LinearLayout lv = (LinearLayout) rootView.findViewById(R.id.listeAvis);
 		
-		for(int i = 0; i < nbAvis; i++){
+		int nbEnd = nbAvis;
+		
+		// Si la liste de comporte pas assez d'avis, on change le nombre à afficher avec la taille de la liste
+		if(nbAvis > listeAvis.size())
+			nbEnd = listeAvis.size();
+		
+		for(int i = 0; i < nbEnd; i++){
 			View v = new View(activity);
 			LayoutInflater inflater = LayoutInflater.from(activity);
 			v = inflater.inflate(R.layout.single_item_review, null, false);
@@ -198,7 +204,7 @@ public class ProductFragment extends Fragment {
 			descAvis.setText(a.getDescription());
 			
 			// Pour séparer les avis avec un espace
-			// TODO Changer la couleur pour un gris ou une fine bar noire peut etre... 
+			// TODO Changer la couleur pour un gris ou une fine bare noire peut etre... 
 			// Sinon on peut laisser comme ça, ça rend pas mal quand même
 			LinearLayout separator = new LinearLayout(activity);
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 30);
