@@ -37,17 +37,12 @@ public class ProductDetailsFragment extends Fragment {
 	private Activity activity;
 
 	private static Button boutonAjouterPanier;
-	private Produit product;
+	public static Produit product;
 	
 	private final int nbAvis = 5;
+	
 	List<Avis> listeAvis = null;
 
-	public ProductDetailsFragment(Produit prd){
-		this.product = prd;
-		listeAvis = product.getListeAvisProduit();
-		
-	}
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -55,7 +50,7 @@ public class ProductDetailsFragment extends Fragment {
 		this.activity = this.getActivity();
 		
 		init();
-		populateScreen();
+
 		return rootView;
 	}
 
@@ -72,9 +67,9 @@ public class ProductDetailsFragment extends Fragment {
 		this.activity.setTitle(R.string.title_fragment_product);
 		Bundle bundle = getArguments();
 		if(bundle != null) {
-			//product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
-			//listeAvis = product.getListeAvisProduit();
-			//populateScreen();
+			product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
+			listeAvis = product.getListeAvisProduit();
+			populateScreen();
 		}
 	}
 	public void init(){
@@ -170,7 +165,7 @@ public class ProductDetailsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Fragment fragmentAvis = null;
-				fragmentAvis = new ReviewsFragment(product);
+				fragmentAvis = new ReviewsFragment();
 				FragmentManager fragmentManager = getFragmentManager();
 				fragmentManager.beginTransaction().replace(R.id.frame_container, fragmentAvis).addToBackStack("tag").commit();
 			}
