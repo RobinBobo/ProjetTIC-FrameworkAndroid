@@ -131,7 +131,7 @@ public class CartFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {	
 				// TODO modifier quantité ou supprimer de la liste
 
-				Fragment fragment = new ProductFragment();
+				Fragment fragment = new ProductDetailsFragment();
 				Bundle extras = new Bundle();								
 				Map.Entry<Produit, Integer> item = (Map.Entry<Produit, Integer>) arg0.getItemAtPosition(arg2);
 				Produit product = item.getKey();

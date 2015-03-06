@@ -35,7 +35,7 @@ public class ReviewsFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_reviews, container, false);
         this.activity = this.getActivity();
-        this.product = ProductFragment.product;
+        this.product = ProductDetailsFragment.product;
         this.listeAvis = product.getListeAvisProduit();
 		
         init();

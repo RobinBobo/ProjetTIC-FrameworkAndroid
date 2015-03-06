@@ -32,7 +32,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-public class ProductFragment extends Fragment {
+public class ProductDetailsFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 
