@@ -106,11 +106,12 @@ public class ProductListFragment extends Fragment {
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {			   
-				Fragment fragment = new ProductDetailsFragment();
-				Bundle extras = new Bundle();								
 				Produit product = (Produit) arg0.getItemAtPosition(arg2);
-				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
-				fragment.setArguments(extras);
+				Fragment fragment = new ProductDetailsFragment(product);
+//				Bundle extras = new Bundle();								
+//				
+//				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
+//				fragment.setArguments(extras);
 
 				FragmentManager fragmentManager = getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
