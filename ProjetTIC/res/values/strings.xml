@@ -54,6 +54,8 @@
 	<string name="newStockProduit">Nouvelle valeur</string>
 	<string name="btnValider">Valider</string>
 	<string name="msgResModif"></string>
+	<string name="instructionSupprimerPdt">Voici les informations liées au produit recherché, cliquer sur "supprimer" en bas de la page pour valider la suppression de ce produit</string>
+	<string name="btnSupprimer">Supprimer</string>
 	
     <!-- Client -->
 	<string name="textIdClient">Identifiants du client : </string>

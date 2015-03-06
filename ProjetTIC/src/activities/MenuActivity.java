@@ -74,6 +74,19 @@ public class MenuActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		// Lien vers l'activité de suppression de produit
+		final Button supprimerProduit = (Button) findViewById(R.id.supprimerProduit);
+		supprimerProduit.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						SupprimerProduitActivity.class);
+		        intent.putExtra("monCatalogue", monCatalogue);
+				startActivity(intent);
+			}
+		});
 	}
 
 }

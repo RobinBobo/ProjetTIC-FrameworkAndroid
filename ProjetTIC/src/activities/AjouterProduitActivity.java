@@ -24,7 +24,6 @@ public class AjouterProduitActivity extends Activity {
 		
 		Bundle b    = getIntent().getExtras();
 		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
-	    System.out.println(monCatalogue);
 	    
 	    final TextView txtMsgErreur = (TextView) findViewById(R.id.msgErreur);
 		
