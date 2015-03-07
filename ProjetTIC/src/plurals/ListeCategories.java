@@ -1,5 +1,6 @@
 package plurals;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -8,8 +9,12 @@ import model.DAOFactory;
 import beans.Categorie;
 import beans.Produit;
 
-public class ListeCategories implements Observer{
+public class ListeCategories implements Observer, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<Categorie> o_mesCategories = new ArrayList<Categorie>();
 	
 	public ListeCategories() {}

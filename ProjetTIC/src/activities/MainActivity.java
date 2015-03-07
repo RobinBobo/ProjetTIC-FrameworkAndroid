@@ -216,10 +216,9 @@ public class MainActivity extends Activity {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-				Bundle extras = new Bundle();
-		        extras.putSerializable("mesClients", (Serializable) getMesClients());
-		        extras.putSerializable("monCatalogue", (Serializable) getMonCatalogue());
-		        intent.putExtra("mesExtras", extras);
+				//Bundle extras = new Bundle();
+				intent.putExtra("monCatalogue", getMonCatalogue());
+				intent.putExtra("mesClients", getMesClients());
 		        startActivity(intent);
 			}
 		});

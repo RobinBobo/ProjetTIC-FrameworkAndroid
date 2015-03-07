@@ -34,8 +34,8 @@ public class AjouterProduitActivity extends Activity {
 		setContentView(R.layout.activity_ajouterproduit);
 
 		Intent intent = this.getIntent();
-		Bundle b = intent.getExtras();
-		this.setMonCatalogue((Catalogue) b.getSerializable("monCatalogue"));
+		
+		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
 	    
 	    final TextView txtMsgErreur = (TextView) findViewById(R.id.msgErreur);
 		
@@ -60,6 +60,7 @@ public class AjouterProduitActivity extends Activity {
 							description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
 					getMonCatalogue().ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
+					getMonCatalogue().afficherCatalogue();
 				}
 				txtMsgErreur.setText(msgErreur);
 			}

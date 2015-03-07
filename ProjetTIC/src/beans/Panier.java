@@ -1,11 +1,16 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.DAOFactory;
 
-public class Panier {
+public class Panier implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int i_idPanier = 0;
 	private boolean b_commande;
 	private String s_typeReglement;

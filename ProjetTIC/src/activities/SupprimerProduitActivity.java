@@ -17,8 +17,16 @@ import fr.tic.R;
 public class SupprimerProduitActivity extends Activity {
 
 	private Produit p = null;
-	private Catalogue monCatalogue = null;
+	private Catalogue monCatalogue;
 	
+	public Catalogue getMonCatalogue() {
+		return monCatalogue;
+	}
+
+	public void setMonCatalogue(Catalogue monCatalogue) {
+		this.monCatalogue = monCatalogue;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -26,10 +34,9 @@ public class SupprimerProduitActivity extends Activity {
 		setContentView(R.layout.activity_supprimerproduit);
 		
 		// Récupération des données
-		Intent intent = getIntent();
-		Bundle b = intent.getExtras();
+		Intent intent = this.getIntent();
 		
-		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
+		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
 		
 		final EditText idPdt = (EditText) findViewById(R.id.idProduit);
 		final TextView nomPdt = (TextView) findViewById(R.id.resNomProduit);
@@ -37,6 +44,7 @@ public class SupprimerProduitActivity extends Activity {
 		final TextView prixPdt = (TextView) findViewById(R.id.resPrixProduit);
 		final TextView stockPdt = (TextView) findViewById(R.id.resStockProduit);
 		final TextView erreurRecherche = (TextView) findViewById(R.id.erreurRecherche);
+		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		final RelativeLayout infoProduit = (RelativeLayout) findViewById(R.id.formSupprimerPdt);
 		Button btnRechercher = (Button) findViewById(R.id.btnRechercher);
 		Button btnSupprimer = (Button) findViewById(R.id.btnSupprimer);
@@ -73,6 +81,7 @@ public class SupprimerProduitActivity extends Activity {
 			
 			public void onClick(View v) {
 				monCatalogue.supprimerProduitCatalogue(p);
+				msgErreur.setText("Le produit a bien été supprimé !");
 			}
 		});
 	}

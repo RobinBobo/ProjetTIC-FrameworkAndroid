@@ -90,12 +90,20 @@
 		android:layout_below="@id/prenomClient"
 		android:layout_alignParentRight="true"
 	/>
+	
+	
+    <TextView
+		android:id="@+id/msgErreur"
+	    android:text="@string/msgErreur"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/adresseClient" />
 
 	<Button
 	    android:id="@+id/btnAjoutClient"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/adresseClient"
+	    android:layout_below="@+id/msgErreur"
 	    android:layout_centerHorizontal="true"
 	    android:layout_marginTop="91dp"
 	    android:text="@string/btnAjoutClient" />

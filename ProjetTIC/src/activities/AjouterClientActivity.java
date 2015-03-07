@@ -1,6 +1,7 @@
 package activities;
 
 import fr.tic.R;
+import plurals.Catalogue;
 import plurals.ListeClients;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,19 +15,27 @@ import beans.Client;
 
 public class AjouterClientActivity extends Activity{
 	
-	private ListeClients mesClients = null;
+	private ListeClients mesClients;
 	
+	public ListeClients getMesClients() {
+		return mesClients;
+	}
+
+	public void setMesClients(ListeClients mesClients) {
+		this.mesClients = mesClients;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajouterclient);
 		
-		Intent intent = getIntent();
-		Bundle b = intent.getExtras();
+		Intent intent = this.getIntent();
 		
-		mesClients = (ListeClients) b.getSerializable("mesClients");
+		setMesClients((ListeClients) intent.getSerializableExtra("mesClients"));
 		
+		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		
 		final Button ajoutClient = (Button) findViewById(R.id.btnAjoutClient);
 		ajoutClient.setOnClickListener(new OnClickListener() {
@@ -39,14 +48,16 @@ public class AjouterClientActivity extends Activity{
 				CharSequence nom = ((TextView) findViewById(R.id.nomClient)).getText();
 				CharSequence prenom = ((TextView) findViewById(R.id.prenomClient)).getText();
 				CharSequence adresse = ((TextView) findViewById(R.id.adresseClient)).getText();
-				if (id != null && nom != null && prenom != null && adresse != null) {
+				if (!id.toString().matches("") && !nom.toString().matches("") && !prenom.toString().matches("") 
+						&& !adresse.toString().matches("")) {
 					valide = true;
-				}
+				} else msgErreur.setText("Veuillez saisir tous les champs !");
 				
 				if (valide) {
 					Client c = new Client(Integer.parseInt(id.toString()) , nom.toString(),prenom.toString(),
 							adresse.toString(), sexe);
 					mesClients.ajouterClient(c);
+					msgErreur.setText("Le client a bien été ajouté !");
 				}
 			}
 		});

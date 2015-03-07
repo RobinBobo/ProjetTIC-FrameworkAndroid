@@ -20,8 +20,16 @@ import fr.tic.R;
 public class ModifierProduitActivity extends Activity {
 
 	private Produit pdt = null;
-	private Catalogue monCatalogue = null;
+	private Catalogue monCatalogue;
 	
+	public Catalogue getMonCatalogue() {
+		return monCatalogue;
+	}
+
+	public void setMonCatalogue(Catalogue monCatalogue) {
+		this.monCatalogue = monCatalogue;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -29,10 +37,9 @@ public class ModifierProduitActivity extends Activity {
 		setContentView(R.layout.activity_modifierproduit);
 		
 		// Récupération des données
-		Intent intent = getIntent();
-		Bundle b = intent.getExtras();
+		Intent intent = this.getIntent();
 		
-		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
+		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
 		
 		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);
 		
@@ -146,6 +153,7 @@ public class ModifierProduitActivity extends Activity {
 
 						if (checkPrix.isChecked()) {
 				        	if (!newPrix.getText().toString().matches("")) {
+				        		// TODO: erreur de type à voir
 				        		pdt.setPrixProduit(Double.parseDouble(newNom.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau prix du produit. \n";

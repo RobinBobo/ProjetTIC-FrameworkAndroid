@@ -1,12 +1,17 @@
 package plurals;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import beans.Marque;
 import beans.Produit;
 
-public class ListeMarques {
+public class ListeMarques implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<Marque> o_mesMarques = new ArrayList<Marque>();
 	
 	public ListeMarques(){}

@@ -1,8 +1,14 @@
 package beans;
 
+import java.io.Serializable;
 
-public class LignePanier {
 
+public class LignePanier implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Produit o_monProduit;
 	private Panier o_monPanier;
 	private int i_quantite;
