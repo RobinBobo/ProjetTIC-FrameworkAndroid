@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ticfrontend.activity.MainActivity;
+
 public class Categorie implements Serializable {
 	private int idCategorie;
 	private String nomCategorie;
@@ -59,14 +61,21 @@ public class Categorie implements Serializable {
 
 		List<Categorie> listCategorie = new ArrayList<Categorie>();
 		
-		listCategorie.add(new Categorie(0, "Catégorie du Back-End"));
+		if(MainActivity.LISTPRODUITBETA.size() > 0)
+			listCategorie.add(MainActivity.LISTPRODUITBETA.get(0).getCategorieProduit());
+		
+		for(int i = 0; i < MainActivity.LISTPRODUITBETA.size(); i++){
+			for(int j = 0; j < listCategorie.size(); j++)
+				if(!listCategorie.get(j).getNomCategorie().equalsIgnoreCase(MainActivity.LISTPRODUITBETA.get(j).getCategorieProduit().getNomCategorie()))
+					listCategorie.add(MainActivity.LISTPRODUITBETA.get(i).getCategorieProduit());
+		}
+		
 		listCategorie.add(new Categorie(1, "Livres"));
-		listCategorie.add(new Categorie(2, "Videos (Blu-Ray / DVD)"));
-		listCategorie.add(new Categorie(3, "Musique (CD / DVD Live)"));
-		listCategorie.add(new Categorie(4, "Téléphonie"));
+		listCategorie.add(new Categorie(2, "Videos"));
+		listCategorie.add(new Categorie(3, "Musique"));
+		listCategorie.add(new Categorie(4, "Jeux vidéo"));
 		listCategorie.add(new Categorie(5, "Multimédia"));
-		listCategorie.add(new Categorie(6, "Accessoires"));
-		listCategorie.add(new Categorie(7, "Divers"));
+		listCategorie.add(new Categorie(6, "Divers"));
 		
 		return listCategorie;
 	}

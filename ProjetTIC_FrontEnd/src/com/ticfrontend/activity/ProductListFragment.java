@@ -62,7 +62,13 @@ public class ProductListFragment extends Fragment {
 		// On récupère la catégorie sur laquelle on a cliqué
 		this.categorie = CategoryFragment.currentCategorie;
 		
-		if(categorie.getIdCategorie() == 0)
+		Categorie verifCategorieBeta = null;
+				
+		if(MainActivity.LISTPRODUITBETA != null)
+			if(MainActivity.LISTPRODUITBETA.size() > 0)
+				verifCategorieBeta = MainActivity.LISTPRODUITBETA.get(0).getCategorieProduit();
+		
+		if(categorie.getNomCategorie().equalsIgnoreCase(verifCategorieBeta.getNomCategorie()))
 			this.listProduit = MainActivity.LISTPRODUITBETA;
 		else
 			this.listProduit = Produit.getAListOfProductsBeta(categorie);
