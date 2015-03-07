@@ -50,13 +50,31 @@
 		android:layout_below="@id/nbCde"
         android:text="@string/alerteStock" />
     
-	<Button
-		android:id="@+id/menuLink"
+    <Button
+		android:id="@+id/btnNomSite"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/alerteStock"
 		android:gravity="center"
+		android:text="@string/btnNomSite"
+	    android:layout_centerHorizontal="true" />
+    
+	<Button
+		android:id="@+id/menuLink"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/btnNomSite"
+		android:gravity="center"
 		android:text="@string/menuLink"
+	    android:layout_centerHorizontal="true" />
+	
+	<Button
+		android:id="@+id/btnExtract"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/menuLink"
+		android:gravity="center"
+		android:text="@string/btnExtract"
 	    android:layout_centerHorizontal="true" />
 		
 </RelativeLayout>

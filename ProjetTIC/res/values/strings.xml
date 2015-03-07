@@ -12,7 +12,13 @@
     <string name="nbClients"></string>  
     <string name="nbCde"></string>
     <string name="alerteStock"></string>
-    <string name="menuLink">Accéder au menu</string>
+    <string name="menuLink">Accéder au menu de gestion des données</string>
+    <string name="btnNomSite">Changer le nom du site</string>
+    <string name="btnExtract">Sauvegarder et extraire les données</string>
+        
+    <!-- Nom du site -->
+    <string name="textNomSite">Quel nom voulez-vous pour votre application ?</string>
+    <string name="nomSite">Nom du Site</string>
     
     <!-- Menu -->
     <string name="consulterCatalogue">Consulter le catalogue</string>

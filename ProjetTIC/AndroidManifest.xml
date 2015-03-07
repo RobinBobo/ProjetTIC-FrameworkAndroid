@@ -32,6 +32,7 @@
         <activity android:name="activities.AfficherCatalogueActivity" />
         <activity android:name="activities.ModifierProduitActivity" />
         <activity android:name="activities.SupprimerProduitActivity" />
+        <activity android:name="activities.ChoixNomSiteActivity" />
     </application>
 
 </manifest>

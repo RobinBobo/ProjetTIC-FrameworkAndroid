@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/textNomSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textNomSite" />
+    
+	<EditText 
+		android:id="@+id/nomSite"
+		android:hint="@string/nomSite"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/textNomSite"
+	/>
+	
+	<TextView
+        android:id="@+id/msgErreur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/nomSite"
+        android:text="@string/msgErreur" />
+	
+	<Button
+	        android:id="@+id/btnValider"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/msgErreur"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/btnValider" />
+	
+</RelativeLayout>

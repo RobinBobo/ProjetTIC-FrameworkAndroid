@@ -42,7 +42,6 @@ public class MenuActivity extends Activity {
 		
 		setMesClients((ListeClients) intent.getSerializableExtra("mesClients"));
 		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
-		getMonCatalogue().afficherCatalogue();
 		
 		// Lien vers l'activité d'affichage du catalogue
 		final Button afficherCatalogue = (Button) findViewById(R.id.afficherCatalogue);

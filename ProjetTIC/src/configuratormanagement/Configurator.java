@@ -9,7 +9,7 @@ public class Configurator {
 	
 	private boolean order;
 	
-	private String websiteName;	
+	private String websiteName;
 		
 	//Getter & Setter
 	public String getWebsiteName() {
