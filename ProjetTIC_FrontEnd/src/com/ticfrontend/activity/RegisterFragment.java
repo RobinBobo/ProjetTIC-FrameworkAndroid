@@ -100,7 +100,6 @@ public class RegisterFragment extends Fragment {
 					intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
 					activity.finish();
 					startActivity(intent);
-					//onBackPressed();
 					
 				} else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(activity);

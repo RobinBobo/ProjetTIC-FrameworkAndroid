@@ -50,8 +50,7 @@ public class AccountFragment extends Fragment {
 	private RadioButton radioButtonF = null;
 	private RadioButton radioButtonH = null;
 	
-	public AccountFragment() {
-	}
+	public AccountFragment() {}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -137,26 +136,12 @@ public class AccountFragment extends Fragment {
 				editTextAdresseMail.setVisibility(View.VISIBLE);
 				
 				// Remettre les textes par défaut sur les TextView
-
-				//login = (TextView) rootView.findViewById(R.id.accountLoginUser);
 				login.setText("Login : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountMDP1);
 				mdp1.setText("Mot de passe : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountLastName);
 				nomClient.setText("Nom : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountFirstName);
 				prenomClient.setText("Prénom : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountAdresse);
 				adresseClient.setText("Adresse postale : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountMail);
 				adresseMail.setText("Adresse mail : ");
-				
-				//text = (TextView) rootView.findViewById(R.id.accountSexe);
 				sexe.setText("Sexe : ");
 				
 				// On change le bouton de nom et on change le onclick sur ce bouton
@@ -189,16 +174,23 @@ public class AccountFragment extends Fragment {
 				                	else
 				                		sexeClient = true;
 				                	
-				                	Client c = new Client(editTextLogin.getText().toString(), editTextNomClient.getText().toString(), editTextPrenomClient.getText().toString(), 
-				                			editTextAdresseClient.getText().toString(), editTextAdresseMail.getText().toString(), sexeClient, editTextMdp1.getText().toString());
+				                	
+				                	MainActivity.CLIENT_ACTUEL.setLogin(editTextLogin.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setNomClient(editTextNomClient.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setPrenomClient(editTextPrenomClient.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setAdresseMail(editTextAdresseMail.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setAdresseClient(editTextAdresseClient.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setMdpClient(editTextMdp1.getText().toString());
+				                	MainActivity.CLIENT_ACTUEL.setSexeClient(sexeClient);
+				                	
+				                	//Client c = new Client(editTextLogin.getText().toString(), editTextNomClient.getText().toString(), editTextPrenomClient.getText().toString(), 
+				                		//	editTextAdresseClient.getText().toString(), editTextAdresseMail.getText().toString(), sexeClient, editTextMdp1.getText().toString());
 				                	// Modification du client dans la BDD
 				                	// TODO
 				                	
-				                	// On récupère l'instance dans l'activité principale
-				                	MainActivity.CLIENT_ACTUEL = c;
 				                	
 				                	// On dit que le client est connecté
-				                	MainActivity.ISCONNECTED = true;
+				                	//MainActivity.ISCONNECTED = true;
 				                	
 				                	Intent intent = getActivity().getIntent();
 				                	getActivity().finish();
