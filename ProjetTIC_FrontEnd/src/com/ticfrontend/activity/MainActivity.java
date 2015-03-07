@@ -62,29 +62,31 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main1);
-		initSlideMenu();
 		
 		// TEST Loading XML //
 				
-				Configurator c = new Configurator ();
-				File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
-				XmlLoader x = new XmlLoader ();
-				PRODUITBETA = new Produit();
-				
-				
-				try {
-					x.load(new FileInputStream(xmlToLoad), c, PRODUITBETA);
-					System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
-					Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Configurator c = new Configurator ();
+		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+		XmlLoader x = new XmlLoader ();
+		PRODUITBETA = new Produit();
 		
-				Avis a = new Avis();
-				List<Avis> avisBeta = a.getAListOfReviews1();
-				PRODUITBETA.setListeAvisProduit(avisBeta);
-				WEBSITENAMEBETA = c.getWebsiteName();
+		
+		try {
+			x.load(new FileInputStream(xmlToLoad), c, PRODUITBETA);
+			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Avis a = new Avis();
+		List<Avis> avisBeta = a.getAListOfReviews1();
+		PRODUITBETA.setListeAvisProduit(avisBeta);
+		WEBSITENAMEBETA = c.getWebsiteName();
+		
+		initSlideMenu();
+
 				
 		//////////////////////////////////////////////////////
 				
@@ -94,7 +96,8 @@ public class MainActivity extends Activity {
 	}
 
 	public void initSlideMenu(){
-		mTitle = mDrawerTitle = getTitle();
+		// On initialise le titre si site/app
+		mTitle = mDrawerTitle = WEBSITENAMEBETA;
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 		// nav drawer icons from resources
