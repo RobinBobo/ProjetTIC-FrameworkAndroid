@@ -29,6 +29,15 @@ public class MainActivity extends Activity {
 	
 	private ListeClients mesClients;
 	private Catalogue monCatalogue;
+	private ListeCategories listeCategories;
+	public ListeCategories getListeCategories() {
+		return listeCategories;
+	}
+
+	public void setListeCategories(ListeCategories listeCategories) {
+		this.listeCategories = listeCategories;
+	}
+
 	private static String nomSite;
 	
 	public static String getNomSite() {
@@ -64,7 +73,7 @@ public class MainActivity extends Activity {
 		// Jeux de test :
 		// __________________________________________________________
 
-		ListeCategories mesCategories = new ListeCategories();
+		setListeCategories(new ListeCategories());
 		setMesClients(new ListeClients());
 		setMonCatalogue(new Catalogue());
 
@@ -76,6 +85,7 @@ public class MainActivity extends Activity {
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
 		Categorie categoTelephone = new Categorie(0, "Telephone");
+		getListeCategories().ajouterCategorie(categoTelephone);
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
 				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",
 				categoTelephone.getNomCategorie(), "Sony", 10));
@@ -147,6 +157,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
 				intent.putExtra("monCatalogue", getMonCatalogue());
 				intent.putExtra("mesClients", getMesClients());
+				intent.putExtra("listeCategories", getListeCategories());
 		        startActivity(intent);
 			}
 		});

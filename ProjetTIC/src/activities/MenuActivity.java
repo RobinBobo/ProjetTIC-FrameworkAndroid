@@ -3,6 +3,7 @@ package activities;
 
 import fr.tic.R;
 import plurals.Catalogue;
+import plurals.ListeCategories;
 import plurals.ListeClients;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +15,15 @@ import android.widget.Button;
 public class MenuActivity extends Activity {
 	
 	private ListeClients mesClients;
+	private ListeCategories listeCategories;
+	public ListeCategories getListeCategories() {
+		return listeCategories;
+	}
+
+	public void setListeCategories(ListeCategories listeCategories) {
+		this.listeCategories = listeCategories;
+	}
+
 	private Catalogue monCatalogue;
 	
 	public ListeClients getMesClients() {
@@ -42,6 +52,7 @@ public class MenuActivity extends Activity {
 		
 		setMesClients((ListeClients) intent.getSerializableExtra("mesClients"));
 		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
+		setListeCategories((ListeCategories) intent.getSerializableExtra("listeCategories"));
 		
 		// Lien vers l'activité d'affichage du catalogue
 		final Button afficherCatalogue = (Button) findViewById(R.id.afficherCatalogue);
@@ -66,6 +77,7 @@ public class MenuActivity extends Activity {
 				Intent intent = new Intent(MenuActivity.this,
 						AjouterProduitActivity.class);
 				intent.putExtra("monCatalogue", getMonCatalogue());
+				intent.putExtra("listeCategories", getListeCategories());
 				startActivity(intent);
 			}
 		});
