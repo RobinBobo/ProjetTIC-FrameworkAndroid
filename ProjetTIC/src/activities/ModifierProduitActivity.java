@@ -154,13 +154,13 @@ public class ModifierProduitActivity extends Activity {
 						if (checkPrix.isChecked()) {
 				        	if (!newPrix.getText().toString().matches("")) {
 				        		// TODO: erreur de type à voir
-				        		pdt.setPrixProduit(Double.parseDouble(newNom.getText().toString()));
+				        		pdt.setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau prix du produit. \n";
 						}
 						if (checkDesc.isChecked()) {
 				        	if (!newDesc.getText().toString().matches("")) {
-				        		pdt.setDescriptionProduit(newNom.getText().toString());
+				        		pdt.setDescriptionProduit(newDesc.getText().toString());
 				        		msgErreur += "La description du produit a bien été modifiée. \n";
 				        	} else msgErreur += "Veuillez saisir la nouvelle description du produit. \n";
 						}
