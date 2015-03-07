@@ -7,6 +7,7 @@ import beans.Categorie;
 import beans.Client;
 import beans.Produit;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,14 +17,18 @@ import android.widget.TextView;
 
 public class AjouterProduitActivity extends Activity {
 
+	private Catalogue monCatalogue = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajouterproduit);
+
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
 		
-		Bundle b    = getIntent().getExtras();
-		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
 	    
 	    final TextView txtMsgErreur = (TextView) findViewById(R.id.msgErreur);
 		
@@ -43,7 +48,7 @@ public class AjouterProduitActivity extends Activity {
 				
 				if (valide) {
 					Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
-							description.toString(), new Categorie(), "marque", 0);
+							description.toString(), "", "marque", 0);
 					monCatalogue.ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
 				}

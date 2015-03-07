@@ -126,7 +126,7 @@ public class CategorieDAO extends DAO<Categorie> {
 					//On remplie la liste des Produits avec find(Produit) :
 					while(result2.next() && result2.getInt("idProduit") != 0){
 						Produit p = prodDao.find(result2.getInt("idProduit"));
-						p.setCategorieProduit(categorie);
+						p.setCategorieProduit(categorie.getNomCategorie());
 						listeProduits.add(p);
 					}
 				}

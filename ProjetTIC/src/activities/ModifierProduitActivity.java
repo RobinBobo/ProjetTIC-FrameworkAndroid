@@ -1,7 +1,9 @@
 package activities;
 
 import plurals.Catalogue;
+import plurals.ListeClients;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +20,7 @@ import fr.tic.R;
 public class ModifierProduitActivity extends Activity {
 
 	private Produit pdt = null;
+	private Catalogue monCatalogue = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,10 @@ public class ModifierProduitActivity extends Activity {
 		setContentView(R.layout.activity_modifierproduit);
 		
 		// Récupération des données
-		Bundle b     = getIntent().getExtras();
-		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		
+		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
 		
 		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);
 		

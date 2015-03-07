@@ -1,33 +1,22 @@
 package activities;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import org.xmlpull.v1.XmlPullParserException;
-
-import beans.Categorie;
-import beans.Client;
-import beans.Marque;
-import beans.Produit;
-import configuratormanagement.Configurator;
-import configuratormanagement.XmlCreator;
-import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import beans.Categorie;
+import beans.Client;
+import beans.Produit;
+import fr.tic.R;
 
 public class MainActivity extends Activity {
 	
@@ -47,49 +36,49 @@ public class MainActivity extends Activity {
 		mesClients = new ListeClients();
 		monCatalogue = new Catalogue();
 
-		mesCategories.findCategories();
+		/*mesCategories.findCategories();
 		mesClients.findClients();
-		monCatalogue.findProduits();
-
-		monCatalogue.ajoutObserver(mesClients);
-//		Categorie categoTelephone = new Categorie(0, "Telephone");
-//		monCatalogue.getMesProduits().add(new Produit(0, 
-//				"Sony", 150.0, "Téléphone Sony Xperia Z3 Compact",
-//				categoTelephone, "Sony", 10));
-//		monCatalogue.getMesProduits().add(new Produit(1, 
-//				"Sony", 150.0, "Téléphone Sony Xperia Z3",
-//				categoTelephone, "Sony", 10));
+		monCatalogue.findProduits();*/
+//
+//		monCatalogue.ajoutObserver(mesClients);
+		Client c = new Client(0,"nom","prenom", "adresse", false);
+		mesClients.ajouterClient(c);
+		Categorie categoTelephone = new Categorie(0, "Telephone");
+		monCatalogue.getMesProduits().add(new Produit(0, 
+				"Sony", 150.0, "Téléphone Sony Xperia Z3 Compact",
+				categoTelephone.getNomCategorie(), "Sony", 10));
+		monCatalogue.getMesProduits().add(new Produit(1, 
+				"Sony", 150.0, "Téléphone Sony Xperia Z3",
+				categoTelephone.getNomCategorie(), "Sony", 10));
 
 		// Test Parser XML
-				/*
-						Configurator c = new Configurator();			
-						c.setShoppingCart(true);
-						c.setCustomerNotice(true);
-						c.setOrder(false);
-						c.setWebsiteName("SiteDeLaMort");	
-						Categorie cXML = new Categorie(0, "Salle de bain");
-						Produit pXML = new Produit(0, "Tapis", 38, "Tapis de salle de bain", "Michelin", 100);
-						pXML.setCategorieProduit(cXML);
-						
-						File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
+		/*
+				Configurator c = new Configurator();
+				Configurator c2 = new Configurator();
+				c.setShoppingCart(true);
+				c.setCustomerNotice(true);
+				c.setOrder(false);
+				c.setWebsiteName("SiteDeLaMort");	
+				
+				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
 
-						try {
-							XmlCreator x = new XmlCreator ();
-							x.create(c,pXML,newxmlfile);			
-						} catch (IllegalArgumentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IllegalStateException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				*/
+				try {
+					XmlCreator x = new XmlCreator ();
+					x.create(c,newxmlfile);			
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (XmlPullParserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		*/
 		// Test Catégorie et Produit
 
 
@@ -201,14 +190,16 @@ public class MainActivity extends Activity {
 		if (listePdtAlerteStock != "") alerteStock.setText(listePdtAlerteStock);
 		else alerteStock.setText("Vous n'avez aucune alerte au niveau des stocks");
 			
-		
+		// Menu
 		final Button menuLink = (Button) findViewById(R.id.menuLink);
 		menuLink.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-		        intent.putExtra("mesClients", mesClients);
-		        intent.putExtra("monCatalogue", monCatalogue);
+				Bundle extras = new Bundle();
+		        extras.putSerializable("mesClients", mesClients);
+		        extras.putSerializable("monCatalogue", monCatalogue);
+		        intent.putExtra("mesExtras", extras);
 		        startActivity(intent);
 			}
 		});

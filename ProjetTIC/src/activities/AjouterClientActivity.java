@@ -3,6 +3,7 @@ package activities;
 import fr.tic.R;
 import plurals.ListeClients;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,15 +14,19 @@ import beans.Client;
 
 public class AjouterClientActivity extends Activity{
 	
+	private ListeClients mesClients = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajouterclient);
 		
-		Bundle b    = getIntent().getExtras();
-		final ListeClients mesClients    = b.getParcelable("mesClients");
-	    System.out.println(mesClients);
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		
+		mesClients = (ListeClients) b.getSerializable("mesClients");
+		
 		
 		final Button ajoutClient = (Button) findViewById(R.id.btnAjoutClient);
 		ajoutClient.setOnClickListener(new OnClickListener() {

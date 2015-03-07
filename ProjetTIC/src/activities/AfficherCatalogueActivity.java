@@ -8,6 +8,7 @@ import fr.tic.R;
 import beans.Produit;
 import plurals.Catalogue;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -16,6 +17,7 @@ import android.widget.SimpleAdapter;
 public class AfficherCatalogueActivity extends Activity {
 	
 	ListView vue;
+	Catalogue monCatalogue = null;
 		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,11 @@ public class AfficherCatalogueActivity extends Activity {
 		setContentView(R.layout.activity_affichercatalogue);
 
 		// Récupération des données
-		Bundle b     = getIntent().getExtras();
-		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
+		
+		
 		vue = (ListView) findViewById(R.id.catalogueProduits);
 	    List<HashMap<String, String>> liste = new ArrayList<HashMap<String, String>>();
 	    

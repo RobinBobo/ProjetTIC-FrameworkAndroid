@@ -24,7 +24,7 @@ public class ProduitDAO extends DAO<Produit> {
 			prepare.setString(1, obj.getNomProduit());
 			prepare.setDouble(2, obj.getPrixProduit());
 			prepare.setString(3, obj.getDescriptionProduit());
-			prepare.setInt(4, obj.getCategorieProduit().getIdCategorie());
+			//prepare.setInt(4, obj.getCategorieProduit().getIdCategorie());
 			prepare.setString(5, obj.getMarqueProduit());
 			prepare.setInt(6, obj.getStockProduit());
 			
@@ -66,7 +66,7 @@ public class ProduitDAO extends DAO<Produit> {
 					+ "nomProduit = '" + obj.getNomProduit() + "',"
 					+ "prixProduit = '" + obj.getPrixProduit() + "',"
 					+ "descriptionProduit = '" + obj.getDescriptionProduit() + "',"
-					+ "categorieProduit = '" + obj.getCategorieProduit().getIdCategorie() + "',"
+					//+ "categorieProduit = '" + obj.getCategorieProduit().getIdCategorie() + "',"
 					+ "marqueProduit = '" + obj.getMarqueProduit() + "',"
 					+ "stockProduit = '" + obj.getStockProduit() + "'"
 					+ "WHERE idProduit =" + obj.getIdProduit()

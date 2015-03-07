@@ -1,5 +1,6 @@
 package activities;
 
+
 import fr.tic.R;
 import plurals.Catalogue;
 import plurals.ListeClients;
@@ -9,9 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MenuActivity extends Activity {
+	
+	private ListeClients mesClients = null;
+	private Catalogue monCatalogue = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +22,11 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 		
-		Bundle b    = getIntent().getExtras();
-		final ListeClients mesClients    = b.getParcelable("mesClients");
-		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		
+		mesClients = (ListeClients) b.getSerializable("mesClients");
+		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
 		
 		// Lien vers l'activité d'affichage du catalogue
 		final Button afficherCatalogue = (Button) findViewById(R.id.afficherCatalogue);
@@ -31,7 +36,9 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						AfficherCatalogueActivity.class);
-		        intent.putExtra("monCatalogue", monCatalogue);
+				Bundle extras = new Bundle();
+				extras.putSerializable("mesClients", mesClients);
+				extras.putSerializable("monCatalogue", monCatalogue);
 				startActivity(intent);
 			}
 		});
@@ -44,7 +51,8 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						AjouterProduitActivity.class);
-		        intent.putExtra("monCatalogue", monCatalogue);
+				Bundle extras = new Bundle();
+				extras.putSerializable("monCatalogue", monCatalogue);
 				startActivity(intent);
 			}
 		});
@@ -57,7 +65,8 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						ModifierProduitActivity.class);
-		        intent.putExtra("monCatalogue", monCatalogue);
+				Bundle extras = new Bundle();
+				extras.putSerializable("monCatalogue", monCatalogue);
 				startActivity(intent);
 			}
 		});
@@ -70,7 +79,8 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						AjouterClientActivity.class);
-		        intent.putExtra("mesClients", mesClients);
+				Bundle extras = new Bundle();
+				extras.putSerializable("mesClients", mesClients);
 				startActivity(intent);
 			}
 		});
@@ -83,7 +93,8 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MenuActivity.this,
 						SupprimerProduitActivity.class);
-		        intent.putExtra("monCatalogue", monCatalogue);
+				Bundle extras = new Bundle();
+				extras.putSerializable("monCatalogue", monCatalogue);
 				startActivity(intent);
 			}
 		});

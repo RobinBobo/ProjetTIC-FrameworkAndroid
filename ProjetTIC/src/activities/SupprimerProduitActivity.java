@@ -1,7 +1,9 @@
 package activities;
 
 import plurals.Catalogue;
+import plurals.ListeClients;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +17,7 @@ import fr.tic.R;
 public class SupprimerProduitActivity extends Activity {
 
 	private Produit p = null;
+	private Catalogue monCatalogue = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +26,11 @@ public class SupprimerProduitActivity extends Activity {
 		setContentView(R.layout.activity_supprimerproduit);
 		
 		// Récupération des données
-		Bundle b    = getIntent().getExtras();
-		final Catalogue monCatalogue    = b.getParcelable("monCatalogue");
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		
+		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
+		
 		final EditText idPdt = (EditText) findViewById(R.id.idProduit);
 		final TextView nomPdt = (TextView) findViewById(R.id.resNomProduit);
 		final TextView descPdt = (TextView) findViewById(R.id.resDescProduit);
