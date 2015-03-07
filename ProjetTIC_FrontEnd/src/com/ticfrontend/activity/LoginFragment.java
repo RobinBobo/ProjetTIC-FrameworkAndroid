@@ -64,8 +64,10 @@ public class LoginFragment extends Fragment {
 					Intent intent = activity.getIntent();
 					Client c = new Client(login.getText().toString(), "John");
 					MainActivity.CLIENT_ACTUEL = c;
+					
 					CartFragment.PANIER_CLIENT = new Panier();
 					CartFragment.PANIER_CLIENT.ajouterDansPanier(MainActivity.PRODUITBETA, 2);
+					
 					intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
 					activity.finish();
 					startActivity(intent);

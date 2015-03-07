@@ -1,5 +1,6 @@
 package com.ticfrontend.magasin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -16,11 +17,13 @@ public class Panier {
 	public Panier () {
 		this.mapProduitQuantite = new HashMap<Produit, Integer>();
 		this.totalPanier = 0;
+		this.listeProduitsPanier= new ArrayList<Produit>();
 	}
 	
 	public Panier(HashMap<Produit, Integer> map){
 		this.mapProduitQuantite = map;
 		this.totalPanier = this.calculTotalPanier();
+		this.listeProduitsPanier= new ArrayList<Produit>();
 	}
 	
 	public double getTotalPanier() {return totalPanier;}
@@ -53,6 +56,8 @@ public class Panier {
 	
 	public void ajouterDansPanier(Produit p, int qte){
 		if(p!=null && qte>0){
+			this.listeProduitsPanier.add(p);
+			
 			this.mapProduitQuantite.put(p, qte);
 			this.setTotalPanier(calculTotalPanier());
 		}

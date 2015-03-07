@@ -33,7 +33,7 @@ public class CartFragment extends Fragment {
 	private Activity activity;
 
 	private double prixTotal;
-	public static Panier PANIER_CLIENT = null;
+	public static Panier PANIER_CLIENT;;
 	private List<Produit> listProduit;
 
 	public static final String EXTRA_KEY_PRODUCT = "EXTRA_KEY_PRODUCT";
@@ -47,7 +47,10 @@ public class CartFragment extends Fragment {
 		this.activity = getActivity();
 		this.prixTotal = 0;
 
-		testAjoutItemsListCartProduct();
+//		if(PANIER_CLIENT == null)
+//			PANIER_CLIENT = new Panier();
+		
+		//testAjoutItemsListCartProduct();
 
 		init();
 
@@ -67,6 +70,9 @@ public class CartFragment extends Fragment {
 	}
 
 	private void init() {
+		if(MainActivity.ISCONNECTED && MainActivity.CLIENT_ACTUEL != null && PANIER_CLIENT != null)
+			testAjoutItemsListCartProductBeta();		
+		
 		Button commander = (Button) rootView.findViewById(R.id.boutonCommande);
 
 		commander.setOnClickListener(new OnClickListener() {
@@ -107,6 +113,50 @@ public class CartFragment extends Fragment {
 	private void testAjoutItemsListCartProduct(){
 		listProduit = Produit.getAListOfProducts();
 
+		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite());
+		//CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), listProduit);
+
+		ListView produitList = (ListView) rootView.findViewById(R.id.listviewCard);
+		//produitList.setAdapter(produitsListAdapter);
+		produitList.setAdapter(phma);
+		//prixTotal = produitsListAdapter.getPrixTotal();
+		this.prixTotal = PANIER_CLIENT.getTotalPanier();
+
+		TextView prixT = (TextView) rootView.findViewById(R.id.prixTotal);
+
+		DecimalFormat df = new DecimalFormat() ; 
+		df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
+		df.setMinimumFractionDigits(2) ; 
+		df.setDecimalSeparatorAlwaysShown(true); 
+
+		//prixT.setText("Total : " + produitsListAdapter.getPrixTotalToString() + " €");
+		prixT.setText("Total : "+ df.format(prixTotal) + " €");
+
+		produitList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {	
+				// TODO modifier quantité ou supprimer de la liste
+				Map.Entry<Produit, Integer> item = (Map.Entry<Produit, Integer>) arg0.getItemAtPosition(arg2);
+				Produit product = item.getKey();
+				Fragment fragment = new ProductDetailsFragment(product);
+//				Bundle extras = new Bundle();								
+//				
+//				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
+//				fragment.setArguments(extras);
+
+				FragmentManager fragmentManager = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.replace(R.id.frame_container, fragment);
+				fragmentTransaction.addToBackStack("tag");
+				fragmentTransaction.commit();
+
+			}
+		});
+	}
+	
+	private void testAjoutItemsListCartProductBeta(){
+		//listProduit = Produit.getAListOfProducts();
+		
 		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite());
 		//CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), listProduit);
 

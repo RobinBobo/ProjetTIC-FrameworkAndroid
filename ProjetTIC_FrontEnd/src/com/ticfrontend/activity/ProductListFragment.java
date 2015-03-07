@@ -11,6 +11,7 @@ import com.ticfrontend.comparator.ProductPriceComparator;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
 
+import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -43,7 +44,10 @@ public class ProductListFragment extends Fragment {
 	// Param : type de liste des produits à afficher 
 	// exemple : liste des produits en promotion, des nouveautés, des offres spéciales,..
 	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales,*/ int title){
-		this.listProduit = Produit.getAListOfProducts();
+		Categorie cat = new Categorie(1, "Categorie Beta");
+		// On simule une catégorie courante dans CategoryFragment pour pas que ça plante dans le onCreateView
+		CategoryFragment.currentCategorie = cat;
+		this.listProduit = Produit.getAListOfProductsBeta(cat);
 		this.title = title;
 	}
 	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales,*/){
@@ -55,9 +59,8 @@ public class ProductListFragment extends Fragment {
 		this.activity = this.getActivity();
 		this.activity.setTitle(title);
 		
-		Bundle extras = activity.getIntent().getExtras();
-		Categorie cat = (Categorie) extras.getSerializable(CatalogFragment.EXTRA_KEY_CATEGROY);
-		this.categorie = cat;
+		// On récupère la catégorie sur laquelle on a cliqué
+		this.categorie = CategoryFragment.currentCategorie;
 		
 		this.listProduit = Produit.getAListOfProductsBeta(categorie);
 		

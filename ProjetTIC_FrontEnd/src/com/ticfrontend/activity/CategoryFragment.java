@@ -28,6 +28,8 @@ public class CategoryFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 	
+	public static Categorie currentCategorie = null;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_category, container, false);
@@ -65,8 +67,8 @@ public class CategoryFragment extends Fragment {
 				// Ici à faire correspondre une categorie à une liste de produit
 				Fragment fragment = new ProductListFragment();
 				Bundle category = new Bundle();
-				Categorie cat = (Categorie) arg0.getItemAtPosition(arg2);
-				category.putSerializable(EXTRA_KEY_CATEGROY, cat); 
+				currentCategorie = (Categorie) arg0.getItemAtPosition(arg2);
+				category.putSerializable(EXTRA_KEY_CATEGROY, currentCategorie); 
 				fragment.setArguments(category);
 
 				FragmentManager fragmentManager = getFragmentManager();

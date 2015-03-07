@@ -42,8 +42,8 @@ public class RegisterFragment extends Fragment {
         this.rootView = inflater.inflate(R.layout.activity_register, container, false);
         this.activity = this.getActivity();
               
-        this.radioButtonF = (RadioButton) rootView.findViewById(R.id.radioAccountFemme);
-		this.radioButtonH = (RadioButton) rootView.findViewById(R.id.radioAccountHomme);
+        this.radioButtonF = (RadioButton) rootView.findViewById(R.id.radioFemme);
+		this.radioButtonH = (RadioButton) rootView.findViewById(R.id.radioHomme);
         
 		init();
         
