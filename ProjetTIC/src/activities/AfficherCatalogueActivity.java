@@ -40,19 +40,18 @@ public class AfficherCatalogueActivity extends Activity {
 	    	element = new HashMap<String, String>();
 	    	element.put("idProduit", Integer.toString(p.getIdProduit()));
 	    	element.put("nomProduit", p.getNomProduit());
-	    	element.put("stockProduit", Integer.toString(p.getStockProduit()));
 	    	liste.add(element);
 	    }
 	    
 	    ListAdapter adapter = new SimpleAdapter(this,  
 	    		//Valeurs à insérer
 	    		liste,	      
-	    		// Layout de chaque élément (là, il s'agit d'un layout par défaut
-	    		android.R.layout.activity_list_item,
+	    		// Layout de chaque élément (là, il s'agit d'un layout par défaut)
+	    		android.R.layout.simple_list_item_2,
 	    		// Les clés des informations à afficher pour chaque élément
-	    		new String[] {"idProduit", "nomProduit", "stockProduit"},
+	    		new String[] {"idProduit", "nomProduit"},
 	    		// Enfin, les layouts à appliquer à chaque widget de notre élément
-	    		new int[] {android.R.id.text1, android.R.id.text2, android.R.id.text2 });
+	    		new int[] {android.R.id.text2, android.R.id.text1});
 	    
 	    //Pour finir, on donne à la ListView le SimpleAdapter
 	    vue.setAdapter(adapter);
