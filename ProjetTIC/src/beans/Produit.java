@@ -5,9 +5,13 @@ import java.util.Observable;
 
 import model.DAOFactory;
 
-@SuppressWarnings("serial")
+
 public class Produit extends Observable implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int i_idProduit = 0;
 	private String s_nomProduit;
 	private double d_prixProduit;
@@ -134,57 +138,4 @@ public class Produit extends Observable implements Serializable{
 		//DAOFactory.getProduitDAO().update(this);	
 	}
 
-	//
-	// Création d'objets pour le passage entre activités
-	//
-//
-//	@Override
-//	public int describeContents() {
-//		return 0;
-//	}
-//
-//	@Override	
-//	public void writeToParcel(Parcel dest, int flags) {
-//		dest.writeInt(i_idProduit);
-//		dest.writeString(s_nomProduit);
-//		dest.writeDouble(d_prixProduit);
-//		dest.writeString(s_descriptionProduit);
-//		dest.writeString(s_categorieProduit);
-//		dest.writeString(s_marqueProduit);
-//		dest.writeInt(i_stockProduit);
-//		
-//	}
-//
-//	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-//		@Override
-//		public Produit createFromParcel(Parcel source) {
-//			return new Produit(source);
-//		}
-//
-//		@Override
-//		public Object[] newArray(int size) {
-//			return null;
-//		}
-//	};
-//
-//	public Produit(Parcel in) {
-//		this.i_idProduit = (int) in.readLong();
-//		this.s_nomProduit = in.readString();
-//		this.d_prixProduit = in.readDouble();
-//		this.s_descriptionProduit = in.readString();
-//		this.s_categorieProduit = in.readString();
-//		this.s_marqueProduit = in.readString();
-//		this.i_stockProduit = in.readInt();
-//	}
-//
-//	public void getFromParcel(Parcel in) {
-//		this.setIdProduit(in.readInt());
-//		this.setNomProduit(in.readString());
-//		this.setPrixProduit(in.readDouble());
-//		this.setDescriptionProduit(in.readString());
-//		this.setCategorieProduit(in.readString());
-//		this.setMarqueProduit(in.readString());
-//		this.setStockProduit(in.readInt());
-//	}
-	
 }

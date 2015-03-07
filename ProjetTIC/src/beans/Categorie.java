@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.os.Parcel;
@@ -7,7 +8,11 @@ import android.os.Parcelable;
 
 import model.DAOFactory;
 
-public class Categorie implements Parcelable{
+public class Categorie implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int i_idCategorie = 0;
 	private String s_nomCategorie;
 	private ArrayList<Produit> o_produitsCategorie = new ArrayList<Produit>();
@@ -80,43 +85,6 @@ public class Categorie implements Parcelable{
 
 	public ArrayList<Produit> getMesProduits() {
 		return this.o_produitsCategorie;
-	}
-
-	//
-	// Création d'objets pour le passage entre activités
-	//
-
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeLong(i_idCategorie);
-		dest.writeString(s_nomCategorie);
-	}
-
-	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		@Override
-		public Categorie createFromParcel(Parcel source) {
-			return new Categorie(source);
-		}
-
-		@Override
-		public Object[] newArray(int size) {
-			return null;
-		}
-	};
-
-	public Categorie(Parcel in) {
-		this.i_idCategorie = (int) in.readLong();
-		this.s_nomCategorie = in.readString();
-	}
-
-	public void getFromParcel(Parcel in) {
-		this.setIdCategorie(in.readInt());
-		this.setNomCategorie(in.readString());
 	}
 
 }

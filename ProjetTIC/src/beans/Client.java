@@ -5,9 +5,12 @@ import java.util.ArrayList;
 
 import model.DAOFactory;
 
-@SuppressWarnings("serial")
 public class Client implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int i_idClient = 0;
 	private String s_nomClient;
 	private String s_prenomClient;
@@ -119,49 +122,5 @@ public class Client implements Serializable {
 	public ArrayList<Panier> getMesPanier() {
 		return o_mesPaniers;
 	}
-
-	//
-	// Création d'objets pour le passage entre activités
-	//
-//
-//	@Override
-//	public int describeContents() {
-//		return 0;
-//	}
-//
-//	@Override
-//	public void writeToParcel(Parcel dest, int flags) {
-//		dest.writeLong(i_idClient);
-//		dest.writeString(s_nomClient);
-//		dest.writeString(s_prenomClient);
-//		dest.writeString(s_adresseClient);
-//
-//	}
-//
-//	public static final Parcelable.Creator<Client> CREATOR = new Parcelable.Creator<Client>() {
-//		@Override
-//		public Client createFromParcel(Parcel source) {
-//			return new Client(source);
-//		}
-//
-//		@Override
-//		public Client[] newArray(int size) {
-//			return new Client[size];
-//		}
-//	};
-//
-//	public Client(Parcel in) {
-//		this.i_idClient = (int) in.readLong();
-//		this.s_nomClient = in.readString();
-//		this.s_prenomClient = in.readString();
-//		this.s_adresseClient = in.readString();
-//	}
-//
-//	public void getFromParcel(Parcel in) {
-//		this.setIdClient(in.readInt());
-//		this.setNomClient(in.readString());
-//		this.setPrenomClient(in.readString());
-//		this.setAdresseClient(in.readString());
-//	}
 
 }

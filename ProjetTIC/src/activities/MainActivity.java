@@ -1,6 +1,8 @@
 package activities;
 
 
+import java.io.Serializable;
+
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
@@ -23,6 +25,22 @@ public class MainActivity extends Activity {
 	private ListeClients mesClients;
 	private Catalogue monCatalogue;
 	
+	public ListeClients getMesClients() {
+		return mesClients;
+	}
+
+	public void setMesClients(ListeClients mesClients) {
+		this.mesClients = mesClients;
+	}
+
+	public Catalogue getMonCatalogue() {
+		return monCatalogue;
+	}
+
+	public void setMonCatalogue(Catalogue monCatalogue) {
+		this.monCatalogue = monCatalogue;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,8 +51,8 @@ public class MainActivity extends Activity {
 		// __________________________________________________________
 
 		ListeCategories mesCategories = new ListeCategories();
-		mesClients = new ListeClients();
-		monCatalogue = new Catalogue();
+		setMesClients(new ListeClients());
+		setMonCatalogue(new Catalogue());
 
 		/*mesCategories.findCategories();
 		mesClients.findClients();
@@ -44,12 +62,14 @@ public class MainActivity extends Activity {
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
 		Categorie categoTelephone = new Categorie(0, "Telephone");
-		monCatalogue.getMesProduits().add(new Produit(0, 
-				"Sony", 150.0, "Téléphone Sony Xperia Z3 Compact",
+		getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
+				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",
 				categoTelephone.getNomCategorie(), "Sony", 10));
-		monCatalogue.getMesProduits().add(new Produit(1, 
-				"Sony", 150.0, "Téléphone Sony Xperia Z3",
+		getMonCatalogue().ajouterProduitCatalogue(new Produit(1, 
+				"Sony Xperia Z3", 150.0, "Téléphone Sony Xperia Z3 16Go",
 				categoTelephone.getNomCategorie(), "Sony", 10));
+		
+		getMonCatalogue().afficherCatalogue();
 
 		// Test Parser XML
 		/*
@@ -197,8 +217,8 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
 				Bundle extras = new Bundle();
-		        extras.putSerializable("mesClients", mesClients);
-		        extras.putSerializable("monCatalogue", monCatalogue);
+		        extras.putSerializable("mesClients", (Serializable) getMesClients());
+		        extras.putSerializable("monCatalogue", (Serializable) getMonCatalogue());
 		        intent.putExtra("mesExtras", extras);
 		        startActivity(intent);
 			}

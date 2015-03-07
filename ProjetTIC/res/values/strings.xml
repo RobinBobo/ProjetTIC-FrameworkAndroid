@@ -30,6 +30,8 @@
     <string name="nomProduit">Produit</string>
     <string name="textPrixProduit">Prix : </string>
     <string name="prixProduit">Prix</string>
+    <string name="textMarqueProduit">Marque : </string>
+    <string name="marqueProduit">Nom de la marque</string>
     <string name="textDescProduit">Description : </string>
     <string name="descProduit">Description</string>
     <string name="msgErreur"></string>

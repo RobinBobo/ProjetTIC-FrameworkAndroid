@@ -17,7 +17,15 @@ import android.widget.TextView;
 
 public class AjouterProduitActivity extends Activity {
 
-	private Catalogue monCatalogue = null;
+	private Catalogue monCatalogue;
+	
+	public void setMonCatalogue(Catalogue c) {
+		monCatalogue = c;
+	}
+	
+	public Catalogue getMonCatalogue() {
+		return monCatalogue;
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +33,9 @@ public class AjouterProduitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajouterproduit);
 
-		Intent intent = getIntent();
+		Intent intent = this.getIntent();
 		Bundle b = intent.getExtras();
-		
-		monCatalogue = (Catalogue) b.getSerializable("monCatalogue");
+		this.setMonCatalogue((Catalogue) b.getSerializable("monCatalogue"));
 	    
 	    final TextView txtMsgErreur = (TextView) findViewById(R.id.msgErreur);
 		
@@ -41,15 +48,17 @@ public class AjouterProduitActivity extends Activity {
 				CharSequence id = ((TextView) findViewById(R.id.idProduit)).getText();
 				CharSequence nom = ((TextView) findViewById(R.id.nomProduit)).getText();
 				CharSequence prix = ((TextView) findViewById(R.id.prixProduit)).getText();
+				CharSequence marque = ((TextView) findViewById(R.id.marqueProduit)).getText();
 				CharSequence description = ((TextView) findViewById(R.id.descProduit)).getText();
-				if (!id.toString().matches("") && !nom.toString().matches("") && !prix.toString().matches("") && !description.toString().matches("")) {
+				if (!id.toString().matches("") && !nom.toString().matches("") 
+						&& !prix.toString().matches("") && !description.toString().matches("")) {
 					valide = true;
 				} else msgErreur = "Veuillez saisir tous les champs";
 				
 				if (valide) {
 					Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
-							description.toString(), "", "marque", 0);
-					monCatalogue.ajouterProduitCatalogue(p);
+							description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
+					getMonCatalogue().ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
 				}
 				txtMsgErreur.setText(msgErreur);
