@@ -175,16 +175,14 @@ public class AccountFragment extends Fragment {
 				                		sexeClient = true;
 				                	
 				                	
-				                	MainActivity.CLIENT_ACTUEL.setLogin(editTextLogin.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setNomClient(editTextNomClient.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setPrenomClient(editTextPrenomClient.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setAdresseMail(editTextAdresseMail.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setAdresseClient(editTextAdresseClient.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setMdpClient(editTextMdp1.getText().toString());
-				                	MainActivity.CLIENT_ACTUEL.setSexeClient(sexeClient);
+				                	clientActuel.setLogin(editTextLogin.getText().toString());
+				                	clientActuel.setNomClient(editTextNomClient.getText().toString());
+				                	clientActuel.setPrenomClient(editTextPrenomClient.getText().toString());
+				                	clientActuel.setAdresseMail(editTextAdresseMail.getText().toString());
+				                	clientActuel.setAdresseClient(editTextAdresseClient.getText().toString());
+				                	clientActuel.setMdpClient(editTextMdp1.getText().toString());
+				                	clientActuel.setSexeClient(sexeClient);
 				                	
-				                	//Client c = new Client(editTextLogin.getText().toString(), editTextNomClient.getText().toString(), editTextPrenomClient.getText().toString(), 
-				                		//	editTextAdresseClient.getText().toString(), editTextAdresseMail.getText().toString(), sexeClient, editTextMdp1.getText().toString());
 				                	// Modification du client dans la BDD
 				                	// TODO
 				                	
