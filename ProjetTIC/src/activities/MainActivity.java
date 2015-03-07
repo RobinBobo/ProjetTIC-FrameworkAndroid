@@ -1,7 +1,9 @@
 package activities;
 
+import java.io.File;
+import java.io.IOException;
 
-import java.io.Serializable;
+import org.xmlpull.v1.XmlPullParserException;
 
 import plurals.Catalogue;
 import plurals.ListeCategories;
@@ -9,6 +11,7 @@ import plurals.ListeClients;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +21,8 @@ import android.widget.TextView;
 import beans.Categorie;
 import beans.Client;
 import beans.Produit;
+import configuratormanagement.Configurator;
+import configuratormanagement.XmlCreator;
 import fr.tic.R;
 
 public class MainActivity extends Activity {
@@ -79,36 +84,6 @@ public class MainActivity extends Activity {
 				categoTelephone.getNomCategorie(), "Sony", 10));
 		
 		getMonCatalogue().afficherCatalogue();
-
-		// Test Parser XML
-		/*
-				Configurator c = new Configurator();
-				Configurator c2 = new Configurator();
-				c.setShoppingCart(true);
-				c.setCustomerNotice(true);
-				c.setOrder(false);
-				c.setWebsiteName("SiteDeLaMort");	
-				
-				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");	
-
-				try {
-					XmlCreator x = new XmlCreator ();
-					x.create(c,newxmlfile);			
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (XmlPullParserException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		*/
-		
 		
 		  //
 		 // TODO: Page d'accueil
@@ -173,6 +148,36 @@ public class MainActivity extends Activity {
 				intent.putExtra("monCatalogue", getMonCatalogue());
 				intent.putExtra("mesClients", getMesClients());
 		        startActivity(intent);
+			}
+		});
+		
+		// Extraction des données
+		final Button extract = (Button) findViewById(R.id.btnExtract);
+		extract.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Configurator c = new Configurator();
+				c.setWebsiteName(nomSite);
+				c.setShoppingCart(true);
+				c.setCustomerNotice(true);
+				c.setOrder(false);
+				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+				XmlCreator xml = new XmlCreator();
+				try {
+					xml.create(c, getMonCatalogue().getMesProduits(), newxmlfile);
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (XmlPullParserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
