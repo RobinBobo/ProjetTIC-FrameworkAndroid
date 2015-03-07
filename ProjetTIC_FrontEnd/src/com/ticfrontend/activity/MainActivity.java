@@ -53,9 +53,9 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
-	
-	
-	public static Produit PRODUITBETA = null;
+		
+	// Configuration du Back-End
+	public static ArrayList<Produit> LISTPRODUITBETA = null;
 	public static String WEBSITENAMEBETA = null;
 	
 	@Override
@@ -68,11 +68,11 @@ public class MainActivity extends Activity {
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
-		PRODUITBETA = new Produit();
+		LISTPRODUITBETA = new ArrayList<Produit>();
 		
 		
 		try {
-			x.load(new FileInputStream(xmlToLoad), c, PRODUITBETA);
+			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUITBETA);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {
@@ -80,9 +80,16 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
-		Avis a = new Avis();
-		List<Avis> avisBeta = a.getAListOfReviews1();
-		PRODUITBETA.setListeAvisProduit(avisBeta);
+		// On ajoute des avis fictif pour les produits que l'on vient de récupérer
+		List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
+		List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
+		for(int i = 0; i < LISTPRODUITBETA.size(); i++){
+			if(i%2 == 0)
+				LISTPRODUITBETA.get(i).setListeAvisProduit(avisBeta);
+			else 
+				LISTPRODUITBETA.get(i).setListeAvisProduit(avisBeta2);
+		}
+		
 		WEBSITENAMEBETA = c.getWebsiteName();
 		
 		initSlideMenu();

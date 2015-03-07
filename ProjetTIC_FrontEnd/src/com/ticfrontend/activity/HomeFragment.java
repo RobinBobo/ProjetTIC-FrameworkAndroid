@@ -33,12 +33,10 @@ public class HomeFragment extends Fragment {
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		this.activity.setTitle(R.string.title_fragment_home);
 
-		
 		
 		//Intent intent = activity.getIntent();
 		//client = intent.getStringExtra(LoginFragment.EXTRA_KEY_USER);
@@ -46,7 +44,7 @@ public class HomeFragment extends Fragment {
 		if(MainActivity.ISCONNECTED)
 			((TextView)rootView.findViewById(R.id.textUser)).setText("Bienvenue " + MainActivity.CLIENT_ACTUEL.getNomClient());
 		else 
-			((TextView)rootView.findViewById(R.id.textUser)).setText("Connecte toi!");
+			((TextView)rootView.findViewById(R.id.textUser)).setText("Connectez-vous !");
 	}
 
 	@Override

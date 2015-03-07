@@ -59,6 +59,7 @@ public class Categorie implements Serializable {
 
 		List<Categorie> listCategorie = new ArrayList<Categorie>();
 		
+		listCategorie.add(new Categorie(0, "Catégorie du Back-End"));
 		listCategorie.add(new Categorie(1, "Livres"));
 		listCategorie.add(new Categorie(2, "Videos (Blu-Ray / DVD)"));
 		listCategorie.add(new Categorie(3, "Musique (CD / DVD Live)"));

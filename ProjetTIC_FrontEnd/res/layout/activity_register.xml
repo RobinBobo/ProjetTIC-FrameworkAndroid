@@ -138,8 +138,10 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="16dp" />
+            android:inputType="textPassword"
+            android:textSize="16dp" 
+            android:password="true"
+            />
 
         <EditText
             android:id="@+id/editTextRegPassVerif"
@@ -149,8 +151,10 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="16dp" />
+            android:inputType="textPassword"
+            android:textSize="16dp" 
+            android:password="true"
+            />
 
         <EditText
             android:id="@+id/editTextRegLastname"
@@ -182,8 +186,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="16dp" />
+            android:inputType="textPostalAddress"
+            android:textSize="16dp" 
+            />
                 
                 
         <EditText
@@ -194,8 +199,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:inputType="textAutoComplete"
-            android:textSize="16dp" />
+            android:inputType="textEmailAddress"
+            android:textSize="16dp" 
+            />
 
 	<Button
 	    android:id="@+id/boutonValiderLogin"

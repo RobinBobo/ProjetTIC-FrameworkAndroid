@@ -186,10 +186,6 @@ public class AccountFragment extends Fragment {
 				                	// Modification du client dans la BDD
 				                	// TODO
 				                	
-				                	
-				                	// On dit que le client est connecté
-				                	//MainActivity.ISCONNECTED = true;
-				                	
 				                	Intent intent = getActivity().getIntent();
 				                	getActivity().finish();
 				                	startActivity(intent);				                    

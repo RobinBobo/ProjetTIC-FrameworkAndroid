@@ -2,6 +2,7 @@ package com.ticfrontend.configuratormanagement;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -15,7 +16,7 @@ public class XmlLoader {
 
 	private String text;
 
-	public void load (InputStream is, Configurator config, Produit p) {
+	public void load (InputStream is, Configurator config, List<Produit> listProduit) {
 
 		XmlPullParserFactory factory = null;
 		XmlPullParser parser = null;
@@ -34,8 +35,11 @@ public class XmlLoader {
 				case XmlPullParser.START_TAG:	//Ouverture de la balise exemple : <1> <1>
 					if(tagname.equalsIgnoreCase("Configuration")) // Si de type configuration
 						parseIntoConfiguration(eventType, parser, config);
-					else if(tagname.equalsIgnoreCase("Produit")) // Si de type client
+					else if(tagname.equalsIgnoreCase("Produit")){ // Si de type client
+						Produit p = new Produit(); // Création Produit vide
 						parseIntoProduct(eventType, parser, p);//Créer nouveau client + parseInto   TODO
+						listProduit.add(p); // On ajoute notre produit parsé dans notre liste
+					}
 					/*else if(tagname.equalsIgnoreCase("Categorie"))
 						//Créer nouvelle categorie + parseInto
 					else if(tagname.equalsIgnoreCase("Marque"))
