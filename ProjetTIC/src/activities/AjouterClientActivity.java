@@ -57,6 +57,7 @@ public class AjouterClientActivity extends Activity{
 					Client c = new Client(Integer.parseInt(id.toString()) , nom.toString(),prenom.toString(),
 							adresse.toString(), sexe);
 					mesClients.ajouterClient(c);
+					MainActivity.getMesClients().ajouterClient(c);
 					msgErreur.setText("Le client a bien été ajouté !");
 				}
 			}

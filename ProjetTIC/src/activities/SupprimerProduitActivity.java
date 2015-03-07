@@ -81,6 +81,7 @@ public class SupprimerProduitActivity extends Activity {
 			
 			public void onClick(View v) {
 				monCatalogue.supprimerProduitCatalogue(p);
+				MainActivity.getMonCatalogue().supprimerProduitCatalogue(p);
 				msgErreur.setText("Le produit a bien été supprimé !");
 			}
 		});

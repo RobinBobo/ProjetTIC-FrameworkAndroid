@@ -147,6 +147,7 @@ public class ModifierProduitActivity extends Activity {
 						if (checkNom.isChecked()) {
 							if (!newNom.getText().toString().matches("")) {
 				        		pdt.setNomProduit(newNom.getText().toString());
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setNomProduit(newNom.getText().toString());
 				        		msgErreur += "Le nom du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau nom du produit. \n";
 						}
@@ -155,18 +156,21 @@ public class ModifierProduitActivity extends Activity {
 				        	if (!newPrix.getText().toString().matches("")) {
 				        		// TODO: erreur de type à voir
 				        		pdt.setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau prix du produit. \n";
 						}
 						if (checkDesc.isChecked()) {
 				        	if (!newDesc.getText().toString().matches("")) {
 				        		pdt.setDescriptionProduit(newDesc.getText().toString());
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setDescriptionProduit(newDesc.getText().toString());
 				        		msgErreur += "La description du produit a bien été modifiée. \n";
 				        	} else msgErreur += "Veuillez saisir la nouvelle description du produit. \n";
 						}
 						if (checkStock.isChecked()) {
 				        	if (!newStock.getText().toString().matches("")) {
 				        		pdt.setStockProduit(Integer.parseInt(newStock.getText().toString()));
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setStockProduit(Integer.parseInt(newStock.getText().toString()));
 				        		msgErreur += "Le stock du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau stock du produit. \n";
 				        }

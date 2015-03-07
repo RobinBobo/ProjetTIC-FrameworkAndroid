@@ -27,18 +27,18 @@ import fr.tic.R;
 
 public class MainActivity extends Activity {
 	
-	private ListeClients mesClients;
-	private Catalogue monCatalogue;
-	private ListeCategories listeCategories;
-	public ListeCategories getListeCategories() {
+	private static ListeClients mesClients;
+	private static Catalogue monCatalogue;
+	private static ListeCategories listeCategories;
+	private static String nomSite;
+	
+	public static ListeCategories getListeCategories() {
 		return listeCategories;
 	}
 
-	public void setListeCategories(ListeCategories listeCategories) {
-		this.listeCategories = listeCategories;
+	public static void setListeCategories(ListeCategories listeCategories) {
+		MainActivity.listeCategories = listeCategories;
 	}
-
-	private static String nomSite;
 	
 	public static String getNomSite() {
 		return nomSite;
@@ -48,20 +48,20 @@ public class MainActivity extends Activity {
 		MainActivity.nomSite = nomSite;
 	}
 
-	public ListeClients getMesClients() {
+	public static ListeClients getMesClients() {
 		return mesClients;
 	}
 
-	public void setMesClients(ListeClients mesClients) {
-		this.mesClients = mesClients;
+	public static void setMesClients(ListeClients mesClients) {
+		MainActivity.mesClients = mesClients;
 	}
 
-	public Catalogue getMonCatalogue() {
+	public static Catalogue getMonCatalogue() {
 		return monCatalogue;
 	}
 
-	public void setMonCatalogue(Catalogue monCatalogue) {
-		this.monCatalogue = monCatalogue;
+	public static void setMonCatalogue(Catalogue monCatalogue) {
+		MainActivity.monCatalogue = monCatalogue;
 	}
 
 	@Override

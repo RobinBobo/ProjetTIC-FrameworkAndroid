@@ -82,8 +82,8 @@ public class AjouterProduitActivity extends Activity {
 					Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
 							description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
 					getMonCatalogue().ajouterProduitCatalogue(p);
+					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
-					getMonCatalogue().afficherCatalogue();
 				}
 				txtMsgErreur.setText(msgErreur);
 			}
