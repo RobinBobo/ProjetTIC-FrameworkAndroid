@@ -35,6 +35,8 @@ public class ProductListFragment extends Fragment {
 	private Activity activity;
 	private List<Produit> listProduit;
 	private int title = R.string.title_fragment_product_list;
+	
+	private Categorie categorie = null;
 
 	// TODO
 	// private void ajoutListeProduit(Param)
@@ -45,13 +47,20 @@ public class ProductListFragment extends Fragment {
 		this.title = title;
 	}
 	public ProductListFragment(/* Liste produit (ex: promos, nouveautes, offres speciales,*/){
-		this.listProduit = Produit.getAListOfProducts();
+//		this.listProduit = Produit.getAListOfProducts();
 	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		this.rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
 		this.activity = this.getActivity();
 		this.activity.setTitle(title);
+		
+		Bundle extras = activity.getIntent().getExtras();
+		Categorie cat = (Categorie) extras.getSerializable(CatalogFragment.EXTRA_KEY_CATEGROY);
+		this.categorie = cat;
+		
+		this.listProduit = Produit.getAListOfProductsBeta(categorie);
+		
 		init();
 		testAjoutItemsListProduct();
 
@@ -63,7 +72,7 @@ public class ProductListFragment extends Fragment {
 		search.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) { 
-				// TODO: faire la recherche de produit (Filter)				
+				
 			}
 		});	
 

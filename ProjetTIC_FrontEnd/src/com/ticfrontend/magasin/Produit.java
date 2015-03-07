@@ -98,6 +98,35 @@ public class Produit implements Serializable{
 		
 		return listProduct;
 	}
+	
+	
+	public static List<Produit> getAListOfProductsBeta(Categorie cat) {
+
+		List<Produit> listProduct = new ArrayList<Produit>();
+		List<Avis> la = new ArrayList<Avis>();
+		List<Avis> la2 = new ArrayList<Avis>();
+		la = Avis.getAListOfReviewsBeta();
+		la2 = Avis.getAListOfReviewsBeta2();
+		
+		//Categorie multimedia = new Categorie(1, "Multimédia");
+		
+		listProduct.add(new Produit(1, "A Produit 1", 19.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(2, "B Produit 2", 12.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));;
+		listProduct.add(new Produit(3, "C Produit 3", 15.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(4, "E Produit 4", 12.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));
+		listProduct.add(new Produit(5, "G Produit 5", 29.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(6, "V Produit 6", 69.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));
+		listProduct.add(new Produit(7, "Z Produit 7", 119.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(8, "T Produit 8", 19.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));
+		listProduct.add(new Produit(9, "D Produit 9", 619.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(10, "F Produit 10", 2419.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));
+		listProduct.add(new Produit(11, "Q Produit 11", 20.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(12, "K Produit 12", 9.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la2));
+		listProduct.add(new Produit(13, "G Produit 13", 1.99, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		listProduct.add(new Produit(14, "H Produit 14", 2.00, cat, "Multimédia (audio, vidéo, jeux vidéo)", "Marque NoName",la));
+		
+		return listProduct;
+	}
 
 	public static HashMap<Produit,Integer> getAHashMapOfProductsNQuantity(){
 		HashMap<Produit,Integer> listProduct = new HashMap<Produit,Integer>();

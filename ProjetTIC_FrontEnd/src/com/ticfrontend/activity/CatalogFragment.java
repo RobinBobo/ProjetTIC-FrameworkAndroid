@@ -66,7 +66,7 @@ public class CatalogFragment extends Fragment {
 	}
 	
 	private void testAjoutItemsListCategorie(){
-		List<Categorie> listCategorie = Categorie.getAListOfCategorie();
+		List<Categorie> listCategorie = Categorie.getAListOfCategorieBeta();
 		
 		//Création et initialisation de l'Adapter pour les catégories
 		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this.getActivity(), listCategorie);

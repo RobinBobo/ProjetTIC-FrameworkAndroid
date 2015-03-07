@@ -54,4 +54,19 @@ public class Categorie implements Serializable {
 		
 		return listCategorie;
 	}
+	
+	public static List<Categorie> getAListOfCategorieBeta() {
+
+		List<Categorie> listCategorie = new ArrayList<Categorie>();
+		
+		listCategorie.add(new Categorie(1, "Livres"));
+		listCategorie.add(new Categorie(2, "Videos (Blu-Ray / DVD)"));
+		listCategorie.add(new Categorie(3, "Musique (CD / DVD Live)"));
+		listCategorie.add(new Categorie(4, "Téléphonie"));
+		listCategorie.add(new Categorie(5, "Multimédia"));
+		listCategorie.add(new Categorie(6, "Accessoires"));
+		listCategorie.add(new Categorie(7, "Divers"));
+		
+		return listCategorie;
+	}
 }
