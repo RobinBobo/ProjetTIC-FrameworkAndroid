@@ -2,6 +2,7 @@ package com.ticfrontend.activity;
 
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Panier;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -85,8 +86,14 @@ public class RegisterFragment extends Fragment {
 					// On récupère l'instance dans l'activité principale
 					MainActivity.CLIENT_ACTUEL = c;
 					
+					// IL FAUT ABSOLUMENT GARDER LES LIST COMMANDE CLIENT ET LES PANIER S'IL EN AVAIT UN
+					// CAR ON LES PERD EN CHANGEANT LES INFORMATIONS
+					
 					// On dit que le client est connecté
 					MainActivity.ISCONNECTED = true;
+					
+					CartFragment.PANIER_CLIENT = new Panier();
+					CartFragment.PANIER_CLIENT.ajouterDansPanier(MainActivity.PRODUITBETA, 2);
 						
 					Intent intent = activity.getIntent();
 					//intent.putExtra(EXTRA_KEY_REGISTER, login.getText().toString());
