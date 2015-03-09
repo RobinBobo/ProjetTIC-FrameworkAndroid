@@ -3,9 +3,6 @@ package beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import model.DAOFactory;
 
 public class Categorie implements Serializable{

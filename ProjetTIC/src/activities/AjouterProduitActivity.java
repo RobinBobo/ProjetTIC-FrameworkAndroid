@@ -52,10 +52,15 @@ public class AjouterProduitActivity extends Activity {
 				} else msgErreur = "Veuillez saisir tous les champs";
 				
 				if (valide) {
-					Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
-							description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
-					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
-					msgErreur = "Votre produit a bien été ajouté";
+					Produit exist = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(id.toString()));
+					if (exist != null) {
+						msgErreur = "L\'identifiant est déjà utilisé pour un autre produit : " + exist.getNomProduit();
+					} else {
+						Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
+								description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
+						MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
+						msgErreur = "Votre produit a bien été ajouté";
+					}
 				}
 				txtMsgErreur.setText(msgErreur);
 			}

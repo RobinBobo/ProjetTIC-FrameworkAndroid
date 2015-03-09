@@ -41,6 +41,16 @@ public class ListeCategories implements Observer, Serializable{
 		}
 	}
 	
+	public boolean isCategorie(int id){
+		boolean isPresent = false;
+		for(int i=0; i<o_mesCategories.size(); i++) {
+			if (o_mesCategories.get(i).getIdCategorie() == id) {
+				isPresent = true;
+			}
+		}
+		return isPresent;
+	}
+	
 	//récupération dans la base :
 	public void findCategories(){
 		boolean read = true;

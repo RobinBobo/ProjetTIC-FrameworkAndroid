@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <TextView 
+			android:id="@+id/textId"
+			android:text="@string/textId"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+		
+		<EditText 
+			android:id="@+id/id"
+			android:hint="@string/id"
+			android:inputType="number"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/textId"
+			android:layout_alignParentRight="true" />
+		
+		<TextView 
+			android:id="@+id/textNom"
+			android:text="@string/textNom"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="left"
+			android:layout_below="@id/id" />
+			
+		<EditText
+			android:id="@+id/nom"
+			android:hint="@string/nomCategorie"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:layout_below="@id/id"
+			android:layout_toRightOf="@id/textNom"
+			android:layout_alignParentRight="true" />
+		
+		<TextView
+			android:id="@+id/msgErreur"
+			android:text="@string/msgErreur"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    android:layout_below="@+id/nom"
+			android:gravity="left" />
+	
+		<Button
+		    android:id="@+id/btnValider"
+		    android:text="@string/btnValider"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/msgErreur"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginTop="91dp" />
+        
+    </RelativeLayout>
+    
+
+</ScrollView>
