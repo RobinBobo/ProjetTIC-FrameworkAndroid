@@ -1,9 +1,6 @@
 package activities;
 
-import plurals.Catalogue;
-import plurals.ListeClients;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,15 +17,6 @@ import fr.tic.R;
 public class ModifierProduitActivity extends Activity {
 
 	private Produit pdt = null;
-	private Catalogue monCatalogue;
-	
-	public Catalogue getMonCatalogue() {
-		return monCatalogue;
-	}
-
-	public void setMonCatalogue(Catalogue monCatalogue) {
-		this.monCatalogue = monCatalogue;
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +24,17 @@ public class ModifierProduitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_modifierproduit);
 		
-		// Récupération des données
-		Intent intent = this.getIntent();
-		
-		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
-		
-		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);
-		
+		// Récupération des données		
+		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);		
 		final Button rechPdt = (Button) findViewById(R.id.btnRechercher);
 		final Button btnValider = (Button) findViewById(R.id.btnValider);
-
 		final TextView id = (TextView) findViewById(R.id.rechIdPdt);
 		final TextView erreurRech = (TextView) findViewById(R.id.erreurRecherche);
 		final TextView resNom = (TextView) findViewById(R.id.resNomProduit);
 		final TextView resPrix = (TextView) findViewById(R.id.resPrixProduit);
 		final TextView resDesc = (TextView) findViewById(R.id.resDescProduit);
 		final TextView resStock = (TextView) findViewById(R.id.resStockProduit);
+		final TextView msgResModif = (TextView) findViewById(R.id.msgResModif);
 		final EditText newNom = (EditText) findViewById(R.id.newNomProduit);
 		final EditText newPrix = (EditText) findViewById(R.id.newPrixProduit);
 		final EditText newDesc = (EditText) findViewById(R.id.newDescProduit);
@@ -60,8 +43,6 @@ public class ModifierProduitActivity extends Activity {
 		final CheckBox checkPrix = (CheckBox) findViewById(R.id.checkPrixProduit);
 		final CheckBox checkDesc = (CheckBox) findViewById(R.id.checkDescProduit);
 		final CheckBox checkStock = (CheckBox) findViewById(R.id.checkStockProduit);
-
-		final TextView msgResModif = (TextView) findViewById(R.id.msgResModif);
 		
 		// On masque les zones de saisies
 		formModifPdt.setVisibility(View.INVISIBLE);
@@ -76,7 +57,7 @@ public class ModifierProduitActivity extends Activity {
 			public void onClick(View v) {
 				
 				if (!id.getText().toString().matches("")) {
-					pdt = monCatalogue.rechercherProduit(Integer.parseInt(id.getText().toString()));
+					pdt = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(id.getText().toString()));
 					if (pdt == null) {
 						erreurRech.setText("Le produit recherché n'existe pas !");
 					} else {
@@ -146,7 +127,6 @@ public class ModifierProduitActivity extends Activity {
 					} else {
 						if (checkNom.isChecked()) {
 							if (!newNom.getText().toString().matches("")) {
-				        		pdt.setNomProduit(newNom.getText().toString());
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setNomProduit(newNom.getText().toString());
 				        		msgErreur += "Le nom du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau nom du produit. \n";
@@ -154,22 +134,18 @@ public class ModifierProduitActivity extends Activity {
 
 						if (checkPrix.isChecked()) {
 				        	if (!newPrix.getText().toString().matches("")) {
-				        		// TODO: erreur de type à voir
-				        		pdt.setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau prix du produit. \n";
 						}
 						if (checkDesc.isChecked()) {
 				        	if (!newDesc.getText().toString().matches("")) {
-				        		pdt.setDescriptionProduit(newDesc.getText().toString());
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setDescriptionProduit(newDesc.getText().toString());
 				        		msgErreur += "La description du produit a bien été modifiée. \n";
 				        	} else msgErreur += "Veuillez saisir la nouvelle description du produit. \n";
 						}
 						if (checkStock.isChecked()) {
 				        	if (!newStock.getText().toString().matches("")) {
-				        		pdt.setStockProduit(Integer.parseInt(newStock.getText().toString()));
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setStockProduit(Integer.parseInt(newStock.getText().toString()));
 				        		msgErreur += "Le stock du produit a bien été modifié. \n";
 				        	} else msgErreur += "Veuillez saisir le nouveau stock du produit. \n";

@@ -155,9 +155,6 @@ public class MainActivity extends Activity {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-				intent.putExtra("monCatalogue", getMonCatalogue());
-				intent.putExtra("mesClients", getMesClients());
-				intent.putExtra("listeCategories", getListeCategories());
 		        startActivity(intent);
 			}
 		});

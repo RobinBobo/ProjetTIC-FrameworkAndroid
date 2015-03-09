@@ -12,9 +12,10 @@
 	
 	<EditText 
 		android:id="@+id/idProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
 		android:hint="@string/idProduit"
+		android:inputType="number"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/textIdProduit"
 		android:layout_alignParentRight="true" />
 	

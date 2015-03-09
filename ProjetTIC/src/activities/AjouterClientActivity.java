@@ -1,10 +1,7 @@
 package activities;
 
 import fr.tic.R;
-import plurals.Catalogue;
-import plurals.ListeClients;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,26 +11,12 @@ import android.widget.TextView;
 import beans.Client;
 
 public class AjouterClientActivity extends Activity{
-	
-	private ListeClients mesClients;
-	
-	public ListeClients getMesClients() {
-		return mesClients;
-	}
-
-	public void setMesClients(ListeClients mesClients) {
-		this.mesClients = mesClients;
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajouterclient);
-		
-		Intent intent = this.getIntent();
-		
-		setMesClients((ListeClients) intent.getSerializableExtra("mesClients"));
 		
 		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		
@@ -56,7 +39,6 @@ public class AjouterClientActivity extends Activity{
 				if (valide) {
 					Client c = new Client(Integer.parseInt(id.toString()) , nom.toString(),prenom.toString(),
 							adresse.toString(), sexe);
-					mesClients.ajouterClient(c);
 					MainActivity.getMesClients().ajouterClient(c);
 					msgErreur.setText("Le client a bien été ajouté !");
 				}

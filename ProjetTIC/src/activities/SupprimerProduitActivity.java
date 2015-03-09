@@ -1,9 +1,6 @@
 package activities;
 
-import plurals.Catalogue;
-import plurals.ListeClients;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,15 +14,6 @@ import fr.tic.R;
 public class SupprimerProduitActivity extends Activity {
 
 	private Produit p = null;
-	private Catalogue monCatalogue;
-	
-	public Catalogue getMonCatalogue() {
-		return monCatalogue;
-	}
-
-	public void setMonCatalogue(Catalogue monCatalogue) {
-		this.monCatalogue = monCatalogue;
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +21,7 @@ public class SupprimerProduitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_supprimerproduit);
 		
-		// Récupération des données
-		Intent intent = this.getIntent();
-		
-		setMonCatalogue((Catalogue) intent.getSerializableExtra("monCatalogue"));
-		
+		// Récupération des données		
 		final EditText idPdt = (EditText) findViewById(R.id.idProduit);
 		final TextView nomPdt = (TextView) findViewById(R.id.resNomProduit);
 		final TextView descPdt = (TextView) findViewById(R.id.resDescProduit);
@@ -58,7 +42,7 @@ public class SupprimerProduitActivity extends Activity {
 			public void onClick(View v) {
 				String msgErreur = "";
 				if (!idPdt.getText().toString().matches("")) {
-					p = monCatalogue.rechercherProduit(Integer.parseInt(idPdt.getText().toString()));
+					p = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(idPdt.getText().toString()));
 					if (p != null) {
 						msgErreur += "Produit trouvé !";
 						afficherInfo(p);
@@ -80,7 +64,6 @@ public class SupprimerProduitActivity extends Activity {
 		btnSupprimer.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				monCatalogue.supprimerProduitCatalogue(p);
 				MainActivity.getMonCatalogue().supprimerProduitCatalogue(p);
 				msgErreur.setText("Le produit a bien été supprimé !");
 			}
