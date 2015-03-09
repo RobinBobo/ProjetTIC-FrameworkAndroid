@@ -5,15 +5,15 @@
     
     <TextView 
 		android:id="@+id/textIdProduit"
+		android:text="@string/textId"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textIdProduit" />
+		android:layout_height="wrap_content" />
 	
 	<EditText 
 		android:id="@+id/idProduit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
-		android:hint="@string/idProduit"
+		android:hint="@string/id"
 		android:layout_toRightOf="@id/textIdProduit"
 		android:layout_alignParentRight="true" />
     
@@ -46,7 +46,7 @@
 	    <!-- nom --> 
 	    <TextView
 			android:id="@+id/textNomProduit"
-		    android:text="@string/textNomProduit"
+		    android:text="@string/textNom"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/instructionSupprimerPdt" />    
@@ -61,7 +61,7 @@
 	    <!-- prix --> 
 	    <TextView
 			android:id="@+id/textPrixProduit"
-		    android:text="@string/textPrixProduit"
+		    android:text="@string/textPrix"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/textNomProduit" />    
@@ -77,7 +77,7 @@
 	
 	    <TextView
 	        android:id="@+id/textDescProduit"
-	        android:text="@string/textDescProduit"
+	        android:text="@string/textDesc"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_below="@id/textPrixProduit" />

@@ -5,6 +5,31 @@
     <string name="hello_world">Bienvenue dans votre application de vente en ligne !</string>
     <string name="action_settings">Settings</string>
     
+    
+    <!-- Titres -->
+    <string name="titleChoixNom">Choix du nom</string>
+    <string name="titleMenu">Menu de gestion de la base</string>
+    <string name="titleAfficherCatalogue">Catalogue de produits</string>
+    <string name="titleAjouterProduit">Ajout de produits</string>
+    <string name="titleModifierProduit">Modification de produits</string>
+    <string name="titleSupprimerProduit">Suppression de produits</string>
+    <string name="titleAjouterCategorie">Ajout de catégorie</string>
+    <string name="titleAjouterClient">Ajout de clients</string>
+    
+    
+    <!-- Général -->
+    <string name="textId">Identifiant : </string>
+    <string name="textNom">Nom : </string>
+    <string name="textPrix">Prix : </string>
+    <string name="textMarque">Marque : </string>
+    <string name="textDesc">Description : </string>
+    <string name="btnValider">Valider</string>
+    <string name="msgErreur"></string>
+    <string name="id">01</string>
+    <string name="prix">149,99</string>
+	<string name="btnRechercher">Rechercher</string>
+	<string name="erreurRecherche"></string>
+    
     <!-- Accueil -->
     <string name="titleAccueil">Bienvenue sur votre application de gestion de vente en ligne !</string>
     <string name="titleStat">Vos stats :</string>
@@ -30,23 +55,12 @@
     <string name="ajouterClient">Ajouter un client</string>
     
 	<!-- Produit -->
-    <string name="textIdProduit">Identifiant du produit : </string>
-    <string name="idProduit">Identifiant</string>
-    <string name="textNomProduit">Nom : </string>
-    <string name="nomProduit">Produit</string>
-    <string name="textPrixProduit">Prix : </string>
-    <string name="prixProduit">Prix</string>
-    <string name="textMarqueProduit">Marque : </string>
-    <string name="marqueProduit">Nom de la marque</string>
-    <string name="textDescProduit">Description : </string>
-    <string name="descProduit">Description</string>
-    <string name="msgErreur"></string>
-    <string name="btnAjoutProduit">Valider</string>
+    <string name="nomProduit">Produit X</string>
+    <string name="marqueProduit">Marque Y</string>
+    <string name="descProduit">Mémoire de 16Go, appareil photo de 16 Mpx, ...</string>
     <string name="titleModifPdt">Entrer l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier :</string>
     <string name="rechIdPdt">Identifiant du produit</string>
-	<string name="btnRechercher">Rechercher</string>
 	<string name="instructionModifPdt">Pour modifier un champ, cocher la case devant ce champ et saisir la nouvelle valeur dans la zone qui apparaît en dessous.</string>
-	<string name="erreurRecherche"></string>
 	<string name="checkNomProduit"></string>
 	<string name="resNomProduit"></string>
 	<string name="newNomProduit">Nouvelle valeur</string>
@@ -60,7 +74,6 @@
 	<string name="checkStockProduit"></string>
 	<string name="resStockProduit"></string>
 	<string name="newStockProduit">Nouvelle valeur</string>
-	<string name="btnValider">Valider</string>
 	<string name="msgResModif"></string>
 	<string name="instructionSupprimerPdt">Voici les informations liées au produit recherché, cliquer sur "supprimer" en bas de la page pour valider la suppression de ce produit</string>
 	<string name="btnSupprimer">Supprimer</string>
@@ -82,5 +95,6 @@
     <string-array name="category" />
     <string name="listeCategory" />
     <string name="textListeCatego" >Catégorie :</string>
+    <string name="nomCategorie" >Téléphonie, PC, Tablette, Bijoux, Pull, ...</string>
 
 </resources>

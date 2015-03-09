@@ -76,6 +76,18 @@ public class MenuActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		// Lien vers l'activité d'ajout d'une catégorie
+		final Button ajouterCategorie = (Button) findViewById(R.id.ajouterCategorie);
+		ajouterCategorie.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						AjouterCategorieActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 }

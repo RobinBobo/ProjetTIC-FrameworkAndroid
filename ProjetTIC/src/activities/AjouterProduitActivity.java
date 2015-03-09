@@ -35,7 +35,7 @@ public class AjouterProduitActivity extends Activity {
                 android.R.layout.simple_spinner_item, arraySpinner);
         s.setAdapter(adapter);
 		
-		final Button ajoutProduit = (Button) findViewById(R.id.btnAjoutProduit);
+		final Button ajoutProduit = (Button) findViewById(R.id.btnValider);
 		ajoutProduit.setOnClickListener(new OnClickListener() {
 					
 			public void onClick(View v) {

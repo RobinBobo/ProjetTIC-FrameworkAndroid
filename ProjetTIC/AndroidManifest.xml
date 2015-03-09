@@ -26,13 +26,30 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="activities.MenuActivity" />
-        <activity android:name="activities.AjouterProduitActivity" />
-        <activity android:name="activities.AjouterClientActivity" />
-        <activity android:name="activities.AfficherCatalogueActivity" />
-        <activity android:name="activities.ModifierProduitActivity" />
-        <activity android:name="activities.SupprimerProduitActivity" />
-        <activity android:name="activities.ChoixNomSiteActivity" />
+        <activity 
+            android:name="activities.ChoixNomSiteActivity"
+            android:label="@string/titleChoixNom" />
+        <activity 
+            android:name="activities.MenuActivity"            
+            android:label="@string/titleMenu" />
+        <activity 
+            android:name="activities.AfficherCatalogueActivity"
+            android:label="@string/titleAfficherCatalogue" />
+        <activity 
+            android:name="activities.AjouterProduitActivity"
+            android:label="@string/titleAjouterProduit" />
+        <activity 
+            android:name="activities.ModifierProduitActivity"
+            android:label="@string/titleModifierProduit" />
+        <activity 
+            android:name="activities.SupprimerProduitActivity"
+            android:label="@string/titleSupprimerProduit" />
+        <activity 
+            android:name="activities.AjouterCategorieActivity"
+            android:label="@string/titleAjouterCategorie" />
+        <activity 
+            android:name="activities.AjouterClientActivity"
+            android:label="@string/titleAjouterClient" />
     </application>
 
 </manifest>

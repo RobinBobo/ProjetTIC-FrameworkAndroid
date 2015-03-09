@@ -1,121 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent" 
-	android:orientation="vertical">
-	
-	<TextView 
-		android:id="@+id/textIdProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textIdProduit" />
-	
-	<EditText 
-		android:id="@+id/idProduit"
-		android:hint="@string/idProduit"
-		android:inputType="number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/textIdProduit"
-		android:layout_alignParentRight="true" />
-	
-	<TextView 
-		android:id="@+id/textNomProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textNomProduit"
-		android:gravity="left"
-		android:layout_below="@id/idProduit" />
-		
-	<EditText
-		android:id="@+id/nomProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:hint="@string/nomProduit"
-		android:layout_below="@id/idProduit"
-		android:layout_toRightOf="@id/textNomProduit"
-		android:layout_alignParentRight="true" />
-	
-	<TextView 
-		android:id="@+id/textPrixProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textPrixProduit"
-		android:gravity="left"
-		android:layout_below="@id/nomProduit" />
-		
-	<EditText
-		android:id="@+id/prixProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:hint="@string/prixProduit"
-		android:inputType="numberDecimal"
-		android:layout_below="@id/nomProduit"
-		android:layout_toRightOf="@id/textPrixProduit"
-		android:layout_alignParentRight="true" />
-	
-	<TextView 
-		android:id="@+id/textMarqueProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textMarqueProduit"
-		android:gravity="left"
-		android:layout_below="@id/prixProduit" />
-		
-	<EditText
-		android:id="@+id/marqueProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:hint="@string/marqueProduit"
-		android:layout_below="@id/prixProduit"
-		android:layout_toRightOf="@id/textMarqueProduit"
-		android:layout_alignParentRight="true" />
-	
-	<TextView 
-		android:id="@+id/textListeCatego"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textListeCatego"
-		android:gravity="left"
-		android:layout_below="@id/marqueProduit" />
-	
-	<Spinner 
-        android:id="@+id/listeCategory"
-        android:name="@string/listeCategory"
-        android:layout_width="match_parent" 
-        android:layout_height="wrap_content"
-		android:layout_below="@id/textListeCatego" /> 
-	
-	<TextView 
-		android:id="@+id/textDescProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/textDescProduit"
-		android:gravity="left"
-		android:layout_below="@id/listeCategory" />
-		
-	<EditText
-		android:id="@+id/descProduit"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+	<RelativeLayout
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" 
-		android:hint="@string/descProduit"
-		android:layout_below="@id/textDescProduit" />
+		android:orientation="vertical">
+		
+		<TextView 
+			android:id="@+id/textId"
+			android:text="@string/textId"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+		
+		<EditText 
+			android:id="@+id/idProduit"
+			android:hint="@string/id"
+			android:inputType="number"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/textId"
+			android:layout_alignParentRight="true" />
+		
+		<TextView 
+			android:id="@+id/textNom"
+			android:text="@string/textNom"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="left"
+			android:layout_below="@id/idProduit" />
+			
+		<EditText
+			android:id="@+id/nomProduit"
+			android:hint="@string/nomProduit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:layout_below="@id/idProduit"
+			android:layout_toRightOf="@id/textNom"
+			android:layout_alignParentRight="true" />
+		
+		<TextView 
+			android:id="@+id/textPrix"
+			android:text="@string/textPrix"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="left"
+			android:layout_below="@id/nomProduit" />
+			
+		<EditText
+			android:id="@+id/prixProduit"
+			android:hint="@string/prix"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:inputType="numberDecimal"
+			android:layout_below="@id/nomProduit"
+			android:layout_toRightOf="@id/textPrix"
+			android:layout_alignParentRight="true" />
+		
+		<TextView 
+			android:id="@+id/textMarqueProduit" 
+			android:text="@string/textMarque"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="left"
+			android:layout_below="@id/prixProduit" />
+			
+		<EditText
+			android:id="@+id/marqueProduit"
+			android:hint="@string/marqueProduit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/prixProduit"
+			android:layout_toRightOf="@id/textMarqueProduit"
+			android:layout_alignParentRight="true" />
+		
+		<TextView 
+			android:id="@+id/textListeCatego"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/textListeCatego"
+			android:gravity="left"
+			android:layout_below="@id/marqueProduit" />
+		
+		<Spinner 
+	        android:id="@+id/listeCategory"
+	        android:name="@string/listeCategory"
+	        android:layout_width="match_parent" 
+	        android:layout_height="wrap_content"
+			android:layout_below="@id/textListeCatego" /> 
+		
+		<TextView 
+			android:id="@+id/textDesc"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/textDesc"
+			android:gravity="left"
+			android:layout_below="@id/listeCategory" />
+			
+		<EditText
+			android:id="@+id/descProduit"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:hint="@string/descProduit"
+			android:layout_below="@id/textDesc" />
+		
+		<TextView 
+			android:id="@+id/msgErreur"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/msgErreur"
+			android:gravity="left"
+			android:layout_below="@id/descProduit" />
 	
-	<TextView 
-		android:id="@+id/msgErreur"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/msgErreur"
-		android:gravity="left"
-		android:layout_below="@id/descProduit" />
-
-	<Button
-	    android:id="@+id/btnAjoutProduit"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/descProduit"
-	    android:layout_centerHorizontal="true"
-	    android:layout_marginTop="91dp"
-	    android:text="@string/btnAjoutProduit" />
-    
-</RelativeLayout>
+		<Button
+		    android:id="@+id/btnValider"
+		    android:text="@string/btnValider"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/msgErreur"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginTop="91dp" />
+	    
+	</RelativeLayout>
+</ScrollView>

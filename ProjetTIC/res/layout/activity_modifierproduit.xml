@@ -54,7 +54,7 @@
 			android:layout_below="@id/instructionModifPdt" />
 	    <TextView
 			android:id="@+id/textNomProduit"
-		    android:text="@string/textNomProduit"
+		    android:text="@string/textNom"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignBottom="@id/checkNomProduit"
@@ -83,7 +83,7 @@
 			android:layout_below="@id/newNomProduit" />
 	    <TextView
 			android:id="@+id/textPrixProduit"
-		    android:text="@string/textPrixProduit"
+		    android:text="@string/textPrix"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignBottom="@id/checkPrixProduit"
@@ -114,12 +114,12 @@
 	
 	    <TextView
 	        android:id="@+id/textDescProduit"
+	        android:text="@string/textDesc"
 	        android:layout_width="wrap_content"
 	        android:layout_height="match_parent"
 	        android:layout_alignBottom="@id/checkDescProduit"
 	        android:layout_below="@id/newPrixProduit"
-	        android:layout_toRightOf="@+id/checkDescProduit"
-	        android:text="@string/textDescProduit" />
+	        android:layout_toRightOf="@+id/checkDescProduit" />
 	    
 	    <TextView
 			android:id="@+id/resDescProduit"
