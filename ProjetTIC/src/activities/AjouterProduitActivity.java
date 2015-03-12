@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,17 +50,22 @@ public class AjouterProduitActivity extends Activity {
 				if (!id.toString().matches("") && !nom.toString().matches("") 
 						&& !prix.toString().matches("") && !description.toString().matches("")) {
 					valide = true;
-				} else msgErreur = "Veuillez saisir tous les champs";
+				} else {
+					msgErreur = "Veuillez saisir tous les champs";
+					txtMsgErreur.setTextColor(Color.RED);
+				}
 				
 				if (valide) {
 					Produit exist = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(id.toString()));
 					if (exist != null) {
+						txtMsgErreur.setTextColor(Color.RED);
 						msgErreur = "L\'identifiant est déjà utilisé pour un autre produit : " + exist.getNomProduit();
 					} else {
 						Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
 								description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
 						MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
 						msgErreur = "Votre produit a bien été ajouté";
+						txtMsgErreur.setTextColor(Color.GREEN);
 					}
 				}
 				txtMsgErreur.setText(msgErreur);

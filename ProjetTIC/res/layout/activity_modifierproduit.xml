@@ -2,186 +2,186 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
-    
-    <TextView
-        android:id="@+id/titleModifPdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titleModifPdt" />
-    
-    <EditText 
-		android:id="@+id/rechIdPdt"
-		android:inputType="number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:hint="@string/rechIdPdt"
-		android:layout_below="@id/titleModifPdt" />
-    
-    <Button
-	    android:id="@+id/btnRechercher"
+	<RelativeLayout
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/rechIdPdt"
-	    android:text="@string/btnRechercher" />
-    
-    <TextView
-		android:id="@+id/erreurRecherche"
-	    android:text="@string/erreurRecherche"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/btnRechercher" />
-    
-    <RelativeLayout 
-        android:id="@+id/formModifierPdt"
-        android:layout_below="@id/erreurRecherche"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content">
-	    <TextView
-			android:id="@+id/instructionModifPdt"
-		    android:text="@string/instructionModifPdt"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
+	    android:layout_height="wrap_content" >
 	    
-	    <!-- Modification du nom --> 
-	    <CheckBox
-	        android:id="@+id/checkNomProduit"
-	        android:text="@string/checkNomProduit"
+	    <TextView
+	        android:id="@+id/titleModifPdt"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-			android:layout_below="@id/instructionModifPdt" />
-	    <TextView
-			android:id="@+id/textNomProduit"
-		    android:text="@string/textNom"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignBottom="@id/checkNomProduit"
-	        android:layout_toRightOf="@+id/checkNomProduit"
-			android:layout_below="@id/instructionModifPdt" />    
-	    <TextView
-			android:id="@+id/resNomProduit"
-		    android:text="@string/resNomProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textNomProduit"
-			android:layout_below="@id/instructionModifPdt" />
+	        android:text="@string/titleModifPdt" />
+	    
 	    <EditText 
-			android:id="@+id/newNomProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:hint="@string/newNomProduit"
-			android:layout_below="@id/textNomProduit" />
-	    
-	    <!-- Modification du prix --> 
-	    <CheckBox
-	        android:id="@+id/checkPrixProduit"
-	        android:text="@string/checkPrixProduit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-			android:layout_below="@id/newNomProduit" />
-	    <TextView
-			android:id="@+id/textPrixProduit"
-		    android:text="@string/textPrix"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignBottom="@id/checkPrixProduit"
-	        android:layout_toRightOf="@+id/checkPrixProduit"
-			android:layout_below="@id/newNomProduit" />    
-	    <TextView
-			android:id="@+id/resPrixProduit"
-		    android:text="@string/resPrixProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textPrixProduit"
-			android:layout_below="@id/newNomProduit" />
-	    <EditText 
-			android:id="@+id/newPrixProduit"
-			android:inputType="numberDecimal"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:hint="@string/newPrixProduit"
-			android:layout_below="@id/textPrixProduit" />
-	    
-	    <!-- Modification de la description --> 
-	    <CheckBox
-	        android:id="@+id/checkDescProduit"
-	        android:text="@string/checkDescProduit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-			android:layout_below="@id/newPrixProduit" />
-	
-	    <TextView
-	        android:id="@+id/textDescProduit"
-	        android:text="@string/textDesc"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_alignBottom="@id/checkDescProduit"
-	        android:layout_below="@id/newPrixProduit"
-	        android:layout_toRightOf="@+id/checkDescProduit" />
-	    
-	    <TextView
-			android:id="@+id/resDescProduit"
-		    android:text="@string/resDescProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textDescProduit"
-			android:layout_below="@id/newPrixProduit" />
-	    <EditText 
-			android:id="@+id/newDescProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:hint="@string/newDescProduit"
-			android:layout_below="@id/textDescProduit" />
-	    
-	    <!-- Modification du stock --> 
-	    <CheckBox
-	        android:id="@+id/checkStockProduit"
-	        android:text="@string/checkStockProduit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-			android:layout_below="@id/newDescProduit" />
-	
-	    <TextView
-	        android:id="@+id/textStockProduit"
-	        android:text="@string/textStockProduit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_alignBottom="@id/checkStockProduit"
-	        android:layout_below="@id/newDescProduit"
-	        android:layout_toRightOf="@+id/checkStockProduit" />
-	    
-	    <TextView
-			android:id="@+id/resStockProduit"
-		    android:text="@string/resStockProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textStockProduit"
-			android:layout_below="@id/newDescProduit" />
-	    <EditText 
-			android:id="@+id/newStockProduit"
+			android:id="@+id/rechIdPdt"
 			android:inputType="number"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:hint="@string/newStockProduit"
-			android:layout_below="@id/textStockProduit" />
+			android:hint="@string/rechIdPdt"
+			android:layout_below="@id/titleModifPdt" />
+	    
+	    <Button
+		    android:id="@+id/btnRechercher"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/rechIdPdt"
+		    android:text="@string/btnRechercher" />
 	    
 	    <TextView
-			android:id="@+id/msgResModif"
-		    android:text="@string/msgResModif"
+			android:id="@+id/erreurRecherche"
+		    android:text="@string/erreurRecherche"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@id/newStockProduit" />
-	
-	    <Button
-	        android:id="@+id/btnValider"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="true"
-	        android:layout_centerHorizontal="true"
-			android:layout_below="@id/msgResModif"
-		    android:text="@string/btnValider" />
+			android:layout_below="@id/btnRechercher" />
+	    
+	    <RelativeLayout 
+	        android:id="@+id/formModifierPdt"
+	        android:layout_below="@id/erreurRecherche"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content">
+		    <TextView
+				android:id="@+id/instructionModifPdt"
+			    android:text="@string/instructionModifPdt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+		    
+		    <!-- Modification du nom --> 
+		    <CheckBox
+		        android:id="@+id/checkNomProduit"
+		        android:text="@string/checkNomProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@id/instructionModifPdt" />
+		    <TextView
+				android:id="@+id/textNomProduit"
+			    android:text="@string/textNom"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBottom="@id/checkNomProduit"
+		        android:layout_toRightOf="@+id/checkNomProduit"
+				android:layout_below="@id/instructionModifPdt" />    
+		    <TextView
+				android:id="@+id/resNomProduit"
+			    android:text="@string/resNomProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textNomProduit"
+				android:layout_below="@id/instructionModifPdt" />
+		    <EditText 
+				android:id="@+id/newNomProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="@string/newNomProduit"
+				android:layout_below="@id/textNomProduit" />
+		    
+		    <!-- Modification du prix --> 
+		    <CheckBox
+		        android:id="@+id/checkPrixProduit"
+		        android:text="@string/checkPrixProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@id/newNomProduit" />
+		    <TextView
+				android:id="@+id/textPrixProduit"
+			    android:text="@string/textPrix"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBottom="@id/checkPrixProduit"
+		        android:layout_toRightOf="@+id/checkPrixProduit"
+				android:layout_below="@id/newNomProduit" />    
+		    <TextView
+				android:id="@+id/resPrixProduit"
+			    android:text="@string/resPrixProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textPrixProduit"
+				android:layout_below="@id/newNomProduit" />
+		    <EditText 
+				android:id="@+id/newPrixProduit"
+				android:inputType="numberDecimal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="@string/newPrixProduit"
+				android:layout_below="@id/textPrixProduit" />
+		    
+		    <!-- Modification de la description --> 
+		    <CheckBox
+		        android:id="@+id/checkDescProduit"
+		        android:text="@string/checkDescProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@id/newPrixProduit" />
+		
+		    <TextView
+		        android:id="@+id/textDescProduit"
+		        android:text="@string/textDesc"
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_alignBottom="@id/checkDescProduit"
+		        android:layout_below="@id/newPrixProduit"
+		        android:layout_toRightOf="@+id/checkDescProduit" />
+		    
+		    <TextView
+				android:id="@+id/resDescProduit"
+			    android:text="@string/resDescProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textDescProduit"
+				android:layout_below="@id/newPrixProduit" />
+		    <EditText 
+				android:id="@+id/newDescProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="@string/newDescProduit"
+				android:layout_below="@id/textDescProduit" />
+		    
+		    <!-- Modification du stock --> 
+		    <CheckBox
+		        android:id="@+id/checkStockProduit"
+		        android:text="@string/checkStockProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@id/newDescProduit" />
+		
+		    <TextView
+		        android:id="@+id/textStockProduit"
+		        android:text="@string/textStockProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_alignBottom="@id/checkStockProduit"
+		        android:layout_below="@id/newDescProduit"
+		        android:layout_toRightOf="@+id/checkStockProduit" />
+		    
+		    <TextView
+				android:id="@+id/resStockProduit"
+			    android:text="@string/resStockProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textStockProduit"
+				android:layout_below="@id/newDescProduit" />
+		    <EditText 
+				android:id="@+id/newStockProduit"
+				android:inputType="number"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="@string/newStockProduit"
+				android:layout_below="@id/textStockProduit" />
+		    
+		    <TextView
+				android:id="@+id/msgResModif"
+			    android:text="@string/msgResModif"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/newStockProduit" />
+		
+		    <Button
+		        android:id="@+id/btnValider"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentBottom="true"
+		        android:layout_centerHorizontal="true"
+				android:layout_below="@id/msgResModif"
+			    android:text="@string/btnValider" />
+		</RelativeLayout>
 	</RelativeLayout>
-</RelativeLayout>
 </ScrollView>

@@ -1,127 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    <TextView 
-		android:id="@+id/textIdProduit"
-		android:text="@string/textId"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" />
-	
-	<EditText 
-		android:id="@+id/idProduit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:hint="@string/id"
-		android:layout_toRightOf="@id/textIdProduit"
-		android:layout_alignParentRight="true" />
-    
-    <Button
-	    android:id="@+id/btnRechercher"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/idProduit"
-	    android:text="@string/btnRechercher" />
-    
-    <TextView
-		android:id="@+id/erreurRecherche"
-	    android:text="@string/erreurRecherche"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/btnRechercher" />
-    
-    <RelativeLayout
-        android:id="@+id/formSupprimerPdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/erreurRecherche" >
 
-	    <TextView
-			android:id="@+id/instructionSupprimerPdt"
-		    android:text="@string/instructionSupprimerPdt"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+	    
+	    <TextView 
+			android:id="@+id/textIdProduit"
+			android:text="@string/textId"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
-	    
-	    <!-- nom --> 
-	    <TextView
-			android:id="@+id/textNomProduit"
-		    android:text="@string/textNom"
+		
+		<EditText 
+			android:id="@+id/idProduit"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/instructionSupprimerPdt" />    
-	    <TextView
-			android:id="@+id/resNomProduit"
-		    android:text="@string/resNomProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textNomProduit"
-			android:layout_below="@id/instructionSupprimerPdt" />
+			android:layout_height="wrap_content" 
+			android:hint="@string/id"
+			android:layout_toRightOf="@id/textIdProduit"
+			android:layout_alignParentRight="true" />
 	    
-	    <!-- prix --> 
-	    <TextView
-			android:id="@+id/textPrixProduit"
-		    android:text="@string/textPrix"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/textNomProduit" />    
-	    <TextView
-			android:id="@+id/resPrixProduit"
-		    android:text="@string/resPrixProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textPrixProduit"
-			android:layout_below="@id/textNomProduit" />
-	    
-	    <!-- description -->
-	
-	    <TextView
-	        android:id="@+id/textDescProduit"
-	        android:text="@string/textDesc"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/textPrixProduit" />
-	    
-	    <TextView
-			android:id="@+id/resDescProduit"
-		    android:text="@string/resDescProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textDescProduit"
-			android:layout_below="@id/textPrixProduit" />
-	    
-	    <!-- stock -->
-	
-	    <TextView
-	        android:id="@+id/textStockProduit"
-	        android:text="@string/textStockProduit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/textDescProduit" />
-	    
-	    <TextView
-			android:id="@+id/resStockProduit"
-		    android:text="@string/resStockProduit"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textStockProduit"
-			android:layout_below="@id/textDescProduit" />
-	    
-	    <TextView
-			android:id="@+id/msgErreur"
-		    android:text="@string/msgErreur"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/textStockProduit" />
-	
 	    <Button
-	        android:id="@+id/btnSupprimer"
+		    android:id="@+id/btnRechercher"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/idProduit"
+		    android:text="@string/btnRechercher" />
+	    
+	    <TextView
+			android:id="@+id/erreurRecherche"
+		    android:text="@string/erreurRecherche"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/btnRechercher" />
+	    
+	    <RelativeLayout
+	        android:id="@+id/formSupprimerPdt"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/msgErreur"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/btnSupprimer" />
-
+	        android:layout_below="@id/erreurRecherche" >
+	
+		    <TextView
+				android:id="@+id/instructionSupprimerPdt"
+			    android:text="@string/instructionSupprimerPdt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+		    
+		    <!-- nom --> 
+		    <TextView
+				android:id="@+id/textNomProduit"
+			    android:text="@string/textNom"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/instructionSupprimerPdt" />    
+		    <TextView
+				android:id="@+id/resNomProduit"
+			    android:text="@string/resNomProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textNomProduit"
+				android:layout_below="@id/instructionSupprimerPdt" />
+		    
+		    <!-- prix --> 
+		    <TextView
+				android:id="@+id/textPrixProduit"
+			    android:text="@string/textPrix"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/textNomProduit" />    
+		    <TextView
+				android:id="@+id/resPrixProduit"
+			    android:text="@string/resPrixProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textPrixProduit"
+				android:layout_below="@id/textNomProduit" />
+		    
+		    <!-- description -->
+		
+		    <TextView
+		        android:id="@+id/textDescProduit"
+		        android:text="@string/textDesc"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/textPrixProduit" />
+		    
+		    <TextView
+				android:id="@+id/resDescProduit"
+			    android:text="@string/resDescProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textDescProduit"
+				android:layout_below="@id/textPrixProduit" />
+		    
+		    <!-- stock -->
+		
+		    <TextView
+		        android:id="@+id/textStockProduit"
+		        android:text="@string/textStockProduit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/textDescProduit" />
+		    
+		    <TextView
+				android:id="@+id/resStockProduit"
+			    android:text="@string/resStockProduit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/textStockProduit"
+				android:layout_below="@id/textDescProduit" />
+		    
+		    <TextView
+				android:id="@+id/msgErreur"
+			    android:text="@string/msgErreur"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/textStockProduit" />
+		
+		    <Button
+		        android:id="@+id/btnSupprimer"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/msgErreur"
+		        android:layout_centerHorizontal="true"
+		        android:text="@string/btnSupprimer" />
+	
+		</RelativeLayout>
+	
 	</RelativeLayout>
-
-</RelativeLayout>
+</ScrollView>

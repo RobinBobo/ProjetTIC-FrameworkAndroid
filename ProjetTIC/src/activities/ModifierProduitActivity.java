@@ -1,6 +1,7 @@
 package activities;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,6 +63,7 @@ public class ModifierProduitActivity extends Activity {
 						erreurRech.setText("Le produit recherché n'existe pas !");
 					} else {
 						erreurRech.setText("Produit trouvé !");
+						erreurRech.setTextColor(Color.rgb(20, 148, 20));
 						// Remplissage des informations produit
 						resNom.setText(pdt.getNomProduit());
 						resPrix.setText(Double.toString(pdt.getPrixProduit()));
@@ -70,7 +72,10 @@ public class ModifierProduitActivity extends Activity {
 						formModifPdt.setVisibility(View.VISIBLE);
 					}
 				}
-				else erreurRech.setText("Veuillez saisir un identifiant !");
+				else {
+					erreurRech.setText("Veuillez saisir un identifiant !");
+					erreurRech.setTextColor(Color.RED);
+				}
 			}
 			
 		});
@@ -124,31 +129,48 @@ public class ModifierProduitActivity extends Activity {
 				if (pdt != null) {
 					if (!checkNom.isChecked() && !checkDesc.isChecked() && !checkPrix.isChecked() && !checkStock.isChecked()) {
 						msgErreur = "Veuillez sélectionner au moins un champs à modifier.";
+						msgResModif.setTextColor(Color.RED);
 					} else {
 						if (checkNom.isChecked()) {
 							if (!newNom.getText().toString().matches("")) {
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setNomProduit(newNom.getText().toString());
 				        		msgErreur += "Le nom du produit a bien été modifié. \n";
-				        	} else msgErreur += "Veuillez saisir le nouveau nom du produit. \n";
+				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
+				        	} else {
+				        		msgErreur += "Veuillez saisir le nouveau nom du produit. \n";
+				        		msgResModif.setTextColor(Color.RED);
+				        	}
 						}
 
 						if (checkPrix.isChecked()) {
 				        	if (!newPrix.getText().toString().matches("")) {
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
-				        	} else msgErreur += "Veuillez saisir le nouveau prix du produit. \n";
+				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
+				        	} else {
+				        		msgErreur += "Veuillez saisir le nouveau prix du produit. \n";
+				        		msgResModif.setTextColor(Color.RED);
+				        	}
 						}
 						if (checkDesc.isChecked()) {
 				        	if (!newDesc.getText().toString().matches("")) {
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setDescriptionProduit(newDesc.getText().toString());
 				        		msgErreur += "La description du produit a bien été modifiée. \n";
-				        	} else msgErreur += "Veuillez saisir la nouvelle description du produit. \n";
+				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
+				        	} else {
+				        		msgErreur += "Veuillez saisir la nouvelle description du produit. \n";
+				        		msgResModif.setTextColor(Color.RED);
+				        	}
 						}
 						if (checkStock.isChecked()) {
 				        	if (!newStock.getText().toString().matches("")) {
 				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setStockProduit(Integer.parseInt(newStock.getText().toString()));
 				        		msgErreur += "Le stock du produit a bien été modifié. \n";
-				        	} else msgErreur += "Veuillez saisir le nouveau stock du produit. \n";
+				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
+				        	} else {
+				        		msgErreur += "Veuillez saisir le nouveau stock du produit. \n";
+				        		msgResModif.setTextColor(Color.RED);
+				        	}
 				        }
 					}
 		        }
