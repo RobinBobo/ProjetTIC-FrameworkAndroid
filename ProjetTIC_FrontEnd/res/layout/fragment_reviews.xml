@@ -42,7 +42,8 @@
             android:layout_marginRight="10dp"
             android:text="Note"
             android:textSize="10dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+			/>
 
         <Button
             android:id="@+id/buttonSortDate"
@@ -50,7 +51,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:text="Date"
-            android:textSize="10dp" />
+            android:textSize="10dp" 
+            />
     </LinearLayout>    
     
     <ProgressBar

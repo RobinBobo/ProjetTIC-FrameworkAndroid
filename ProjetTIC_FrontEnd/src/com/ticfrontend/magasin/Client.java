@@ -49,7 +49,7 @@ public class Client implements Serializable {
 		this.adresseClient = adresse;
 		this.adresseMail = mail;
 		this.sexeClient = sexe;
-		this.setMdpClient(mdp);
+		this.mdpClient = mdp;
 	}
 	
 	public void addCommande(Commande c){

@@ -221,7 +221,10 @@
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
 	    android:text="Modifier des informations"
-	    android:textSize="16dp" />
+	    android:textSize="16dp" 
+	    android:textColor="@android:color/white"
+	    android:background="@drawable/button_shape"
+	    />
 
 	<RadioGroup
 	    android:id="@+id/radioAccountSexe"

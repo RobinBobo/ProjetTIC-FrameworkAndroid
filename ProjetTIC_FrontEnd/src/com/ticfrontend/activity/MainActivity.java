@@ -2,6 +2,7 @@ package com.ticfrontend.activity;
 
 import com.example.projettic.R;
 import com.ticfrontend.magasin.Avis;
+import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Client;
 import com.ticfrontend.magasin.Produit;
 import com.ticfrontend.model.*;
@@ -17,8 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -54,8 +57,10 @@ public class MainActivity extends Activity {
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 		
-	// Configuration du Back-End
+	// Configuration venant du Back-End
 	public static ArrayList<Produit> LISTPRODUITBETA = null;
+	public static ArrayList<Client> LISTCLIENT = null;
+	public static ArrayList<Categorie> LISTCATEGORIE = null;
 	public static String WEBSITENAMEBETA = null;
 	
 	@Override
@@ -69,7 +74,8 @@ public class MainActivity extends Activity {
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
 		LISTPRODUITBETA = new ArrayList<Produit>();
-		
+		LISTCLIENT = new ArrayList<Client>();
+		LISTCATEGORIE = new ArrayList<Categorie>();
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUITBETA);
@@ -92,6 +98,7 @@ public class MainActivity extends Activity {
 		
 		WEBSITENAMEBETA = c.getWebsiteName();
 		
+		
 		initSlideMenu();
 
 				
@@ -100,6 +107,33 @@ public class MainActivity extends Activity {
 		if (savedInstanceState == null) {
 			displayView(0);
 		}
+		
+		
+		checkConfiguration();
+	}
+
+	private void checkConfiguration() {
+		if(WEBSITENAMEBETA == null && LISTPRODUITBETA.get(0) == null) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Problème de configuration");
+            builder.setMessage("Le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
+            builder.setCancelable(true);
+            builder.setPositiveButton("Continuer à mes risques et périls", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                    initSlideMenu();
+                }
+            });
+            builder.setNegativeButton("Quitter", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                    finish();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+		}
+		
 	}
 
 	public void initSlideMenu(){

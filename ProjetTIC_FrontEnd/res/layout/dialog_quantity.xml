@@ -19,7 +19,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="98dp"
         android:layout_toRightOf="@+id/numberPicker1"
-        android:text="Annuler" />
+        android:text="Annuler" 
+        android:textColor="@android:color/white"
+	    android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/button1"
@@ -29,6 +31,9 @@
         android:layout_alignBottom="@+id/button2"
         android:layout_marginRight="16dp"
         android:layout_toLeftOf="@+id/numberPicker1"
-        android:text="Ok" />
+        android:text="Ok" 
+        android:textColor="@android:color/white"
+	    android:background="@drawable/button_shape"
+        />
 
 </RelativeLayout>

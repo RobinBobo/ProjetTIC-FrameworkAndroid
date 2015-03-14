@@ -83,14 +83,18 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Nos promos" />
+                android:text="Nos promos" 
+                android:textColor="@android:color/white"
+	    		android:background="@drawable/button_shape"/>
 
             <Button
                 android:id="@+id/buttonOffreSpec"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Nos offres spéciales" />
+                android:text="Nos offres spéciales" 
+                android:textColor="@android:color/white"
+	    		android:background="@drawable/button_shape"/>
         </TableRow>
 
         <TableRow
@@ -104,14 +108,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="A ne pas manquer!" />
+                android:text="A ne pas manquer!" 
+                android:textColor="@android:color/white"
+	    		android:background="@drawable/button_shape"
+                />
 
             <Button
                 android:id="@+id/buttonNouveautes"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Nouveautés" />
+                android:text="Nouveautés" 
+                android:textColor="@android:color/white"
+	    		android:background="@drawable/button_shape"/>
         </TableRow>
     </TableLayout>
 

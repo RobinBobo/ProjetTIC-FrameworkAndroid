@@ -211,7 +211,9 @@
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
 	    android:text="Valider l&apos;enregistrement"
-	    android:textSize="16dp" />
+	    android:textSize="16dp" 
+	    android:textColor="@android:color/white"
+	    android:background="@drawable/button_shape"/>
 
 	<RadioGroup
 	    android:id="@+id/radioRegSexe"

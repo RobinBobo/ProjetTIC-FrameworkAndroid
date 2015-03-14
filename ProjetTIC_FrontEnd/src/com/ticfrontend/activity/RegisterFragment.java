@@ -73,13 +73,13 @@ public class RegisterFragment extends Fragment {
 					
 					boolean sexeClient;
                 	
-                	if(radioButtonF.isActivated())
+                	if(radioButtonF.isChecked())
                 		sexeClient = false;
                 	else
                 		sexeClient = true;
 					
 					Client c = new Client(login.getText().toString(), nomClient.getText().toString(), prenomClient.getText().toString(), 
-							adresseClient.getText().toString(), adresseMail.getText().toString(), sexeClient);
+							adresseClient.getText().toString(), adresseMail.getText().toString(), sexeClient, mdp1.getText().toString());
 					// Ajout dans la BDD
 					// TODO
 					
@@ -101,7 +101,7 @@ public class RegisterFragment extends Fragment {
 					
 				} else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-					builder.setTitle("Crétion d'un compte");
+					builder.setTitle("Création d'un compte");
 		            builder.setMessage("Il manque des informations !");
 		            builder.setCancelable(true);
 		            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {

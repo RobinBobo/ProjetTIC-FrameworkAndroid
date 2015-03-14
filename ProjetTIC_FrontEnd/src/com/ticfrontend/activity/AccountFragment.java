@@ -104,11 +104,11 @@ public class AccountFragment extends Fragment {
 				radioButtonH.setVisibility(View.VISIBLE);
 				
 				if(clientActuel.getSexeClient()){
-					radioButtonH.setSelected(true);
-					radioButtonF.setSelected(false);					
+					radioButtonH.setChecked(true);
+					radioButtonF.setChecked(false);					
 				} else {
-					radioButtonF.setSelected(true);
-					radioButtonH.setSelected(false);
+					radioButtonF.setChecked(true);
+					radioButtonH.setChecked(false);
 				}
 				
 				text = (TextView) rootView.findViewById(R.id.accountMDP2);
@@ -169,7 +169,7 @@ public class AccountFragment extends Fragment {
 				                	
 				                	boolean sexeClient;
 				                	
-				                	if(radioButtonF.isActivated())
+				                	if(radioButtonF.isChecked())
 				                		sexeClient = false;
 				                	else
 				                		sexeClient = true;

@@ -76,6 +76,8 @@
 	    android:gravity="center"
 	    android:text="@string/textButtonValiderLogin"
 	    android:textSize="18dp"
+	    android:textColor="@android:color/white"
+	    android:background="@drawable/button_shape"
 	    />
     
 </LinearLayout>
