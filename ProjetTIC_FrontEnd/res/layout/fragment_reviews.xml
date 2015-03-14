@@ -39,24 +39,72 @@
             style="@style/customButton"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="Note"
             android:textSize="10dp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
 	    	android:background="@drawable/button_shape_small" />
+        
+        <ImageView
+            android:id="@+id/imgSortNoteAsc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/arrow_long_down" 
+            android:visibility="gone" />
 
+        <ImageView
+            android:id="@+id/imgSortNoteDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/arrow_long_up" 
+            android:visibility="gone" />
+        
+        <TextView 
+            android:id="@+id/textViewBlanc"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            />
+        
         <Button
             android:id="@+id/buttonSortDate"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:text="Date"
-            android:textSize="10dp" 
+            android:textSize="10dp"
+            android:textStyle="bold" 
             android:textColor="@android:color/white"
 	    	android:background="@drawable/button_shape_small"
             />
+        
+        <ImageView
+            android:id="@+id/imgSortDateAsc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/arrow_long_down" 
+            android:visibility="gone" />
+        
+        <ImageView
+            android:id="@+id/imgSortDateDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/arrow_long_up"
+            android:visibility="gone" />
+        
     </LinearLayout>    
     
     <ProgressBar

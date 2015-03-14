@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -62,6 +63,7 @@ public class MainActivity extends Activity {
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
 	public static String WEBSITENAMEBETA = null;
+	public static Color COLORBUTTON = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -230,12 +232,12 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		// Handle action bar actions click
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+//		switch (item.getItemId()) {
+//		case R.id.action_settings:
+//			return true;
+//		default:
+//		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/* *

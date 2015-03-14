@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.webkit.WebView.FindListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,18 +34,36 @@ public class ReviewsFragment  extends Fragment {
 	private Activity activity;
 	private List<Avis> listeAvis;
 	
+	// Produit courant
 	private Produit product = null;
+	
+	// Pour savoir si on trie en ASC ou DESC
+	private boolean sortDirectionDate = false;
+	private boolean sortDirectionNote = false;
+	private ImageView upDate = null;
+	private ImageView downDate = null;
+	private ImageView upNote = null;
+	private ImageView downNote = null;
+	private TextView blanc = null;
 	
 	
 	public ReviewsFragment(Produit prd){
 		this.product = prd;
 	}
+	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         this.rootView = inflater.inflate(R.layout.fragment_reviews, container, false);
         this.activity = this.getActivity();
        // this.product = ProductDetailsFragment.product;
         this.listeAvis = product.getListeAvisProduit();
+		
+        blanc = (TextView) rootView.findViewById(R.id.textViewBlanc);
+		
+		upDate = (ImageView) rootView.findViewById(R.id.imgSortDateDesc);
+		downDate = (ImageView) rootView.findViewById(R.id.imgSortDateAsc);
+		upNote = (ImageView) rootView.findViewById(R.id.imgSortNoteDesc);
+		downNote = (ImageView) rootView.findViewById(R.id.imgSortNoteAsc);
 		
         init();
         
@@ -61,7 +81,25 @@ public class ReviewsFragment  extends Fragment {
     			ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewReviews);	
     			AvisListAdapter adapter = (AvisListAdapter) listviewAvis.getAdapter();
     			List<Avis> listeAllAvis = adapter.getAvis();
-    			Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.ASC));
+    			
+    			blanc.setVisibility(View.VISIBLE);
+    			
+    			if(!sortDirectionDate) {
+    				downDate.setVisibility(View.VISIBLE);
+    				upDate.setVisibility(View.GONE);
+    				downNote.setVisibility(View.GONE);
+    				upNote.setVisibility(View.GONE);
+    				Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.ASC));
+    				sortDirectionDate = true;
+    			} else {
+    				upDate.setVisibility(View.VISIBLE);
+    				downDate.setVisibility(View.GONE);
+    				downNote.setVisibility(View.GONE);
+    				upNote.setVisibility(View.GONE);
+    				Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.DESC));
+    				sortDirectionDate = false;
+    			}
+    			
     			adapter.updateAvis(listeAllAvis);
     		}
  		});
@@ -84,7 +122,24 @@ public class ReviewsFragment  extends Fragment {
     			ListView list = (ListView) rootView.findViewById(R.id.listviewReviews);
     			AvisListAdapter adapter = (AvisListAdapter) list.getAdapter();
     			List<Avis> listeAllAvis = adapter.getAvis();
-    			Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.ASC));
+    			
+    			blanc.setVisibility(View.GONE);
+    			
+    			if(!sortDirectionNote) {
+    				downNote.setVisibility(View.VISIBLE);
+    				upNote.setVisibility(View.GONE);
+    				downDate.setVisibility(View.GONE);
+    				upDate.setVisibility(View.GONE);
+    				Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.ASC));
+    				sortDirectionNote = true;
+    			} else {
+    				upNote.setVisibility(View.VISIBLE);
+    				downNote.setVisibility(View.GONE);
+    				downDate.setVisibility(View.GONE);
+    				upDate.setVisibility(View.GONE);
+    				Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.DESC));
+    				sortDirectionNote = false;
+    			}
     			adapter.updateAvis(listeAllAvis);
  			}
  		});

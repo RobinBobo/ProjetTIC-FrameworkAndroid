@@ -39,7 +39,7 @@ public class ProductDetailsFragment extends Fragment {
 	private static Button boutonAjouterPanier;
 	private Produit product;
 	
-	private final int nbAvis = 5;
+	private final int nbAvis = 3;
 	List<Avis> listeAvis = null;
 
 	public ProductDetailsFragment(Produit prd){
