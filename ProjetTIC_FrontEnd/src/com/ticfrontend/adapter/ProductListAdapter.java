@@ -4,25 +4,29 @@ import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.projettic.R;
+import com.ticfrontend.filter.ProductFilter;
 import com.ticfrontend.magasin.Produit;
 import com.ticfrontend.thread.ThreadPreconditions;
 
-public class ProductListAdapter extends BaseAdapter{
+public class ProductListAdapter extends BaseAdapter implements Filterable {
 
 	private final Activity activity;
 	
 	private List<Produit> products = Collections.emptyList();
 	
 	private LayoutInflater inflater;
+	
+	private ProductFilter produitFilter;
 	
 	public ProductListAdapter(Activity activity, List<Produit> products) {
         this.activity = activity;
@@ -34,6 +38,11 @@ public class ProductListAdapter extends BaseAdapter{
 		ThreadPreconditions.checkOnMainThread();
         this.products = products;
         notifyDataSetChanged();
+    }
+	
+	public void updateProductWithoutNotify(List<Produit> products) {
+		ThreadPreconditions.checkOnMainThread();
+        this.products = products;
     }
 	
 	public List<Produit> getProducts() {
@@ -57,7 +66,6 @@ public class ProductListAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
 		LinearLayout layoutItem;
 		
 	    if (convertView == null) {
@@ -76,10 +84,11 @@ public class ProductListAdapter extends BaseAdapter{
 	    
 	    return layoutItem;
 	}
-	
+
 	@Override
-	public void notifyDataSetChanged() {
-	    //do your sorting here
-	    super.notifyDataSetChanged();
+	public Filter getFilter() {
+	    if(produitFilter == null) 
+	        produitFilter = new ProductFilter(products, this);
+	    return produitFilter;
 	}
 }

@@ -26,15 +26,6 @@
             android:inputType="textAutoComplete"
             android:textSize="14dp" />
 
-        <Button
-            android:id="@+id/boutonValiderRechercheProduit"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:text="@string/textButtonValiderRecherche"
-            android:textSize="14dp" 
-			android:textColor="@android:color/white"
-	    	android:background="@drawable/button_shape_small"/>
     </LinearLayout>
 
     <LinearLayout

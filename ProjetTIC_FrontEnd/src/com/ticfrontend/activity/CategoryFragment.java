@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.projettic.R;
 import com.ticfrontend.adapter.CategorieListAdapter;
+import com.ticfrontend.adapter.ProductListAdapter;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
 
@@ -13,12 +14,15 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -29,6 +33,8 @@ public class CategoryFragment extends Fragment {
 	private Activity activity;
 	
 	public static Categorie currentCategorie = null;
+	
+	private List<Categorie> listCategories;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -50,15 +56,17 @@ public class CategoryFragment extends Fragment {
 	}
 
 	private void testAjoutItemsListCategorie(){
-		List<Categorie> listCategorie = Categorie.getAListOfCategorieBeta();
+		listCategories = Categorie.getAListOfCategorieBeta();
 		//Création et initialisation de l'Adapter pour les catégories
-		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this.getActivity(), listCategorie);
+		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this.getActivity(), listCategories);
 
 		//Récupération du composant ListView
 		ListView categorieList = (ListView) rootView.findViewById(R.id.listviewCat);
 
 		//Initialisation de la liste avec les données
 		categorieList.setAdapter(categorieListAdapter);
+		
+		addSearchFilter(categorieListAdapter);
 
 		categorieList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -79,5 +87,17 @@ public class CategoryFragment extends Fragment {
 			}
 		});
 	}
-
+	
+	// Permet d'ajouter un filtre sur le EditText
+	private void addSearchFilter(final CategorieListAdapter adapter) {
+		EditText filter = (EditText) rootView.findViewById(R.id.editTextRecherche);
+		filter.addTextChangedListener(new TextWatcher() {
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			public void afterTextChanged(Editable arg0) {}
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				adapter.updateCategoriesWithoutNotify(listCategories);
+				adapter.getFilter().filter(s.toString());
+			}
+		});
+	}
 }

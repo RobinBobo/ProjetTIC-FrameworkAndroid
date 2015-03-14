@@ -9,20 +9,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.projettic.R;
+import com.ticfrontend.filter.CategoryFilter;
+import com.ticfrontend.filter.ProductFilter;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.thread.ThreadPreconditions;
 
-public class CategorieListAdapter extends BaseAdapter{
+public class CategorieListAdapter extends BaseAdapter implements Filterable {
 
 	private final Context context;
 	
 	private List<Categorie> categories = Collections.emptyList();
 	
 	private LayoutInflater inflater;
+	
+	private CategoryFilter categorieFilter;
 	
 	public CategorieListAdapter(Context context, List<Categorie> categories) {
         this.context = context;
@@ -35,6 +41,15 @@ public class CategorieListAdapter extends BaseAdapter{
         this.categories = categories;
         notifyDataSetChanged();
     }
+	
+	public void updateCategoriesWithoutNotify(List<Categorie> categories) {
+		ThreadPreconditions.checkOnMainThread();
+        this.categories = categories;
+    }
+	
+	public List<Categorie> getCategories(){
+		return categories;
+	}
 	
 	@Override
 	public int getCount() {
@@ -66,5 +81,12 @@ public class CategorieListAdapter extends BaseAdapter{
 	    title.setText(categories.get(position).getNomCategorie());
 	    
 	    return layoutItem;
+	}
+	
+	@Override
+	public Filter getFilter() {
+	    if(categorieFilter == null) 
+	        categorieFilter = new CategoryFilter(this);
+	    return categorieFilter;
 	}
 }

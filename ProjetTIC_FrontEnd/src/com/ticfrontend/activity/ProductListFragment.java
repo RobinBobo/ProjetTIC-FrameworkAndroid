@@ -20,12 +20,15 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,6 +41,9 @@ public class ProductListFragment extends Fragment {
 	private View rootView;
 	private Activity activity;
 	private List<Produit> listProduit;
+	private ListView listViewProducts = null;
+	private ProductListAdapter listViewAdapter = null;
+
 	private int title = R.string.title_fragment_product_list;
 	
 	private Categorie categorie = null;
@@ -94,22 +100,20 @@ public class ProductListFragment extends Fragment {
 		upPrice = (ImageView) rootView.findViewById(R.id.imgSortPriceDesc);
 		downPrice = (ImageView) rootView.findViewById(R.id.imgSortPriceAsc);
 		
+		
 		init();
 		
 		testAjoutItemsListProduct();
 
+		
+		listViewProducts = (ListView) rootView.findViewById(R.id.listviewProduit);
+		listViewAdapter = new ProductListAdapter(getActivity(), listProduit);
+		listProduit = listViewAdapter.getProducts();
+		
 		return rootView;
 	}
 
 	public void init(){
-		Button search = (Button) rootView.findViewById(R.id.boutonValiderRechercheProduit);
-		search.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) { 
-				
-			}
-		});	
-
 		Button sortPrice = (Button) rootView.findViewById(R.id.buttonSortPrice);
 		sortPrice.setOnClickListener(new OnClickListener() {
 			@Override
@@ -173,21 +177,31 @@ public class ProductListFragment extends Fragment {
 		});
 	}
 
+	// Permet d'ajouter un filtre sur le EditText
+	private void addSearchFilter(final ProductListAdapter adapter) {
+		EditText filter = (EditText) rootView.findViewById(R.id.editTextRechercheProduit);
+		filter.addTextChangedListener(new TextWatcher() {
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			public void afterTextChanged(Editable arg0) {}
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				adapter.updateProductWithoutNotify(listProduit);
+				adapter.getFilter().filter(s.toString());
+			}
+		});
+	}
+	
 	private void testAjoutItemsListProduct(){
 		ProductListAdapter pla = new ProductListAdapter(getActivity(), listProduit);
 		ListView productsList = (ListView) rootView.findViewById(R.id.listviewProduit);
 		productsList.setAdapter(pla);
 
+		addSearchFilter(pla);
+		
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {			   
 				Produit product = (Produit) arg0.getItemAtPosition(arg2);
 				Fragment fragment = new ProductDetailsFragment(product);
-//				Bundle extras = new Bundle();								
-//				
-//				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
-//				fragment.setArguments(extras);
-
 				FragmentManager fragmentManager = getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 				fragmentTransaction.replace(R.id.frame_container, fragment);
