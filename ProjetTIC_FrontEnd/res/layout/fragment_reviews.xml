@@ -40,10 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:text="Note"
             android:textSize="10dp"
             android:textStyle="bold"
-			/>
+            android:textColor="@android:color/white"
+	    	android:background="@drawable/button_shape_small" />
 
         <Button
             android:id="@+id/buttonSortDate"
@@ -52,6 +54,8 @@
             android:layout_gravity="center_vertical"
             android:text="Date"
             android:textSize="10dp" 
+            android:textColor="@android:color/white"
+	    	android:background="@drawable/button_shape_small"
             />
     </LinearLayout>    
     
