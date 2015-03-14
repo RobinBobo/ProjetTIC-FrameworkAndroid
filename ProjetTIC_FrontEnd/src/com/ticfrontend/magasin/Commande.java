@@ -11,24 +11,15 @@ public class Commande implements Serializable{
 	private double prixTotalCommande;
 	private String typeReglementCommande;
 	
-	private List<Produit> produits;
-	
 	// TS modif : on commande un panier et pas une liste de produits (conception)
 	private Date dateCommande;
 	private Panier panierCommande;
-	
-	public Commande(double prix, List<Produit> produits){
-		this.idStatic++;
-		this.idCommande = idStatic;
-		this.prixTotalCommande = prix;
-		this.produits = produits;
-	}
 	
 	public Commande(Panier p){
 		this.idStatic++;
 		this.idCommande = idStatic;
 		this.setPanierCommande(p);
-		this.prixTotalCommande = p.getTotalPanier();
+		this.prixTotalCommande = p.calculTotalPanier();
 		this.setDateCommande(new Date());
 	}
  
@@ -37,10 +28,7 @@ public class Commande implements Serializable{
 	
 	public String getTypeReglementCommande() {return typeReglementCommande;}
 	public void setTypeReglementCommande(String typeReglementCommande) {this.typeReglementCommande = typeReglementCommande;}
-	
-	public List<Produit> getProduits() {return produits;}
-	public void setProduits(List<Produit> produits) {this.produits = produits;}
-	
+
 	public Date getDateCommande() {return dateCommande;}
 	public void setDateCommande(Date dateCommande) {this.dateCommande = dateCommande;}
 

@@ -20,7 +20,6 @@ public class Produit implements Serializable{
 	private int quantite = 1;
 	
 	public Produit() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Produit(int id, String nom, double prix, Categorie categorie, String desc, String marque, List<Avis> listeAvis) {
@@ -41,7 +40,7 @@ public class Produit implements Serializable{
 		this.descriptionProduit = desc;
 		this.marqueProduit = marque;
 		this.listeAvisProduit = listeAvis;
-		this.setQuantite(qte);
+		this.quantite = qte;
 	}
 	
 	public Produit (Produit p){
@@ -52,6 +51,7 @@ public class Produit implements Serializable{
 		this.descriptionProduit = p.getDescriptionProduit();
 		this.marqueProduit = p.getMarqueProduit();
 		this.listeAvisProduit = p.getListeAvisProduit();
+		this.quantite = p.getQuantite();
 	}
 	
 

@@ -70,12 +70,12 @@ public class ProductDetailsFragment extends Fragment {
 	{
 		super.onActivityCreated(savedInstanceState);
 		this.activity.setTitle(R.string.title_fragment_product);
-		Bundle bundle = getArguments();
-		if(bundle != null) {
-			//product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
-			//listeAvis = product.getListeAvisProduit();
-			//populateScreen();
-		}
+//		Bundle bundle = getArguments();
+//		if(bundle != null) {
+//			//product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
+//			//listeAvis = product.getListeAvisProduit();
+//			//populateScreen();
+//		}
 	}
 	public void init(){
 		boutonAjouterPanier = (Button) rootView.findViewById(R.id.boutonAjouter); 

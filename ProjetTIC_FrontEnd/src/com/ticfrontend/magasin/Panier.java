@@ -26,7 +26,7 @@ public class Panier {
 		this.listeProduitsPanier= new ArrayList<Produit>();
 	}
 	
-	public double getTotalPanier() {return totalPanier;}
+	//public double getTotalPanier() {return totalPanier;}
 	public int getIdPanier() {return idPanier;}
 	public List<Produit> getListeProduitsPanier() {	return listeProduitsPanier;}
 	public HashMap<Produit, Integer> getMapProduitQuantite() {
@@ -41,7 +41,17 @@ public class Panier {
 	public void setListeProduitsPanier(List<Produit> listeProduitsPanier) {this.listeProduitsPanier = listeProduitsPanier;}
 
 	public void viderPanier(){this.mapProduitQuantite.clear(); this.totalPanier = 0;}
-	public boolean estVide(){return (this.mapProduitQuantite.isEmpty());}
+	public boolean estVide() {
+		int res = 0;
+		for(Entry<Produit, Integer> entry : this.mapProduitQuantite.entrySet()){
+			Produit prd = entry.getKey();
+			if(prd != null)
+				res++;
+		}
+		
+		return (this.mapProduitQuantite.isEmpty());
+		
+	}
 	public int nombreProduit(){return this.mapProduitQuantite.size();}
 	
 	public double calculTotalPanier(){
@@ -55,14 +65,25 @@ public class Panier {
 	}
 	
 	public void ajouterDansPanier(Produit p, int qte){
-		if(p!=null && qte>0){
-			this.listeProduitsPanier.add(p);
-			
-			this.mapProduitQuantite.put(p, qte);
-			this.setTotalPanier(calculTotalPanier());
+		// On vérifie que la produit ne se trouve pas déjà dans le panier, si oui, on augmente la quantité
+		boolean trouve = false;
+		for(Entry<Produit, Integer> entry : this.mapProduitQuantite.entrySet()){
+			Produit prd = entry.getKey();
+			if(prd.equals(p)){
+				trouve = true;
+				entry.setValue(entry.getValue()+1);
+			}
 		}
-		else
-			Log.e("PANIER","Erreur ajout dans panier");
+		
+		if(!trouve){
+			if(p!=null && qte>0){
+				this.listeProduitsPanier.add(p);
+				this.mapProduitQuantite.put(p, qte);
+				this.setTotalPanier(calculTotalPanier());
+			}
+			else
+				Log.e("PANIER","Erreur ajout dans panier");			
+		}
 	}
 	
 	public void supprimerDansPanier(Produit p){

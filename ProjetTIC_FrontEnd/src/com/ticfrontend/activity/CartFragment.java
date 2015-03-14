@@ -47,11 +47,6 @@ public class CartFragment extends Fragment {
 		this.activity = getActivity();
 		this.prixTotal = 0;
 
-//		if(PANIER_CLIENT == null)
-//			PANIER_CLIENT = new Panier();
-		
-		//testAjoutItemsListCartProduct();
-
 		init();
 
 		return rootView;
@@ -69,6 +64,10 @@ public class CartFragment extends Fragment {
 		this.prixTotal=0;
 	}
 
+	public View getRootView(){
+		return rootView;
+	}
+	
 	private void init() {
 		if(MainActivity.ISCONNECTED && MainActivity.CLIENT_ACTUEL != null && PANIER_CLIENT != null)
 			testAjoutItemsListCartProductBeta();		
@@ -113,16 +112,17 @@ public class CartFragment extends Fragment {
 	private void testAjoutItemsListCartProduct(){
 		listProduit = Produit.getAListOfProducts();
 
-		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite());
+		TextView prixT = (TextView) rootView.findViewById(R.id.prixTotal);
+
+		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite(), rootView);
 		//CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), listProduit);
 
 		ListView produitList = (ListView) rootView.findViewById(R.id.listviewCard);
 		//produitList.setAdapter(produitsListAdapter);
 		produitList.setAdapter(phma);
 		//prixTotal = produitsListAdapter.getPrixTotal();
-		this.prixTotal = PANIER_CLIENT.getTotalPanier();
+		this.prixTotal = PANIER_CLIENT.calculTotalPanier();
 
-		TextView prixT = (TextView) rootView.findViewById(R.id.prixTotal);
 
 		DecimalFormat df = new DecimalFormat() ; 
 		df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
@@ -157,14 +157,14 @@ public class CartFragment extends Fragment {
 	private void testAjoutItemsListCartProductBeta(){
 		//listProduit = Produit.getAListOfProducts();
 		
-		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite());
+		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite(), rootView);
 		//CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), listProduit);
 
 		ListView produitList = (ListView) rootView.findViewById(R.id.listviewCard);
 		//produitList.setAdapter(produitsListAdapter);
 		produitList.setAdapter(phma);
 		//prixTotal = produitsListAdapter.getPrixTotal();
-		this.prixTotal = PANIER_CLIENT.getTotalPanier();
+		this.prixTotal = PANIER_CLIENT.calculTotalPanier();
 
 		TextView prixT = (TextView) rootView.findViewById(R.id.prixTotal);
 

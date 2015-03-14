@@ -117,6 +117,7 @@
 	            android:textSize="16dp" 
 				android:textColor="@android:color/white"
 	    		android:background="@drawable/button_shape_small"/>
+	        
 	    </RelativeLayout>
 	
 	    <TextView
