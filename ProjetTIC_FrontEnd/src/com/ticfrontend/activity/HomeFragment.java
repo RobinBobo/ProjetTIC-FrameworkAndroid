@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
 		this.activity = this.getActivity();
 		TextView title = (TextView) rootView.findViewById(R.id.textWelcome);
 		
-		title.setText("Bienvenue sur " + MainActivity.WEBSITENAMEBETA);
+		title.setText("Bienvenue sur " + MainActivity.WEBSITENAME);
 		
 		init();
 		return rootView;
@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 		this.activity.setTitle(R.string.title_fragment_home);
 
 		if(MainActivity.ISCONNECTED)
-			((TextView)rootView.findViewById(R.id.textUser)).setText("Bienvenue " + MainActivity.CLIENT_ACTUEL.getPrenomClient());
+			((TextView)rootView.findViewById(R.id.textUser)).setText("Bonjour " + MainActivity.CLIENT_ACTUEL.getPrenomClient());
 		else 
 			((TextView)rootView.findViewById(R.id.textUser)).setText("Connectez-vous !");
 	}

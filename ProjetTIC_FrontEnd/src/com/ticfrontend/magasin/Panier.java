@@ -26,6 +26,20 @@ public class Panier {
 		this.listeProduitsPanier= new ArrayList<Produit>();
 	}
 	
+	public Panier(Panier panierCommande) {
+		this.idPanier = panierCommande.idPanier;
+		this.mapProduitQuantite = new HashMap<Produit, Integer>();
+		
+		for(Entry<Produit, Integer> entry : panierCommande.mapProduitQuantite.entrySet()){
+			Produit prd = entry.getKey();
+			Integer i = entry.getValue();
+			this.mapProduitQuantite.put(prd, i);
+		}
+		
+		this.totalPanier = panierCommande.totalPanier;
+		this.listeProduitsPanier= panierCommande.listeProduitsPanier;
+	}
+
 	//public double getTotalPanier() {return totalPanier;}
 	public int getIdPanier() {return idPanier;}
 	public List<Produit> getListeProduitsPanier() {	return listeProduitsPanier;}

@@ -33,7 +33,11 @@ public class Commande implements Serializable{
 	public void setDateCommande(Date dateCommande) {this.dateCommande = dateCommande;}
 
 	public Panier getPanierCommande() {return panierCommande;}
-	public void setPanierCommande(Panier panierCommande) {this.panierCommande = panierCommande;}
+	public void setPanierCommande(Panier panierCommande) {
+		Panier p = new Panier(panierCommande);
+		this.panierCommande = p;
+		
+	}
 	
 	public double getPrixTotalCommande() {return prixTotalCommande;}
 	

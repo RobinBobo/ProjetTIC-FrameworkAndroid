@@ -58,6 +58,11 @@ public class Client implements Serializable {
 		listeCommandesClient.add(c);
 	}
 	
+	public void removeCommande(Commande c){
+		if(listeCommandesClient != null)
+			listeCommandesClient.remove(c);
+	}
+	
 	// GETTERS
 	public int getIdClient() {return idClient;}
 	public String getNomClient() {return nomClient;}

@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -59,10 +60,10 @@ public class MainActivity extends Activity {
 	private NavDrawerListAdapter adapter;
 		
 	// Configuration venant du Back-End
-	public static ArrayList<Produit> LISTPRODUITBETA = null;
+	public static ArrayList<Produit> LISTPRODUIT = null;
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
-	public static String WEBSITENAMEBETA = null;
+	public static String WEBSITENAME = null;
 	public static Color COLORBUTTON = null;
 	
 	@Override
@@ -75,12 +76,12 @@ public class MainActivity extends Activity {
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
-		LISTPRODUITBETA = new ArrayList<Produit>();
+		LISTPRODUIT = new ArrayList<Produit>();
 		LISTCLIENT = new ArrayList<Client>();
 		LISTCATEGORIE = new ArrayList<Categorie>();
 		
 		try {
-			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUITBETA);
+			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {
@@ -91,14 +92,16 @@ public class MainActivity extends Activity {
 		// On ajoute des avis fictif pour les produits que l'on vient de récupérer
 		List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
 		List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
-		for(int i = 0; i < LISTPRODUITBETA.size(); i++){
+		for(int i = 0; i < LISTPRODUIT.size(); i++){
 			if(i%2 == 0)
-				LISTPRODUITBETA.get(i).setListeAvisProduit(avisBeta);
+				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta);
 			else 
-				LISTPRODUITBETA.get(i).setListeAvisProduit(avisBeta2);
+				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);
 		}
 		
-		WEBSITENAMEBETA = c.getWebsiteName();
+		WEBSITENAME = c.getWebsiteName();
+		
+		
 		
 		
 		initSlideMenu();
@@ -115,7 +118,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void checkConfiguration() {
-		if(WEBSITENAMEBETA == null && LISTPRODUITBETA.get(0) == null) {
+		if(WEBSITENAME == null) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Problème de configuration");
             builder.setMessage("Le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
@@ -140,7 +143,7 @@ public class MainActivity extends Activity {
 
 	public void initSlideMenu(){
 		// On initialise le titre si site/app
-		mTitle = mDrawerTitle = WEBSITENAMEBETA;
+		mTitle = mDrawerTitle = WEBSITENAME;
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 		// nav drawer icons from resources

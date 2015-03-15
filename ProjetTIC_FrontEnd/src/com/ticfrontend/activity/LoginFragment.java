@@ -10,6 +10,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -56,6 +57,10 @@ public class LoginFragment extends Fragment {
 		password = (EditText) rootView.findViewById(R.id.editTextPassUser);
 
 		Button validerLogin = (Button) rootView.findViewById(R.id.boutonValiderLogin);
+		//validerLogin.setBackgroundColor(getResources().getColor(R.color.Ivory));
+		//Drawable dr = getResources().getDrawable(R.drawable.button_shape);
+		
+		
 		validerLogin.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -67,10 +72,7 @@ public class LoginFragment extends Fragment {
 					
 					CartFragment.PANIER_CLIENT = new Panier();
 
-//					for(int i = 0; i < MainActivity.LISTPRODUITBETA.size(); i++)
-//						CartFragment.PANIER_CLIENT.ajouterDansPanier(MainActivity.LISTPRODUITBETA.get(i), 1);
-					
-					intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
+					//intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
 					activity.finish();
 					startActivity(intent);
 				}

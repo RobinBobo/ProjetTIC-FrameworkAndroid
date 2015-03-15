@@ -83,12 +83,12 @@ public class ProductListFragment extends Fragment {
 		
 		Categorie verifCategorieBeta = null;
 				
-		if(MainActivity.LISTPRODUITBETA != null)
-			if(MainActivity.LISTPRODUITBETA.size() > 0)
-				verifCategorieBeta = MainActivity.LISTPRODUITBETA.get(0).getCategorieProduit();
+		if(MainActivity.LISTPRODUIT != null)
+			if(MainActivity.LISTPRODUIT.size() > 0)
+				verifCategorieBeta = MainActivity.LISTPRODUIT.get(0).getCategorieProduit();
 		
 		if(categorie.getNomCategorie().equalsIgnoreCase(verifCategorieBeta.getNomCategorie()))
-			this.listProduit = MainActivity.LISTPRODUITBETA;
+			this.listProduit = MainActivity.LISTPRODUIT;
 		else
 			this.listProduit = Produit.getAListOfProductsBeta(categorie);
 		

@@ -159,50 +159,78 @@ public class AccountFragment extends Fragment {
 								&& editTextAdresseMail.getText().length() > 0 && editTextMdp1.getText().length() > 0 
 								&& editTextMdp2.getText().length() > 0){
 							
-							AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-							builder.setTitle("Modification du compte");
-				            builder.setMessage("Etes-vous sûr de vouloir enregister ces nouvelles informations ?");
-				            builder.setCancelable(true);
-				            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-				                public void onClick(DialogInterface dialog, int id) {
-				                	dialog.cancel();
-				                	
-				                	boolean sexeClient;
-				                	
-				                	if(radioButtonF.isChecked())
-				                		sexeClient = false;
-				                	else
-				                		sexeClient = true;
-				                	
-				                	
-				                	clientActuel.setLogin(editTextLogin.getText().toString());
-				                	clientActuel.setNomClient(editTextNomClient.getText().toString());
-				                	clientActuel.setPrenomClient(editTextPrenomClient.getText().toString());
-				                	clientActuel.setAdresseMail(editTextAdresseMail.getText().toString());
-				                	clientActuel.setAdresseClient(editTextAdresseClient.getText().toString());
-				                	clientActuel.setMdpClient(editTextMdp1.getText().toString());
-				                	clientActuel.setSexeClient(sexeClient);
-				                	
-				                	// Modification du client dans la BDD
-				                	// TODO
-				                	
-				                	Intent intent = getActivity().getIntent();
-				                	getActivity().finish();
-				                	startActivity(intent);				                    
-				                }
-				            });
-				            builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
-				                public void onClick(DialogInterface dialog, int id) {
-				                    dialog.cancel();
-				                }
-				            });
-				            
-				            AlertDialog alert = builder.create();
-				            alert.show();
+							if(editTextMdp1.getText().length() > 5){
+								if(editTextMdp1.getText().toString().equals(editTextMdp2.getText().toString())){
+
+									AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+									builder.setTitle("Modification du compte");
+									builder.setMessage("Etes-vous sûr de vouloir enregister ces nouvelles informations ?");
+									builder.setCancelable(true);
+									builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+											
+											boolean sexeClient;
+											if(radioButtonF.isChecked())
+												sexeClient = false;
+											else
+												sexeClient = true;
+											
+											clientActuel.setLogin(editTextLogin.getText().toString());
+											clientActuel.setNomClient(editTextNomClient.getText().toString());
+											clientActuel.setPrenomClient(editTextPrenomClient.getText().toString());
+											clientActuel.setAdresseMail(editTextAdresseMail.getText().toString());
+											clientActuel.setAdresseClient(editTextAdresseClient.getText().toString());
+											clientActuel.setMdpClient(editTextMdp1.getText().toString());
+											clientActuel.setSexeClient(sexeClient);
+											
+											// Modification du client dans la BDD
+											// TODO
+											
+											Intent intent = getActivity().getIntent();
+											getActivity().finish();
+											startActivity(intent);				                    
+										}
+									});
+									builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+									
+									AlertDialog alert = builder.create();
+									alert.show();
 							
+								} else {
+									AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+									builder.setTitle("Modification du compte");
+									builder.setMessage("Les mots de passe sont différents !");
+									builder.setCancelable(true);
+									builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+									AlertDialog alert = builder.create();
+									alert.show();
+								}						
+							} else {
+								AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+								builder.setTitle("Modification du compte");
+								builder.setMessage("Le mot de passe doit contenir au moins 6 caractères !");
+								builder.setCancelable(true);
+								builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										dialog.cancel();
+									}
+								});
+								AlertDialog alert = builder.create();
+								alert.show();
+							}							
 						} else {
 							AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				            builder.setMessage("Il manque des informations !");
+							builder.setTitle("Modification du compte");
+							builder.setMessage("Il manque des informations !");
 				            builder.setCancelable(true);
 				            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
 				                public void onClick(DialogInterface dialog, int id) {
@@ -216,7 +244,6 @@ public class AccountFragment extends Fragment {
 				});
 			}
 		});	
-		
 	}
 
 	@Override

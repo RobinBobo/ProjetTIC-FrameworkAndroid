@@ -48,7 +48,6 @@ public class RegisterFragment extends Fragment {
         
 		init();
         
-        
         return rootView;
     }
 
@@ -70,35 +69,56 @@ public class RegisterFragment extends Fragment {
 						&& prenomClient.getText().length() > 0 && adresseClient.getText().length() > 0 
 						&& adresseMail.getText().length() > 0 && mdp1.getText().length() > 0 
 						&& mdp2.getText().length() > 0){
-					
-					boolean sexeClient;
-                	
-                	if(radioButtonF.isChecked())
-                		sexeClient = false;
-                	else
-                		sexeClient = true;
-					
-					Client c = new Client(login.getText().toString(), nomClient.getText().toString(), prenomClient.getText().toString(), 
-							adresseClient.getText().toString(), adresseMail.getText().toString(), sexeClient, mdp1.getText().toString());
-					// Ajout dans la BDD
-					// TODO
-					
-					// On récupère l'instance dans l'activité principale
-					MainActivity.CLIENT_ACTUEL = c;
-					
-					// On dit que le client est connecté
-					MainActivity.ISCONNECTED = true;
-					
-					CartFragment.PANIER_CLIENT = new Panier();
-//					for(int i = 0; i < MainActivity.LISTPRODUITBETA.size(); i++)
-//						CartFragment.PANIER_CLIENT.ajouterDansPanier(MainActivity.LISTPRODUITBETA.get(i), 2);
-						
-					Intent intent = activity.getIntent();
-					//intent.putExtra(EXTRA_KEY_REGISTER, login.getText().toString());
-					intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
-					activity.finish();
-					startActivity(intent);
-					
+					if(mdp1.getText().length() > 5){
+						if(mdp1.getText().toString().equals(mdp2.getText().toString())){
+							boolean sexeClient;
+							
+							if(radioButtonF.isChecked())
+								sexeClient = false;
+							else
+								sexeClient = true;
+							
+							Client c = new Client(login.getText().toString(), nomClient.getText().toString(), prenomClient.getText().toString(), 
+									adresseClient.getText().toString(), adresseMail.getText().toString(), sexeClient, mdp1.getText().toString());
+							// Ajout dans la BDD
+							// TODO
+							
+							// On récupère l'instance dans l'activité principale et on dit que le client est connecté
+							MainActivity.CLIENT_ACTUEL = c;
+							MainActivity.ISCONNECTED = true;
+							CartFragment.PANIER_CLIENT = new Panier();
+							
+							Intent intent = activity.getIntent();
+							
+							//						intent.putExtra(EXTRA_KEY_USER, login.getText().toString());
+							activity.finish();
+							startActivity(intent);					
+						} else {
+							AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+							builder.setTitle("Création d'un compte");
+							builder.setMessage("Les mots de passe sont différents !");
+							builder.setCancelable(true);
+							builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									dialog.cancel();
+								}
+							});
+							AlertDialog alert = builder.create();
+							alert.show();
+						}						
+					} else {
+						AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+						builder.setTitle("Création d'un compte");
+						builder.setMessage("Le mot de passe doit contenir au moins 6 caractères !");
+						builder.setCancelable(true);
+						builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+						AlertDialog alert = builder.create();
+						alert.show();
+					}
 				} else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 					builder.setTitle("Création d'un compte");

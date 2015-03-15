@@ -30,6 +30,8 @@ public class PanierHashMapAdapter extends BaseAdapter {
 	
 	private LayoutInflater inflater;
 	private ArrayList<Object> mData;
+	
+	private boolean isInOrder = false;
 
 	public PanierHashMapAdapter(Context c, HashMap<Produit, Integer> map, View view){
 		this.context = c;
@@ -37,6 +39,15 @@ public class PanierHashMapAdapter extends BaseAdapter {
 		this.inflater = LayoutInflater.from(c);
 		this.mData = new ArrayList<Object>();
 		this.mData.addAll(map.entrySet());
+	}
+	
+	public PanierHashMapAdapter(Context c, HashMap<Produit, Integer> map, View view, boolean isInOrder){
+		this.context = c;
+		this.rootViewCart = view;
+		this.inflater = LayoutInflater.from(c);
+		this.mData = new ArrayList<Object>();
+		this.mData.addAll(map.entrySet());
+		this.isInOrder = isInOrder;
 	}
 
 	@Override
@@ -47,7 +58,6 @@ public class PanierHashMapAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int pos) {
-		// TODO Auto-generated method stub
 		return pos;
 	}
 
@@ -60,8 +70,8 @@ public class PanierHashMapAdapter extends BaseAdapter {
 			layoutItem = (LinearLayout) inflater.inflate(R.layout.single_item_cart_product, parent, false);
 		} else {
 			layoutItem = (LinearLayout) convertView;
-		}
-
+		}		
+		
 		final Map.Entry<Produit, Integer> item = getItem(position);
 
 		final TextView title = (TextView) layoutItem.findViewById(R.id.titleProduct);
@@ -77,51 +87,53 @@ public class PanierHashMapAdapter extends BaseAdapter {
 		final PanierHashMapAdapter adapter = this;
 		
 		Button enlever = (Button) layoutItem.findViewById(R.id.boutonEnlever);
-		enlever.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(context);
-	            builder.setTitle("Suppression d'un produit du panier");
-				builder.setMessage("Vous êtes sur le point de supprimer 1 " + title.getText().toString() + " du panier, en êtes-vous sûr ?");
-	            builder.setCancelable(true);
-	            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-	                public void onClick(DialogInterface dialog, int id) {
-	                    // Suppression d'un produit du panier
-	                	if(item.getValue() -1 < 1) {
-	                		// On supprime du panier le produit
-	                		mData.remove(position);
-	                		CartFragment.PANIER_CLIENT.getMapProduitQuantite().remove(item.getKey());
-	                		adapter.updateProduct(mData);
-	                	} else {
-	                		// On change le text de la vue et la donnée du panier
-	                		item.setValue(item.getValue()-1);
-	                		qte.setText("Quantité : " + String.valueOf(item.getValue()));
-	                		HashMap<Produit, Integer> hm = CartFragment.PANIER_CLIENT.getMapProduitQuantite();
-	                		hm.put(item.getKey(), item.getValue());
-	                	}
-	                	double prixTotal = CartFragment.PANIER_CLIENT.calculTotalPanier();
-	                	TextView prixT = (TextView) rootViewCart.findViewById(R.id.prixTotal);
-	                	
-	            		DecimalFormat df = new DecimalFormat() ; 
-	            		df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
-	            		df.setMinimumFractionDigits(2) ; 
-	            		df.setDecimalSeparatorAlwaysShown(true); 
-
-	            		//prixT.setText("Total : " + produitsListAdapter.getPrixTotalToString() + " €");
-	            		prixT.setText("Total : "+ df.format(prixTotal) + " €");
-	                	
-	                	dialog.cancel();
-	                }
-	            });
-	            builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-	                public void onClick(DialogInterface dialog, int id) {
-	                    dialog.cancel();
-	                }
-	            });
-	            AlertDialog alert = builder.create();
-	            alert.show();
-			}
-		});
+		
+		if(isInOrder) {
+			enlever.setVisibility(View.GONE);
+		} else {
+			enlever.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(context);
+					builder.setTitle("Suppression d'un produit du panier");
+					builder.setMessage("Vous êtes sur le point de supprimer 1 " + title.getText().toString() + " du panier, en êtes-vous sûr ?");
+					builder.setCancelable(true);
+					builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// Suppression d'un produit du panier
+							if(item.getValue() -1 < 1) {
+								// On supprime du panier le produit
+								mData.remove(position);
+								CartFragment.PANIER_CLIENT.getMapProduitQuantite().remove(item.getKey());
+								adapter.updateProduct(mData);
+							} else {
+								// On change le text de la vue et la donnée du panier
+								item.setValue(item.getValue()-1);
+								qte.setText("Quantité : " + String.valueOf(item.getValue()));
+							}
+							double prixTotal = CartFragment.PANIER_CLIENT.calculTotalPanier();
+							TextView prixT = (TextView) rootViewCart.findViewById(R.id.prixTotal);
+							
+							DecimalFormat df = new DecimalFormat() ; 
+							df.setMaximumFractionDigits(2) ; //arrondi à 2 chiffres apres la virgules 
+							df.setMinimumFractionDigits(2) ; 
+							df.setDecimalSeparatorAlwaysShown(true); 
+							
+							prixT.setText("Total : "+ df.format(prixTotal) + " €");
+							
+							dialog.cancel();
+						}
+					});
+					builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog alert = builder.create();
+					alert.show();
+				}
+			});			
+		}
 
 		return layoutItem;
 	}

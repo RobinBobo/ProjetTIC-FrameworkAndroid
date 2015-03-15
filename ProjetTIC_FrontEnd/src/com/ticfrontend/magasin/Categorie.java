@@ -61,13 +61,13 @@ public class Categorie implements Serializable {
 
 		List<Categorie> listCategorie = new ArrayList<Categorie>();
 		
-		if(MainActivity.LISTPRODUITBETA.size() > 0)
-			listCategorie.add(MainActivity.LISTPRODUITBETA.get(0).getCategorieProduit());
+		if(MainActivity.LISTPRODUIT.size() > 0)
+			listCategorie.add(MainActivity.LISTPRODUIT.get(0).getCategorieProduit());
 		
-		for(int i = 0; i < MainActivity.LISTPRODUITBETA.size(); i++){
+		for(int i = 0; i < MainActivity.LISTPRODUIT.size(); i++){
 			for(int j = 0; j < listCategorie.size(); j++)
-				if(!listCategorie.get(j).getNomCategorie().equalsIgnoreCase(MainActivity.LISTPRODUITBETA.get(j).getCategorieProduit().getNomCategorie()))
-					listCategorie.add(MainActivity.LISTPRODUITBETA.get(i).getCategorieProduit());
+				if(!listCategorie.get(j).getNomCategorie().equalsIgnoreCase(MainActivity.LISTPRODUIT.get(j).getCategorieProduit().getNomCategorie()))
+					listCategorie.add(MainActivity.LISTPRODUIT.get(i).getCategorieProduit());
 		}
 		
 		listCategorie.add(new Categorie(1, "Livres"));

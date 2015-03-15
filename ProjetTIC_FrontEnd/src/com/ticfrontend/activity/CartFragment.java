@@ -80,9 +80,10 @@ public class CartFragment extends Fragment {
 				// TODO Passer commande
 				if(!PANIER_CLIENT.estVide()){
 					//Commande commande = new Commande(prixTotal, listProduit);
-					Commande commande = new Commande(PANIER_CLIENT);
-					Client client = MainActivity.CLIENT_ACTUEL;
-					client.addCommande(commande);
+					Panier p = new Panier(PANIER_CLIENT);
+					Commande commande = new Commande(p);
+					
+					MainActivity.CLIENT_ACTUEL.addCommande(commande);
 
 					Fragment fragment = new OrderFragment();
 					FragmentManager fragmentManager = getFragmentManager();
