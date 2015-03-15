@@ -156,15 +156,10 @@ public class CartFragment extends Fragment {
 	}
 	
 	private void testAjoutItemsListCartProductBeta(){
-		//listProduit = Produit.getAListOfProducts();
-		
 		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),PANIER_CLIENT.getMapProduitQuantite(), rootView);
-		//CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), listProduit);
 
 		ListView produitList = (ListView) rootView.findViewById(R.id.listviewCard);
-		//produitList.setAdapter(produitsListAdapter);
 		produitList.setAdapter(phma);
-		//prixTotal = produitsListAdapter.getPrixTotal();
 		this.prixTotal = PANIER_CLIENT.calculTotalPanier();
 
 		TextView prixT = (TextView) rootView.findViewById(R.id.prixTotal);
@@ -184,10 +179,6 @@ public class CartFragment extends Fragment {
 				Map.Entry<Produit, Integer> item = (Map.Entry<Produit, Integer>) arg0.getItemAtPosition(arg2);
 				Produit product = item.getKey();
 				Fragment fragment = new ProductDetailsFragment(product);
-//				Bundle extras = new Bundle();								
-//				
-//				extras.putSerializable(EXTRA_KEY_PRODUCT, product); 
-//				fragment.setArguments(extras);
 
 				FragmentManager fragmentManager = getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

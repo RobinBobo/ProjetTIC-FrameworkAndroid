@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.projettic.R;
-import com.ticfrontend.adapter.CartProductListAdapter;
 import com.ticfrontend.adapter.PanierHashMapAdapter;
 import com.ticfrontend.magasin.Commande;
 import com.ticfrontend.magasin.Panier;
@@ -98,7 +97,6 @@ public class OrderDetailsFragment extends Fragment {
 	private void ajoutItemsListOrder(){
 		Panier panier = order.getPanierCommande();
 		PanierHashMapAdapter phma = new PanierHashMapAdapter(this.getActivity(),panier.getMapProduitQuantite(), rootView, true);
-		CartProductListAdapter produitsListAdapter = new CartProductListAdapter(this.getActivity(), panier.getListeProduitsPanier());
 
 		ListView produitList = (ListView) rootView.findViewById(R.id.listviewOrder);
 		produitList.setAdapter(phma);
@@ -112,7 +110,6 @@ public class OrderDetailsFragment extends Fragment {
 		df.setMinimumFractionDigits(2) ; 
 		df.setDecimalSeparatorAlwaysShown(true); 
 
-		prixT.setText("Total : " + produitsListAdapter.getPrixTotalToString() + " €");
 		prixT.setText("Total : "+ df.format(prixTotal) + " €");
 	}	
 }
