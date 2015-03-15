@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -74,6 +75,10 @@ public class PanierHashMapAdapter extends BaseAdapter {
 		
 		final Map.Entry<Produit, Integer> item = getItem(position);
 
+		// On met une image aléatoire sur le ImageView de la catégorie
+	    ImageView icon = (ImageView) layoutItem.findViewById(R.id.icon);
+	    icon.setImageResource(item.getKey().getIconRessource());
+		
 		final TextView title = (TextView) layoutItem.findViewById(R.id.titleProduct);
 		TextView desc = (TextView) layoutItem.findViewById(R.id.descProduct);
 		TextView price = (TextView) layoutItem.findViewById(R.id.priceProduct);

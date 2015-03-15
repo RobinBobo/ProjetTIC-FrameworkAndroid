@@ -58,8 +58,8 @@ public class CategoryFragment extends Fragment {
 	private void testAjoutItemsListCategorie(){
 		listCategories = Categorie.getAListOfCategorieBeta();
 		
-		for(int i = 0; i < listCategories.size(); i++)
-			listCategories.get(i).setIconRessource(getRandomImage());
+//		for(int i = 0; i < listCategories.size(); i++)
+//			listCategories.get(i).setIconRessource(getRandomImage());
 		
 		//Création et initialisation de l'Adapter pour les catégories
 		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this.getActivity(), listCategories);

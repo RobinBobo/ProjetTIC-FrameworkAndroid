@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.projettic.R;
 import com.ticfrontend.activity.MainActivity;
 
 public class Categorie implements Serializable {
@@ -69,8 +70,11 @@ public class Categorie implements Serializable {
 
 		List<Categorie> listCategorie = new ArrayList<Categorie>();
 		
-		if(MainActivity.LISTPRODUIT.size() > 0)
-			listCategorie.add(MainActivity.LISTPRODUIT.get(0).getCategorieProduit());
+		if(MainActivity.LISTPRODUIT.size() > 0) {
+			Categorie c = MainActivity.LISTPRODUIT.get(0).getCategorieProduit();
+			c.setIconRessource(R.drawable.cat7);
+			listCategorie.add(c);			
+		}
 		
 		for(int i = 0; i < MainActivity.LISTPRODUIT.size(); i++){
 			for(int j = 0; j < listCategorie.size(); j++)
@@ -78,12 +82,12 @@ public class Categorie implements Serializable {
 					listCategorie.add(MainActivity.LISTPRODUIT.get(i).getCategorieProduit());
 		}
 		
-		listCategorie.add(new Categorie(1, "Livres"));
-		listCategorie.add(new Categorie(2, "Videos"));
-		listCategorie.add(new Categorie(3, "Musique"));
-		listCategorie.add(new Categorie(4, "Jeux vidéo"));
-		listCategorie.add(new Categorie(5, "Multimédia"));
-		listCategorie.add(new Categorie(6, "Divers"));
+		listCategorie.add(new Categorie(1, "Livres", R.drawable.cat1));
+		listCategorie.add(new Categorie(2, "Videos", R.drawable.cat2));
+		listCategorie.add(new Categorie(3, "Musique", R.drawable.cat3));
+		listCategorie.add(new Categorie(4, "Jeux vidéo", R.drawable.cat4));
+		listCategorie.add(new Categorie(5, "Multimédia", R.drawable.cat5));
+		listCategorie.add(new Categorie(6, "Divers", R.drawable.cat6));
 		
 		return listCategorie;
 	}

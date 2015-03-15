@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -65,6 +66,9 @@ public class CommandeListAdapter extends BaseAdapter{
 	    	layoutItem = (LinearLayout) convertView;
 	    }
 	  
+	    ImageView icon = (ImageView) layoutItem.findViewById(R.id.icon);
+	    icon.setImageResource(R.drawable.icon_order);
+	    
 	    TextView title = (TextView) layoutItem.findViewById(R.id.titleCommande);
 	    TextView date = (TextView) layoutItem.findViewById(R.id.dateCommande);
 	    TextView price = (TextView) layoutItem.findViewById(R.id.priceCommande);
