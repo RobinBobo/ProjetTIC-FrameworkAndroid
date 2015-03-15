@@ -12,6 +12,7 @@
 	    android:layout_height="30dp"
 	    android:layout_gravity="center_vertical"
 	    android:src="@drawable/ic_launcher"
+	    android:scaleType="centerInside"
 	    />
 	
 	<LinearLayout 

@@ -10,6 +10,8 @@ public class Categorie implements Serializable {
 	private int idCategorie;
 	private String nomCategorie;
 	
+	private int iconRessource;
+	
 	public Categorie () {
 		
 	}
@@ -17,6 +19,12 @@ public class Categorie implements Serializable {
 	public Categorie(int id, String nom) {
 		this.idCategorie = id;
 		this.nomCategorie = nom;
+	}
+	
+	public Categorie(int id, String nom, int icon) {
+		this.idCategorie = id;
+		this.nomCategorie = nom;
+		this.setIconRessource(icon);
 	}
 
 	public int getIdCategorie() {
@@ -78,5 +86,13 @@ public class Categorie implements Serializable {
 		listCategorie.add(new Categorie(6, "Divers"));
 		
 		return listCategorie;
+	}
+
+	public int getIconRessource() {
+		return iconRessource;
+	}
+
+	public void setIconRessource(int iconRessource) {
+		this.iconRessource = iconRessource;
 	}
 }

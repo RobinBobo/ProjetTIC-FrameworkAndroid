@@ -2,35 +2,27 @@ package com.ticfrontend.activity;
 
 import java.text.DateFormat;
 import java.util.List;
-import java.util.zip.Inflater;
-
-import com.example.projettic.R;
-import com.ticfrontend.adapter.AvisListAdapter;
-import com.ticfrontend.magasin.Avis;
-import com.ticfrontend.magasin.Client;
-import com.ticfrontend.magasin.Commande;
-import com.ticfrontend.magasin.Panier;
-import com.ticfrontend.magasin.Produit;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.example.projettic.R;
+import com.ticfrontend.magasin.Avis;
+import com.ticfrontend.magasin.Produit;
 
 public class ProductDetailsFragment extends Fragment {
 	private View rootView;
@@ -45,17 +37,15 @@ public class ProductDetailsFragment extends Fragment {
 	public ProductDetailsFragment(Produit prd){
 		this.product = prd;
 		listeAvis = product.getListeAvisProduit();
-		
 	}
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		this.rootView = inflater.inflate(R.layout.activity_product, container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		this.rootView = inflater.inflate(R.layout.fragment_product, container, false);
 		this.activity = this.getActivity();
 		
 		init();
-		populateScreen();
+		
 		return rootView;
 	}
 
@@ -66,16 +56,9 @@ public class ProductDetailsFragment extends Fragment {
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		this.activity.setTitle(R.string.title_fragment_product);
-//		Bundle bundle = getArguments();
-//		if(bundle != null) {
-//			//product = new Produit((Produit) bundle.getSerializable(ProductListFragment.EXTRA_KEY_PRODUCT)); 
-//			//listeAvis = product.getListeAvisProduit();
-//			//populateScreen();
-//		}
 	}
 	public void init(){
 		boutonAjouterPanier = (Button) rootView.findViewById(R.id.boutonAjouter); 
@@ -87,13 +70,6 @@ public class ProductDetailsFragment extends Fragment {
 				AlertDialog alert;
 				
 				if(MainActivity.ISCONNECTED){
-//					if(CartFragment.PANIER_CLIENT == null){
-//						Fragment fragment = new HomeFragment();
-//						FragmentManager fragmentManager = getFragmentManager();
-//						fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
-//						CartFragment.PANIER_CLIENT = new Panier();
-//					}
-
 					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 					    @Override
 					    public void onClick(DialogInterface dialog, int which) {
@@ -110,8 +86,7 @@ public class ProductDetailsFragment extends Fragment {
 					};
 					builder.setMessage("Confirmez-vous l'ajout ?").setPositiveButton("Oui", dialogClickListener)
 					    .setNegativeButton("Non", dialogClickListener).show();
-				}else
-				{
+				} else {
 					builder.setMessage("Vous devez vous connecter.");
 					builder.setCancelable(true);
 					builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
@@ -124,9 +99,15 @@ public class ProductDetailsFragment extends Fragment {
 				}
 			}
 		});
+		
+		populateScreen();
 	}
 
 	private void populateScreen() {
+		// Image produit
+		ImageView icon = (ImageView) rootView.findViewById(R.id.imgProduct);
+		icon.setImageResource(product.getIconRessource());
+		
 		// Nom produit
 		TextView name = (TextView) rootView.findViewById(R.id.textProductName);
 		name.setText(product.getNomProduit());

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -81,6 +82,10 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 	    title.setText(products.get(position).getNomProduit());
 	    desc.setText(products.get(position).getDescriptionProduit());
 	    price.setText(String.valueOf(products.get(position).getPrixProduit()) + " €");
+	    
+	    // On met une image aléatoire sur le ImageView du produit
+	    ImageView icon = (ImageView) layoutItem.findViewById(R.id.icon);
+	    icon.setImageResource(products.get(position).getIconRessource());
 	    
 	    return layoutItem;
 	}

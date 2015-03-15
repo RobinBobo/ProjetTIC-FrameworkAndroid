@@ -81,17 +81,19 @@ public class ProductListFragment extends Fragment {
 		// On récupère la catégorie sur laquelle on a cliqué
 		this.categorie = CategoryFragment.currentCategorie;
 		
-		Categorie verifCategorieBeta = null;
+		Categorie verifCategorie = null;
 				
 		if(MainActivity.LISTPRODUIT != null)
 			if(MainActivity.LISTPRODUIT.size() > 0)
-				verifCategorieBeta = MainActivity.LISTPRODUIT.get(0).getCategorieProduit();
+				verifCategorie = MainActivity.LISTPRODUIT.get(0).getCategorieProduit();
 		
-		if(categorie.getNomCategorie().equalsIgnoreCase(verifCategorieBeta.getNomCategorie()))
+		if(categorie.getNomCategorie().equalsIgnoreCase(verifCategorie.getNomCategorie()))
 			this.listProduit = MainActivity.LISTPRODUIT;
-		else
+		else {
 			this.listProduit = Produit.getAListOfProductsBeta(categorie);
-		
+			for(int i = 0; i < listProduit.size(); i++)
+				listProduit.get(i).setIconRessource(getRandomImage());		
+		}		
 		
 		blanc = (TextView) rootView.findViewById(R.id.textViewBlanc);
 		
@@ -100,11 +102,9 @@ public class ProductListFragment extends Fragment {
 		upPrice = (ImageView) rootView.findViewById(R.id.imgSortPriceDesc);
 		downPrice = (ImageView) rootView.findViewById(R.id.imgSortPriceAsc);
 		
-		
 		init();
 		
 		testAjoutItemsListProduct();
-
 		
 		listViewProducts = (ListView) rootView.findViewById(R.id.listviewProduit);
 		listViewAdapter = new ProductListAdapter(getActivity(), listProduit);
@@ -209,5 +209,91 @@ public class ProductListFragment extends Fragment {
 				fragmentTransaction.commit();
 			}
 		});
+	}
+	
+	private int getRandomImage() {
+		int random = 1 + (int)(Math.random() * ((20 - 1) + 1));
+		int res = R.drawable.prd1;
+		switch (random) {
+			case 1:
+				res = R.drawable.prd1;
+				break;
+			case 2:
+				res = R.drawable.prd2;				
+				break;
+			case 3:
+				res = R.drawable.prd3;
+				break;
+			case 4:
+				res = R.drawable.prd4;
+				break;
+			case 5:
+				res = R.drawable.prd5;
+				break;
+			case 6:
+				res = R.drawable.prd6;
+				break;
+			case 7:
+				res = R.drawable.prd7;
+				break;
+			case 8:
+				res = R.drawable.prd8;
+				break;
+			case 9:
+				res = R.drawable.prd9;
+				break;
+			case 10:
+				res = R.drawable.prd10;
+				break;
+			case 11:
+				res = R.drawable.prd11;
+				break;
+			case 12:
+				res = R.drawable.prd12;
+				break;
+			case 13:
+				res = R.drawable.prd13;
+				break;
+			case 14:
+				res = R.drawable.prd14;
+				break;
+			case 15:
+				res = R.drawable.prd15;
+				break;
+			case 16:
+				res = R.drawable.prd16;
+				break;
+			case 17:
+				res = R.drawable.prd17;
+				break;
+			case 18:
+				res = R.drawable.prd18;
+				break;
+			case 19:
+				res = R.drawable.prd19;
+				break;
+			case 20:
+				res = R.drawable.prd20;
+				break;
+			case 21:
+				res = R.drawable.prd21;
+				break;
+			case 22:
+				res = R.drawable.prd22;
+				break;
+			case 23:
+				res = R.drawable.prd23;
+				break;
+			case 24:
+				res = R.drawable.prd24;
+				break;
+			case 25:
+				res = R.drawable.prd25;
+				break;
+			default:
+				res = R.drawable.prd1;
+				break;
+		}
+		return res;
 	}
 }

@@ -36,7 +36,7 @@ public class LoginFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-		this.rootView = inflater.inflate(R.layout.activity_login, container, false);
+		this.rootView = inflater.inflate(R.layout.fragment_login, container, false);
 		this.activity = this.getActivity();
 		init();
 

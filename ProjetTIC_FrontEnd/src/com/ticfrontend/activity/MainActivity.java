@@ -69,10 +69,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main1);
+		setContentView(R.layout.activity_main);
 		
-		// TEST Loading XML //
-				
+		// Loading XML //	
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
@@ -85,7 +84,6 @@ public class MainActivity extends Activity {
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -97,22 +95,18 @@ public class MainActivity extends Activity {
 				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta);
 			else 
 				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);
+			LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
 		}
 		
-		WEBSITENAME = c.getWebsiteName();
-		
-		
-		
+		WEBSITENAME = c.getWebsiteName();		
 		
 		initSlideMenu();
-
 				
 		//////////////////////////////////////////////////////
 				
 		if (savedInstanceState == null) {
 			displayView(0);
 		}
-		
 		
 		checkConfiguration();
 	}
@@ -374,5 +368,90 @@ public class MainActivity extends Activity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-
+	
+	private int getRandomImage() {
+		int random = 1 + (int)(Math.random() * ((20 - 1) + 1));
+		int res = R.drawable.prd1;
+		switch (random) {
+			case 1:
+				res = R.drawable.prd1;
+				break;
+			case 2:
+				res = R.drawable.prd2;				
+				break;
+			case 3:
+				res = R.drawable.prd3;
+				break;
+			case 4:
+				res = R.drawable.prd4;
+				break;
+			case 5:
+				res = R.drawable.prd5;
+				break;
+			case 6:
+				res = R.drawable.prd6;
+				break;
+			case 7:
+				res = R.drawable.prd7;
+				break;
+			case 8:
+				res = R.drawable.prd8;
+				break;
+			case 9:
+				res = R.drawable.prd9;
+				break;
+			case 10:
+				res = R.drawable.prd10;
+				break;
+			case 11:
+				res = R.drawable.prd11;
+				break;
+			case 12:
+				res = R.drawable.prd12;
+				break;
+			case 13:
+				res = R.drawable.prd13;
+				break;
+			case 14:
+				res = R.drawable.prd14;
+				break;
+			case 15:
+				res = R.drawable.prd15;
+				break;
+			case 16:
+				res = R.drawable.prd16;
+				break;
+			case 17:
+				res = R.drawable.prd17;
+				break;
+			case 18:
+				res = R.drawable.prd18;
+				break;
+			case 19:
+				res = R.drawable.prd19;
+				break;
+			case 20:
+				res = R.drawable.prd20;
+				break;
+			case 21:
+				res = R.drawable.prd21;
+				break;
+			case 22:
+				res = R.drawable.prd22;
+				break;
+			case 23:
+				res = R.drawable.prd23;
+				break;
+			case 24:
+				res = R.drawable.prd24;
+				break;
+			case 25:
+				res = R.drawable.prd25;
+				break;
+			default:
+				res = R.drawable.prd1;
+				break;
+		}
+		return res;
+	}
 }

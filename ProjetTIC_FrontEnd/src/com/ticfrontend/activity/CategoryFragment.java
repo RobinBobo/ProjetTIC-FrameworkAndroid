@@ -57,6 +57,10 @@ public class CategoryFragment extends Fragment {
 
 	private void testAjoutItemsListCategorie(){
 		listCategories = Categorie.getAListOfCategorieBeta();
+		
+		for(int i = 0; i < listCategories.size(); i++)
+			listCategories.get(i).setIconRessource(getRandomImage());
+		
 		//Création et initialisation de l'Adapter pour les catégories
 		CategorieListAdapter categorieListAdapter = new CategorieListAdapter(this.getActivity(), listCategories);
 
@@ -99,5 +103,40 @@ public class CategoryFragment extends Fragment {
 				adapter.getFilter().filter(s.toString());
 			}
 		});
+	}
+	
+	private int getRandomImage() {
+		int random = 1 + (int)(Math.random() * ((20 - 1) + 1));
+		int res = R.drawable.cat1;
+		switch (random) {
+			case 1:
+				res = R.drawable.cat1;
+				break;
+			case 2:
+				res = R.drawable.cat2;				
+				break;
+			case 3:
+				res = R.drawable.cat3;
+				break;
+			case 4:
+				res = R.drawable.cat4;
+				break;
+			case 5:
+				res = R.drawable.cat5;
+				break;
+			case 6:
+				res = R.drawable.cat6;
+				break;
+			case 7:
+				res = R.drawable.cat7;
+				break;
+			case 8:
+				res = R.drawable.cat8;
+				break;
+			default:
+				res = R.drawable.cat1;
+				break;
+		}
+		return res;
 	}
 }

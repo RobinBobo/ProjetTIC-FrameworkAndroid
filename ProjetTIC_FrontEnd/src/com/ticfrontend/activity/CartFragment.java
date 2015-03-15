@@ -43,7 +43,7 @@ public class CartFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		this.rootView = inflater.inflate(R.layout.activity_cart, container, false);
+		this.rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 		this.activity = getActivity();
 		this.prixTotal = 0;
 

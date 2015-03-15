@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -76,6 +77,10 @@ public class CategorieListAdapter extends BaseAdapter implements Filterable {
 	    } else {
 	    	layoutItem = (LinearLayout) convertView;
 	    }
+	    
+	    // On met une image aléatoire sur le ImageView de la catégorie
+	    ImageView icon = (ImageView) layoutItem.findViewById(R.id.icon);
+	    icon.setImageResource(categories.get(position).getIconRessource());
 	    
 	    TextView title = (TextView) layoutItem.findViewById(R.id.titleCategorie);
 	    title.setText(categories.get(position).getNomCategorie());
