@@ -91,6 +91,8 @@ public class XmlLoader {
 					c.setOrder(Boolean.valueOf(text));
 				else if(tagname.equalsIgnoreCase("websiteName"))
 					c.setWebsiteName(text);
+				else if(tagname.equalsIgnoreCase("buttonsColor"))
+					c.setButtonsColor(Integer.valueOf(text));
 				break;
 			default:
 				break;

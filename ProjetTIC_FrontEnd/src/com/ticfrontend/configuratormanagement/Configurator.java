@@ -1,16 +1,26 @@
 package com.ticfrontend.configuratormanagement;
 
 public class Configurator {
-	
+
 	//Class'Attributes
 	private boolean shoppingCart;
-	
+
 	private boolean customerNotice;
-	
+
 	private boolean order;
-	
-	private String websiteName;	
-		
+
+	private String websiteName;
+
+	private int buttonsColor;
+
+	public int getButtonsColor() {
+		return buttonsColor;
+	}
+
+	public void setButtonsColor(int buttonColor) {
+		this.buttonsColor = buttonColor;
+	}
+
 	//Getter & Setter
 	public String getWebsiteName() {
 		return websiteName;

@@ -5,11 +5,14 @@ import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import colorpicker.ColorPicker;
+
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -25,13 +28,23 @@ import configuratormanagement.Configurator;
 import configuratormanagement.XmlCreator;
 import fr.tic.R;
 
+
 public class MainActivity extends Activity {
-	
+
 	private static ListeClients mesClients;
 	private static Catalogue monCatalogue;
 	private static ListeCategories listeCategories;
-	private static String nomSite;
-	
+	private static String nomSite; 
+	private static int buttonsColor;
+
+	public static int getButtonsColor() {
+		return buttonsColor;
+	}
+
+	public static void setButtonsColor(int buttonsColor) {
+		MainActivity.buttonsColor = buttonsColor;
+	}
+
 	public static ListeCategories getListeCategories() {
 		return listeCategories;
 	}
@@ -39,7 +52,7 @@ public class MainActivity extends Activity {
 	public static void setListeCategories(ListeCategories listeCategories) {
 		MainActivity.listeCategories = listeCategories;
 	}
-	
+
 	public static String getNomSite() {
 		return nomSite;
 	}
@@ -68,7 +81,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		setTitle((getNomSite() != null) ? (getNomSite()) : "Application de gestion");
+		setTitle((getNomSite() != null) ? (getNomSite()) : "Application de gestion");	
 
 		// _________________________________________________________
 		// Jeux de test :
@@ -81,8 +94,8 @@ public class MainActivity extends Activity {
 		/*mesCategories.findCategories();
 		mesClients.findClients();
 		monCatalogue.findProduits();*/
-//
-//		monCatalogue.ajoutObserver(mesClients);
+		//
+		//		monCatalogue.ajoutObserver(mesClients);
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
 		Categorie categoTelephone = new Categorie(0, "Telephone");
@@ -93,13 +106,13 @@ public class MainActivity extends Activity {
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(1, 
 				"Sony Xperia Z3", 150.0, "Téléphone Sony Xperia Z3 16Go",
 				categoTelephone.getNomCategorie(), "Sony", 10));
-		
+
 		getMonCatalogue().afficherCatalogue();
-		
-		  //
-		 // TODO: Page d'accueil
+
 		//
-		
+		// TODO: Page d'accueil
+		//
+
 		// Affichage du nombre de produits
 		final TextView nbProduits = (TextView) findViewById(R.id.nbProduits);
 		if (monCatalogue.getMesProduits().size() != 0) {
@@ -107,7 +120,7 @@ public class MainActivity extends Activity {
 		} else {
 			nbProduits.setText("Il n'y a aucun produit de référencé dans le catalogue...");
 		}
-		
+
 		// Affichage du nombre de clients
 		final TextView nbClients = (TextView) findViewById(R.id.nbClients);
 		if (mesClients.getListeClients().size() != 0) {
@@ -115,7 +128,7 @@ public class MainActivity extends Activity {
 		} else {
 			nbClients.setText("Il n'y a aucun client de référencé dans le catalogue...");
 		}
-		
+
 		// TODO: Affichage du nombre de commande effectuée (basé sur les paniers pour l'instant)
 		final TextView nbCde = (TextView) findViewById(R.id.nbCde);
 		int i_nbCde = 0;
@@ -127,7 +140,7 @@ public class MainActivity extends Activity {
 			if (i_nbCde != 0) nbCde.setText(i_nbCde + " commandes ont été effectuées");
 			else nbClients.setText("Il n'y pas encore de commande effectuée...");
 		}
-		
+
 		//Affichage des alerte stock (moins de 5 articles en stock)
 		final TextView alerteStock = (TextView) findViewById(R.id.alerteStock);
 		String listePdtAlerteStock = "";
@@ -139,27 +152,28 @@ public class MainActivity extends Activity {
 		}
 		if (listePdtAlerteStock != "") alerteStock.setText(listePdtAlerteStock);
 		else alerteStock.setText("Vous n'avez aucune alerte au niveau des stocks");
-		
+
 		// Nom du site
 		final Button nomSiteLink = (Button) findViewById(R.id.btnNomSite);
 		nomSiteLink.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, ChoixNomSiteActivity.class);
-		        startActivity(intent);
+				startActivity(intent);
 			}
 		});
-		
+
 		// Menu
 		final Button menuLink = (Button) findViewById(R.id.menuLink);
 		menuLink.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-		        startActivity(intent);
+				startActivity(intent);
 			}
-		});
-		
+		});		
+
+
 		// Extraction des données
 		final Button extract = (Button) findViewById(R.id.btnExtract);
 		extract.setOnClickListener(new OnClickListener() {
@@ -170,6 +184,7 @@ public class MainActivity extends Activity {
 				c.setShoppingCart(true);
 				c.setCustomerNotice(true);
 				c.setOrder(false);
+				c.setButtonsColor(buttonsColor);
 				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 				XmlCreator xml = new XmlCreator();
 				try {
@@ -209,5 +224,5 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
+	}	
 }

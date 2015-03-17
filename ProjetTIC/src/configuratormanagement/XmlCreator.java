@@ -113,6 +113,7 @@ public class XmlCreator {
 		writeLine(serializer, "customerNotice", Boolean.toString(c.getCustomerNotice()));
 		writeLine(serializer, "order", Boolean.toString(c.getOrder()));
 		writeLine(serializer, "websiteName",c.getWebsiteName());
+		writeLine(serializer, "buttonsColor",String.valueOf(c.getButtonsColor()));
 		serializer.endTag(NAMESPACE, "Configuration");
 		serializer.text("\n");
 	}
