@@ -27,7 +27,7 @@ public class AjouterProduitActivity extends Activity {
 	    final Spinner s = (Spinner) findViewById(R.id.listeCategory);
 	    
 	    List<String> arraySpinner = new ArrayList<String>();
-	    
+    	arraySpinner.add("Aucune");
 	    for(int i=0; i<MainActivity.getListeCategories().getListeCategories().size(); i++) {
 	    	arraySpinner.add(MainActivity.getListeCategories().getListeCategories().get(i).getNomCategorie());
 	    }
@@ -62,7 +62,8 @@ public class AjouterProduitActivity extends Activity {
 						msgErreur = "L\'identifiant est déjà utilisé pour un autre produit : " + exist.getNomProduit();
 					} else {
 						Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
-								description.toString(), (marque.toString().matches(""))? "" : marque.toString() , "marque", 10);
+								description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
+								(marque.toString().matches(""))? "" : marque.toString(), 10);
 						MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
 						msgErreur = "Votre produit a bien été ajouté";
 						txtMsgErreur.setTextColor(Color.GREEN);
