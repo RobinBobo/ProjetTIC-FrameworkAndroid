@@ -42,13 +42,11 @@ public class AjouterProduitActivity extends Activity {
 			public void onClick(View v) {
 				boolean valide = false;
 				String msgErreur = "";
-				CharSequence id = ((TextView) findViewById(R.id.idProduit)).getText();
 				CharSequence nom = ((TextView) findViewById(R.id.nomProduit)).getText();
 				CharSequence prix = ((TextView) findViewById(R.id.prixProduit)).getText();
 				CharSequence marque = ((TextView) findViewById(R.id.marqueProduit)).getText();
 				CharSequence description = ((TextView) findViewById(R.id.descProduit)).getText();
-				if (!id.toString().matches("") && !nom.toString().matches("") 
-						&& !prix.toString().matches("") && !description.toString().matches("")) {
+				if (!nom.toString().matches("") && !prix.toString().matches("") && !description.toString().matches("")) {
 					valide = true;
 				} else {
 					msgErreur = "Veuillez saisir tous les champs";
@@ -56,18 +54,12 @@ public class AjouterProduitActivity extends Activity {
 				}
 				
 				if (valide) {
-					Produit exist = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(id.toString()));
-					if (exist != null) {
-						txtMsgErreur.setTextColor(Color.RED);
-						msgErreur = "L\'identifiant est déjà utilisé pour un autre produit : " + exist.getNomProduit();
-					} else {
-						Produit p = new Produit(Integer.parseInt(id.toString()) , nom.toString(),Integer.parseInt(prix.toString()),
-								description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
-								(marque.toString().matches(""))? "" : marque.toString(), 10);
-						MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
-						msgErreur = "Votre produit a bien été ajouté";
-						txtMsgErreur.setTextColor(Color.GREEN);
-					}
+					Produit p = new Produit(nom.toString(),Integer.parseInt(prix.toString()),
+							description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
+							(marque.toString().matches(""))? "" : marque.toString(), 10);
+					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
+					msgErreur = "Votre produit a bien été ajouté";
+					txtMsgErreur.setTextColor(Color.rgb(20, 148, 20));
 				}
 				txtMsgErreur.setText(msgErreur);
 			}

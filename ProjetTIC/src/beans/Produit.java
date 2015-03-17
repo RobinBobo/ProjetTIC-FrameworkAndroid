@@ -1,17 +1,12 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.Observable;
 
 import model.DAOFactory;
 
 
-public class Produit extends Observable implements Serializable{
+public class Produit extends Observable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private int i_idProduit = 0;
 	private String s_nomProduit;
 	private double d_prixProduit;
@@ -30,6 +25,19 @@ public class Produit extends Observable implements Serializable{
 			String theDescription, String theCategorie,
 			String theMarque, int theStock) {
 		this.i_idProduit = theId;
+		this.s_nomProduit = theNom;
+		this.d_prixProduit = thePrix;
+		this.s_descriptionProduit = theDescription;
+		this.s_categorieProduit = theCategorie;
+		this.s_marqueProduit = theMarque;
+		this.i_stockProduit = theStock;
+	}
+	
+
+	// Constructeur utilisé par l'application
+	public Produit(String theNom, double thePrix,
+			String theDescription, String theCategorie,
+			String theMarque, int theStock) {
 		this.s_nomProduit = theNom;
 		this.d_prixProduit = thePrix;
 		this.s_descriptionProduit = theDescription;

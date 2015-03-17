@@ -7,35 +7,19 @@
 		android:layout_height="wrap_content" 
 		android:orientation="vertical">
 		
-		<TextView 
-			android:id="@+id/textId"
-			android:text="@string/textId"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
-		
-		<EditText 
-			android:id="@+id/idProduit"
-			android:hint="@string/id"
-			android:inputType="number"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/textId"
-			android:layout_alignParentRight="true" />
-		
+				
 		<TextView 
 			android:id="@+id/textNom"
 			android:text="@string/textNom"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:gravity="left"
-			android:layout_below="@id/idProduit" />
+			android:gravity="left" />
 			
 		<EditText
 			android:id="@+id/nomProduit"
 			android:hint="@string/nomProduit"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_below="@id/idProduit"
+			android:layout_height="wrap_content"
 			android:layout_toRightOf="@id/textNom"
 			android:layout_alignParentRight="true" />
 		
