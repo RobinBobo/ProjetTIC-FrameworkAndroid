@@ -16,7 +16,7 @@ public class XmlLoader {
 
 	private String text;
 
-	public void load (InputStream is, Configurator config, List<Produit> listProduit) {
+	public void load (InputStream is, Configurator config, List<Produit> listProduit, List<Categorie> listCategorie) {
 
 		XmlPullParserFactory factory = null;
 		XmlPullParser parser = null;
@@ -37,12 +37,15 @@ public class XmlLoader {
 						parseIntoConfiguration(eventType, parser, config);
 					else if(tagname.equalsIgnoreCase("Produit")){ // Si de type client
 						Produit p = new Produit(); // Création Produit vide
-						parseIntoProduct(eventType, parser, p);//Créer nouveau client + parseInto   TODO
+						parseIntoProduct(eventType, parser, p);
 						listProduit.add(p); // On ajoute notre produit parsé dans notre liste
 					}
-					/*else if(tagname.equalsIgnoreCase("Categorie"))
-						//Créer nouvelle categorie + parseInto
-					else if(tagname.equalsIgnoreCase("Marque"))
+					else if(tagname.equalsIgnoreCase("Categorie")){ // Si de type categorie
+						Categorie c = new Categorie(); // Création categorie vide
+						parseIntoCategory(eventType, parser, c);
+						listCategorie.add(c); // On ajoute notre categorie parsé dans notre liste
+					}					
+					/*else if(tagname.equalsIgnoreCase("Marque"))
 						//Créer nouvelle Marque + parseInto
 					else if(tagname.equalsIgnoreCase("Produit"))
 						//Créer nouveau Produit + parseInto*/
@@ -126,6 +129,30 @@ public class XmlLoader {
 				//else if(tagname.equalsIgnoreCase("stock"))					
 				else if(tagname.equalsIgnoreCase("Categorie"))
 					p.setCategorieProduit(new Categorie(1,text));
+				break;
+			default:
+				break;
+			}
+			eventType = parser.next();
+			if (parser.getName() != null)
+				tagname = parser.getName();
+		}
+		eventType--;
+	}
+	
+	public void parseIntoCategory (int eventType, XmlPullParser parser, Categorie c) throws XmlPullParserException, IOException{
+		eventType = parser.next();
+		String tagname = parser.getName();
+		while (!tagname.equalsIgnoreCase("Categorie")) { // <client> <id> 1 <id> <nom> exemple <nom> ... <client>
+			switch (eventType) {
+			case XmlPullParser.TEXT:					
+				text = parser.getText();
+				break;
+			case XmlPullParser.END_TAG:	
+				if(tagname.equalsIgnoreCase("id"))
+					c.setIdCategorie(Integer.parseInt(text));
+				else if(tagname.equalsIgnoreCase("nom"))
+					c.setNomCategorie(text);				
 				break;
 			default:
 				break;

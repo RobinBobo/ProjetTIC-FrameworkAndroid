@@ -21,7 +21,7 @@ public class XmlCreator {
 	private final static String NAMESPACE = "";
 	private String text;
 
-	public void create (Configurator config, ArrayList<Produit> listeProduits, File newxmlfile) throws XmlPullParserException, IllegalArgumentException, IllegalStateException, IOException {
+	public void create (Configurator config, ArrayList<Produit> listeProduits, ArrayList<Categorie> listeCategories, File newxmlfile) throws XmlPullParserException, IllegalArgumentException, IllegalStateException, IOException {
 
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance(
 				System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
@@ -48,10 +48,16 @@ public class XmlCreator {
 
 		// or writing can be delegate to specialized functions
 		addConfiguration(serializer, config);
-		for (int i=0; i<listeProduits.size(); i++) {
-			addProduct(serializer, listeProduits.get(i)); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
+		
+		for (int i=0; i<listeCategories.size(); i++) {
+			addCategory(serializer, listeCategories.get(i)); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
 		}
 
+		
+		for (int i=0; i<listeProduits.size(); i++) {
+			addProduct(serializer, listeProduits.get(i)); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
+		}		
+		
 		// this will ensure that output is flushed and prevent from writing to serializer
 		serializer.endDocument();
 		serializer.flush();

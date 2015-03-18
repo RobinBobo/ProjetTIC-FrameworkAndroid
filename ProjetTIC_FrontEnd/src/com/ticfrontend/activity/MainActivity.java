@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
 		LISTCATEGORIE = new ArrayList<Categorie>();
 		
 		try {
-			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT);
+			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {

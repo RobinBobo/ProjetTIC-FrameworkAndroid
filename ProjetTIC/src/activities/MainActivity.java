@@ -188,7 +188,7 @@ public class MainActivity extends Activity {
 				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 				XmlCreator xml = new XmlCreator();
 				try {
-					xml.create(c, getMonCatalogue().getMesProduits(), newxmlfile);
+					xml.create(c, getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories(), newxmlfile);
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

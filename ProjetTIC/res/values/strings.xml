@@ -58,8 +58,8 @@
     <string name="nomProduit">Produit X</string>
     <string name="marqueProduit">Marque Y</string>
     <string name="descProduit">Mémoire de 16Go, appareil photo de 16 Mpx, ...</string>
-    <string name="titleModifPdt">Entrer le nom du produit puis valider pour lancer la recherche du produit :</string>
-    <string name="rechIdPdt">Nom du produit</string>
+    <string name="titleModifPdt">Entrer l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier :</string>
+    <string name="rechIdPdt">Identifiant du produit</string>
 	<string name="instructionModifPdt">Pour modifier un champ, cocher la case devant ce champ et saisir la nouvelle valeur dans la zone qui apparaît en dessous.</string>
 	<string name="checkNomProduit"></string>
 	<string name="resNomProduit"></string>
@@ -97,5 +97,6 @@
     <string name="listeCategory" />
     <string name="textListeCatego" >Catégorie :</string>
     <string name="nomCategorie" >Téléphonie, PC, Tablette, Bijoux, Pull, ...</string>
+    <string name="colorChange">Changer la couleur du front</string>
 
 </resources>

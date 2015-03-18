@@ -28,22 +28,21 @@
             android:text="@string/msgErreur" />
 
         <Button
+            android:id="@+id/colorChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"         
+            android:layout_below="@id/msgErreur"
+            android:onClick="getColor"
+            android:layout_centerHorizontal="true"
+            android:text="@string/colorChange" />
+
+        <Button
             android:id="@+id/btnValider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/msgErreur"
+            android:layout_below="@id/colorChange"
             android:layout_centerHorizontal="true"
             android:text="@string/btnValider" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/btnValider"
-            android:onClick="getColor"
-            android:text="Changer la couleur du fond" />
     </RelativeLayout>
 
 </ScrollView>
