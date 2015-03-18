@@ -89,12 +89,30 @@
 			android:layout_below="@id/textDesc" />
 		
 		<TextView 
+			android:id="@+id/textStockProduit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/textStockProduit"
+			android:gravity="left"
+			android:layout_below="@id/descProduit" />
+			
+		<EditText
+			android:id="@+id/stockProduit"
+			android:inputType="number"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:hint="@string/stockProduit"
+			android:layout_below="@id/descProduit"
+			android:layout_toRightOf="@id/textStockProduit"
+			android:layout_alignParentRight="true"  />
+		
+		<TextView 
 			android:id="@+id/msgErreur"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
 			android:text="@string/msgErreur"
 			android:gravity="left"
-			android:layout_below="@id/descProduit" />
+			android:layout_below="@id/stockProduit" />
 	
 		<Button
 		    android:id="@+id/btnValider"

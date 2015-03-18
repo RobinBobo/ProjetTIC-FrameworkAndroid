@@ -46,7 +46,9 @@ public class AjouterProduitActivity extends Activity {
 				CharSequence prix = ((TextView) findViewById(R.id.prixProduit)).getText();
 				CharSequence marque = ((TextView) findViewById(R.id.marqueProduit)).getText();
 				CharSequence description = ((TextView) findViewById(R.id.descProduit)).getText();
-				if (!nom.toString().matches("") && !prix.toString().matches("") && !description.toString().matches("")) {
+				CharSequence stock = ((TextView) findViewById(R.id.stockProduit)).getText();
+				if (!nom.toString().matches("") && !prix.toString().matches("") && 
+						!description.toString().matches("") && !description.toString().matches("")) {
 					valide = true;
 				} else {
 					msgErreur = "Veuillez saisir tous les champs";
@@ -56,7 +58,8 @@ public class AjouterProduitActivity extends Activity {
 				if (valide) {
 					Produit p = new Produit(nom.toString(),Integer.parseInt(prix.toString()),
 							description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
-							(marque.toString().matches(""))? "" : marque.toString(), 10);
+							(marque.toString().matches(""))? "" : marque.toString(), 
+							Integer.parseInt(stock.toString()));
 					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
 					txtMsgErreur.setTextColor(Color.rgb(20, 148, 20));

@@ -71,6 +71,7 @@
 	<string name="resDescProduit"></string>
 	<string name="newDescProduit">Nouvelle valeur</string>
 	<string name="textStockProduit">Stock : </string>
+	<string name="stockProduit"></string>
 	<string name="checkStockProduit"></string>
 	<string name="resStockProduit"></string>
 	<string name="newStockProduit">Nouvelle valeur</string>
