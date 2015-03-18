@@ -29,7 +29,7 @@ public class AfficherCatalogueActivity extends Activity {
 	    for(int i = 0 ; i < MainActivity.getMonCatalogue().getMesProduits().size() ; i++) {
 	    	Produit p = MainActivity.getMonCatalogue().getMesProduits().get(i);
 	    	element = new HashMap<String, String>();
-	    	element.put("idProduit", Integer.toString(p.getIdProduit()));
+	    	element.put("stockProduit", "Stock : " + Integer.toString(p.getStockProduit()));
 	    	element.put("nomProduit", p.getNomProduit());
 	    	liste.add(element);
 	    }
@@ -40,7 +40,7 @@ public class AfficherCatalogueActivity extends Activity {
 	    		// Layout de chaque élément (là, il s'agit d'un layout par défaut)
 	    		android.R.layout.simple_list_item_2,
 	    		// Les clés des informations à afficher pour chaque élément
-	    		new String[] {"idProduit", "nomProduit"},
+	    		new String[] {"stockProduit", "nomProduit"},
 	    		// Enfin, les layouts à appliquer à chaque widget de notre élément
 	    		new int[] {android.R.id.text2, android.R.id.text1});
 	    
