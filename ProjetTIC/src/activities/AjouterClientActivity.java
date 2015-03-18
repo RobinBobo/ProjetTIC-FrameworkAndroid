@@ -2,6 +2,7 @@ package activities;
 
 import fr.tic.R;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,22 +26,25 @@ public class AjouterClientActivity extends Activity{
 					
 			public void onClick(View v) {
 				boolean valide = false;
-				CharSequence id = ((TextView) findViewById(R.id.idClient)).getText();
 				RadioGroup radioSexe = (RadioGroup) findViewById(R.id.radioSexe);
 				boolean sexe = (radioSexe.getCheckedRadioButtonId() == R.id.radioHomme) ? true : false;
 				CharSequence nom = ((TextView) findViewById(R.id.nomClient)).getText();
 				CharSequence prenom = ((TextView) findViewById(R.id.prenomClient)).getText();
 				CharSequence adresse = ((TextView) findViewById(R.id.adresseClient)).getText();
-				if (!id.toString().matches("") && !nom.toString().matches("") && !prenom.toString().matches("") 
+				if (!nom.toString().matches("") && !prenom.toString().matches("") 
 						&& !adresse.toString().matches("")) {
 					valide = true;
-				} else msgErreur.setText("Veuillez saisir tous les champs !");
+				} else {
+					msgErreur.setText("Veuillez saisir tous les champs !");
+					msgErreur.setTextColor(Color.RED);
+				}
 				
 				if (valide) {
-					Client c = new Client(Integer.parseInt(id.toString()) , nom.toString(),prenom.toString(),
+					Client c = new Client(nom.toString(),prenom.toString(),
 							adresse.toString(), sexe);
 					MainActivity.getMesClients().ajouterClient(c);
 					msgErreur.setText("Le client a bien été ajouté !");
+					msgErreur.setTextColor(Color.rgb(20, 148, 20));
 				}
 			}
 		});

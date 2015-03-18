@@ -1,16 +1,10 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.DAOFactory;
 
-public class Client implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Client {
 	private int i_idClient = 0;
 	private String s_nomClient;
 	private String s_prenomClient;
@@ -23,6 +17,15 @@ public class Client implements Serializable {
 	// _______________________________________________________________
 
 	public Client() {
+	}
+
+	public Client(String theNom, String thePrenom,
+			String theAdresse, boolean theSexe) {
+
+		this.s_nomClient = theNom;
+		this.s_prenomClient = thePrenom;
+		this.s_adresseClient = theAdresse;
+		this.b_sexeClient = theSexe;
 	}
 
 	public Client(int theId, String theNom, String thePrenom,
