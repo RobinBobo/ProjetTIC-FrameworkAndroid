@@ -30,10 +30,10 @@ public class Catalogue implements Serializable{
 		}		
 	}
 	
-	public Produit rechercherProduit(int id) {
+	public Produit rechercherProduit(String nom) {
 		Produit pdt = null;
 		for(int i=0; i<o_mesProduits.size(); i++) {
-			if (o_mesProduits.get(i).getIdProduit() == id) {
+			if (o_mesProduits.get(i).getNomProduit().equals(nom)) {
 				pdt = o_mesProduits.get(i);		
 			}
 		}

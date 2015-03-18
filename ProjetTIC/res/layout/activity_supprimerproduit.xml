@@ -7,25 +7,25 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content" >
 	    
-	    <TextView 
-			android:id="@+id/textIdProduit"
-			android:text="@string/textId"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
+	    
+	    <TextView
+	        android:id="@+id/titleModifPdt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/titleModifPdt" />
 		
 		<EditText 
-			android:id="@+id/idProduit"
+			android:id="@+id/nomProduit"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
-			android:hint="@string/id"
-			android:layout_toRightOf="@id/textIdProduit"
-			android:layout_alignParentRight="true" />
+			android:hint="@string/nomProduit"
+			android:layout_below="@id/titleModifPdt" />
 	    
 	    <Button
 		    android:id="@+id/btnRechercher"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/idProduit"
+		    android:layout_below="@+id/nomProduit"
 		    android:text="@string/btnRechercher" />
 	    
 	    <TextView
@@ -49,7 +49,7 @@
 		    
 		    <!-- nom --> 
 		    <TextView
-				android:id="@+id/textNomProduit"
+				android:id="@+id/textNom"
 			    android:text="@string/textNom"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
 			    android:text="@string/resNomProduit"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_toRightOf="@id/textNomProduit"
+				android:layout_toRightOf="@id/textNom"
 				android:layout_below="@id/instructionSupprimerPdt" />
 		    
 		    <!-- prix --> 
@@ -68,14 +68,14 @@
 			    android:text="@string/textPrix"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/textNomProduit" />    
+				android:layout_below="@id/textNom" />    
 		    <TextView
 				android:id="@+id/resPrixProduit"
 			    android:text="@string/resPrixProduit"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_toRightOf="@id/textPrixProduit"
-				android:layout_below="@id/textNomProduit" />
+				android:layout_below="@id/textNom" />
 		    
 		    <!-- description -->
 		
@@ -110,23 +110,23 @@
 				android:layout_height="wrap_content"
 				android:layout_toRightOf="@id/textStockProduit"
 				android:layout_below="@id/textDescProduit" />
-		    
-		    <TextView
-				android:id="@+id/msgErreur"
-			    android:text="@string/msgErreur"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_below="@id/textStockProduit" />
-		
-		    <Button
-		        android:id="@+id/btnSupprimer"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_below="@id/msgErreur"
-		        android:layout_centerHorizontal="true"
-		        android:text="@string/btnSupprimer" />
 	
 		</RelativeLayout>
+		    
+	    <TextView
+			android:id="@+id/msgErreur"
+		    android:text="@string/msgErreur"
+			android:layout_width="wrap_content"
+	        android:layout_below="@id/formSupprimerPdt"
+			android:layout_height="wrap_content" />
+	
+	    <Button
+	        android:id="@+id/btnSupprimer"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/msgErreur"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/btnSupprimer" />
 	
 	</RelativeLayout>
 </ScrollView>

@@ -29,7 +29,7 @@ public class ModifierProduitActivity extends Activity {
 		final RelativeLayout formModifPdt = (RelativeLayout) findViewById(R.id.formModifierPdt);		
 		final Button rechPdt = (Button) findViewById(R.id.btnRechercher);
 		final Button btnValider = (Button) findViewById(R.id.btnValider);
-		final TextView id = (TextView) findViewById(R.id.rechIdPdt);
+		final TextView nom = (TextView) findViewById(R.id.rechIdPdt);
 		final TextView erreurRech = (TextView) findViewById(R.id.erreurRecherche);
 		final TextView resNom = (TextView) findViewById(R.id.resNomProduit);
 		final TextView resPrix = (TextView) findViewById(R.id.resPrixProduit);
@@ -57,8 +57,8 @@ public class ModifierProduitActivity extends Activity {
 		rechPdt.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				
-				if (!id.getText().toString().matches("")) {
-					pdt = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(id.getText().toString()));
+				if (!nom.getText().toString().matches("")) {
+					pdt = MainActivity.getMonCatalogue().rechercherProduit(nom.getText().toString());
 					if (pdt == null) {
 						erreurRech.setText("Le produit recherché n'existe pas !");
 					} else {
@@ -133,7 +133,7 @@ public class ModifierProduitActivity extends Activity {
 					} else {
 						if (checkNom.isChecked()) {
 							if (!newNom.getText().toString().matches("")) {
-				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setNomProduit(newNom.getText().toString());
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getNomProduit()).setNomProduit(newNom.getText().toString());
 				        		msgErreur += "Le nom du produit a bien été modifié. \n";
 				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
 				        	} else {
@@ -144,7 +144,7 @@ public class ModifierProduitActivity extends Activity {
 
 						if (checkPrix.isChecked()) {
 				        	if (!newPrix.getText().toString().matches("")) {
-				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getNomProduit()).setPrixProduit(Double.parseDouble(newPrix.getText().toString()));
 				        		msgErreur += "Le prix du produit a bien été modifié. \n";
 				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
 				        	} else {
@@ -154,7 +154,7 @@ public class ModifierProduitActivity extends Activity {
 						}
 						if (checkDesc.isChecked()) {
 				        	if (!newDesc.getText().toString().matches("")) {
-				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setDescriptionProduit(newDesc.getText().toString());
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getNomProduit()).setDescriptionProduit(newDesc.getText().toString());
 				        		msgErreur += "La description du produit a bien été modifiée. \n";
 				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
 				        	} else {
@@ -164,7 +164,7 @@ public class ModifierProduitActivity extends Activity {
 						}
 						if (checkStock.isChecked()) {
 				        	if (!newStock.getText().toString().matches("")) {
-				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getIdProduit()).setStockProduit(Integer.parseInt(newStock.getText().toString()));
+				        		MainActivity.getMonCatalogue().rechercherProduit(pdt.getNomProduit()).setStockProduit(Integer.parseInt(newStock.getText().toString()));
 				        		msgErreur += "Le stock du produit a bien été modifié. \n";
 				        		msgResModif.setTextColor(Color.rgb(20, 148, 20));
 				        	} else {

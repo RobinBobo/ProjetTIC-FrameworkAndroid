@@ -88,7 +88,7 @@ public class Produit extends Observable {
 	}
 	
 	public void setStockProduit(int theStock) {
-		this.i_idProduit = theStock;
+		this.i_stockProduit = theStock;
 		//DAOFactory.getProduitDAO().update(this);	
 	}
 	

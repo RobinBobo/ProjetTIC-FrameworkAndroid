@@ -1,6 +1,7 @@
 package activities;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,8 +22,8 @@ public class SupprimerProduitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_supprimerproduit);
 		
-		// Récupération des données		
-		final EditText idPdt = (EditText) findViewById(R.id.idProduit);
+		// Récupération des données
+		final EditText rechNomPdt = (EditText) findViewById(R.id.nomProduit);
 		final TextView nomPdt = (TextView) findViewById(R.id.resNomProduit);
 		final TextView descPdt = (TextView) findViewById(R.id.resDescProduit);
 		final TextView prixPdt = (TextView) findViewById(R.id.resPrixProduit);
@@ -41,13 +42,20 @@ public class SupprimerProduitActivity extends Activity {
 			
 			public void onClick(View v) {
 				String msgErreur = "";
-				if (!idPdt.getText().toString().matches("")) {
-					p = MainActivity.getMonCatalogue().rechercherProduit(Integer.parseInt(idPdt.getText().toString()));
+				if (!rechNomPdt.getText().toString().matches("")) {
+					p = MainActivity.getMonCatalogue().rechercherProduit(rechNomPdt.getText().toString());
 					if (p != null) {
 						msgErreur += "Produit trouvé !";
+						erreurRecherche.setTextColor(Color.rgb(20, 148, 20));
 						afficherInfo(p);
-					} else msgErreur += "Le produit recherché n'est pas référencé dans la base...";
-				} else msgErreur = "Veuillez saisir un identifiant";
+					} else {
+						msgErreur += "Le produit recherché n'est pas référencé dans la base...";
+						erreurRecherche.setTextColor(Color.RED);
+					}
+				} else {
+					msgErreur = "Veuillez saisir un identifiant";
+					erreurRecherche.setTextColor(Color.RED);
+				}
 				erreurRecherche.setText(msgErreur);
 			}
 
@@ -66,6 +74,9 @@ public class SupprimerProduitActivity extends Activity {
 			public void onClick(View v) {
 				MainActivity.getMonCatalogue().supprimerProduitCatalogue(p);
 				msgErreur.setText("Le produit a bien été supprimé !");
+				msgErreur.setTextColor(Color.rgb(20, 148, 20));
+				infoProduit.setVisibility(View.INVISIBLE);
+				erreurRecherche.setVisibility(View.INVISIBLE);
 			}
 		});
 	}
