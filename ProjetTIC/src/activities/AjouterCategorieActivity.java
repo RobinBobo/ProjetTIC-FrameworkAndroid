@@ -1,6 +1,7 @@
 package activities;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +21,6 @@ public class AjouterCategorieActivity extends Activity {
 		
 		// Récupération des données
 		final Button ajouterCategorie = (Button) findViewById(R.id.btnValider);
-		final EditText id = (EditText) findViewById(R.id.id);
 		final EditText nom = (EditText) findViewById(R.id.nom);
 		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		
@@ -28,16 +28,19 @@ public class AjouterCategorieActivity extends Activity {
 
 			public void onClick(View v) {
 				String msg = "";
-				if (id.getText().toString().matches("") || nom.getText().toString().matches("")) {
-					msg += "Veuillez remplir tous les champs.";
+				if (nom.getText().toString().matches("")) {
+					msg += "Veuillez saisir le nom de la catégorie à ajouter.";
+					msgErreur.setTextColor(Color.RED);
 				} else {
-					boolean alreadyExist = MainActivity.getListeCategories().isCategorie(Integer.parseInt(id.getText().toString()));
+					boolean alreadyExist = MainActivity.getListeCategories().isCategorie(nom.getText().toString());
 					if (alreadyExist) {
-						msg = "L'identifiant existe déjà.";
+						msg = "La catégorie existe déjà.";
+						msgErreur.setTextColor(Color.RED);
 					} else {
-						Categorie c = new Categorie(Integer.parseInt(id.getText().toString()), nom.getText().toString());
+						Categorie c = new Categorie(nom.getText().toString());
 						MainActivity.getListeCategories().ajouterCategorie(c);
 						msg = "La catégorie a bien été ajoutée.";
+						msgErreur.setTextColor(Color.rgb(20, 148, 20));
 					}
 				}
 				msgErreur.setText(msg);

@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
 		//		monCatalogue.ajoutObserver(mesClients);
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
-		Categorie categoTelephone = new Categorie(0, "Telephone");
+		Categorie categoTelephone = new Categorie("Telephone");
 		getListeCategories().ajouterCategorie(categoTelephone);
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
 				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",

@@ -1,15 +1,10 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.DAOFactory;
 
-public class Categorie implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Categorie{
 	private int i_idCategorie = 0;
 	private String s_nomCategorie;
 	private ArrayList<Produit> o_produitsCategorie = new ArrayList<Produit>();
@@ -19,6 +14,10 @@ public class Categorie implements Serializable{
 	// _______________________________________________________________
 
 	public Categorie() {
+	}
+
+	public Categorie(String theNom) {
+		this.s_nomCategorie = theNom;
 	}
 
 	public Categorie(int theId, String theNom) {

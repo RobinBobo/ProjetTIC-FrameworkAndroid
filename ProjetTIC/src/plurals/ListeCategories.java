@@ -1,6 +1,5 @@
 package plurals;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -9,12 +8,7 @@ import model.DAOFactory;
 import beans.Categorie;
 import beans.Produit;
 
-public class ListeCategories implements Observer, Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ListeCategories implements Observer {
 	ArrayList<Categorie> o_mesCategories = new ArrayList<Categorie>();
 	
 	public ListeCategories() {}
@@ -41,10 +35,10 @@ public class ListeCategories implements Observer, Serializable{
 		}
 	}
 	
-	public boolean isCategorie(int id){
+	public boolean isCategorie(String nom){
 		boolean isPresent = false;
 		for(int i=0; i<o_mesCategories.size(); i++) {
-			if (o_mesCategories.get(i).getIdCategorie() == id) {
+			if (o_mesCategories.get(i).getNomCategorie().equals(nom)) {
 				isPresent = true;
 			}
 		}
