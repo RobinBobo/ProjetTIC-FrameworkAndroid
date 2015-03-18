@@ -48,7 +48,7 @@ public class AjouterProduitActivity extends Activity {
 				CharSequence description = ((TextView) findViewById(R.id.descProduit)).getText();
 				CharSequence stock = ((TextView) findViewById(R.id.stockProduit)).getText();
 				if (!nom.toString().matches("") && !prix.toString().matches("") && 
-						!description.toString().matches("") && !description.toString().matches("")) {
+						!description.toString().matches("") && !stock.toString().matches("") ) {
 					valide = true;
 				} else {
 					msgErreur = "Veuillez saisir tous les champs";
