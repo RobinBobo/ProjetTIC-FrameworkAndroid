@@ -30,6 +30,7 @@ public class SupprimerCategorieActivity extends Activity {
 					if (MainActivity.getListeCategories().supprimCategorie(rechCatego.getText().toString())) {
 						msgErreur.setText("La catégorie a bien été supprimée");
 						msgErreur.setTextColor(Color.rgb(20, 148, 20));
+						rechCatego.setText("");
 					} else {
 						msgErreur.setText("La catégorie n'existe pas dans la base...");
 						msgErreur.setTextColor(Color.RED);

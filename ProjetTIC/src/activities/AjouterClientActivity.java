@@ -45,6 +45,9 @@ public class AjouterClientActivity extends Activity{
 					MainActivity.getMesClients().ajouterClient(c);
 					msgErreur.setText("Le client a bien été ajouté !");
 					msgErreur.setTextColor(Color.rgb(20, 148, 20));
+					((TextView) findViewById(R.id.nomClient)).setText("");
+					((TextView) findViewById(R.id.prenomClient)).setText("");
+					((TextView) findViewById(R.id.adresseClient)).setText("");
 				}
 			}
 		});

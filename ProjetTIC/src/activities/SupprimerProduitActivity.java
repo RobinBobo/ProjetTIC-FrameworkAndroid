@@ -29,7 +29,6 @@ public class SupprimerProduitActivity extends Activity {
 		final TextView prixPdt = (TextView) findViewById(R.id.resPrixProduit);
 		final TextView stockPdt = (TextView) findViewById(R.id.resStockProduit);
 		final TextView erreurRecherche = (TextView) findViewById(R.id.erreurRecherche);
-		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		final RelativeLayout infoProduit = (RelativeLayout) findViewById(R.id.formSupprimerPdt);
 		Button btnRechercher = (Button) findViewById(R.id.btnRechercher);
 		Button btnSupprimer = (Button) findViewById(R.id.btnSupprimer);
@@ -73,10 +72,10 @@ public class SupprimerProduitActivity extends Activity {
 			
 			public void onClick(View v) {
 				MainActivity.getMonCatalogue().supprimerProduitCatalogue(p);
-				msgErreur.setText("Le produit a bien été supprimé !");
-				msgErreur.setTextColor(Color.rgb(20, 148, 20));
+				erreurRecherche.setText("Le produit a bien été supprimé !");
+				erreurRecherche.setTextColor(Color.rgb(20, 148, 20));
+				rechNomPdt.setText("");
 				infoProduit.setVisibility(View.INVISIBLE);
-				erreurRecherche.setVisibility(View.INVISIBLE);
 			}
 		});
 	}

@@ -41,6 +41,7 @@ public class AjouterCategorieActivity extends Activity {
 						MainActivity.getListeCategories().ajouterCategorie(c);
 						msg = "La catégorie a bien été ajoutée.";
 						msgErreur.setTextColor(Color.rgb(20, 148, 20));
+						nom.setText("");
 					}
 				}
 				msgErreur.setText(msg);

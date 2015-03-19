@@ -75,8 +75,14 @@ public class AjouterProduitActivity extends Activity {
 					
 					// Ajout du produit dans le catalogue
 					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
-					msgErreur = "Votre produit a bien été ajouté";
+					msgErreur = "Le produit '" + p.getNomProduit()+ "' a bien été ajouté";
 					txtMsgErreur.setTextColor(Color.rgb(20, 148, 20));
+					((TextView) findViewById(R.id.nomProduit)).setText("");
+					((TextView) findViewById(R.id.prixProduit)).setText("");
+					((TextView) findViewById(R.id.marqueProduit)).setText("");
+					((TextView) findViewById(R.id.descProduit)).setText("");
+					((TextView) findViewById(R.id.stockProduit)).setText("");
+					s.setSelection(0);
 				}
 				txtMsgErreur.setText(msgErreur);
 			}
