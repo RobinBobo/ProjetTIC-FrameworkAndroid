@@ -6,10 +6,10 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import colorpicker.ColorPicker;
-
 import plurals.Catalogue;
 import plurals.ListeCategories;
 import plurals.ListeClients;
+import plurals.ListeMarques;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import beans.Categorie;
 import beans.Client;
+import beans.Marque;
 import beans.Produit;
 import configuratormanagement.Configurator;
 import configuratormanagement.XmlCreator;
@@ -34,8 +35,17 @@ public class MainActivity extends Activity {
 	private static ListeClients mesClients;
 	private static Catalogue monCatalogue;
 	private static ListeCategories listeCategories;
+	private static ListeMarques listeMarques;
 	private static String nomSite; 
 	private static int buttonsColor;
+	
+	public static ListeMarques getListeMarques() {
+		return listeMarques;
+	}
+
+	public static void setListeMarques(ListeMarques listeMarques) {
+		MainActivity.listeMarques = listeMarques;
+	}
 
 	public static int getButtonsColor() {
 		return buttonsColor;
@@ -90,6 +100,8 @@ public class MainActivity extends Activity {
 		setListeCategories(new ListeCategories());
 		setMesClients(new ListeClients());
 		setMonCatalogue(new Catalogue());
+		setListeMarques(new ListeMarques());
+		
 
 		/*mesCategories.findCategories();
 		mesClients.findClients();
@@ -99,13 +111,14 @@ public class MainActivity extends Activity {
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
 		Categorie categoTelephone = new Categorie("Telephone");
+		Marque sony = new Marque("Sony");
 		getListeCategories().ajouterCategorie(categoTelephone);
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
 				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",
-				categoTelephone.getNomCategorie(), "Sony", 10));
+				categoTelephone.getNomCategorie(), sony.getNomMarque(), 10));
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(1, 
 				"Sony Xperia Z3", 150.0, "Téléphone Sony Xperia Z3 16Go",
-				categoTelephone.getNomCategorie(), "Sony", 10));
+				categoTelephone.getNomCategorie(), sony.getNomMarque(), 10));
 
 		getMonCatalogue().afficherCatalogue();
 

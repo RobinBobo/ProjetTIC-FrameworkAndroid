@@ -23,6 +23,16 @@ public class ListeMarques implements Serializable{
 			//TODO : generate error "Already exists"
 		}
 	}
+	
+	public Marque containMarque(String theMarque) {
+		Marque m = null;
+		for(int i=0; i< o_mesMarques.size(); i++) {
+			if(o_mesMarques.get(i).getNomMarque().equals(theMarque)) {
+				m = o_mesMarques.get(i);
+			}
+		}
+		return m;
+	}
 
 	//Supprime tous les produits associés à la marque
 	public void supprimerMarque(Marque theMarque){

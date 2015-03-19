@@ -1,14 +1,8 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 //TODO : Le systeme de Marque n'est pas encore implémenté... A voir si il le sera ?
-public class Marque implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Marque {
 	private int i_idMarque = 0;
 	private String s_nomMarque;
 	private ArrayList<Produit> o_mesProduits = new ArrayList<Produit>();
@@ -20,9 +14,18 @@ public class Marque implements Serializable {
 	
 	public Marque(){}
 	
+	public Marque(String theNom) {
+		this.s_nomMarque = theNom;
+	}
+	
 	public Marque(int theId, String theNom) {
 		this.i_idMarque = theId;
 		this.s_nomMarque = theNom;
+	}
+	
+	public Marque(String theNom, Produit theProduit) {
+		this.s_nomMarque = theNom;
+		this.o_mesProduits.add(theProduit);
 	}
 	
 	public Marque(int theId, String theNom, ArrayList<Produit> theProduits) {
@@ -30,7 +33,6 @@ public class Marque implements Serializable {
 		this.s_nomMarque = theNom;
 		this.o_mesProduits = theProduits;
 	}
-	
 	
 	
 	  //_____________________________________

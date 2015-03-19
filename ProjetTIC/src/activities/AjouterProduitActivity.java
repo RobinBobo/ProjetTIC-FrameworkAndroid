@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import beans.Marque;
 import beans.Produit;
 import fr.tic.R;
 
@@ -60,6 +61,19 @@ public class AjouterProduitActivity extends Activity {
 							description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
 							(marque.toString().matches(""))? "" : marque.toString(), 
 							Integer.parseInt(stock.toString()));
+					
+					// Ajout de la marque dans la liste si elle n'existe pas encore
+					// ou bien ajoute le produit à la liste de la marque existante
+					if(!marque.toString().matches("")) {
+						Marque m = MainActivity.getListeMarques().containMarque(marque.toString());
+						if(m == null) {
+							m = new Marque(marque.toString());
+							m.getMesProduits().add(p);
+							MainActivity.getListeMarques().ajouterMarque(m);
+						} else m.getMesProduits().add(p);
+					}
+					
+					// Ajout du produit dans le catalogue
 					MainActivity.getMonCatalogue().ajouterProduitCatalogue(p);
 					msgErreur = "Votre produit a bien été ajouté";
 					txtMsgErreur.setTextColor(Color.rgb(20, 148, 20));
