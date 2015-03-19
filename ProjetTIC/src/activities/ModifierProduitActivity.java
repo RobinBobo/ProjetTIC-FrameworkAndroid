@@ -61,6 +61,7 @@ public class ModifierProduitActivity extends Activity {
 					pdt = MainActivity.getMonCatalogue().rechercherProduit(nom.getText().toString());
 					if (pdt == null) {
 						erreurRech.setText("Le produit recherché n'existe pas !");
+						erreurRech.setTextColor(Color.RED);
 					} else {
 						erreurRech.setText("Produit trouvé !");
 						erreurRech.setTextColor(Color.rgb(20, 148, 20));
@@ -73,7 +74,7 @@ public class ModifierProduitActivity extends Activity {
 					}
 				}
 				else {
-					erreurRech.setText("Veuillez saisir un identifiant !");
+					erreurRech.setText("Veuillez saisir un nom de produit !");
 					erreurRech.setTextColor(Color.RED);
 				}
 			}

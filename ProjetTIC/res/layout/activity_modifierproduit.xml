@@ -16,7 +16,7 @@
 			android:id="@+id/rechIdPdt"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:hint="@string/rechIdPdt"
+			android:hint="@string/nomProduit"
 			android:layout_below="@id/titleModifPdt" />
 	    
 	    <Button
