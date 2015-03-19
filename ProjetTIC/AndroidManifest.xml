@@ -48,6 +48,9 @@
             android:name="activities.AjouterCategorieActivity"
             android:label="@string/titleAjouterCategorie" />
         <activity 
+            android:name="activities.SupprimerCategorieActivity"
+            android:label="@string/titleSupprimerCategorie" />
+        <activity 
             android:name="activities.AjouterClientActivity"
             android:label="@string/titleAjouterClient" />
     </application>

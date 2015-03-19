@@ -14,6 +14,7 @@
     <string name="titleModifierProduit">Modification de produits</string>
     <string name="titleSupprimerProduit">Suppression de produits</string>
     <string name="titleAjouterCategorie">Ajout de catégorie</string>
+    <string name="titleSupprimerCategorie">Suppression de catégories</string>
     <string name="titleAjouterClient">Ajout de clients</string>
     
     
@@ -51,7 +52,7 @@
     <string name="modifierProduit">Modifier un produit</string>
     <string name="supprimerProduit">Supprimer un produit</string>
     <string name="ajouterCategorie">Ajouter une catégorie</string>
-    <string name="modifierCategorie">Modifier une catégorie</string>
+    <string name="supprimerCategorie">Supprimer une catégorie</string>
     <string name="ajouterClient">Ajouter un client</string>
     
 	<!-- Produit -->
@@ -98,5 +99,6 @@
     <string name="textListeCatego" >Catégorie :</string>
     <string name="nomCategorie" >Téléphonie, PC, Tablette, Bijoux, Pull, ...</string>
     <string name="colorChange">Changer la couleur du front</string>
+    <string name="titleSupCategorie">Saisir le nom de la catégorie à supprimer : </string>
 
 </resources>

@@ -35,6 +35,18 @@ public class ListeCategories implements Observer {
 		}
 	}
 	
+	// Suppression utilisée par l'application
+	public boolean supprimCategorie(String theCategorie){
+		boolean exist = false;
+		for(int i=0; i<o_mesCategories.size(); i++) {
+			if (o_mesCategories.get(i).getNomCategorie().equals(theCategorie)) {
+				o_mesCategories.remove(i);
+				exist = true;
+			}
+		}
+		return exist;
+	}
+	
 	public boolean isCategorie(String nom){
 		boolean isPresent = false;
 		for(int i=0; i<o_mesCategories.size(); i++) {

@@ -88,6 +88,18 @@ public class MenuActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		// Lien vers l'activité de suppression d'une catégorie
+				final Button supprimerCategorie = (Button) findViewById(R.id.supprimerCategorie);
+				supprimerCategorie.setOnClickListener(new OnClickListener() {
+
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent intent = new Intent(MenuActivity.this,
+								SupprimerCategorieActivity.class);
+						startActivity(intent);
+					}
+				});
 	}
 
 }
