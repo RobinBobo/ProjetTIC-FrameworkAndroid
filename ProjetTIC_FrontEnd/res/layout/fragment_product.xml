@@ -153,6 +153,7 @@
 	    <!-- android:layout_marginRight="5dp" -->
 	 	
 	 	<ProgressBar
+	 	    android:id="@+id/progresseBarReviews"
 	        style="?android:attr/progressBarStyleHorizontal"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content" />
@@ -175,11 +176,5 @@
 		    android:textColor="@android:color/white"
 	    	android:background="@drawable/button_shape"/>
 	 	
-<!-- 	    <ListView -->
-<!-- 	        android:id="@+id/listviewAvis" -->
-<!-- 	        android:layout_width="match_parent" -->
-<!-- 	        android:layout_height="wrap_content" > -->
-<!-- 	    </ListView> -->
-	
 	</LinearLayout>
 </ScrollView>

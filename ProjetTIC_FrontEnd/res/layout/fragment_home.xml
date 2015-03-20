@@ -1,127 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
-
-    <TextView
-        android:id="@+id/textWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bienvenue sur "
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Bonjour User"
-        android:textSize="16dp"
-        android:textStyle="normal" />
-    
-    
-    <TextView
-        android:id="@+id/textBeta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Cette application est en cours de développement, ceci est une version Beta."
-        android:textSize="12dp"
-        android:textStyle="normal" />
-
-    <TextView
-        android:id="@+id/textBeta2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Vous pouvez créer un compte ou vous connecter avec n'importe quel login et mot de passe pour accéder à la gestion du compte, au panier, et au catalogue complet (simulé) de l'application."
-        android:textSize="12dp"
-        android:textStyle="normal" />
-    
-    <TextView
-        android:id="@+id/textBeta3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Vous pouvez ensuite ajouter des produits au panier, puis passer la commande. Celle-ci se trouvera dans la partie 'Mes commandes' de l'application. Vous pouvez passer également plusieurs commandes."
-        android:textSize="12dp"
-        android:textStyle="normal" />
-    
-    
-    <TextView
-        android:id="@+id/textBeta4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Les boutons ci-dessous simule un catalogue de produit pour l'application."
-        android:textSize="12dp"
-        android:textStyle="normal" 
-        android:visibility="gone"/>
-    
-    
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:shrinkColumns="*"
-        android:stretchColumns="*" 
-        android:visibility="gone">
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
-
-            <Button
-                android:id="@+id/buttonPromo"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Nos promos" 
-                android:textColor="@android:color/white"
-	    		android:background="@drawable/button_shape"/>
-
-            <Button
-                android:id="@+id/buttonOffreSpec"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Nos offres spéciales" 
-                android:textColor="@android:color/white"
-	    		android:background="@drawable/button_shape"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
-
-            <Button
-                android:id="@+id/buttonANePasManquer"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="A ne pas manquer!" 
-                android:textColor="@android:color/white"
-	    		android:background="@drawable/button_shape"
-                />
-
-            <Button
-                android:id="@+id/buttonNouveautes"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Nouveautés" 
-                android:textColor="@android:color/white"
-	    		android:background="@drawable/button_shape"/>
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+<ScrollView 
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent" 
+		android:layout_height="match_parent"   
+    >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin" >
+	
+	    <TextView
+	        android:id="@+id/textWelcome"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Bienvenue sur "
+	        android:textSize="20sp"
+	        android:textStyle="bold" />
+	
+	    <TextView
+	        android:id="@+id/textUser"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Bonjour User"
+	        android:textSize="16dp"
+	        android:textStyle="normal" />
+	    
+	    
+	    <TextView
+	        android:id="@+id/textBeta"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Cette application est encore en cours de développement."
+	        android:textSize="12dp"
+	        android:textStyle="normal" />
+	
+	    <TextView
+	        android:id="@+id/textBeta2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Vous pouvez créer un compte ou vous connecter avec les comptes donnés ci-dessous pour accéder à la gestion du compte, au panier, et au catalogue de l'application de e-commerce."
+	        android:textSize="12dp"
+	        android:textStyle="normal" />
+	    
+	    <TextView
+	        android:id="@+id/textBeta3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Vous pouvez ensuite ajouter des produits au panier, puis passer la commande. Celle-ci se trouvera dans la partie 'Mes commandes' de l'application. Vous pouvez également passer plusieurs commandes."
+	        android:textSize="12dp"
+	        android:textStyle="normal" />
+	    
+	    <TextView
+	        android:id="@+id/textBeta5"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Voici la liste des comptes que vous pouvez utiliser librement : "
+	        android:textSize="12dp"
+	        android:textStyle="normal" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Christophe Anglade"
+	        android:textSize="12dp"
+	        android:textStyle="bold" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:text="Login : chrisA | Mot de passe : angla2"
+	        android:textSize="12dp"
+	        android:textStyle="italic" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Robin Bobo"
+	        android:textSize="12dp"
+	        android:textStyle="bold" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:text="Login : robinB | Mot de passe : bobo"
+	        android:textSize="12dp"
+	        android:textStyle="italic" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe5"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Cécile Bourrat"
+	        android:textSize="12dp"
+	        android:textStyle="bold" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe6"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:text="Login : cecileB | Mot de passe : boubou"
+	        android:textSize="12dp"
+	        android:textStyle="italic" />
+	    
+		<TextView
+	        android:id="@+id/textEquipe7"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Florian Pussacq"
+	        android:textSize="12dp"
+	        android:textStyle="bold" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe8"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:text="Login : florian2412 | Mot de passe : pupuce"
+	        android:textSize="12dp"
+	        android:textStyle="italic" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe9"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Tavahiura Sang"
+	        android:textSize="12dp"
+	        android:textStyle="bold" />
+	    
+	    <TextView
+	        android:id="@+id/textEquipe10"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:text="Login : tavash | Mot de passe : tavabien"
+	        android:textSize="12dp"
+	        android:textStyle="italic" />
+	    
+	    <TextView
+	        android:id="@+id/textBeta4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:text="Les boutons ci-dessous simule un catalogue de produit pour l'application."
+	        android:textSize="12dp"
+	        android:textStyle="normal" 
+	        android:visibility="gone"/>
+	    
+	    
+	    <TableLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#ffffff"
+	        android:shrinkColumns="*"
+	        android:stretchColumns="*" 
+	        android:visibility="gone">
+	
+	        <TableRow
+	            android:id="@+id/tableRow1"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal" >
+	
+	            <Button
+	                android:id="@+id/buttonPromo"
+	                android:layout_width="0dp"
+	                android:layout_height="match_parent"
+	                android:layout_weight="1"
+	                android:text="Nos promos" 
+	                android:textColor="@android:color/white"
+		    		android:background="@drawable/button_shape"/>
+	
+	            <Button
+	                android:id="@+id/buttonOffreSpec"
+	                android:layout_width="0dp"
+	                android:layout_height="match_parent"
+	                android:layout_weight="1"
+	                android:text="Nos offres spéciales" 
+	                android:textColor="@android:color/white"
+		    		android:background="@drawable/button_shape"/>
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow2"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal" >
+	
+	            <Button
+	                android:id="@+id/buttonANePasManquer"
+	                android:layout_width="0dp"
+	                android:layout_height="match_parent"
+	                android:layout_weight="1"
+	                android:text="A ne pas manquer!" 
+	                android:textColor="@android:color/white"
+		    		android:background="@drawable/button_shape"
+	                />
+	
+	            <Button
+	                android:id="@+id/buttonNouveautes"
+	                android:layout_width="0dp"
+	                android:layout_height="match_parent"
+	                android:layout_weight="1"
+	                android:text="Nouveautés" 
+	                android:textColor="@android:color/white"
+		    		android:background="@drawable/button_shape"/>
+	        </TableRow>
+	    </TableLayout>
+	
+	</LinearLayout>
+</ScrollView>

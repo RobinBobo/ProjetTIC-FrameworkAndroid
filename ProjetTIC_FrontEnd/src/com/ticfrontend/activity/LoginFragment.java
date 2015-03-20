@@ -12,7 +12,9 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -62,6 +64,8 @@ public class LoginFragment extends Fragment {
 		//validerLogin.setBackgroundColor(getResources().getColor(R.color.Ivory));
 		//Drawable dr = getResources().getDrawable(R.drawable.button_shape);
 		
+		GradientDrawable bgShape = (GradientDrawable) validerLogin.getBackground();
+		//bgShape.setColor(Color.colorToHSV(MainActivity.COLORBUTTON, null));
 		
 		validerLogin.setOnClickListener(new OnClickListener() {
 			@Override

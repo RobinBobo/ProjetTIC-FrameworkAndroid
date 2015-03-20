@@ -130,32 +130,41 @@ public class ProductDetailsFragment extends Fragment {
 
 		//Note produit
 		double noteGenerale = 0;
-		int tailleListe = listeAvis.size();
+		if(MainActivity.CUSTOMERNOTICE) {
+			int tailleListe = listeAvis.size();
 
-		for(Avis a : listeAvis)
-			noteGenerale += a.getNote();
-
-		noteGenerale = noteGenerale/tailleListe;
-
-		((RatingBar) rootView.findViewById(R.id.ratingBarReview)).setRating((float)noteGenerale);
-		((TextView) rootView.findViewById(R.id.NombreVotes)).setText(String.valueOf(tailleListe) + ((tailleListe==1) ? " vote": " votes"));
-
-		// Test liste d'avis
-		testAjoutAvis();
-		
-		// Quand on click sur Voir tous les avis, on lance un nouveau fragment qui comporte une listview avec tous les avis
-		// Permet de trier aussi
-		Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
-		voirPlusAvis.setText("Voir tous les avis (" + listeAvis.size() + ")");
-		voirPlusAvis.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Fragment fragmentAvis = null;
-				fragmentAvis = new ReviewsFragment(product);
-				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.frame_container, fragmentAvis).addToBackStack("tag").commit();
-			}
-		});
+			for(Avis a : listeAvis)
+				noteGenerale += a.getNote();
+	
+			noteGenerale = noteGenerale/tailleListe;
+	
+			((RatingBar) rootView.findViewById(R.id.ratingBarReview)).setRating((float)noteGenerale);
+			((TextView) rootView.findViewById(R.id.NombreVotes)).setText(String.valueOf(tailleListe) + ((tailleListe==1) ? " vote": " votes"));
+	
+			// Test liste d'avis
+			testAjoutAvis();
+			
+			// Quand on click sur Voir tous les avis, on lance un nouveau fragment qui comporte une listview avec tous les avis
+			// Permet de trier aussi
+			Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
+			voirPlusAvis.setText("Voir tous les avis (" + listeAvis.size() + ")");
+			voirPlusAvis.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Fragment fragmentAvis = null;
+					fragmentAvis = new ReviewsFragment(product);
+					FragmentManager fragmentManager = getFragmentManager();
+					fragmentManager.beginTransaction().replace(R.id.frame_container, fragmentAvis).addToBackStack("tag").commit();
+				}
+			});	
+		} else {
+			rootView.findViewById(R.id.listeAvis).setVisibility(View.GONE);
+			rootView.findViewById(R.id.ratingBarReview).setVisibility(View.GONE);
+			rootView.findViewById(R.id.NombreVotes).setVisibility(View.GONE);
+			rootView.findViewById(R.id.textReviewProduct).setVisibility(View.GONE);
+			rootView.findViewById(R.id.progresseBarReviews).setVisibility(View.GONE);
+			rootView.findViewById(R.id.boutonVoirPlusAvis).setVisibility(View.GONE);
+		}
 	}
 
 	// Permet de simuler une listView d'avis

@@ -27,6 +27,8 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -64,26 +66,27 @@ public class MainActivity extends Activity {
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
 	public static String WEBSITENAME = null;
-	public static ColorDrawable COLORBUTTON = null;
-	public static boolean AVIS = false;
-	
+	public static int COLORBUTTON;
+	public static boolean CUSTOMERNOTICE = false;
+	public static boolean ORDER = false;
+	public static boolean SHOPPINGCART = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_main);
 		
 		setConfiguration();
+
+		checkConfiguration();
 		
 		initSlideMenu();
-				
-		//////////////////////////////////////////////////////
 				
 		if (savedInstanceState == null) {
 			displayView(0);
 		}
 		
-		checkConfiguration();
 	}
 
 	private void setConfiguration() {
@@ -91,6 +94,7 @@ public class MainActivity extends Activity {
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlLoader x = new XmlLoader ();
+		
 		LISTPRODUIT = new ArrayList<Produit>();
 		LISTCLIENT = new ArrayList<Client>();
 		LISTCATEGORIE = new ArrayList<Categorie>();
@@ -103,8 +107,30 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
+		
+		if(c.getWebsiteName() != null)
+			WEBSITENAME = c.getWebsiteName();
+		
+		COLORBUTTON = c.getButtonsColor();
+		//COLORBUTTON.;
+		
+		//Drawable buttonSmallShape = getResources().getDrawable(R.id.buttonShape);
+		//buttonSmallShape.
+		
+		
+		CUSTOMERNOTICE = c.getCustomerNotice();
+		ORDER = c.getOrder();
+		SHOPPINGCART = c.getShoppingCart();
+		
+		// Pour test
+		//CUSTOMERNOTICE = false;
+		
+		for(int i = 0; i < LISTPRODUIT.size(); i++){
+			LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
+		}
+		
 		// Si l'admin veut des avis
-		if(AVIS){
+		if(CUSTOMERNOTICE){
 			// On ajoute des avis fictif pour les produits que l'on vient de récupérer
 			List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
 			List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
@@ -116,28 +142,25 @@ public class MainActivity extends Activity {
 				LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
 			}
 		}
-		
-		if(c.getWebsiteName() != null)
-			WEBSITENAME = c.getWebsiteName();
-		//if(c.getButtonsColor() != null)
-			COLORBUTTON = new ColorDrawable(c.getButtonsColor());
 			
-		Client client1 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
+		Client client1 = new Client("florian2412", "Pussacq", "Florian", "332 Cours de la Libération, 33400 TALENCE", "florian.pussacq@gmail.com", true, "pupuce");
 		Client client2 = new Client("tavash", "Sang", "Tavahiura", "TAHITI, Polynésie Française", "tava.sang@gmail.com", true, "tavabien");
-//		Client client3 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", false, "pupuce");
-//		Client client4 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
-//		Client client5 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
+		Client client3 = new Client("cecileB", "Bourrat", "Cécile", "18 Rue de l'inconnu, 33000 BORDEAUX, ", "cecile.bourrat@gmail.com", false, "boubou");
+		Client client4 = new Client("robinB", "Bobo", "Robin", "5 Impasse des Mimosas, 33700 MERIGNAC", "robin.bobo@gmail.com", true, "bobo");
+		Client client5 = new Client("chrisA", "Anglade", "Christophe", "20 Rue de l'inconnu, 33000 BORDEAUX", "christophe.anglade@gmail.com", true, "angla2");
 		
 		LISTCLIENT.add(client1);
 		LISTCLIENT.add(client2);
-		//LISTCLIENT.add(client1);
+		LISTCLIENT.add(client3);
+		LISTCLIENT.add(client4);
+		LISTCLIENT.add(client5);
 	}
 
 	private void checkConfiguration() {
 		if(WEBSITENAME == null) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Problème de configuration");
-            builder.setMessage("Le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
+            builder.setMessage("Le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Veuillez prévenir l'administrateur de l'application. Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
             builder.setCancelable(true);
             builder.setPositiveButton("Continuer à mes risques et périls", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
