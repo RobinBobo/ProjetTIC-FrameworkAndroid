@@ -90,16 +90,28 @@ public class MenuActivity extends Activity {
 		});
 		
 		// Lien vers l'activité de suppression d'une catégorie
-				final Button supprimerCategorie = (Button) findViewById(R.id.supprimerCategorie);
-				supprimerCategorie.setOnClickListener(new OnClickListener() {
+		final Button supprimerCategorie = (Button) findViewById(R.id.supprimerCategorie);
+		supprimerCategorie.setOnClickListener(new OnClickListener() {
 
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						Intent intent = new Intent(MenuActivity.this,
-								SupprimerCategorieActivity.class);
-						startActivity(intent);
-					}
-				});
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						SupprimerCategorieActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		// Lien vers l'activité de suppression d'un client
+		final Button supprimerClient = (Button) findViewById(R.id.supprimerClient);
+		supprimerClient.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MenuActivity.this,
+						SupprimerClientActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 }

@@ -50,6 +50,12 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/ajouterClient" />
+		
+		<Button
+			android:id="@+id/supprimerClient"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/supprimerClient" />
 	
 	</LinearLayout>
 </ScrollView>

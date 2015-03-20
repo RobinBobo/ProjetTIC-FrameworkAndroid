@@ -53,6 +53,9 @@
         <activity 
             android:name="activities.AjouterClientActivity"
             android:label="@string/titleAjouterClient" />
+        <activity 
+            android:name="activities.SupprimerClientActivity"
+            android:label="@string/titleSupprimerClient" />
     </application>
 
 </manifest>

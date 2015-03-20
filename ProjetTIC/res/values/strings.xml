@@ -16,6 +16,7 @@
     <string name="titleAjouterCategorie">Ajout de catégorie</string>
     <string name="titleSupprimerCategorie">Suppression de catégories</string>
     <string name="titleAjouterClient">Ajout de clients</string>
+    <string name="titleSupprimerClient">Suppression de clients</string>
     
     
     <!-- Général -->
@@ -54,6 +55,7 @@
     <string name="ajouterCategorie">Ajouter une catégorie</string>
     <string name="supprimerCategorie">Supprimer une catégorie</string>
     <string name="ajouterClient">Ajouter un client</string>
+    <string name="supprimerClient">Supprimer un client</string>
     
 	<!-- Produit -->
     <string name="nomProduit">Produit X</string>
@@ -92,6 +94,8 @@
     <string name="textAdresseClient">Adresse : </string>    
     <string name="adresseClient">5bis, étage 2, rue de la paix, 75000 Paris</string>
     <string name="btnAjoutClient">Valider</string>
+    <string name="titleSupClient">Veuillez saisir le nom du client à supprimer puis valider : </string>
+    <string name="resRechClient"></string>
     
     <!-- Categorie -->
     <string-array name="category" />
