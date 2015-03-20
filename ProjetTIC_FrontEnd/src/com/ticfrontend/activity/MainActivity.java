@@ -1,16 +1,5 @@
 package com.ticfrontend.activity;
 
-import com.example.projettic.R;
-import com.ticfrontend.magasin.Avis;
-import com.ticfrontend.magasin.Categorie;
-import com.ticfrontend.magasin.Client;
-import com.ticfrontend.magasin.Produit;
-import com.ticfrontend.model.*;
-import com.ticfrontend.adapter.*;
-import com.ticfrontend.configuratormanagement.Configurator;
-import com.ticfrontend.configuratormanagement.XmlLoader;
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,10 +14,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -39,6 +24,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.projettic.R;
+import com.ticfrontend.adapter.NavDrawerListAdapter;
+import com.ticfrontend.configuratormanagement.Configurator;
+import com.ticfrontend.configuratormanagement.XmlLoader;
+import com.ticfrontend.magasin.Avis;
+import com.ticfrontend.magasin.Categorie;
+import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Produit;
+import com.ticfrontend.model.NavDrawerItem;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
@@ -125,24 +120,20 @@ public class MainActivity extends Activity {
 		// Pour test
 		//CUSTOMERNOTICE = false;
 		
-		for(int i = 0; i < LISTPRODUIT.size(); i++){
-			LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
-		}
-		
 		// Si l'admin veut des avis
 		if(CUSTOMERNOTICE){
 			// On ajoute des avis fictif pour les produits que l'on vient de récupérer
-			List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
-			List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
+			List<Avis> avisBeta = Avis.getAListOfReviewsLong();
+			List<Avis> avisBeta2 = Avis.getAListOfReviewsSmall();
 			for(int i = 0; i < LISTPRODUIT.size(); i++){
 				if(i%2 == 0)
 					LISTPRODUIT.get(i).setListeAvisProduit(avisBeta);
 				else 
-					LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);
-				LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
+					LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);	
 			}
 		}
 			
+		// Ajout de client par défaut
 		Client client1 = new Client("florian2412", "Pussacq", "Florian", "332 Cours de la Libération, 33400 TALENCE", "florian.pussacq@gmail.com", true, "pupuce");
 		Client client2 = new Client("tavash", "Sang", "Tavahiura", "TAHITI, Polynésie Française", "tava.sang@gmail.com", true, "tavabien");
 		Client client3 = new Client("cecileB", "Bourrat", "Cécile", "18 Rue de l'inconnu, 33000 BORDEAUX, ", "cecile.bourrat@gmail.com", false, "boubou");
@@ -160,7 +151,7 @@ public class MainActivity extends Activity {
 		if(WEBSITENAME == null) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Problème de configuration");
-            builder.setMessage("Le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Veuillez prévenir l'administrateur de l'application. Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
+            builder.setMessage("Impossible d'initialiser l'application, le fichier de configuration est incorrect (le nom du commerce n'est pas renseigné). Veuillez prévenir l'administrateur de l'application. Des problèmes peuvent subvenir si vous continuer. Continuer quand même ?");
             builder.setCancelable(true);
             builder.setPositiveButton("Continuer à mes risques et périls", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
@@ -273,12 +264,7 @@ public class MainActivity extends Activity {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		// Handle action bar actions click
-//		switch (item.getItemId()) {
-//		case R.id.action_settings:
-//			return true;
-//		default:
-//		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -288,7 +274,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		//boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 		//menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -412,91 +398,5 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-	
-	private int getRandomImage() {
-		int random = 1 + (int)(Math.random() * ((20 - 1) + 1));
-		int res = R.drawable.prd1;
-		switch (random) {
-			case 1:
-				res = R.drawable.prd1;
-				break;
-			case 2:
-				res = R.drawable.prd2;				
-				break;
-			case 3:
-				res = R.drawable.prd3;
-				break;
-			case 4:
-				res = R.drawable.prd4;
-				break;
-			case 5:
-				res = R.drawable.prd5;
-				break;
-			case 6:
-				res = R.drawable.prd6;
-				break;
-			case 7:
-				res = R.drawable.prd7;
-				break;
-			case 8:
-				res = R.drawable.prd8;
-				break;
-			case 9:
-				res = R.drawable.prd9;
-				break;
-			case 10:
-				res = R.drawable.prd10;
-				break;
-			case 11:
-				res = R.drawable.prd11;
-				break;
-			case 12:
-				res = R.drawable.prd12;
-				break;
-			case 13:
-				res = R.drawable.prd13;
-				break;
-			case 14:
-				res = R.drawable.prd14;
-				break;
-			case 15:
-				res = R.drawable.prd15;
-				break;
-			case 16:
-				res = R.drawable.prd16;
-				break;
-			case 17:
-				res = R.drawable.prd17;
-				break;
-			case 18:
-				res = R.drawable.prd18;
-				break;
-			case 19:
-				res = R.drawable.prd19;
-				break;
-			case 20:
-				res = R.drawable.prd20;
-				break;
-			case 21:
-				res = R.drawable.prd21;
-				break;
-			case 22:
-				res = R.drawable.prd22;
-				break;
-			case 23:
-				res = R.drawable.prd23;
-				break;
-			case 24:
-				res = R.drawable.prd24;
-				break;
-			case 25:
-				res = R.drawable.prd25;
-				break;
-			default:
-				res = R.drawable.prd1;
-				break;
-		}
-		return res;
 	}
 }

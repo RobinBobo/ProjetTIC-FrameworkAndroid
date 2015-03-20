@@ -9,7 +9,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.ticfrontend.magasin.Categorie;
-import com.ticfrontend.magasin.Client;
 import com.ticfrontend.magasin.Produit;
 
 public class XmlLoader {
@@ -129,6 +128,7 @@ public class XmlLoader {
 				//else if(tagname.equalsIgnoreCase("stock"))					
 				else if(tagname.equalsIgnoreCase("Categorie"))
 					p.setCategorieProduit(new Categorie(1,text));
+				p.setIconRessource(Produit.getRandomImage());
 				break;
 			default:
 				break;
@@ -152,7 +152,8 @@ public class XmlLoader {
 				if(tagname.equalsIgnoreCase("id"))
 					c.setIdCategorie(Integer.parseInt(text));
 				else if(tagname.equalsIgnoreCase("nom"))
-					c.setNomCategorie(text);				
+					c.setNomCategorie(text);		
+				c.setIconRessource(Categorie.getNoRandomImage());
 				break;
 			default:
 				break;

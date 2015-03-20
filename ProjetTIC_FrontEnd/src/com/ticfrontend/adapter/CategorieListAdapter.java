@@ -2,7 +2,6 @@ package com.ticfrontend.adapter;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,13 +16,10 @@ import android.widget.TextView;
 
 import com.example.projettic.R;
 import com.ticfrontend.filter.CategoryFilter;
-import com.ticfrontend.filter.ProductFilter;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.thread.ThreadPreconditions;
 
 public class CategorieListAdapter extends BaseAdapter implements Filterable {
-
-	private final Context context;
 	
 	private List<Categorie> categories = Collections.emptyList();
 	
@@ -32,7 +28,6 @@ public class CategorieListAdapter extends BaseAdapter implements Filterable {
 	private CategoryFilter categorieFilter;
 	
 	public CategorieListAdapter(Context context, List<Categorie> categories) {
-        this.context = context;
         this.categories = categories;
         this.inflater = LayoutInflater.from(context);
     }

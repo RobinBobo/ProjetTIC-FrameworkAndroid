@@ -53,7 +53,41 @@ public class Avis implements Serializable {
 	public Client getClient() {	return client;}
 	public Date getDate() {	return date;}
 	
-	public static List<Avis> getAListOfReviews1(){
+//	public static List<Avis> getAListOfReviews1(){
+//		List<Avis> listeAvis = new ArrayList<Avis>();
+//		
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
+//		return listeAvis;
+//	}
+	
+	public static List<Avis> getAListOfReviewsLong(){
 		List<Avis> listeAvis = new ArrayList<Avis>();
 		
 		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
@@ -76,56 +110,22 @@ public class Avis implements Serializable {
 		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
 		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
 		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		return listeAvis;
-	}
-	
-	public static List<Avis> getAListOfReviewsBeta(){
-		List<Avis> listeAvis = new ArrayList<Avis>();
-		
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 4.5,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" ,1.5,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" ,3,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",5,new Date(), "haute gamme, super achat"));
 		
 		return listeAvis;
 	}
 	
-	public static List<Avis> getAListOfReviews2(){
-		List<Avis> listeAvis = new ArrayList<Avis>();
-		
-		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 3,new Date(), "content du produit, rien a rajouter"));
-		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" , 4,new Date(), "pas stable, pas ergonomique"));
-		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" , 2,new Date(), "passable, efficace"));
-		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",1,new Date(), "haute gamme, super achat"));
-		
-		return listeAvis;
-	}
-	
-	public static List<Avis> getAListOfReviewsBeta2(){
+//	public static List<Avis> getAListOfReviews2(){
+//		List<Avis> listeAvis = new ArrayList<Avis>();
+//		
+//		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 3,new Date(), "content du produit, rien a rajouter"));
+//		listeAvis.add(new Avis(new Client("RICHARD", "Thomas",true), "Mauvais" , 4,new Date(), "pas stable, pas ergonomique"));
+//		listeAvis.add(new Avis(new Client("MICHEL","Jean",false),"Satisfaisant" , 2,new Date(), "passable, efficace"));
+//		listeAvis.add(new Avis(new Client("OBAMA","Barrack",false),"Excellent produit! conseillé",1,new Date(), "haute gamme, super achat"));
+//		
+//		return listeAvis;
+//	}
+//	
+	public static List<Avis> getAListOfReviewsSmall(){
 		List<Avis> listeAvis = new ArrayList<Avis>();
 		
 		listeAvis.add(new Avis(new Client("DOE","John",false), "Bon Produit", 3,new Date(), "content du produit, rien a rajouter"));

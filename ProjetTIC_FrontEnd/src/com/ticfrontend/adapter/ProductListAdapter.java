@@ -20,8 +20,6 @@ import com.ticfrontend.magasin.Produit;
 import com.ticfrontend.thread.ThreadPreconditions;
 
 public class ProductListAdapter extends BaseAdapter implements Filterable {
-
-	private final Activity activity;
 	
 	private List<Produit> products = Collections.emptyList();
 	
@@ -30,7 +28,6 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 	private ProductFilter produitFilter;
 	
 	public ProductListAdapter(Activity activity, List<Produit> products) {
-        this.activity = activity;
         this.products = products;
         this.inflater = LayoutInflater.from(activity);
     }
