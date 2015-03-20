@@ -64,13 +64,29 @@ public class MainActivity extends Activity {
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
 	public static String WEBSITENAME = null;
-	public static Color COLORBUTTON = null;
+	public static ColorDrawable COLORBUTTON = null;
+	public static boolean AVIS = false;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		setConfiguration();
+		
+		initSlideMenu();
+				
+		//////////////////////////////////////////////////////
+				
+		if (savedInstanceState == null) {
+			displayView(0);
+		}
+		
+		checkConfiguration();
+	}
+
+	private void setConfiguration() {
 		// Loading XML //	
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
@@ -87,28 +103,34 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
-		// On ajoute des avis fictif pour les produits que l'on vient de récupérer
-		List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
-		List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
-		for(int i = 0; i < LISTPRODUIT.size(); i++){
-			if(i%2 == 0)
-				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta);
-			else 
-				LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);
-			LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
+		// Si l'admin veut des avis
+		if(AVIS){
+			// On ajoute des avis fictif pour les produits que l'on vient de récupérer
+			List<Avis> avisBeta = Avis.getAListOfReviewsBeta();
+			List<Avis> avisBeta2 = Avis.getAListOfReviewsBeta2();
+			for(int i = 0; i < LISTPRODUIT.size(); i++){
+				if(i%2 == 0)
+					LISTPRODUIT.get(i).setListeAvisProduit(avisBeta);
+				else 
+					LISTPRODUIT.get(i).setListeAvisProduit(avisBeta2);
+				LISTPRODUIT.get(i).setIconRessource(getRandomImage());	
+			}
 		}
 		
-		WEBSITENAME = c.getWebsiteName();		
+		if(c.getWebsiteName() != null)
+			WEBSITENAME = c.getWebsiteName();
+		//if(c.getButtonsColor() != null)
+			COLORBUTTON = new ColorDrawable(c.getButtonsColor());
+			
+		Client client1 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
+		Client client2 = new Client("tavash", "Sang", "Tavahiura", "TAHITI, Polynésie Française", "tava.sang@gmail.com", true, "tavabien");
+//		Client client3 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", false, "pupuce");
+//		Client client4 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
+//		Client client5 = new Client("florian2412", "Pussacq", "Florian", "La Fond Du Cros 24700 MENESPLET", "florian2412@gmail.com", true, "pupuce");
 		
-		initSlideMenu();
-				
-		//////////////////////////////////////////////////////
-				
-		if (savedInstanceState == null) {
-			displayView(0);
-		}
-		
-		checkConfiguration();
+		LISTCLIENT.add(client1);
+		LISTCLIENT.add(client2);
+		//LISTCLIENT.add(client1);
 	}
 
 	private void checkConfiguration() {

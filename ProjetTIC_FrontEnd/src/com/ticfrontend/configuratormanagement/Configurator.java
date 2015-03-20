@@ -13,15 +13,16 @@ public class Configurator {
 
 	private int buttonsColor;
 
+	//Getter & Setter
+	
 	public int getButtonsColor() {
 		return buttonsColor;
 	}
-
+	
 	public void setButtonsColor(int buttonColor) {
 		this.buttonsColor = buttonColor;
 	}
-
-	//Getter & Setter
+	
 	public String getWebsiteName() {
 		return websiteName;
 	}

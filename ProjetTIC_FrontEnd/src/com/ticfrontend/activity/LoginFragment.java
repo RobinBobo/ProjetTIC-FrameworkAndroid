@@ -6,9 +6,11 @@ import com.ticfrontend.magasin.Panier;
 import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -67,14 +69,32 @@ public class LoginFragment extends Fragment {
 				if(login.getText().toString().length() > 0 && password.getText().toString().length() > 0){
 					MainActivity.ISCONNECTED = true;	
 					Intent intent = activity.getIntent();
-					Client c = new Client(login.getText().toString(), "John");
-					MainActivity.CLIENT_ACTUEL = c;
 					
-					CartFragment.PANIER_CLIENT = new Panier();
-
-					//intent.putExtra(EXTRA_KEY_USER, c.getNomClient() + c.getPrenomClient());
-					activity.finish();
-					startActivity(intent);
+					Client c = null;
+					
+					for(int i = 0; i < MainActivity.LISTCLIENT.size(); i++)
+						if(MainActivity.LISTCLIENT.get(i).getLogin().equals(login.getText().toString()) 
+								&& MainActivity.LISTCLIENT.get(i).getMdpClient().equals(password.getText().toString()))
+							c = MainActivity.LISTCLIENT.get(i);
+					
+					if(c != null) {
+						MainActivity.CLIENT_ACTUEL = c;						
+						CartFragment.PANIER_CLIENT = new Panier();
+						activity.finish();
+						startActivity(intent);
+					} else {
+						AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+						builder.setTitle("Connexion à un compte");
+			            builder.setMessage("Votre login ou votre mot de passe sont incorrects.");
+			            builder.setCancelable(true);
+			            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+			                public void onClick(DialogInterface dialog, int id) {
+			                    dialog.cancel();
+			                }
+			            });
+			            AlertDialog alert = builder.create();
+			            alert.show();
+					}
 				}
 			}
 		});
