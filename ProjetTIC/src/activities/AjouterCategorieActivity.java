@@ -39,7 +39,7 @@ public class AjouterCategorieActivity extends Activity {
 					} else {
 						Categorie c = new Categorie(nom.getText().toString());
 						MainActivity.getListeCategories().ajouterCategorie(c);
-						msg = "La catégorie a bien été ajoutée.";
+						msg = "La catégorie '" + c.getNomCategorie() + "' a bien été ajoutée.";
 						msgErreur.setTextColor(Color.rgb(20, 148, 20));
 						nom.setText("");
 					}

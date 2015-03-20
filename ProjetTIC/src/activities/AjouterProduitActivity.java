@@ -52,7 +52,7 @@ public class AjouterProduitActivity extends Activity {
 						!description.toString().matches("") && !stock.toString().matches("") ) {
 					valide = true;
 				} else {
-					msgErreur = "Veuillez saisir tous les champs";
+					msgErreur = "Veuillez saisir tous les champs ! (La marque et la catégorie sont facultatives)";
 					txtMsgErreur.setTextColor(Color.RED);
 				}
 				
