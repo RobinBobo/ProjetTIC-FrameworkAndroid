@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -99,6 +101,15 @@ public class ProductListFragment extends Fragment {
 		downPrice = (ImageView) rootView.findViewById(R.id.imgSortPriceAsc);		
 		
 		Button sortPrice = (Button) rootView.findViewById(R.id.buttonSortPrice);
+		
+		// Init de la couleur sur les boutons
+		GradientDrawable bgShape = (GradientDrawable) sortPrice.getBackground();		
+		int r = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(0, 2), 16);
+		int g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
+		int b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
+		bgShape.setColor(Color.argb(255, r, g, b)); 
+
+		
 		sortPrice.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -130,6 +141,15 @@ public class ProductListFragment extends Fragment {
 		});
 
 		Button sortName = (Button) rootView.findViewById(R.id.buttonSortName);
+		
+		// Init de la couleur sur les boutons
+		bgShape = (GradientDrawable) sortName.getBackground();		
+		r = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(0, 2), 16);
+		g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
+		b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
+		bgShape.setColor(Color.argb(255, r, g, b)); 
+
+		
 		sortName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

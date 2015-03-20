@@ -9,6 +9,8 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -147,6 +149,15 @@ public class ProductDetailsFragment extends Fragment {
 			// Quand on click sur Voir tous les avis, on lance un nouveau fragment qui comporte une listview avec tous les avis
 			// Permet de trier aussi
 			Button voirPlusAvis = (Button) rootView.findViewById(R.id.boutonVoirPlusAvis);
+			
+			// Init de la couleur sur les boutons
+			GradientDrawable bgShape = (GradientDrawable) voirPlusAvis.getBackground();		
+			int r = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(0, 2), 16);
+			int g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
+			int b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
+			bgShape.setColor(Color.argb(255, r, g, b)); 
+
+			
 			voirPlusAvis.setText("Voir tous les avis (" + listeAvis.size() + ")");
 			voirPlusAvis.setOnClickListener(new OnClickListener() {
 				@Override

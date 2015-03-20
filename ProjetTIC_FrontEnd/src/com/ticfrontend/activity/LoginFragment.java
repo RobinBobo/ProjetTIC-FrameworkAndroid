@@ -61,11 +61,13 @@ public class LoginFragment extends Fragment {
 		password = (EditText) rootView.findViewById(R.id.editTextPassUser);
 
 		Button validerLogin = (Button) rootView.findViewById(R.id.boutonValiderLogin);
-		//validerLogin.setBackgroundColor(getResources().getColor(R.color.Ivory));
-		//Drawable dr = getResources().getDrawable(R.drawable.button_shape);
 		
-		GradientDrawable bgShape = (GradientDrawable) validerLogin.getBackground();
-		//bgShape.setColor(Color.colorToHSV(MainActivity.COLORBUTTON, null));
+		// Init de la couleur sur les boutons
+		GradientDrawable bgShape = (GradientDrawable) validerLogin.getBackground();	
+		int r = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(0, 2), 16);
+		int g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
+		int b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
+		bgShape.setColor(Color.argb(255, r, g, b)); 
 		
 		validerLogin.setOnClickListener(new OnClickListener() {
 			@Override

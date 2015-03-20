@@ -9,6 +9,8 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +63,14 @@ public class RegisterFragment extends Fragment {
 		mdp2 = (EditText) rootView.findViewById(R.id.editTextRegPassVerif);
 		
 		valider = (Button) rootView.findViewById(R.id.boutonValiderLogin);
+		
+		// Init de la couleur sur les boutons
+		GradientDrawable bgShape = (GradientDrawable) valider.getBackground();		
+		int r = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(0, 2), 16);
+		int g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
+		int b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
+		bgShape.setColor(Color.argb(255, r, g, b)); 
+
 		
 		valider.setOnClickListener(new OnClickListener() {
 			@Override

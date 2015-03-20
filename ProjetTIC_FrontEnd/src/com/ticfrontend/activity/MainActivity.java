@@ -62,6 +62,7 @@ public class MainActivity extends Activity {
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
 	public static String WEBSITENAME = null;
 	public static int COLORBUTTON;
+	public static String COLORBUTTONSTRING = null;
 	public static boolean CUSTOMERNOTICE = false;
 	public static boolean ORDER = false;
 	public static boolean SHOPPINGCART = false;
@@ -107,10 +108,15 @@ public class MainActivity extends Activity {
 			WEBSITENAME = c.getWebsiteName();
 		
 		COLORBUTTON = c.getButtonsColor();
-		//COLORBUTTON.;
 		
-		//Drawable buttonSmallShape = getResources().getDrawable(R.id.buttonShape);
-		//buttonSmallShape.
+		// Si COLORBUTTON == 0 alors on met #3A467A comme couleur par défaut
+		if(COLORBUTTON == 0) {
+			COLORBUTTONSTRING = "3A467A";
+		}
+		else {
+			String hexa = Integer.toHexString(COLORBUTTON);
+			COLORBUTTONSTRING = hexa.substring(2, hexa.length());
+		}
 		
 		
 		CUSTOMERNOTICE = c.getCustomerNotice();
@@ -118,7 +124,7 @@ public class MainActivity extends Activity {
 		SHOPPINGCART = c.getShoppingCart();
 		
 		// Pour test
-		//CUSTOMERNOTICE = false;
+		CUSTOMERNOTICE = false;
 		
 		// Si l'admin veut des avis
 		if(CUSTOMERNOTICE){
