@@ -61,14 +61,14 @@ public class MainActivity extends Activity {
 	public static ArrayList<Produit> LISTPRODUIT = null;
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
-	public static ArrayList<Produit> LISTDIVERS = null;
+//	public static ArrayList<Produit> LISTDIVERS = null;
 	public static String WEBSITENAME = null;
 	public static int COLORBUTTON;
 	public static String COLORBUTTONSTRING = null;
 	public static boolean CUSTOMERNOTICE = false;
 	public static boolean ORDER = false;
 	public static boolean SHOPPINGCART = false;
-	public static boolean DIVERS = false;
+//	public static boolean DIVERS = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
 		LISTPRODUIT = new ArrayList<Produit>();
 		LISTCLIENT = new ArrayList<Client>();
 		LISTCATEGORIE = new ArrayList<Categorie>();
-		LISTDIVERS = new ArrayList<Produit>();
+//		LISTDIVERS = new ArrayList<Produit>();
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
@@ -106,22 +106,6 @@ public class MainActivity extends Activity {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
-		String newLine = System.getProperty("line.separator");
-		
-		// Catégorie Divers, si la catégorie d'un produit n'existe pas, on le met dans cette catégorie
-		Categorie categorieDivers = new Categorie(999, "Divers", Categorie.getNoRandomImage());
-		
-		for(int i = 0; i < LISTPRODUIT.size(); i++) {
-			if(LISTPRODUIT.get(i).getCategorieProduit().getNomCategorie().contains(newLine)) {
-				DIVERS = true;
-				LISTDIVERS.add(LISTPRODUIT.get(i));
-				LISTPRODUIT.get(i).setCategorieProduit(categorieDivers);
-			}
-		}
-		
-		if(DIVERS) 
-			LISTCATEGORIE.add(categorieDivers);
 		
 		if(c.getWebsiteName() != null)
 			WEBSITENAME = c.getWebsiteName();
@@ -136,7 +120,6 @@ public class MainActivity extends Activity {
 			String hexa = Integer.toHexString(COLORBUTTON);
 			COLORBUTTONSTRING = hexa.substring(2, hexa.length());
 		}
-		
 		
 		CUSTOMERNOTICE = c.getCustomerNotice();
 		ORDER = c.getOrder();

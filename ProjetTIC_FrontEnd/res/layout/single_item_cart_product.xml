@@ -58,16 +58,16 @@
 			    android:text="Quantité : "
 			    />
 		
-			<Button
-	            android:id="@+id/boutonEnlever"
-	            android:layout_width="wrap_content"
-	            android:layout_height="18dp"
-	            android:layout_gravity="right"
-	            android:layout_marginLeft="50dp"
-	            android:text="Enlever"
-	            android:textSize="10dp" 
-				android:textColor="@android:color/white"
-	    		android:background="@drawable/button_shape_small"/>
+<!-- 			<Button -->
+<!-- 	            android:id="@+id/boutonEnlever" -->
+<!-- 	            android:layout_width="wrap_content" -->
+<!-- 	            android:layout_height="18dp" -->
+<!-- 	            android:layout_gravity="right" -->
+<!-- 	            android:layout_marginLeft="50dp" -->
+<!-- 	            android:text="Enlever" -->
+<!-- 	            android:textSize="10dp"  -->
+<!-- 				android:textColor="@android:color/white" -->
+<!-- 	    		android:background="@drawable/button_shape_small"/> -->
 			
 		</LinearLayout>
 		
