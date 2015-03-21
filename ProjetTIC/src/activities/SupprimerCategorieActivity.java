@@ -28,7 +28,7 @@ public class SupprimerCategorieActivity extends Activity {
 			public void onClick(View v) {
 				if (!rechCatego.getText().toString().matches("")) {
 					if (MainActivity.getListeCategories().supprimCategorie(rechCatego.getText().toString())) {
-						msgErreur.setText("La catégorie a bien été supprimée");
+						msgErreur.setText("La catégorie '" + rechCatego.getText().toString() + "' a bien été supprimée");
 						msgErreur.setTextColor(Color.rgb(20, 148, 20));
 						rechCatego.setText("");
 					} else {
