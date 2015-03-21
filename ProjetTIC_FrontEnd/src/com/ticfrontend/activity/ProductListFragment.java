@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -108,38 +109,7 @@ public class ProductListFragment extends Fragment {
 		int g = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(2, 4), 16);
 		int b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
 		bgShape.setColor(Color.argb(255, r, g, b)); 
-
 		
-		sortPrice.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				// Trier par prix
-				ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
-				ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-				List<Produit> products = adapter.getProducts();
-				
-				blanc.setVisibility(View.GONE);
-    			
-    			if(!sortDirectionPrice) {
-    				downPrice.setVisibility(View.VISIBLE);
-    				upPrice.setVisibility(View.GONE);
-    				downName.setVisibility(View.GONE);
-    				upName.setVisibility(View.GONE);
-    				Collections.sort(products, new ProductPriceComparator(ProductPriceComparator.ASC));
-    				sortDirectionPrice = true;
-    			} else {
-    				upPrice.setVisibility(View.VISIBLE);
-    				downPrice.setVisibility(View.GONE);
-    				downName.setVisibility(View.GONE);
-    				upName.setVisibility(View.GONE);
-    				Collections.sort(products, new ProductPriceComparator(ProductPriceComparator.DESC));
-    				sortDirectionPrice = false;
-    			}				
-				
-				adapter.updateProduct(products);
-			}
-		});
-
 		Button sortName = (Button) rootView.findViewById(R.id.buttonSortName);
 		
 		// Init de la couleur sur les boutons
@@ -149,36 +119,69 @@ public class ProductListFragment extends Fragment {
 		b = Integer.parseInt(MainActivity.COLORBUTTONSTRING.substring(4, 6), 16);
 		bgShape.setColor(Color.argb(255, r, g, b)); 
 
-		
-		sortName.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				// Trier par nom
-				ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
-				ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
-				List<Produit> products = adapter.getProducts();
-				
-				blanc.setVisibility(View.VISIBLE);
-    			
-    			if(!sortDirectionName) {
-    				downName.setVisibility(View.VISIBLE);
-    				upName.setVisibility(View.GONE);
-    				downPrice.setVisibility(View.GONE);
-    				upPrice.setVisibility(View.GONE);
-    				Collections.sort(products, new ProductNameComparator(ProductNameComparator.ASC));
-    				sortDirectionName = true;
-    			} else {
-    				upName.setVisibility(View.VISIBLE);
-    				downName.setVisibility(View.GONE);
-    				downPrice.setVisibility(View.GONE);
-    				upPrice.setVisibility(View.GONE);
-    				Collections.sort(products, new ProductNameComparator(ProductNameComparator.DESC));
-    				sortDirectionName = false;
-    			}					
-				
-				adapter.updateProduct(products);
-			}
-		});
+		if(MainActivity.TRIPRODUIT) {
+			sortPrice.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// Trier par prix
+					ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
+					ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
+					List<Produit> products = adapter.getProducts();
+					
+					blanc.setVisibility(View.GONE);
+					
+					if(!sortDirectionPrice) {
+						downPrice.setVisibility(View.VISIBLE);
+						upPrice.setVisibility(View.GONE);
+						downName.setVisibility(View.GONE);
+						upName.setVisibility(View.GONE);
+						Collections.sort(products, new ProductPriceComparator(ProductPriceComparator.ASC));
+						sortDirectionPrice = true;
+					} else {
+						upPrice.setVisibility(View.VISIBLE);
+						downPrice.setVisibility(View.GONE);
+						downName.setVisibility(View.GONE);
+						upName.setVisibility(View.GONE);
+						Collections.sort(products, new ProductPriceComparator(ProductPriceComparator.DESC));
+						sortDirectionPrice = false;
+					}				
+					
+					adapter.updateProduct(products);
+				}
+			});
+
+			sortName.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// Trier par nom
+					ListView list = (ListView) rootView.findViewById(R.id.listviewProduit);
+					ProductListAdapter adapter = (ProductListAdapter) list.getAdapter();
+					List<Produit> products = adapter.getProducts();
+					
+					blanc.setVisibility(View.VISIBLE);
+					
+					if(!sortDirectionName) {
+						downName.setVisibility(View.VISIBLE);
+						upName.setVisibility(View.GONE);
+						downPrice.setVisibility(View.GONE);
+						upPrice.setVisibility(View.GONE);
+						Collections.sort(products, new ProductNameComparator(ProductNameComparator.ASC));
+						sortDirectionName = true;
+					} else {
+						upName.setVisibility(View.VISIBLE);
+						downName.setVisibility(View.GONE);
+						downPrice.setVisibility(View.GONE);
+						upPrice.setVisibility(View.GONE);
+						Collections.sort(products, new ProductNameComparator(ProductNameComparator.DESC));
+						sortDirectionName = false;
+					}					
+					
+					adapter.updateProduct(products);
+				}
+			});
+		}
+		else
+			rootView.findViewById(R.id.layoutSort).setVisibility(View.GONE);		
 	}
 
 	// Permet d'ajouter un filtre sur le EditText
@@ -199,7 +202,12 @@ public class ProductListFragment extends Fragment {
 		ListView productsList = (ListView) rootView.findViewById(R.id.listviewProduit);
 		productsList.setAdapter(pla);
 
-		addSearchFilter(pla);
+
+		if(MainActivity.FILTREPRODUIT)
+			addSearchFilter(pla);
+		else 
+			rootView.findViewById(R.id.layoutEditTextMain).setVisibility(View.GONE);
+		
 		
 		productsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override

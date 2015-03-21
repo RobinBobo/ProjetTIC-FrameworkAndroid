@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.projettic.R;
@@ -46,7 +47,7 @@ public class CategoryFragment extends Fragment {
 		this.activity.setTitle(R.string.title_fragment_category);
 	}
 
-	public void init(){
+	public void init(){		
 		ajoutItemsListCategorie();
 	}
 
@@ -62,7 +63,10 @@ public class CategoryFragment extends Fragment {
 		//Initialisation de la liste avec les données
 		categorieList.setAdapter(categorieListAdapter);
 		
-		addSearchFilter(categorieListAdapter);
+		if(MainActivity.FILTRECATEGORIE)
+			addSearchFilter(categorieListAdapter);
+		else 
+			rootView.findViewById(R.id.layoutEditTextMain).setVisibility(View.GONE);
 
 		categorieList.setOnItemClickListener(new OnItemClickListener() {
 			@Override

@@ -61,15 +61,17 @@ public class MainActivity extends Activity {
 	public static ArrayList<Produit> LISTPRODUIT = null;
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
-//	public static ArrayList<Produit> LISTDIVERS = null;
 	public static String WEBSITENAME = null;
 	public static int COLORBUTTON;
 	public static String COLORBUTTONSTRING = null;
 	public static boolean CUSTOMERNOTICE = false;
 	public static boolean ORDER = false;
 	public static boolean SHOPPINGCART = false;
-//	public static boolean DIVERS = false;
-	
+	public static boolean TRIPRODUIT = false;
+	public static boolean TRIAVIS = false;
+	public static boolean FILTREPRODUIT = false;
+	public static boolean FILTRECATEGORIE = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -98,7 +100,6 @@ public class MainActivity extends Activity {
 		LISTPRODUIT = new ArrayList<Produit>();
 		LISTCLIENT = new ArrayList<Client>();
 		LISTCATEGORIE = new ArrayList<Categorie>();
-//		LISTDIVERS = new ArrayList<Produit>();
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
@@ -126,10 +127,10 @@ public class MainActivity extends Activity {
 		CUSTOMERNOTICE = c.getCustomerNotice();
 		ORDER = c.getOrder();
 		SHOPPINGCART = c.getShoppingCart();
-
-		// Pour test
-//		CUSTOMERNOTICE = false;
-//		SHOPPINGCART = false;
+		TRIAVIS = c.getSortCategory();
+		TRIPRODUIT = c.getSortProduct();
+		FILTRECATEGORIE = c.getCategorySearch();
+		FILTREPRODUIT = c.getProductSearch();
 		
 		if(!SHOPPINGCART)
 			ORDER = false;

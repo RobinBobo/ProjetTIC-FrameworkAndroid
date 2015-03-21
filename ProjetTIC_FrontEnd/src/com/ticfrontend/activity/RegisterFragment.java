@@ -98,6 +98,14 @@ public class RegisterFragment extends Fragment {
 							MainActivity.ISCONNECTED = true;
 							CartFragment.PANIER_CLIENT = new Panier();
 							
+							// Ajout du nouveau client dans la LISTCLIENT
+							if(c != null)
+								MainActivity.LISTCLIENT.add(c);
+							
+							// ICI ROBINHO
+							
+							
+							
 							Intent intent = activity.getIntent();
 							
 							//						intent.putExtra(EXTRA_KEY_USER, login.getText().toString());

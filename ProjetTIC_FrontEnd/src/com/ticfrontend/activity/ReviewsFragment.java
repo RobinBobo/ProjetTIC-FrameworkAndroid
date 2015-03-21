@@ -75,75 +75,79 @@ public class ReviewsFragment  extends Fragment {
 		title.setText("Tous les avis (" + listeAvis.size() + ")");
 		
 		Button sortDate = (Button) rootView.findViewById(R.id.buttonSortDate);
-    	sortDate.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewReviews);	
-    			AvisListAdapter adapter = (AvisListAdapter) listviewAvis.getAdapter();
-    			List<Avis> listeAllAvis = adapter.getAvis();
-    			
-    			blanc.setVisibility(View.VISIBLE);
-    			
-    			if(!sortDirectionDate) {
-    				downDate.setVisibility(View.VISIBLE);
-    				upDate.setVisibility(View.GONE);
-    				downNote.setVisibility(View.GONE);
-    				upNote.setVisibility(View.GONE);
-    				Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.ASC));
-    				sortDirectionDate = true;
-    			} else {
-    				upDate.setVisibility(View.VISIBLE);
-    				downDate.setVisibility(View.GONE);
-    				downNote.setVisibility(View.GONE);
-    				upNote.setVisibility(View.GONE);
-    				Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.DESC));
-    				sortDirectionDate = false;
-    			}
-    			
-    			adapter.updateAvis(listeAllAvis);
-    		}
- 		});
-    	
-    	try {
-    		listeAvis.get(0).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2010"));
-    		listeAvis.get(1).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2008"));
-    		listeAvis.get(2).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2006"));
-			listeAvis.get(3).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2000"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    	Button sortNote = (Button) rootView.findViewById(R.id.buttonSortNote);
-    	sortNote.setOnClickListener(new OnClickListener() {
-    		@Override
- 			public void onClick(View arg0) {
-    			// Trier par note
-    			ListView list = (ListView) rootView.findViewById(R.id.listviewReviews);
-    			AvisListAdapter adapter = (AvisListAdapter) list.getAdapter();
-    			List<Avis> listeAllAvis = adapter.getAvis();
-    			
-    			blanc.setVisibility(View.GONE);
-    			
-    			if(!sortDirectionNote) {
-    				downNote.setVisibility(View.VISIBLE);
-    				upNote.setVisibility(View.GONE);
-    				downDate.setVisibility(View.GONE);
-    				upDate.setVisibility(View.GONE);
-    				Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.ASC));
-    				sortDirectionNote = true;
-    			} else {
-    				upNote.setVisibility(View.VISIBLE);
-    				downNote.setVisibility(View.GONE);
-    				downDate.setVisibility(View.GONE);
-    				upDate.setVisibility(View.GONE);
-    				Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.DESC));
-    				sortDirectionNote = false;
-    			}
-    			adapter.updateAvis(listeAllAvis);
- 			}
- 		});
-		
+		Button sortNote = (Button) rootView.findViewById(R.id.buttonSortNote);
+
+		if(MainActivity.TRIAVIS) {
+			sortDate.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					ListView listviewAvis = (ListView) rootView.findViewById(R.id.listviewReviews);	
+					AvisListAdapter adapter = (AvisListAdapter) listviewAvis.getAdapter();
+					List<Avis> listeAllAvis = adapter.getAvis();
+					
+					blanc.setVisibility(View.VISIBLE);
+					
+					if(!sortDirectionDate) {
+						downDate.setVisibility(View.VISIBLE);
+						upDate.setVisibility(View.GONE);
+						downNote.setVisibility(View.GONE);
+						upNote.setVisibility(View.GONE);
+						Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.ASC));
+						sortDirectionDate = true;
+					} else {
+						upDate.setVisibility(View.VISIBLE);
+						downDate.setVisibility(View.GONE);
+						downNote.setVisibility(View.GONE);
+						upNote.setVisibility(View.GONE);
+						Collections.sort(listeAllAvis, new ReviewDateComparator(ReviewDateComparator.DESC));
+						sortDirectionDate = false;
+					}
+					
+					adapter.updateAvis(listeAllAvis);
+				}
+			});
+			
+			try {
+				listeAvis.get(0).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2010"));
+				listeAvis.get(1).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2008"));
+				listeAvis.get(2).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2006"));
+				listeAvis.get(3).setDate(new SimpleDateFormat("dd/MM/yyyy").parse("31/02/2000"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			sortNote.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// Trier par note
+					ListView list = (ListView) rootView.findViewById(R.id.listviewReviews);
+					AvisListAdapter adapter = (AvisListAdapter) list.getAdapter();
+					List<Avis> listeAllAvis = adapter.getAvis();
+					
+					blanc.setVisibility(View.GONE);
+					
+					if(!sortDirectionNote) {
+						downNote.setVisibility(View.VISIBLE);
+						upNote.setVisibility(View.GONE);
+						downDate.setVisibility(View.GONE);
+						upDate.setVisibility(View.GONE);
+						Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.ASC));
+						sortDirectionNote = true;
+					} else {
+						upNote.setVisibility(View.VISIBLE);
+						downNote.setVisibility(View.GONE);
+						downDate.setVisibility(View.GONE);
+						upDate.setVisibility(View.GONE);
+						Collections.sort(listeAllAvis, new ReviewNoteComparator(ReviewNoteComparator.DESC));
+						sortDirectionNote = false;
+					}
+					adapter.updateAvis(listeAllAvis);
+				}
+			});	
+		} else 
+			rootView.findViewById(R.id.layoutSort).setVisibility(View.GONE);
+			
     	testAjoutAvis();	
 	}
 	
