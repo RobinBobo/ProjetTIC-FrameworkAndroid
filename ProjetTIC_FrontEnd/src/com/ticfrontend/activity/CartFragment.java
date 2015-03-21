@@ -74,36 +74,40 @@ public class CartFragment extends Fragment {
 		
 		Button commander = (Button) rootView.findViewById(R.id.boutonCommande);
 
-		commander.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				// TODO Passer commande
-				if(!PANIER_CLIENT.estVide()){
-					//Commande commande = new Commande(prixTotal, listProduit);
-					Panier p = new Panier(PANIER_CLIENT);
-					Commande commande = new Commande(p);
-					
-					MainActivity.CLIENT_ACTUEL.addCommande(commande);
-
-					Fragment fragment = new OrderFragment();
-					FragmentManager fragmentManager = getFragmentManager();
-					fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
-					initCart();
-				} else {
-					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-					builder.setTitle("Mon panier");
-					builder.setMessage("Vore panier est vide.");
-					builder.setCancelable(false);
-					builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
-						}
-					});
-					AlertDialog alert = builder.create();
-					alert.show();
+		if(MainActivity.ORDER) {
+			commander.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// TODO Passer commande
+					if(!PANIER_CLIENT.estVide()){
+						//Commande commande = new Commande(prixTotal, listProduit);
+						Panier p = new Panier(PANIER_CLIENT);
+						Commande commande = new Commande(p);
+						
+						MainActivity.CLIENT_ACTUEL.addCommande(commande);
+						
+						Fragment fragment = new OrderFragment();
+						FragmentManager fragmentManager = getFragmentManager();
+						fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
+						initCart();
+					} else {
+						AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+						builder.setTitle("Mon panier");
+						builder.setMessage("Vore panier est vide.");
+						builder.setCancelable(false);
+						builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+						AlertDialog alert = builder.create();
+						alert.show();
+					}
 				}
-			}
-		});
+			});			
+		} else {
+			commander.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

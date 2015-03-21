@@ -64,44 +64,47 @@ public class ProductDetailsFragment extends Fragment {
 	}
 	public void init(){
 		boutonAjouterPanier = (Button) rootView.findViewById(R.id.boutonAjouter); 
-		boutonAjouterPanier.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				// TODO Passer commande
-				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-				AlertDialog alert;
-				
-				if(MainActivity.ISCONNECTED){
-					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-					    @Override
-					    public void onClick(DialogInterface dialog, int which) {
-					        switch (which){
-					        case DialogInterface.BUTTON_POSITIVE:
-					        	CartFragment.PANIER_CLIENT.ajouterDansPanier(product, 1);
-					            break;
-
-					        case DialogInterface.BUTTON_NEGATIVE:
-					            //No button clicked
-					            break;
-					        }
-					    }
-					};
-					builder.setMessage("Confirmez-vous l'ajout ?").setPositiveButton("Oui", dialogClickListener)
-					    .setNegativeButton("Non", dialogClickListener).show();
-				} else {
-					builder.setMessage("Vous devez vous connecter.");
-					builder.setCancelable(true);
-					builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
-						}
-					});
-					alert = builder.create();
-					alert.show();
+		if(MainActivity.SHOPPINGCART) {
+			boutonAjouterPanier.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// Ajouter dans la panier
+					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+					AlertDialog alert;
+					
+					if(MainActivity.ISCONNECTED){
+						DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								switch (which){
+								case DialogInterface.BUTTON_POSITIVE:
+									CartFragment.PANIER_CLIENT.ajouterDansPanier(product, 1);
+									break;
+									
+								case DialogInterface.BUTTON_NEGATIVE:
+									//No button clicked
+									break;
+								}
+							}
+						};
+						builder.setMessage("Confirmez-vous l'ajout ?").setPositiveButton("Oui", dialogClickListener)
+						.setNegativeButton("Non", dialogClickListener).show();
+					} else {
+						builder.setMessage("Vous devez vous connecter.");
+						builder.setCancelable(true);
+						builder.setNeutralButton("Retour", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+						alert = builder.create();
+						alert.show();
+					}
 				}
-			}
-		});
-		
+			});			
+		} else {
+			boutonAjouterPanier.setVisibility(View.GONE);
+		}
 		populateScreen();
 	}
 
@@ -195,7 +198,6 @@ public class ProductDetailsFragment extends Fragment {
 		if(nbAvis > listeAvis.size())
 			nbEnd = listeAvis.size();
 		
-		
 		// On ajoute chaque avis séparemment, sans utiliser d'adapter car on peuple un linearlayout et non une listview
 		for(int i = 0; i < nbEnd; i++){
 			View v = new View(activity);
@@ -219,7 +221,7 @@ public class ProductDetailsFragment extends Fragment {
 			descAvis.setText(a.getDescription());
 			
 			// Pour séparer les avis avec un espace
-			// TODO Changer la couleur pour un gris ou une fine bare noire peut etre... 
+			// Changer la couleur pour un gris ou une fine bare noire peut etre... 
 			// Sinon on peut laisser comme ça, ça rend pas mal quand même
 			LinearLayout separator = new LinearLayout(activity);
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 30);

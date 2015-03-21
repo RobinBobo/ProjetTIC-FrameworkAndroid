@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.projettic.R;
 import com.ticfrontend.adapter.NavDrawerListAdapter;
@@ -60,12 +61,14 @@ public class MainActivity extends Activity {
 	public static ArrayList<Produit> LISTPRODUIT = null;
 	public static ArrayList<Client> LISTCLIENT = null;
 	public static ArrayList<Categorie> LISTCATEGORIE = null;
+	public static ArrayList<Produit> LISTDIVERS = null;
 	public static String WEBSITENAME = null;
 	public static int COLORBUTTON;
 	public static String COLORBUTTONSTRING = null;
 	public static boolean CUSTOMERNOTICE = false;
 	public static boolean ORDER = false;
 	public static boolean SHOPPINGCART = false;
+	public static boolean DIVERS = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,7 @@ public class MainActivity extends Activity {
 		LISTPRODUIT = new ArrayList<Produit>();
 		LISTCLIENT = new ArrayList<Client>();
 		LISTCATEGORIE = new ArrayList<Categorie>();
+		LISTDIVERS = new ArrayList<Produit>();
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
@@ -103,6 +107,21 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
+		String newLine = System.getProperty("line.separator");
+		
+		// Catégorie Divers, si la catégorie d'un produit n'existe pas, on le met dans cette catégorie
+		Categorie categorieDivers = new Categorie(999, "Divers", Categorie.getNoRandomImage());
+		
+		for(int i = 0; i < LISTPRODUIT.size(); i++) {
+			if(LISTPRODUIT.get(i).getCategorieProduit().getNomCategorie().contains(newLine)) {
+				DIVERS = true;
+				LISTDIVERS.add(LISTPRODUIT.get(i));
+				LISTPRODUIT.get(i).setCategorieProduit(categorieDivers);
+			}
+		}
+		
+		if(DIVERS) 
+			LISTCATEGORIE.add(categorieDivers);
 		
 		if(c.getWebsiteName() != null)
 			WEBSITENAME = c.getWebsiteName();
@@ -122,9 +141,13 @@ public class MainActivity extends Activity {
 		CUSTOMERNOTICE = c.getCustomerNotice();
 		ORDER = c.getOrder();
 		SHOPPINGCART = c.getShoppingCart();
-		
+
 		// Pour test
-		CUSTOMERNOTICE = false;
+//		CUSTOMERNOTICE = false;
+//		SHOPPINGCART = false;
+		
+		if(!SHOPPINGCART)
+			ORDER = false;
 		
 		// Si l'admin veut des avis
 		if(CUSTOMERNOTICE){
@@ -139,7 +162,7 @@ public class MainActivity extends Activity {
 			}
 		}
 			
-		// Ajout de client par défaut
+		// Ajout de clients par défaut
 		Client client1 = new Client("florian2412", "Pussacq", "Florian", "332 Cours de la Libération, 33400 TALENCE", "florian.pussacq@gmail.com", true, "pupuce");
 		Client client2 = new Client("tavash", "Sang", "Tavahiura", "TAHITI, Polynésie Française", "tava.sang@gmail.com", true, "tavabien");
 		Client client3 = new Client("cecileB", "Bourrat", "Cécile", "18 Rue de l'inconnu, 33000 BORDEAUX, ", "cecile.bourrat@gmail.com", false, "boubou");
@@ -202,11 +225,16 @@ public class MainActivity extends Activity {
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		}else if(ISCONNECTED){
 			// Mon panier
-			navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+			if(SHOPPINGCART)
+				navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));				
+			
 			// Mon compte
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+			
 			// Mes commandes
-			navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
+			if(ORDER)
+				navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));				
+			
 			// Deconnexion
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 			// A propos
@@ -308,8 +336,13 @@ public class MainActivity extends Activity {
 				pos_title = 2;
 			}
 			else if (ISCONNECTED){
-				fragment = new CartFragment();	
-				pos_title = 4;
+				if(SHOPPINGCART) {
+					fragment = new CartFragment();	
+					pos_title = 4;					
+				} else {
+					fragment = new AccountFragment();
+					pos_title = 6;
+				}
 			}
 			break;
 		}
@@ -320,15 +353,41 @@ public class MainActivity extends Activity {
 				pos_title = 3;
 			}
 			else if (ISCONNECTED){
-				fragment = new AccountFragment();
-				pos_title = 6;
+				if(SHOPPINGCART) {
+					fragment = new AccountFragment();
+					pos_title = 6;		
+				} else {
+					if(ORDER) {
+						fragment = new OrderFragment();
+						pos_title = 8;
+					} else {
+						ISCONNECTED = false;
+						Intent intent = getIntent();
+						finish();
+						startActivity(intent);
+						pos_title = 0;
+					}
+				}
 			}
 			break;
 		}
 		case 4:
 			if (ISCONNECTED){
-				fragment = new OrderFragment();
-				pos_title = 8;
+				if(SHOPPINGCART) {
+					if(ORDER) {
+						fragment = new OrderFragment();
+						pos_title = 8;
+					} else {
+						ISCONNECTED = false;
+						Intent intent = getIntent();
+						finish();
+						startActivity(intent);
+						pos_title = 0;
+					}
+				} else {
+					fragment = new AboutFragment();
+					pos_title = 7;
+				}
 			} else {
 				fragment = new AboutFragment();
 				pos_title = 7;
@@ -336,11 +395,16 @@ public class MainActivity extends Activity {
 			break;
 		case 5:
 			if (ISCONNECTED){
-				ISCONNECTED = false;
-				Intent intent = getIntent();
-				finish();
-				startActivity(intent);
-				pos_title = 0;
+				if(ORDER) {
+					ISCONNECTED = false;
+					Intent intent = getIntent();
+					finish();
+					startActivity(intent);
+					pos_title = 0;					
+				} else {
+					fragment = new AboutFragment();
+					pos_title = 7;
+				}
 			} else {
 				fragment = new AboutFragment();
 				pos_title = 7;
