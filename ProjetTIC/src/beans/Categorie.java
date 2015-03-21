@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.DAOFactory;
 
 public class Categorie{
+	private static int idCategories = 0;
 	private int i_idCategorie = 0;
 	private String s_nomCategorie;
 	private ArrayList<Produit> o_produitsCategorie = new ArrayList<Produit>();
@@ -18,6 +19,8 @@ public class Categorie{
 
 	public Categorie(String theNom) {
 		this.s_nomCategorie = theNom;
+		idCategories++;
+		this.i_idCategorie = idCategories;
 	}
 
 	public Categorie(int theId, String theNom) {

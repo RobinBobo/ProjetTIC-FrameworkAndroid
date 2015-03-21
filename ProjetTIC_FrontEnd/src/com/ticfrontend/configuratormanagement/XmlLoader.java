@@ -36,7 +36,7 @@ public class XmlLoader {
 						parseIntoConfiguration(eventType, parser, config);
 					else if(tagname.equalsIgnoreCase("Produit")){ // Si de type client
 						Produit p = new Produit(); // Création Produit vide
-						parseIntoProduct(eventType, parser, p);
+						parseIntoProduct(eventType, parser, p,listCategorie);
 						listProduit.add(p); // On ajoute notre produit parsé dans notre liste
 					}
 					else if(tagname.equalsIgnoreCase("Categorie")){ // Si de type categorie
@@ -106,7 +106,7 @@ public class XmlLoader {
 		eventType--;
 	}
 
-	public void parseIntoProduct (int eventType, XmlPullParser parser, Produit p) throws XmlPullParserException, IOException{
+	public void parseIntoProduct (int eventType, XmlPullParser parser, Produit p, List<Categorie> listCategorie) throws XmlPullParserException, IOException{
 		eventType = parser.next();
 		String tagname = parser.getName();
 		while (!tagname.equalsIgnoreCase("Produit")) { // <client> <id> 1 <id> <nom> exemple <nom> ... <client>
@@ -126,9 +126,14 @@ public class XmlLoader {
 				else if(tagname.equalsIgnoreCase("marque"))
 					p.setMarqueProduit(text);
 				//else if(tagname.equalsIgnoreCase("stock"))					
-				else if(tagname.equalsIgnoreCase("Categorie"))
-					p.setCategorieProduit(new Categorie(1,text));
-				p.setIconRessource(Produit.getRandomImage());
+				else if(tagname.equalsIgnoreCase("Categorie")) {
+					for (Categorie c : listCategorie) {
+						if (c.getNomCategorie() == text)
+							p.setCategorieProduit(c);
+					}	
+					p.setIconRessource(Produit.getRandomImage());
+				}
+
 				break;
 			default:
 				break;
@@ -139,7 +144,7 @@ public class XmlLoader {
 		}
 		eventType--;
 	}
-	
+
 	public void parseIntoCategory (int eventType, XmlPullParser parser, Categorie c) throws XmlPullParserException, IOException{
 		eventType = parser.next();
 		String tagname = parser.getName();

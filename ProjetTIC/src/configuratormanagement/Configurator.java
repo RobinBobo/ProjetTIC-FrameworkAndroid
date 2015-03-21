@@ -12,6 +12,13 @@ public class Configurator {
 	private String websiteName;
 
 	private int buttonsColor;
+	
+	public Configurator () {
+		this.shoppingCart = false;
+		this.customerNotice = false;
+		this.order = false;
+		this.websiteName = "";
+	}
 
 	public int getButtonsColor() {
 		return buttonsColor;

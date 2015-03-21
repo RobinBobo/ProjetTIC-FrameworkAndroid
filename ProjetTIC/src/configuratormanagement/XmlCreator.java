@@ -55,7 +55,7 @@ public class XmlCreator {
 
 		
 		for (int i=0; i<listeProduits.size(); i++) {
-			addProduct(serializer, listeProduits.get(i)); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
+			addProduct(serializer, listeProduits.get(i), listeCategories); // APPELLER CETTE METHODE POUR AJOUTER PLUSIEURS PRODUITS
 		}		
 		
 		// this will ensure that output is flushed and prevent from writing to serializer
@@ -99,8 +99,9 @@ public class XmlCreator {
 		serializer.text("\n");
 	}
 
-	public void addProduct( XmlSerializer serializer, Produit p) throws IllegalArgumentException, IllegalStateException, IOException {		
+	public void addProduct( XmlSerializer serializer, Produit p, ArrayList<Categorie> listeCategories) throws IllegalArgumentException, IllegalStateException, IOException {		
 		//Quid Categorie ??
+		boolean isFinish = false;
 		serializer.startTag(NAMESPACE, "Produit");
 		writeLine(serializer, "id", String.valueOf(p.getIdProduit()));
 		writeLine(serializer, "nom", p.getNomProduit());
@@ -108,7 +109,17 @@ public class XmlCreator {
 		writeLine(serializer, "description", p.getDescriptionProduit());
 		writeLine(serializer, "marque", p.getMarqueProduit());
 		writeLine(serializer, "stock", String.valueOf(p.getStockProduit()));
-		writeLine(serializer, "Categorie",p.getCategorieProduit());
+		for ( Categorie c : listeCategories) {
+			for (Produit pC : c.getMesProduits()) {
+				if (pC.getNomProduit() == p.getNomProduit()) {
+					writeLine(serializer, "Categorie",c.getNomCategorie());
+					isFinish = true;
+					break;
+				}
+			}
+			if (isFinish)
+				break;
+		}		
 		serializer.endTag(NAMESPACE, "Produit");
 		serializer.text("\n");
 	}
@@ -118,6 +129,10 @@ public class XmlCreator {
 		writeLine(serializer, "isSoppingCart", Boolean.toString(c.getShoppingCart()));
 		writeLine(serializer, "customerNotice", Boolean.toString(c.getCustomerNotice()));
 		writeLine(serializer, "order", Boolean.toString(c.getOrder()));
+		
+		if (c.getWebsiteName() == null) 
+			c.setWebsiteName("");	
+		
 		writeLine(serializer, "websiteName",c.getWebsiteName());
 		writeLine(serializer, "buttonsColor",String.valueOf(c.getButtonsColor()));
 		serializer.endTag(NAMESPACE, "Configuration");
