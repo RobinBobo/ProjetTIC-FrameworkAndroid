@@ -92,6 +92,7 @@ public class MainActivity extends Activity {
 		// Loading XML //	
 		Configurator c = new Configurator ();
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+		File xmlToLoadCustomer = new File(Environment.getExternalStorageDirectory(), "client.xml");
 		XmlLoader x = new XmlLoader ();
 		
 		LISTPRODUIT = new ArrayList<Produit>();
@@ -101,7 +102,7 @@ public class MainActivity extends Activity {
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
-			x.loadCustomer(new FileInputStream(xmlToLoad), LISTCLIENT);
+			x.loadCustomer(new FileInputStream(xmlToLoadCustomer), LISTCLIENT);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {
