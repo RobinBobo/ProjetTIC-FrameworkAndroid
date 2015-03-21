@@ -1,6 +1,13 @@
 package com.ticfrontend.activity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.xmlpull.v1.XmlPullParserException;
+
 import com.example.projettic.R;
+import com.ticfrontend.configuratormanagement.XmlLoader;
 import com.ticfrontend.magasin.Client;
 import com.ticfrontend.magasin.Panier;
 
@@ -12,6 +19,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -103,7 +111,27 @@ public class RegisterFragment extends Fragment {
 								MainActivity.LISTCLIENT.add(c);
 							
 							// ICI ROBINHO
-							
+							File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "client.xml");
+							XmlLoader x = new XmlLoader ();										
+														
+							try {
+								x.createCustomer(xmlToLoad,MainActivity.LISTCLIENT);												
+							} catch (FileNotFoundException e) {
+								e.printStackTrace();
+							} catch (IllegalArgumentException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IllegalStateException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (XmlPullParserException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
 							
 							
 							Intent intent = activity.getIntent();
