@@ -47,6 +47,16 @@ public class ListeCategories implements Observer {
 		return exist;
 	}
 	
+	public Categorie rechCategorie(String nom){
+		Categorie catego = null;
+		for(int i=0; i<o_mesCategories.size(); i++) {
+			if (o_mesCategories.get(i).getNomCategorie().equals(nom)) {
+				catego = o_mesCategories.get(i);
+			}
+		}
+		return catego;
+	}
+	
 	public boolean isCategorie(String nom){
 		boolean isPresent = false;
 		for(int i=0; i<o_mesCategories.size(); i++) {

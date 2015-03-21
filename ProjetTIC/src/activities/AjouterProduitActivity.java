@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import beans.Categorie;
 import beans.Marque;
 import beans.Produit;
 import fr.tic.R;
@@ -57,10 +58,14 @@ public class AjouterProduitActivity extends Activity {
 				}
 				
 				if (valide) {
+					String catego = (s.getSelectedItem().toString().equals("Aucune")) ? "Divers" : s.getSelectedItem().toString();
 					Produit p = new Produit(nom.toString(),Integer.parseInt(prix.toString()),
-							description.toString(), (s.getSelectedItem().toString().equals("Aucune")) ? "" : s.getSelectedItem().toString() ,
+							description.toString(), catego ,
 							(marque.toString().matches(""))? "" : marque.toString(), 
 							Integer.parseInt(stock.toString()));
+					if (MainActivity.getListeCategories().rechCategorie(catego) != null) {
+						MainActivity.getListeCategories().rechCategorie(catego).ajouterProduitCategorie(p);
+					}
 					
 					// Ajout de la marque dans la liste si elle n'existe pas encore
 					// ou bien ajoute le produit à la liste de la marque existante

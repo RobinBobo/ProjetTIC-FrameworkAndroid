@@ -111,8 +111,10 @@ public class MainActivity extends Activity {
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
 		Categorie categoTelephone = new Categorie("Telephone");
+		Categorie categoDivers = new Categorie("Divers");
 		Marque sony = new Marque("Sony");
 		getListeCategories().ajouterCategorie(categoTelephone);
+		getListeCategories().ajouterCategorie(categoDivers);
 		getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
 				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",
 				categoTelephone.getNomCategorie(), sony.getNomMarque(), 10));
