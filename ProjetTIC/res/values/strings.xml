@@ -106,7 +106,7 @@
     <string name="isShoppingCart">Activer le panier ?</string>
     <string name="isCustomerNotice">Activer les avis clients ? </string>
     <string name="productSorting">Activer le tri des produits ? </string>
-    <string name="categorySorting">Activer le tri des categories ? </string>
+    <string name="categorySorting">Activer le tri des avis ? </string>
     <string name="productSearch">Activer la recherche de produits ? </string>
     <string name="categorySearch">Activer la recherche de categorie ? </string>
     <string name="order">Activer les commandes ? </string>

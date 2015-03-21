@@ -101,6 +101,7 @@ public class MainActivity extends Activity {
 		
 		try {
 			x.load(new FileInputStream(xmlToLoad), c, LISTPRODUIT, LISTCATEGORIE);
+			x.loadCustomer(new FileInputStream(xmlToLoad), LISTCLIENT);
 			System.out.println("Suspens : " + c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 			Log.v("XML",c.getWebsiteName() + c.getOrder() + c.getCustomerNotice());
 		} catch (FileNotFoundException e) {

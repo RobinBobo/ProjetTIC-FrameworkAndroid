@@ -1,7 +1,19 @@
 package com.ticfrontend.activity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlPullParserException;
+
 import com.example.projettic.R;
+import com.ticfrontend.configuratormanagement.Configurator;
+import com.ticfrontend.configuratormanagement.XmlLoader;
+import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Client;
+import com.ticfrontend.magasin.Produit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +21,8 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,6 +197,29 @@ public class AccountFragment extends Fragment {
 											clientActuel.setAdresseClient(editTextAdresseClient.getText().toString());
 											clientActuel.setMdpClient(editTextMdp1.getText().toString());
 											clientActuel.setSexeClient(sexeClient);
+											
+											
+											File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "client.xml");
+											XmlLoader x = new XmlLoader ();										
+																		
+											try {
+												x.createCustomer(xmlToLoad,MainActivity.LISTCLIENT);												
+											} catch (FileNotFoundException e) {
+												e.printStackTrace();
+											} catch (IllegalArgumentException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											} catch (IllegalStateException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											} catch (XmlPullParserException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											} catch (IOException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											}
+
 											
 											// Modification du client dans la BDD
 											// TODO
