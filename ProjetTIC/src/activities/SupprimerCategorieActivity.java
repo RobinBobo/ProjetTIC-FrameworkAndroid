@@ -23,8 +23,8 @@ public class SupprimerCategorieActivity extends Activity {
 		final TextView msgErreur = (TextView) findViewById(R.id.msgErreur);
 		Button btnSupprimer = (Button) findViewById(R.id.btnSupprimer);
 		
-		btnSupprimer.setOnClickListener(new OnClickListener() {
-			
+		// Evenement au clique sur le bouton "supprimer"
+		btnSupprimer.setOnClickListener(new OnClickListener() {			
 			public void onClick(View v) {
 				if (!rechCatego.getText().toString().matches("")) {
 					if (MainActivity.getListeCategories().supprimCategorie(rechCatego.getText().toString())) {
