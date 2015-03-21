@@ -1,6 +1,8 @@
 package activities;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -26,7 +28,7 @@ import beans.Client;
 import beans.Marque;
 import beans.Produit;
 import configuratormanagement.Configurator;
-import configuratormanagement.XmlCreator;
+import configuratormanagement.XmlManagor;
 import fr.tic.R;
 
 
@@ -38,7 +40,7 @@ public class MainActivity extends Activity {
 	private static ListeMarques listeMarques;
 	private static String nomSite; 
 	private static int buttonsColor;
-	
+
 	public static ListeMarques getListeMarques() {
 		return listeMarques;
 	}
@@ -93,15 +95,29 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		setTitle((getNomSite() != null) ? (getNomSite()) : "Application de gestion");	
 
-		// _________________________________________________________
-		// Jeux de test :
-		// __________________________________________________________
-
 		setListeCategories(new ListeCategories());
 		setMesClients(new ListeClients());
 		setMonCatalogue(new Catalogue());
 		setListeMarques(new ListeMarques());
-		
+
+		// _________________________________________________________
+		// Chargement des données:
+		// __________________________________________________________
+
+		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
+		XmlManagor xml = new XmlManagor();
+		Configurator config = new Configurator();
+		try {
+			xml.load(new FileInputStream(xmlToLoad),config, getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories());
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// _________________________________________________________
+		// Jeux de test :
+		// __________________________________________________________
+
 
 		/*mesCategories.findCategories();
 		mesClients.findClients();
@@ -110,11 +126,12 @@ public class MainActivity extends Activity {
 		//		monCatalogue.ajoutObserver(mesClients);
 		Client c = new Client(0,"nom","prenom", "adresse", false);
 		mesClients.ajouterClient(c);
-		//Categorie categoTelephone = new Categorie("Telephone");
-		Categorie categoDivers = new Categorie("Divers");
+		//Categorie categoTelephone = new Categorie("Telephone");		
 		//Marque sony = new Marque("Sony");
 		//getListeCategories().ajouterCategorie(categoTelephone);
-		getListeCategories().ajouterCategorie(categoDivers);
+		Categorie categoDivers = new Categorie("Divers");
+		if (!MainActivity.getListeCategories().isCategorie(categoDivers.getNomCategorie()))
+			getListeCategories().ajouterCategorie(categoDivers);
 		/*getMonCatalogue().ajouterProduitCatalogue(new Produit(0, 
 				"Sony Xperia Z3 Compact", 150.0, "Téléphone Sony Xperia Z3 Compact 16Go",
 				categoTelephone.getNomCategorie(), sony.getNomMarque(), 10));
@@ -201,7 +218,7 @@ public class MainActivity extends Activity {
 				c.setOrder(false);
 				c.setButtonsColor(buttonsColor);
 				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
-				XmlCreator xml = new XmlCreator();
+				XmlManagor xml = new XmlManagor();
 				try {
 					xml.create(c, getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories(), newxmlfile);
 				} catch (IllegalArgumentException e) {
