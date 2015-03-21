@@ -55,18 +55,16 @@ public class Panier {
 	public void setListeProduitsPanier(List<Produit> listeProduitsPanier) {this.listeProduitsPanier = listeProduitsPanier;}
 
 	public void viderPanier(){this.mapProduitQuantite.clear(); this.totalPanier = 0;}
-	public boolean estVide() {
-		int res = 0;
-		for(Entry<Produit, Integer> entry : this.mapProduitQuantite.entrySet()){
-			Produit prd = entry.getKey();
-			if(prd != null)
-				res++;
-		}
-		
+	public boolean estVide() {	
 		return (this.mapProduitQuantite.isEmpty());
-		
 	}
-	public int nombreProduit(){return this.mapProduitQuantite.size();}
+	public int nombreProduit(){
+		int nbTotalProduits = 0;
+		for(Entry<Produit, Integer> entry : this.mapProduitQuantite.entrySet()){
+			nbTotalProduits += entry.getValue();
+		}
+		return nbTotalProduits;
+	}
 	
 	public double calculTotalPanier(){
 		double total = 0;

@@ -267,7 +267,7 @@ public class MainActivity extends Activity {
 
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
-				adapter.updateCounter();
+				adapter.notifyDataSetChanged();
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();

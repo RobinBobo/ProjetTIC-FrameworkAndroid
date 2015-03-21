@@ -20,6 +20,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
 	private Context context;
 	private ArrayList<NavDrawerItem> navDrawerItems;
+	private int count;
 
 	public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
 		this.context = context;
@@ -58,21 +59,31 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
 		// displaying count
 		// check whether it set visible or not
-		if(navDrawerItems.get(position).getCounterVisibility()){
-			txtCount.setText(navDrawerItems.get(position).getCount());
-		}else{
-			// hide the counter view
+		if(!MainActivity.ISCONNECTED)
 			txtCount.setVisibility(View.GONE);
+		else {
+			if(CartFragment.PANIER_CLIENT != null)
+				this.count = ((!CartFragment.PANIER_CLIENT.estVide()) ? CartFragment.PANIER_CLIENT.nombreProduit() : 0);
+			if(this.count != 0){
+				navDrawerItems.get(2).setCount(String.valueOf(this.count));
+				navDrawerItems.get(2).setCounterVisibility(true);
+			}
+			else
+				navDrawerItems.get(2).setCounterVisibility(false);
 		}
 
+		if(navDrawerItems.get(position).getCounterVisibility()){
+			txtCount.setVisibility(View.VISIBLE);
+			txtCount.setText(navDrawerItems.get(position).getCount());
+		}else{
+			txtCount.setVisibility(View.GONE);
+		}
 		return convertView;
 	}
-
-	public void updateCounter(){
-
-		navDrawerItems.get(4).setCounterVisibility(true);
-		navDrawerItems.get(4).setCount(String.valueOf(3));
-
-		notifyDataSetChanged();
+	
+	@Override
+	public void notifyDataSetChanged() {
+		//do your sorting here
+		super.notifyDataSetChanged();
 	}
 }
