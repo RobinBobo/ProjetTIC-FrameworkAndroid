@@ -37,9 +37,16 @@ public class MainActivity extends Activity {
 	private static ListeClients mesClients;
 	private static Catalogue monCatalogue;
 	private static ListeCategories listeCategories;
-	private static ListeMarques listeMarques;
-	private static String nomSite; 
-	private static int buttonsColor;
+	private static ListeMarques listeMarques;	
+	private static Configurator maConfiguration;
+
+	public static Configurator getMaConfiguration() {
+		return MainActivity.maConfiguration;
+	}
+
+	public static void setMaConfiguration(Configurator c) {
+		MainActivity.maConfiguration = c;
+	}
 
 	public static ListeMarques getListeMarques() {
 		return listeMarques;
@@ -49,29 +56,13 @@ public class MainActivity extends Activity {
 		MainActivity.listeMarques = listeMarques;
 	}
 
-	public static int getButtonsColor() {
-		return buttonsColor;
-	}
-
-	public static void setButtonsColor(int buttonsColor) {
-		MainActivity.buttonsColor = buttonsColor;
-	}
-
 	public static ListeCategories getListeCategories() {
 		return listeCategories;
 	}
 
 	public static void setListeCategories(ListeCategories listeCategories) {
 		MainActivity.listeCategories = listeCategories;
-	}
-
-	public static String getNomSite() {
-		return nomSite;
-	}
-
-	public static void setNomSite(String nomSite) {
-		MainActivity.nomSite = nomSite;
-	}
+	}	
 
 	public static ListeClients getMesClients() {
 		return mesClients;
@@ -92,13 +83,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		setTitle((getNomSite() != null) ? (getNomSite()) : "Application de gestion");	
+		setContentView(R.layout.activity_main);		
 
 		setListeCategories(new ListeCategories());
 		setMesClients(new ListeClients());
 		setMonCatalogue(new Catalogue());
 		setListeMarques(new ListeMarques());
+		setMaConfiguration(new Configurator ());		
 
 		// _________________________________________________________
 		// Chargement des données:
@@ -106,13 +97,15 @@ public class MainActivity extends Activity {
 
 		File xmlToLoad = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 		XmlManagor xml = new XmlManagor();
-		Configurator config = new Configurator();
+		
 		try {
-			xml.load(new FileInputStream(xmlToLoad),config, getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories());
+			xml.load(new FileInputStream(xmlToLoad),getMaConfiguration(), getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories());
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		setTitle((getMaConfiguration().getWebsiteName() != null) ? (getMaConfiguration().getWebsiteName()) : "Application de gestion");	
 
 		// _________________________________________________________
 		// Jeux de test :
@@ -190,7 +183,7 @@ public class MainActivity extends Activity {
 		nomSiteLink.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, ChoixNomSiteActivity.class);
+				Intent intent = new Intent(MainActivity.this, ConfigurerFrontActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -211,16 +204,11 @@ public class MainActivity extends Activity {
 		extract.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Configurator c = new Configurator();
-				c.setWebsiteName(nomSite);
-				c.setShoppingCart(true);
-				c.setCustomerNotice(true);
-				c.setOrder(false);
-				c.setButtonsColor(buttonsColor);
 				File newxmlfile = new File(Environment.getExternalStorageDirectory(), "configuration.xml");
 				XmlManagor xml = new XmlManagor();
 				try {
-					xml.create(c, getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories(), newxmlfile);
+					System.out.println(getMaConfiguration());
+					xml.create(getMaConfiguration(), getMonCatalogue().getMesProduits(), getListeCategories().getListeCategories(), newxmlfile);
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -4,8 +4,7 @@
     <string name="app_name">ProjetTIC</string>
     <string name="hello_world">Bienvenue dans votre application de vente en ligne !</string>
     <string name="action_settings">Settings</string>
-    
-    
+
     <!-- Titres -->
     <string name="titleChoixNom">Choix du nom</string>
     <string name="titleMenu">Menu de gestion de la base</string>
@@ -17,8 +16,7 @@
     <string name="titleSupprimerCategorie">Suppression de catégories</string>
     <string name="titleAjouterClient">Ajout de clients</string>
     <string name="titleSupprimerClient">Suppression de clients</string>
-    
-    
+
     <!-- Général -->
     <string name="textId">Identifiant : </string>
     <string name="textNom">Nom : </string>
@@ -29,24 +27,24 @@
     <string name="msgErreur"></string>
     <string name="id">01</string>
     <string name="prix">149,99</string>
-	<string name="btnRechercher">Rechercher</string>
-	<string name="erreurRecherche"></string>
-    
+    <string name="btnRechercher">Rechercher</string>
+    <string name="erreurRecherche"></string>
+
     <!-- Accueil -->
     <string name="titleAccueil">Bienvenue sur votre application de gestion de vente en ligne !</string>
     <string name="titleStat">Vos stats :</string>
-    <string name="nbProduits"></string>  
-    <string name="nbClients"></string>  
+    <string name="nbProduits"></string>
+    <string name="nbClients"></string>
     <string name="nbCde"></string>
     <string name="alerteStock"></string>
     <string name="menuLink">Accéder au menu de gestion des données</string>
     <string name="btnNomSite">Configurer le front-end</string>
     <string name="btnExtract">Sauvegarder et extraire les données</string>
-        
+
     <!-- Nom du site -->
     <string name="textNomSite">Quel nom voulez-vous pour votre application ?</string>
     <string name="nomSite">Nom du Site</string>
-    
+
     <!-- Menu -->
     <string name="consulterCatalogue">Consulter le catalogue</string>
     <string name="ajouterProduit">Ajouter un produit</string>
@@ -56,34 +54,34 @@
     <string name="supprimerCategorie">Supprimer une catégorie</string>
     <string name="ajouterClient">Ajouter un client</string>
     <string name="supprimerClient">Supprimer un client</string>
-    
-	<!-- Produit -->
+
+    <!-- Produit -->
     <string name="nomProduit">Produit X</string>
     <string name="marqueProduit">Marque Y</string>
     <string name="descProduit">Mémoire de 16Go, appareil photo de 16 Mpx, ...</string>
     <string name="titleModifPdt">Entrer l\'identifiant du produit puis valider pour lancer la recherche du produit à modifier :</string>
     <string name="rechIdPdt">Identifiant du produit</string>
-	<string name="instructionModifPdt">Pour modifier un champ, cocher la case devant ce champ et saisir la nouvelle valeur dans la zone qui apparaît en dessous.</string>
-	<string name="checkNomProduit"></string>
-	<string name="resNomProduit"></string>
-	<string name="newNomProduit">Nouvelle valeur</string>
-	<string name="checkPrixProduit"></string>
-	<string name="resPrixProduit"></string>
-	<string name="newPrixProduit">Nouvelle valeur</string>
-	<string name="checkDescProduit"></string>
-	<string name="resDescProduit"></string>
-	<string name="newDescProduit">Nouvelle valeur</string>
-	<string name="textStockProduit">Stock : </string>
-	<string name="stockProduit"></string>
-	<string name="checkStockProduit"></string>
-	<string name="resStockProduit"></string>
-	<string name="newStockProduit">Nouvelle valeur</string>
-	<string name="msgResModif"></string>
-	<string name="instructionSupprimerPdt">Voici les informations liées au produit recherché, cliquer sur "supprimer" en bas de la page pour valider la suppression de ce produit</string>
-	<string name="btnSupprimer">Supprimer</string>
-	
+    <string name="instructionModifPdt">Pour modifier un champ, cocher la case devant ce champ et saisir la nouvelle valeur dans la zone qui apparaît en dessous.</string>
+    <string name="checkNomProduit"></string>
+    <string name="resNomProduit"></string>
+    <string name="newNomProduit">Nouvelle valeur</string>
+    <string name="checkPrixProduit"></string>
+    <string name="resPrixProduit"></string>
+    <string name="newPrixProduit">Nouvelle valeur</string>
+    <string name="checkDescProduit"></string>
+    <string name="resDescProduit"></string>
+    <string name="newDescProduit">Nouvelle valeur</string>
+    <string name="textStockProduit">Stock : </string>
+    <string name="stockProduit"></string>
+    <string name="checkStockProduit"></string>
+    <string name="resStockProduit"></string>
+    <string name="newStockProduit">Nouvelle valeur</string>
+    <string name="msgResModif"></string>
+    <string name="instructionSupprimerPdt">Voici les informations liées au produit recherché, cliquer sur "supprimer" en bas de la page pour valider la suppression de ce produit</string>
+    <string name="btnSupprimer">Supprimer</string>
+
     <!-- Client -->
-	<string name="textIdClient">Identifiants du client : </string>
+    <string name="textIdClient">Identifiants du client : </string>
     <string name="IdClient">Identifiant</string>
     <string name="radioHomme">Homme</string>
     <string name="radioFemme">Femme</string>
@@ -91,18 +89,26 @@
     <string name="nomClient">Dupont</string>
     <string name="textPrenomClient">Prénom : </string>
     <string name="prenomClient">Martin </string>
-    <string name="textAdresseClient">Adresse : </string>    
+    <string name="textAdresseClient">Adresse : </string>
     <string name="adresseClient">5bis, étage 2, rue de la paix, 75000 Paris</string>
     <string name="btnAjoutClient">Valider</string>
     <string name="titleSupClient">Veuillez saisir le nom du client à supprimer puis valider : </string>
     <string name="resRechClient"></string>
-    
+
     <!-- Categorie -->
     <string-array name="category" />
+
     <string name="listeCategory" />
-    <string name="textListeCatego" >Catégorie :</string>
-    <string name="nomCategorie" >Téléphonie, PC, Tablette, Bijoux, Pull, ...</string>
+    <string name="textListeCatego">Catégorie :</string>
+    <string name="nomCategorie">Téléphonie, PC, Tablette, Bijoux, Pull, ...</string>
     <string name="colorChange">Changer la couleur du front</string>
     <string name="titleSupCategorie">Saisir le nom de la catégorie à supprimer : </string>
+    <string name="isShoppingCart">Activer le panier ?</string>
+    <string name="isCustomerNotice">Activer les avis clients ? </string>
+    <string name="productSorting">Activer le tri des produits ? </string>
+    <string name="categorySorting">Activer le tri des categories ? </string>
+    <string name="productSearch">Activer la recherche de produits ? </string>
+    <string name="categorySearch">Activer la recherche de categorie ? </string>
+    <string name="order">Activer les commandes ? </string>
 
 </resources>

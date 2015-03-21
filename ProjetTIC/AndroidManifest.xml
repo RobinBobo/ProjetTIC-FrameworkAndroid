@@ -27,7 +27,7 @@
         </activity>
         
         <activity 
-            android:name="activities.ChoixNomSiteActivity"
+            android:name="activities.ConfigurerFrontActivity"
             android:label="@string/titleChoixNom" />
         <activity 
             android:name="activities.MenuActivity"            

@@ -11,6 +11,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import com.ticfrontend.magasin.Categorie;
 import com.ticfrontend.magasin.Produit;
 
+
 public class XmlLoader {
 
 	private String text;
@@ -95,6 +96,14 @@ public class XmlLoader {
 					c.setWebsiteName(text);
 				else if(tagname.equalsIgnoreCase("buttonsColor"))
 					c.setButtonsColor(Integer.valueOf(text));
+				else if(tagname.equalsIgnoreCase("triProduit"))
+					c.setSortProduct(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("triCategorie"))
+					c.setSortCategory(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("rechercheProduit"))
+					c.setProductSearch(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("rechercheCategorie"))
+					c.setCategorySearch(Boolean.valueOf(text));
 				break;
 			default:
 				break;

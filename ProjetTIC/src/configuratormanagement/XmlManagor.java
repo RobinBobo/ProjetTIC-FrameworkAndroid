@@ -138,6 +138,10 @@ public class XmlManagor {
 
 		writeLine(serializer, "websiteName",c.getWebsiteName());
 		writeLine(serializer, "buttonsColor",String.valueOf(c.getButtonsColor()));
+		writeLine(serializer, "triProduit", Boolean.toString(c.getSortProduct()));
+		writeLine(serializer, "triCategorie", Boolean.toString(c.getSortCategory()));
+		writeLine(serializer, "rechercheProduit", Boolean.toString(c.getProductSearch()));
+		writeLine(serializer, "rechercheCategorie", Boolean.toString(c.getCategorySearch()));
 		serializer.endTag(NAMESPACE, "Configuration");
 		serializer.text("\n");
 	}
@@ -222,6 +226,14 @@ public class XmlManagor {
 					c.setWebsiteName(text);
 				else if(tagname.equalsIgnoreCase("buttonsColor"))
 					c.setButtonsColor(Integer.valueOf(text));
+				else if(tagname.equalsIgnoreCase("triProduit"))
+					c.setSortProduct(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("triCategorie"))
+					c.setSortCategory(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("rechercheProduit"))
+					c.setProductSearch(Boolean.valueOf(text));
+				else if(tagname.equalsIgnoreCase("rechercheCategorie"))
+					c.setCategorySearch(Boolean.valueOf(text));
 				break;
 			default:
 				break;
